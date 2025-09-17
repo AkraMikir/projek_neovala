@@ -1,0 +1,132 @@
+/* Animasi sederhana untuk judul */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.apartment-title {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Animasi sederhana untuk story items */
+.story-item {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.story-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.story-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.story-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.story-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Efek hover sederhana untuk gambar */
+.story-story-image img {
+    transition: transform 0.3s ease;
+}
+
+.story-story-image:hover img {
+    transform: scale(1.02);
+}
+
+/* Efek hover sederhana untuk konten */
+.story-story-content {
+    transition: box-shadow 0.3s ease;
+}
+
+.story-story-content:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Efek hover sederhana untuk judul */
+.story-story-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #674c1d;
+    transition: width 0.3s ease;
+}
+
+.story-story-content:hover h2::after {
+    width: 100%;
+}
+
+/* Efek hover sederhana untuk overlay gambar */
+.image-overlay {
+    transition: opacity 0.3s ease;
+}
+
+.story-story-image:hover .image-overlay {
+    opacity: 1;
+}
+
+.image-overlay i {
+    transition: transform 0.3s ease;
+}
+
+.story-story-image:hover .image-overlay i {
+    transform: scale(1);
+}
+
+/* Animasi untuk gambar */
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.story-story-image {
+    animation: scaleIn 0.8s ease-out;
+}
+
+/* Animasi untuk konten */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.story-story-content {
+    animation: slideIn 0.8s ease-out;
+}
+
+/* Animasi untuk background pattern */
+@keyframes patternMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 60px 60px;
+    }
+}
+
+.our-story {
+    animation: patternMove 20s linear infinite;
+} 
