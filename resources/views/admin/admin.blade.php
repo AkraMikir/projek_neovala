@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!--Test-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -80,7 +82,7 @@
                         <li><a href="#" class="pgv-link">PODOMORO</a></li>
                         <form method="POST" action="{{ route('admin.logout') }}">
                             @csrf
-                            <button type="submit" class= "btn-logout">Logout</button>
+                            <button type="submit" class="btn-logout">Logout</button>
                         </form>
 
                     </ul>
