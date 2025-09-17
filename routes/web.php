@@ -17,6 +17,8 @@ use App\Http\Controllers\KomentarGklController;
 use App\Http\Controllers\KomentarPluController;
 use App\Http\Controllers\KomentarGwcController;
 use App\Http\Controllers\KomentarPgvController;
+use App\Http\Controllers\KomentarGpcController;
+use App\Http\Controllers\KomentarBscController;
 
 
 Route::get('/storage-link', function() {
@@ -37,53 +39,45 @@ Route::get('/book-now', function () {
 //=======================================
 //DISCOVER GKL
 //=======================================
-Route::get('/discover-gkl', function () {
-    return view('user.discover-GKL');
-})->name('discoverGKL');
 Route::get('/discover-gkl', [TampilanApartmentController::class, 'gkl'])->name('discoverGKL');
 
 
 //=======================================
 //DISCOVER GWC
 //=======================================
-Route::get('/discover-gwc', function () {
-    return view('user.discover-GWC');
-})->name('discoverGWC');
 Route::get('/discover-gwc', [TampilanApartmentController::class, 'gwc'])->name('discoverGWC');
 
 
 //=======================================
 //DISCOVER PGv
 //=======================================
-Route::get('/discover-pgv', function () {
-    return view('user.discover-PGV');
-})->name('discoverPGV');
 Route::get('/discover-pgv', [TampilanApartmentController::class, 'pgv'])->name('discoverPGV');
 
 
 //=======================================
-//DISCOVER GKL
+//DISCOVER PLU
 //=======================================
-Route::get('/discover-plu', function () {
-    return view('user.discover-PLU');
-})->name('discoverPLU');
 Route::get('/discover-plu', [TampilanApartmentController::class, 'plu'])->name('discoverPLU');
 
 //=======================================
 //DISCOVER TPC
 //=======================================
-Route::get('/discover-tpc', function () {
-    return view('user.discover-TPC');
-})->name('discoverTPC');
 Route::get('/discover-tpc', [TampilanApartmentController::class, 'tpc'])->name('discoverTPC');
 
 //=======================================
 //DISCOVER TPJ
 //=======================================
-Route::get('/discover-tpj', function () {
-    return view('user.discover-TPJ');
-})->name('discoverTPJ');
 Route::get('/discover-tpj', [TampilanApartmentController::class, 'tpj'])->name('discoverTPJ');
+
+//=======================================
+//DISCOVER GPC
+//=======================================
+Route::get('/discover-gpc', [TampilanApartmentController::class, 'gpc'])->name('discoverGPC');
+
+//=======================================
+//DISCOVER BSC
+//=======================================
+Route::get('/discover-bsc', [TampilanApartmentController::class, 'bsc'])->name('discoverBSC');
 
 
 //=======================================
@@ -184,6 +178,19 @@ Route::post('/komentar-pgv', [KomentarPgvController::class, 'store'])->name('kom
 Route::patch('/komentar-pgv/{id}/accept', [KomentarPgvController::class, 'accept'])->name('komentar-pgv.accept');
 Route::patch('/komentar-pgv/{id}/unapply', [KomentarPgvController::class, 'unapply'])->name('komentar-pgv.unapply');
 Route::delete('/komentar-pgv/{id}/delete', [KomentarPgvController::class, 'delete'])->name('komentar-pgv.delete');
+
+// Route untuk komentar gpc
+Route::post('/komentar-gpc', [KomentarGpcController::class, 'store'])->name('komentar-gpc.store');
+Route::patch('/komentar-gpc/{id}/accept', [KomentarGpcController::class, 'accept'])->name('komentar-gpc.accept');
+Route::patch('/komentar-gpc/{id}/unapply', [KomentarGpcController::class, 'unapply'])->name('komentar-gpc.unapply');
+Route::delete('/komentar-gpc/{id}/delete', [KomentarGpcController::class, 'delete'])->name('komentar-gpc.delete');
+
+// Route untuk komentar bsc
+Route::post('/komentar-bsc', [KomentarBscController::class, 'store'])->name('komentar-bsc.store');
+Route::patch('/komentar-bsc/{id}/accept', [KomentarBscController::class, 'accept'])->name('komentar-bsc.accept');
+Route::patch('/komentar-bsc/{id}/unapply', [KomentarBscController::class, 'unapply'])->name('komentar-bsc.unapply');
+Route::delete('/komentar-bsc/{id}/delete', [KomentarBscController::class, 'delete'])->name('komentar-bsc.delete');
+
 // Route existing untuk accept/unapply/delete tetap bisa digunakan (bekerja untuk semua section)
 
 

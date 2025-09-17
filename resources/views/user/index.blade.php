@@ -221,6 +221,28 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Apartment Card 7 -->
+            <div class="apartment-card">
+                <div class="apartment-image">
+                    <img src="{{ asset('images/placeholder-gpc.jpg') }}" alt="Apartment 7">
+                    <div class="apartment-content">
+                        <h3 class="apartment-name">GRAND PRAMUKA CITY</h3>
+                        <a href="{{ route('discoverGPC') }}" class="view-details-btn">DISCOVER</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apartment Card 8 -->
+            <div class="apartment-card">
+                <div class="apartment-image">
+                    <img src="{{ asset('images/placeholder-bsc.jpg') }}" alt="Apartment 8">
+                    <div class="apartment-content">
+                        <h3 class="apartment-name">BASSURA CITY</h3>
+                        <a href="{{ route('discoverBSC') }}" class="view-details-btn">DISCOVER</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -467,6 +489,10 @@
                     <li><a class="footer-section-available" href="{{ route('discoverPLU') }}">PATRAJAND URBANO</a></li>
                     <li><a class="footer-section-available" href="{{ route('discoverGWC') }}">GATEWAY CICADAS</a></li>
                     <li><a class="footer-section-available" href="{{ route('discoverPGV') }}">PODOMORO GOLF VIEW</a>
+                    </li>
+                    <li><a class="footer-section-available" href="{{ route('discoverGPC') }}">GRAND PRAMUKA CITY</a>
+                    </li>
+                    <li><a class="footer-section-available" href="{{ route('discoverBSC') }}">BASSURA CITY</a>
                     </li>
                     <div class="footer-logo">
                         <h2>NEOVALA</h2><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.png') }}" alt="">
