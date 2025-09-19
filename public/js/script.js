@@ -1,41 +1,43 @@
 // Fungsi untuk navbar scroll
 function handleNavbarScroll() {
-    const navbar = document.querySelector('.navbar');
-    const header = document.querySelector('.header');
-    const bookNowBtn = document.querySelector('.book-now-container');
+    const navbar = document.querySelector(".navbar");
+    const header = document.querySelector(".header");
+    const bookNowBtn = document.querySelector(".book-now-container");
 
-    if (!navbar || !header) return;
+    if (!navbar || !header) {
+        console.log(
+            "Navbar or header not found, skipping navbar scroll initialization"
+        );
+        return;
+    }
 
     const headerBottom = header.offsetTop + header.offsetHeight;
 
-    window.addEventListener('scroll', () => {
+    function updateNavbarState() {
         if (window.scrollY > headerBottom - navbar.offsetHeight) {
-            navbar.classList.add('scrolled');
+            navbar.classList.add("scrolled");
             if (bookNowBtn) {
-                bookNowBtn.classList.add('visible');
+                bookNowBtn.classList.add("visible");
             }
         } else {
-            navbar.classList.remove('scrolled');
+            navbar.classList.remove("scrolled");
             if (bookNowBtn) {
-                bookNowBtn.classList.remove('visible');
+                bookNowBtn.classList.remove("visible");
             }
         }
-    });
+    }
+
+    // Remove existing scroll listener to avoid duplicates
+    window.removeEventListener("scroll", updateNavbarState);
+    window.addEventListener("scroll", updateNavbarState);
 
     // Set initial state
-    if (window.scrollY > headerBottom - navbar.offsetHeight) {
-        navbar.classList.add('scrolled');
-        if (bookNowBtn) {
-            bookNowBtn.classList.add('visible');
-        }
-    } else if (bookNowBtn) {
-        bookNowBtn.classList.remove('visible');
-    }
+    updateNavbarState();
 }
 
 function handleSmoothScroll() {
-    const navLinks = document.querySelectorAll('.nav-links a, .logo-left a');
-    const navHeight = document.querySelector('.navbar').offsetHeight;
+    const navLinks = document.querySelectorAll(".nav-links a, .logo-left a");
+    const navHeight = document.querySelector(".navbar").offsetHeight;
 
     // Function to scroll smoothly to the target section
     function smoothScrollTo(targetId) {
@@ -46,16 +48,16 @@ function handleSmoothScroll() {
 
         window.scrollTo({
             top: targetPosition,
-            behavior: 'smooth'
+            behavior: "smooth",
         });
     }
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
+    navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            const href = link.getAttribute("href");
 
             // Extract the hash part of the href (e.g., #apartment-section)
-            const hash = href.split('#')[1];
+            const hash = href.split("#")[1];
             if (hash) {
                 e.preventDefault();
                 smoothScrollTo(`#${hash}`); // Scroll to the section with the corresponding id
@@ -66,87 +68,104 @@ function handleSmoothScroll() {
 
 handleSmoothScroll(); // Call the function to enable smooth scrolling
 
-
 // Fungsi untuk menu burger
 function handleBurgerMenu() {
-    const burgerMenu = document.querySelector('.burger-menu');
-    const navLinks = document.querySelector('.nav-links');
-    const overlay = document.querySelector('.nav-overlay');
-    const navItems = document.querySelectorAll('.nav-links a');
-    const closeButton = document.createElement('button');
+    const burgerMenu = document.querySelector(".burger-menu");
+    const navLinks = document.querySelector(".nav-links");
+    const overlay = document.querySelector(".nav-overlay");
+    const navItems = document.querySelectorAll(".nav-links a");
+    const closeButton = document.createElement("button");
 
     if (!burgerMenu || !navLinks || !overlay) return;
 
-    closeButton.innerHTML = '×';
-    closeButton.className = 'close-menu-btn';
+    closeButton.innerHTML = "×";
+    closeButton.className = "close-menu-btn";
     navLinks.insertBefore(closeButton, navLinks.firstChild);
 
     function toggleMenu() {
-        const isOpening = !navLinks.classList.contains('active');
-        const bookNowBtn = document.querySelector('.book-now-container');
+        const isOpening = !navLinks.classList.contains("active");
+        const bookNowBtn = document.querySelector(".book-now-container");
 
         if (isOpening && bookNowBtn) {
             // Ensure Book Now button stays visible if it was visible
-            if (bookNowBtn.classList.contains('visible')) {
-                bookNowBtn.style.zIndex = '100';
+            if (bookNowBtn.classList.contains("visible")) {
+                bookNowBtn.style.zIndex = "100";
             }
         } else if (bookNowBtn) {
-            bookNowBtn.style.zIndex = '';
+            bookNowBtn.style.zIndex = "";
         }
 
-        burgerMenu.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        overlay.classList.toggle('active');
+        burgerMenu.classList.toggle("active");
+        navLinks.classList.toggle("active");
+        overlay.classList.toggle("active");
     }
 
     // Event listeners
-    burgerMenu.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', toggleMenu);
-    closeButton.addEventListener('click', toggleMenu);
+    burgerMenu.addEventListener("click", toggleMenu);
+    overlay.addEventListener("click", toggleMenu);
+    closeButton.addEventListener("click", toggleMenu);
 
     // Event listener untuk navlinks
     // Event listener for nav items
-    navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            const href = item.getAttribute('href');
+    navItems.forEach((item) => {
+        item.addEventListener("click", (e) => {
+            const href = item.getAttribute("href");
 
             // If the link is an external URL (contains .html or a full URL), let the browser handle it
-            if (href.includes('.html') || href.startsWith('http')) {
+            if (href.includes(".html") || href.startsWith("http")) {
                 return;
             }
 
             e.preventDefault(); // Prevent default behavior
 
             // Handle internal hash links
-            if (href.startsWith('#')) {
+            if (href.startsWith("#")) {
                 const targetSection = document.querySelector(href);
                 if (!targetSection) return; // If the target section doesn't exist, stop the function
 
-                const navHeight = document.querySelector('.navbar').offsetHeight;
+                const navHeight =
+                    document.querySelector(".navbar").offsetHeight;
                 let targetPosition = targetSection.offsetTop - navHeight;
 
                 window.scrollTo({
                     top: targetPosition,
-                    behavior: 'smooth'
+                    behavior: "smooth",
                 });
             }
         });
     });
-
 }
 
 // Fungsi untuk carousel (existing code)
 function initializeCarousel() {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.dot');
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
+    const slides = document.querySelectorAll(".carousel-slide");
+    const dots = document.querySelectorAll(".dot");
+    const prevButton = document.querySelector(".prev");
+    const nextButton = document.querySelector(".next");
     let currentSlide = 0;
+
+    // Cek apakah elemen carousel ada
+    if (slides.length === 0 || dots.length === 0) {
+        console.log(
+            "Carousel elements not found, skipping carousel initialization"
+        );
+        return;
+    }
 
     // Fungsi untuk menampilkan slide
     function showSlide(n) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
+        if (slides.length === 0 || dots.length === 0) return;
+
+        slides.forEach((slide) => {
+            if (slide && slide.classList) {
+                slide.classList.remove("active");
+            }
+        });
+        dots.forEach((dot) => {
+            if (dot && dot.classList) {
+                dot.classList.remove("active");
+            }
+        });
 
         let newSlide;
         if (n >= slides.length) {
@@ -158,25 +177,35 @@ function initializeCarousel() {
         }
         currentSlide = newSlide;
 
-        slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('active');
+        if (slides[currentSlide] && slides[currentSlide].classList) {
+            slides[currentSlide].classList.add("active");
+        }
+        if (dots[currentSlide] && dots[currentSlide].classList) {
+            dots[currentSlide].classList.add("active");
+        }
     }
 
     // Event listener untuk tombol prev
-    prevButton.addEventListener('click', () => {
-        showSlide(currentSlide - 1);
-    });
+    if (prevButton) {
+        prevButton.addEventListener("click", () => {
+            showSlide(currentSlide - 1);
+        });
+    }
 
     // Event listener untuk tombol next
-    nextButton.addEventListener('click', () => {
-        showSlide(currentSlide + 1);
-    });
+    if (nextButton) {
+        nextButton.addEventListener("click", () => {
+            showSlide(currentSlide + 1);
+        });
+    }
 
     // Event listener untuk dots
     dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            showSlide(index);
-        });
+        if (dot) {
+            dot.addEventListener("click", () => {
+                showSlide(index);
+            });
+        }
     });
 
     // Auto slide setiap 5 detik
@@ -188,16 +217,21 @@ function initializeCarousel() {
     showSlide(0);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
     // Initialize all functions
-    if (document.querySelector('.carousel')) {
+    if (document.querySelector(".carousel")) {
         initializeCarousel();
     }
     handleSmoothScroll();
     handleBurgerMenu();
     handleNavbarScroll();
 
-       //============================================== START JS ANJAY WOIIIIIIIIIII ini buat form data ya ganteng
+    // Ensure navbar scroll works on all pages
+    setTimeout(() => {
+        handleNavbarScroll();
+    }, 100);
+
+    //============================================== START JS ANJAY WOIIIIIIIIIII ini buat form data ya ganteng
     // Fitur: Tampilkan hari pada tanggal check-in
     //     const tanggalInput = document.getElementById('tanggalCheckin');
     //     if (tanggalInput) {
@@ -326,7 +360,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //============================================== END JS ANJAY WOIIIIIIIIIII
 
-
 //     return false;
 // }
 // // Tambahkan event listener untuk memastikan fungsi dipanggil
@@ -351,41 +384,47 @@ document.addEventListener('DOMContentLoaded', function () {
 // });
 
 // Fungsi untuk mendownload gambar promo
-document.addEventListener('DOMContentLoaded', function () {
-    const downloadButtons = document.querySelectorAll('.download-btn:not(.disabled)');
+document.addEventListener("DOMContentLoaded", function () {
+    const downloadButtons = document.querySelectorAll(
+        ".download-btn:not(.disabled)"
+    );
 
-    downloadButtons.forEach(button => {
-        button.addEventListener('click', function (e) {
+    downloadButtons.forEach((button) => {
+        button.addEventListener("click", function (e) {
             // Jika tombol disabled, jangan lakukan apa-apa
-            if (this.classList.contains('disabled')) {
+            if (this.classList.contains("disabled")) {
                 return;
             }
 
             // Dapatkan card parent
-            const card = this.closest('.card');
+            const card = this.closest(".card");
             // Dapatkan URL gambar dan title
-            const cardImage = card.querySelector('.card-image');
-            const cardTitle = card.querySelector('.card-title').textContent.trim();
+            const cardImage = card.querySelector(".card-image");
+            const cardTitle = card
+                .querySelector(".card-title")
+                .textContent.trim();
 
             if (cardImage) {
                 // Ambil URL gambar
-                const imageUrl = cardImage.getAttribute('src');
+                const imageUrl = cardImage.getAttribute("src");
 
                 // Format nama file: ubah spasi menjadi underscore dan tambahkan '_promo.jpg'
-                const fileName = cardTitle.toLowerCase()
-                    .replace(/\s+/g, '_') // Ubah spasi menjadi underscore
-                    .replace(/[^a-z0-9_]/g, '') // Hapus karakter special
-                    + '_promo.jpg';
+                const fileName =
+                    cardTitle
+                        .toLowerCase()
+                        .replace(/\s+/g, "_") // Ubah spasi menjadi underscore
+                        .replace(/[^a-z0-9_]/g, "") + // Hapus karakter special
+                    "_promo.jpg";
 
                 // Buat request untuk mengambil gambar
                 fetch(imageUrl)
-                    .then(response => response.blob())
-                    .then(blob => {
+                    .then((response) => response.blob())
+                    .then((blob) => {
                         // Buat object URL dari blob
                         const blobUrl = window.URL.createObjectURL(blob);
 
                         // Buat element anchor untuk download
-                        const link = document.createElement('a');
+                        const link = document.createElement("a");
                         link.href = blobUrl;
                         link.download = fileName;
 
@@ -397,9 +436,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         document.body.removeChild(link);
                         window.URL.revokeObjectURL(blobUrl);
                     })
-                    .catch(error => {
-                        console.error('Error downloading image:', error);
-                        alert('Gagal mendownload gambar. Silakan coba lagi.');
+                    .catch((error) => {
+                        console.error("Error downloading image:", error);
+                        alert("Gagal mendownload gambar. Silakan coba lagi.");
                     });
             }
         });

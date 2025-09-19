@@ -208,9 +208,9 @@
             </div>
         </div>
 
-        <!-- Booking Grand Pramuka City -->
+        <!-- Booking Green Pramuka City -->
         <div class="booking-section">
-            <h2>BOOKING GRAND PRAMUKA CITY</h2>
+            <h2>BOOKING GREEN PRAMUKA CITY</h2>
             <div class="booking-images">
                 <a href="https://wa.me/6281234567890" target="_blank" class="booking-image">
                     <div class="small-image">
@@ -221,7 +221,7 @@
                         <span class="booking-text">Book via WhatsApp</span>
                     </div>
                 </a>
-                <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-grand-pramuka-city" target="_blank" class="booking-image">
+                <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-green-pramuka-city" target="_blank" class="booking-image">
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
                     </div>
@@ -300,7 +300,7 @@
                 <li><a class="footer-section-available" href="{{ route('discoverPLU') }}">PATRAJAND URBANO</a></li>
                 <li><a class="footer-section-available" href="{{ route('discoverGWC') }}">GATEWAY CICADAS</a></li>
                 <li><a class="footer-section-available" href="{{ route('discoverPGV') }}">PODOMORO GOLF VIEW</a></li>
-                <li><a class="footer-section-available" href="{{ route('discoverGPC') }}">GRAND PRAMUKA CITY</a></li>
+                <li><a class="footer-section-available" href="{{ route('discoverGPC') }}">GREEN PRAMUKA CITY</a></li>
                 <li><a class="footer-section-available" href="{{ route('discoverBSC') }}">BASSURA CITY</a></li>
                 <div class="footer-logo">
                     <h2>NEOVALA</h2><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.png') }}" alt="">

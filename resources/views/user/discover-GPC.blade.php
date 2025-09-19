@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/footer-logo.png') }}">
-    <title>Discover Grand Pramuka City</title>
+    <title>Discover Green Pramuka City</title>
     <link rel="stylesheet" href="{{ asset('css/apartment.css') }}">
 </head>
 
@@ -71,7 +71,7 @@
         <div class="carousel">
             <!-- Tambahkan overlay text -->
             <div class="header-text-overlay-discover">
-                <p>GRAND PRAMUKA CITY</p>
+                <p>GREEN PRAMUKA CITY</p>
             </div>
 
             <button class="carousel-button prev">&#10094;</button>
@@ -158,7 +158,7 @@
         </section>
 
         <section class="room-section" id="room-section">
-            <h2 class="room-title">ROOM GRAND PRAMUKA CITY</h2>
+            <h2 class="room-title">ROOM GREEN PRAMUKA CITY</h2>
 
             <div class="room-slider-container">
                 @foreach ($roomsFormatted as $room)
@@ -166,7 +166,7 @@
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
                         <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
-                        <div class="right-text">GRAND <span class="room-type">PRAMUKA</span></div>
+                        <div class="right-text">GREEN <span class="room-type">PRAMUKA</span></div>
                     </div>
                     <div class="room-card-image">
                         <img src="{{ $room['main_photo'] }}" alt="Room {{ $room['room_name'] }}">
@@ -203,17 +203,14 @@
         </div>
         @endforeach
 
-        <x-form-checkin apartment="Grand Pramuka City by Neovala" />
+        <x-form-checkin apartment="Green Pramuka City by Neovala" />
 
         <section class="location-section" id="location-section">
             <h2 class="location-title">LOCATION</h2>
             <h3 class="location-subtitle">Segera kunjungi apartemen kami!</h3>
             <div class="location-container">
                 <div class="location-map">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1071980307784!2d107.01413557378052!3d-6.249603161189494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698e87c5daa71d%3A0x7805f4004246c80f!2sTranspark%20Juanda%20Bekasi!5e0!3m2!1sen!2sid!4v1745381905066!5m2!1sen!2sid"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5689295303537!2d106.87323350000001!3d-6.1883943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5be7d6eb1cf%3A0xe02105c172125ad4!2sGreen%20Pramuka%20City!5e0!3m2!1sid!2sid!4v1758249443633!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="location-info">
                     <div class="location-address">
@@ -227,7 +224,7 @@
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-shopping-cart"></i>
-                            <p>Dekat dengan Mall Kelapa Gading</p>
+                            <p>Dekat dengan Green Pramuka Square</p>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-hospital"></i>
@@ -239,7 +236,7 @@
                         </div>
                     </div>
                     <div class="direction-btn-wrapper">
-                        <a href="https://maps.app.goo.gl/bn4RbimBqMkCbQH99" target="_blank" class="direction-btn">
+                        <a href="https://maps.app.goo.gl/U64pHjM4XHioTwfw5" target="_blank" class="direction-btn">
                             <i class="fas fa-directions"></i> Petunjuk Arah
                         </a>
                     </div>
@@ -250,14 +247,14 @@
         <section class="booking-section booking-section-GPC" id="booking-section">
             <div class="booking-overlay"></div>
             <div class="booking-container">
-                <h2 class="booking-title">SEWA APARTEMEN<br>GRAND PRAMUKA CITY</h2>
+                <h2 class="booking-title">SEWA APARTEMEN<br>GREEN PRAMUKA CITY</h2>
                 <h3 class="booking-subtitle">DI NEOVALA ROOM</h3>
                 <div class="booking-buttons">
-                    <a href="https://wa.me/6281234567890" class="booking-btn whatsapp-btn">
+                    <a href="https://wa.me/6285719035729" class="booking-btn whatsapp-btn">
                         <i class="fab fa-whatsapp"></i>
                         <span class="whatsapp-text">WhatsApp</span>
                     </a>
-                    <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-grand-pramuka-city"
+                    <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-green-pramuka-city"
                         class="booking-btn tiket-btn">
                         <span class="tiket-text">tiket</span>
                         <div class="tiket-element"></div><span class="tiket-text">com</span>
@@ -363,7 +360,7 @@
 
             <div class="footer-booking-discover">
                 <h3>WhatsApp Booking</h3>
-                <p>0878-1234-5678</p>
+                <p>0857-1903-5729</p>
                 <h3>Tiket.com Booking</h3>
                 <p>Tiket.com</p>
             </div>
@@ -371,20 +368,20 @@
             <div class="footer-social-discover">
                 <h3>Social Media GPC Neovala</h3>
                 <div class="social-icons-discover">
-                    <a href="https://www.instagram.com/neovala.grandpramukacity/" target="_blank">
+                    <a href="https://www.instagram.com/neovala.greenpramukacity/" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://www.facebook.com/people/Penyewaan-Harian-Grand-Pramuka-City/61567154060930/#"
+                    <a href="https://www.facebook.com/people/Penyewaan-Harian-Green-Pramuka-City/61567154060930/#"
                         target="_blank">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://www.tiktok.com/@neovala.grandpramukacity" target="_blank">
+                    <a href="https://www.tiktok.com/@neovala.greenpramukacity" target="_blank">
                         <i class="fab fa-tiktok"></i>
                     </a>
-                    <a href="https://x.com/neovala_gpc" target="_blank">
+                    <a href="https://x.com/neovala_gps" target="_blank">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://www.youtube.com/@neovalagrandpramukacity" target="_blank">
+                    <a href="https://www.youtube.com/@NeovalaGreenPramukaCity" target="_blank">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
@@ -492,27 +489,35 @@
         function updateButtonVisibility() {
             const isMobile = window.innerWidth <= 768;
 
-            if (!isMobile) {
+            if (!isMobile && cards.length > 0 && cards[0] && cards[0].offsetWidth) {
                 const cardWidth = cards[0].offsetWidth + 30; // Including gap
 
                 // Sembunyikan tombol prev jika scroll berada di awal
                 if (slider.scrollLeft <= 0) {
-                    prevBtn.style.opacity = '0';
-                    prevBtn.style.pointerEvents = 'none';
+                    if (prevBtn) {
+                        prevBtn.style.opacity = '0';
+                        prevBtn.style.pointerEvents = 'none';
+                    }
                 } else {
-                    prevBtn.style.opacity = '1';
-                    prevBtn.style.pointerEvents = 'auto';
+                    if (prevBtn) {
+                        prevBtn.style.opacity = '1';
+                        prevBtn.style.pointerEvents = 'auto';
+                    }
                 }
 
                 // Sembunyikan tombol next jika scroll berada di akhir
                 const remainingCards = Math.floor((slider.scrollWidth - slider.scrollLeft - slider
                     .clientWidth) / cardWidth);
                 if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth || remainingCards <= 0) {
-                    nextBtn.style.opacity = '0';
-                    nextBtn.style.pointerEvents = 'none';
+                    if (nextBtn) {
+                        nextBtn.style.opacity = '0';
+                        nextBtn.style.pointerEvents = 'none';
+                    }
                 } else {
-                    nextBtn.style.opacity = '1';
-                    nextBtn.style.pointerEvents = 'auto';
+                    if (nextBtn) {
+                        nextBtn.style.opacity = '1';
+                        nextBtn.style.pointerEvents = 'auto';
+                    }
                 }
             }
         }

@@ -227,7 +227,7 @@
                 <div class="apartment-image">
                     <img src="{{ asset('images/placeholder-gpc.jpg') }}" alt="Apartment 7">
                     <div class="apartment-content">
-                        <h3 class="apartment-name">GRAND PRAMUKA CITY</h3>
+                        <h3 class="apartment-name">GREEN PRAMUKA CITY</h3>
                         <a href="{{ route('discoverGPC') }}" class="view-details-btn">DISCOVER</a>
                     </div>
                 </div>
@@ -490,7 +490,7 @@
                     <li><a class="footer-section-available" href="{{ route('discoverGWC') }}">GATEWAY CICADAS</a></li>
                     <li><a class="footer-section-available" href="{{ route('discoverPGV') }}">PODOMORO GOLF VIEW</a>
                     </li>
-                    <li><a class="footer-section-available" href="{{ route('discoverGPC') }}">GRAND PRAMUKA CITY</a>
+                    <li><a class="footer-section-available" href="{{ route('discoverGPC') }}">GREEN PRAMUKA CITY</a>
                     </li>
                     <li><a class="footer-section-available" href="{{ route('discoverBSC') }}">BASSURA CITY</a>
                     </li>

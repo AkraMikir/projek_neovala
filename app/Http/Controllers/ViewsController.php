@@ -42,7 +42,9 @@ class ViewsController extends Controller
             'room_grand_kamala_lagoon',
             'room_patraland_urbano',
             'room_gateway_cicadas',
-            'room_podomoro_golf_view'
+            'room_podomoro_golf_view',
+            'room_green_pramuka_city',
+            'room_bassura_city'
         ];
 
         $roomsBySection = [];
@@ -79,6 +81,8 @@ class ViewsController extends Controller
     'Patraland Urbano by Neovala',
     'Grand Kamala Lagoon by Neovala',
     'Gateway Cicadas by Neovala',
+    'Green Pramuka City by Neovala',
+    'Bassura City by Neovala',
 ];
 
 $apartmentForms = [];

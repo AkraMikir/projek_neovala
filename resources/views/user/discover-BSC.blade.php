@@ -210,10 +210,7 @@
             <h3 class="location-subtitle">Segera kunjungi apartemen kami!</h3>
             <div class="location-container">
                 <div class="location-map">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1071980307784!2d107.01413557378052!3d-6.249603161189494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698e87c5daa71d%3A0x7805f4004246c80f!2sTranspark%20Juanda%20Bekasi!5e0!3m2!1sen!2sid!4v1745381905066!5m2!1sen!2sid"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3102009743498!2d106.8804363!3d-6.2227662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f365eb00a437%3A0xcdd434cd1cb2a1f4!2sJual%20Sewa%20Apartemen%20Bassura%20City%20-%20ICAL!5e0!3m2!1sid!2sid!4v1758249725663!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="location-info">
                     <div class="location-address">
@@ -227,7 +224,7 @@
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-shopping-cart"></i>
-                            <p>Dekat dengan Mall Kelapa Gading</p>
+                            <p>Dekat dengan Mall@Bassura</p>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-hospital"></i>
@@ -239,7 +236,7 @@
                         </div>
                     </div>
                     <div class="direction-btn-wrapper">
-                        <a href="https://maps.app.goo.gl/bn4RbimBqMkCbQH99" target="_blank" class="direction-btn">
+                        <a href="https://maps.app.goo.gl/5mYMjDYkDqALn8vr7" target="_blank" class="direction-btn">
                             <i class="fas fa-directions"></i> Petunjuk Arah
                         </a>
                     </div>
@@ -253,7 +250,7 @@
                 <h2 class="booking-title">SEWA APARTEMEN<br>BASSURA CITY</h2>
                 <h3 class="booking-subtitle">DI NEOVALA ROOM</h3>
                 <div class="booking-buttons">
-                    <a href="https://wa.me/6281234567891" class="booking-btn whatsapp-btn">
+                    <a href="https://wa.me/6287852624656" class="booking-btn whatsapp-btn">
                         <i class="fab fa-whatsapp"></i>
                         <span class="whatsapp-text">WhatsApp</span>
                     </a>
@@ -363,7 +360,7 @@
 
             <div class="footer-booking-discover">
                 <h3>WhatsApp Booking</h3>
-                <p>0878-1234-5679</p>
+                <p>0878-5262-4656</p>
                 <h3>Tiket.com Booking</h3>
                 <p>Tiket.com</p>
             </div>
@@ -384,7 +381,7 @@
                     <a href="https://x.com/neovala_bsc" target="_blank">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://www.youtube.com/@neovalabassuracity" target="_blank">
+                    <a href="https://www.youtube.com/@NeovalaBassuraCity" target="_blank">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
@@ -492,27 +489,35 @@
         function updateButtonVisibility() {
             const isMobile = window.innerWidth <= 768;
 
-            if (!isMobile) {
+            if (!isMobile && cards.length > 0 && cards[0] && cards[0].offsetWidth) {
                 const cardWidth = cards[0].offsetWidth + 30; // Including gap
 
                 // Sembunyikan tombol prev jika scroll berada di awal
                 if (slider.scrollLeft <= 0) {
-                    prevBtn.style.opacity = '0';
-                    prevBtn.style.pointerEvents = 'none';
+                    if (prevBtn) {
+                        prevBtn.style.opacity = '0';
+                        prevBtn.style.pointerEvents = 'none';
+                    }
                 } else {
-                    prevBtn.style.opacity = '1';
-                    prevBtn.style.pointerEvents = 'auto';
+                    if (prevBtn) {
+                        prevBtn.style.opacity = '1';
+                        prevBtn.style.pointerEvents = 'auto';
+                    }
                 }
 
                 // Sembunyikan tombol next jika scroll berada di akhir
                 const remainingCards = Math.floor((slider.scrollWidth - slider.scrollLeft - slider
                     .clientWidth) / cardWidth);
                 if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth || remainingCards <= 0) {
-                    nextBtn.style.opacity = '0';
-                    nextBtn.style.pointerEvents = 'none';
+                    if (nextBtn) {
+                        nextBtn.style.opacity = '0';
+                        nextBtn.style.pointerEvents = 'none';
+                    }
                 } else {
-                    nextBtn.style.opacity = '1';
-                    nextBtn.style.pointerEvents = 'auto';
+                    if (nextBtn) {
+                        nextBtn.style.opacity = '1';
+                        nextBtn.style.pointerEvents = 'auto';
+                    }
                 }
             }
         }

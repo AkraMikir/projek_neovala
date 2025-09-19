@@ -294,7 +294,7 @@ class TampilanApartmentController extends Controller
         ];
 
         // Ambil data Room berdasarkan section
-        $rooms = Room::where('section', 'room_grand_pramuka_city')->get();
+        $rooms = Room::where('section', 'room_green_pramuka_city')->get();
 
         // Format data rooms
         $roomsFormatted = $rooms->map(function ($room) {
