@@ -80,6 +80,7 @@
                         <li><a href="#" class="plu-link">URBANO</a></li>
                         <li><a href="#" class="gtw-link">CICADAS</a></li>
                         <li><a href="#" class="pgv-link">PODOMORO</a></li>
+                        <li><a href="#" class="bsc-link">BASSURA CITY</a></li>
                         <form method="POST" action="{{ route('admin.logout') }}">
                             @csrf
                             <button type="submit" class="btn-logout">Logout</button>
@@ -152,6 +153,12 @@
                     <div class="card-content">
                         <h2>PODOMORO ROOM ADMIN PANEL</h2>
                         <button class="pgv-link">Click here to go to Admin Panel</button>
+                    </div>
+                </div>
+                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/bsc-bg.jpg');">
+                    <div class="card-content">
+                        <h2>BASSURA CITY ADMIN PANEL</h2>
+                        <button class="bsc-link">Click here to go to Admin Panel</button>
                     </div>
                 </div>
             </div>
@@ -3301,6 +3308,225 @@
     </div>
     <!--PODOMORO End-->
 
+    <!-- ========================================== -->
+    <!-- BASSURA CITY (BSC) SECTION -->
+    <!-- ========================================== -->
+    <div class="admin-section" id="bsc-section" style="display: none;">
+        <!-- BSC Current Slide Show -->
+        <div class="slide-section">
+            <div class="section-header">
+                <h2>Current Slide Show - Bassura City</h2>
+                <button class="bsc-change-btn">Change Now</button>
+            </div>
+            <div class="current-slide">
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <img src="{{ asset('images/carousel/bsc/bsc1.jpg') }}" alt="BSC Slide 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="{{ asset('images/carousel/bsc/bsc2.jpg') }}" alt="BSC Slide 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="{{ asset('images/carousel/bsc/bsc3.jpg') }}" alt="BSC Slide 3">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="{{ asset('images/carousel/bsc/bsc4.jpg') }}" alt="BSC Slide 4">
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-button prev" onclick="bscPrevSlide()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-button next" onclick="bscNextSlide()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="carousel-dots">
+                        <span class="carousel-dot active" onclick="bscCurrentSlide(1)"></span>
+                        <span class="carousel-dot" onclick="bscCurrentSlide(2)"></span>
+                        <span class="carousel-dot" onclick="bscCurrentSlide(3)"></span>
+                        <span class="carousel-dot" onclick="bscCurrentSlide(4)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BSC Change Slide -->
+        <div class="change-slide-section" id="bsc-change-slide" style="display: none;">
+            <div class="section-header">
+                <h2>Change Slide - Bassura City</h2>
+                <button class="bsc-back-btn">Back</button>
+            </div>
+            <div class="slide-grid">
+                <div class="slide-item">
+                    <div class="slide-image">
+                        <img src="{{ asset('images/carousel/bsc/bsc1.jpg') }}" alt="BSC Current 1">
+                        <div class="slide-overlay">
+                            <button class="select-btn" onclick="bscSelectSlide(1)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-item">
+                    <div class="slide-image">
+                        <img src="{{ asset('images/carousel/bsc/bsc2.jpg') }}" alt="BSC Current 2">
+                        <div class="slide-overlay">
+                            <button class="select-btn" onclick="bscSelectSlide(2)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-item">
+                    <div class="slide-image">
+                        <img src="{{ asset('images/carousel/bsc/bsc3.jpg') }}" alt="BSC Current 3">
+                        <div class="slide-overlay">
+                            <button class="select-btn" onclick="bscSelectSlide(3)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-item">
+                    <div class="slide-image">
+                        <img src="{{ asset('images/carousel/bsc/bsc4.jpg') }}" alt="BSC Current 4">
+                        <div class="slide-overlay">
+                            <button class="select-btn" onclick="bscSelectSlide(4)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BSC Showing Apartment Room -->
+        <div class="room-section" id="bsc-room-section" style="display: none;">
+            <div class="section-header">
+                <h2>Showing Apartment Room - Bassura City</h2>
+                <button class="bsc-add-room-btn">Tambah Room</button>
+            </div>
+            <div class="room-cards" id="bsc-room-cards">
+                <!-- Room cards will be loaded here -->
+            </div>
+        </div>
+
+        <!-- BSC Create Room -->
+        <div class="create-room-section" id="bsc-create-room" style="display: none;">
+            <div class="section-header">
+                <h2>Buat Room - Bassura City</h2>
+                <button class="bsc-back-btn">Back</button>
+            </div>
+            <div class="room-form-container">
+                <div class="room-main-image">
+                    <div class="image-upload-large" onclick="document.getElementById('bsc-main-image').click()">
+                        <i class="fas fa-camera"></i>
+                        <p>Upload Main Image</p>
+                        <input type="file" id="bsc-main-image" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+                <div class="room-additional-images">
+                    <div class="image-upload-small" onclick="document.getElementById('bsc-room-image-1').click()">
+                        <i class="fas fa-plus"></i>
+                        <p>Room 1</p>
+                        <input type="file" id="bsc-room-image-1" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="image-upload-small" onclick="document.getElementById('bsc-room-image-2').click()">
+                        <i class="fas fa-plus"></i>
+                        <p>Room 2</p>
+                        <input type="file" id="bsc-room-image-2" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="image-upload-small" onclick="document.getElementById('bsc-room-image-3').click()">
+                        <i class="fas fa-plus"></i>
+                        <p>Room 3</p>
+                        <input type="file" id="bsc-room-image-3" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="image-upload-small" onclick="document.getElementById('bsc-room-image-4').click()">
+                        <i class="fas fa-plus"></i>
+                        <p>Room 4</p>
+                        <input type="file" id="bsc-room-image-4" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+                <div class="back-button-container">
+                    <button class="bsc-create-back-btn">Back</button>
+                    <button class="create-save-btn" onclick="bscCreateRoom()">Buat Room</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BSC Edit Room -->
+        <div class="edit-room-section" id="bsc-edit-room" style="display: none;">
+            <div class="section-header">
+                <h2>Edit Room - Bassura City</h2>
+                <button class="bsc-back-btn">Back</button>
+            </div>
+            <div class="room-form-container">
+                <div class="room-main-image">
+                    <div class="image-upload-large" onclick="document.getElementById('bsc-edit-main-image').click()">
+                        <i class="fas fa-camera"></i>
+                        <p>Upload Main Image</p>
+                        <input type="file" id="bsc-edit-main-image" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+                <div class="room-additional-images">
+                    <div class="image-upload-small" onclick="document.getElementById('bsc-edit-room-image-1').click()">
+                        <i class="fas fa-plus"></i>
+                        <p>Room 1</p>
+                        <input type="file" id="bsc-edit-room-image-1" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="image-upload-small" onclick="document.getElementById('bsc-edit-room-image-2').click()">
+                        <i class="fas fa-plus"></i>
+                        <p>Room 2</p>
+                        <input type="file" id="bsc-edit-room-image-2" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="image-upload-small" onclick="document.getElementById('bsc-edit-room-image-3').click()">
+                        <i class="fas fa-plus"></i>
+                        <p>Room 3</p>
+                        <input type="file" id="bsc-edit-room-image-3" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="image-upload-small" onclick="document.getElementById('bsc-edit-room-image-4').click()">
+                        <i class="fas fa-plus"></i>
+                        <p>Room 4</p>
+                        <input type="file" id="bsc-edit-room-image-4" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+                <div class="back-button-container">
+                    <button class="bsc-edit-back-btn">Back</button>
+                    <button class="create-save-btn" onclick="bscUpdateRoom()">Update Room</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BSC All Comments -->
+        <div class="comment-section" id="bsc-comment-section" style="display: none;">
+            <div class="section-header">
+                <h2>All Bassura City Comments</h2>
+            </div>
+            <div class="comment-cards" id="bsc-comment-cards">
+                <!-- Comments will be loaded here -->
+            </div>
+        </div>
+
+        <!-- BSC Form Data -->
+        <div class="form-data-section" id="bsc-form-data-section" style="display: none;">
+            <div class="section-header">
+                <h2>Form Data - Bassura City</h2>
+            </div>
+            <div class="form-data-container">
+                <div class="form-data-header">
+                    <div class="header-cell">Nama</div>
+                    <div class="header-cell">No Hp</div>
+                    <div class="header-cell">Lama Sewa</div>
+                    <div class="header-cell">Ukuran Kamar</div>
+                    <div class="header-cell">Actions</div>
+                </div>
+                <div class="form-data-body" id="bsc-form-data-body">
+                    <!-- Form data will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Delete Confirmation Popup -->
     <div class="delete-popup">
         <div class="popup-content delete-content">
@@ -3327,6 +3553,7 @@
 
     </div>
     <script src="{{ asset('js/admin.js') }}"></script>
+    <script src="{{ asset('js/bsc-admin.js') }}"></script>
     <script>
     let logoutTimer;
     let hasLogged = false; // Flag to ensure only one log

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Komentar;
+use App\Models\KomentarBsc;
 use App\Models\Promo;
 use App\Models\Carousel;
 use Illuminate\Support\Facades\Storage;
@@ -103,5 +104,24 @@ foreach ($apartmentSections as $apartment) {
     'apartmentSections'
 ));
 
+    }
+
+    // BSC Admin Functions
+    public function bscRooms()
+    {
+        $rooms = Room::where('apartment_type', 'bsc')->get();
+        return response()->json(['rooms' => $rooms]);
+    }
+
+    public function bscComments()
+    {
+        $comments = KomentarBsc::all();
+        return response()->json(['comments' => $comments]);
+    }
+
+    public function roomDetails($id)
+    {
+        $room = Room::find($id);
+        return response()->json($room);
     }
 }

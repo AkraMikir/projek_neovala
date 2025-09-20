@@ -199,3 +199,13 @@ Route::post('/save-form-data', [FormDataController::class, 'store']);
 Route::get('/get-form-data/{apartment_type}', [FormDataController::class, 'getDataByApartment']);
 Route::get('/form-data/{id}', [FormDataController::class, 'show']);
 Route::delete('/admin/delete-form/{id}', [FormDataController::class, 'destroy']);
+
+// ==============================
+// ROUTE BSC ADMIN
+// ==============================
+Route::get('/admin/rooms/bsc', [ViewsController::class, 'bscRooms'])->middleware('auth:admin');
+Route::get('/admin/comments/bsc', [ViewsController::class, 'bscComments'])->middleware('auth:admin');
+Route::post('/admin/room/create', [StoreController::class, 'createRoom'])->middleware('auth:admin');
+Route::post('/admin/room/update/{id}', [EditController::class, 'updateRoom'])->middleware('auth:admin');
+Route::delete('/admin/room/delete/{id}', [DeleteController::class, 'deleteRoom'])->middleware('auth:admin');
+Route::get('/admin/room/details/{id}', [ViewsController::class, 'roomDetails'])->middleware('auth:admin');

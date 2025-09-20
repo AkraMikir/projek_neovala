@@ -73,4 +73,39 @@ class DeleteController extends Controller
         return response()->json(['error' => 'Tipe data tidak dikenali.'], 400);
     }
 
+    // BSC Room Management
+    public function deleteRoom($id)
+    {
+        try {
+            $room = Room::findOrFail($id);
+            
+            // Delete images from storage
+            $images = [
+                $room->main_image,
+                $room->room_image_1,
+                $room->room_image_2,
+                $room->room_image_3,
+                $room->room_image_4
+            ];
+            
+            foreach ($images as $image) {
+                if ($image) {
+                    Storage::disk('public')->delete($image);
+                }
+            }
+            
+            $room->delete();
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'Room deleted successfully'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error deleting room: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
 }

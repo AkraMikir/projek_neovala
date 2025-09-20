@@ -3,12 +3,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
 }
 
 :root {
-    --primary-color: #8B4513;
-    --secondary-color: #D2691E;
+    --primary-color: #8b4513;
+    --secondary-color: #d2691e;
     --background-color: #f5f5f5;
     --text-color: #333;
     --sidebar-width: 250px;
@@ -38,7 +38,7 @@ body {
     top: 20px;
     left: 20px;
     z-index: 1001;
-    background: #674C1D;
+    background: #674c1d;
     border: none;
     color: white;
     width: 40px;
@@ -50,7 +50,6 @@ body {
     justify-content: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 
 .logo {
     display: flex;
@@ -106,7 +105,7 @@ nav ul {
     background-color: rgba(139, 69, 19, 0.1);
 }
 
-.btn-logout{
+.btn-logout {
     margin-top: 10px;
     border: solid 2px black;
     background-color: #fff8eb;
@@ -201,7 +200,7 @@ header h1 {
 }
 
 .admin-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -388,38 +387,36 @@ header h1 {
 
 /* Add background images to cards */
 .admin-card:nth-child(1) {
-    background-image: url('../assets/testimoni-bg.jpg');
+    background-image: url("../assets/testimoni-bg.jpg");
 }
 
 .admin-card:nth-child(2) {
-    background-image: url('../assets/promo-bg.jpg');
+    background-image: url("../assets/promo-bg.jpg");
 }
 
 .admin-card:nth-child(3) {
-    background-image: url('../assets/juanda-bg.jpg');
+    background-image: url("../assets/juanda-bg.jpg");
 }
 
 .admin-card:nth-child(4) {
-    background-image: url('../assets/cibubur-bg.jpg');
+    background-image: url("../assets/cibubur-bg.jpg");
 }
 
 .admin-card:nth-child(5) {
-    background-image: url('../assets/lagoon-bg.jpg');
+    background-image: url("../assets/lagoon-bg.jpg");
 }
 
 .admin-card:nth-child(6) {
-    background-image: url('../assets/urbano-bg.jpg');
+    background-image: url("../assets/urbano-bg.jpg");
 }
 
 .admin-card:nth-child(7) {
-    background-image: url('../assets/cicadas-bg.jpg');
+    background-image: url("../assets/cicadas-bg.jpg");
 }
 
 .admin-card:nth-child(8) {
-    background-image: url('../assets/podomoro-bg.jpg');
+    background-image: url("../assets/podomoro-bg.jpg");
 }
-
-
 
 .sidebar-toggle i {
     font-size: 1.2rem;
@@ -427,7 +424,7 @@ header h1 {
 }
 
 .sidebar-toggle:hover {
-    background: #8B4513;
+    background: #8b4513;
     transform: scale(1.05);
 }
 
@@ -455,7 +452,7 @@ header h1 {
     .sidebar-toggle.active {
         left: 260px;
         background: white;
-        color: #674C1D;
+        color: #674c1d;
     }
 
     .main-content {
@@ -986,8 +983,6 @@ header h1 {
     font-family: inherit;
 }
 
-
-
 .komentar-card {
     background: white;
     border-radius: 15px;
@@ -1049,11 +1044,9 @@ header h1 {
     position: static;
 }
 
-
 .edit-btn:hover {
     background: rgba(139, 69, 19, 0.1);
 }
-
 
 .komentar-content {
     color: var(--text-color);
@@ -1628,25 +1621,25 @@ header h1 {
     }
 
     .form-data-row .data-cell:not(.actions)::before {
-        content: '';
+        content: "";
         font-weight: 500;
-        color: #674C1D;
+        color: #674c1d;
     }
 
     .form-data-row .data-cell:nth-child(1)::before {
-        content: 'Nama :';
+        content: "Nama :";
     }
 
     .form-data-row .data-cell:nth-child(2)::before {
-        content: 'No Hp :';
+        content: "No Hp :";
     }
 
     .form-data-row .data-cell:nth-child(3)::before {
-        content: 'Lama Sewa :';
+        content: "Lama Sewa :";
     }
 
     .form-data-row .data-cell:nth-child(4)::before {
-        content: 'Ukuran Kamar :';
+        content: "Ukuran Kamar :";
     }
 
     .form-data-row .data-cell.actions {
@@ -1676,8 +1669,8 @@ header h1 {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #FFEBEB;
-        color: #E53935;
+        background: #ffebeb;
+        color: #e53935;
         border: none;
         border-radius: 8px;
         width: 42px;
@@ -1688,7 +1681,7 @@ header h1 {
     }
 
     .form-data-row .delete-btn-data:hover {
-        background: #E53935;
+        background: #e53935;
         color: white;
     }
 
@@ -1988,25 +1981,25 @@ header h1 {
     }
 
     .form-data-row .data-cell:not(.actions)::before {
-        content: '';
+        content: "";
         font-weight: 500;
-        color: #674C1D;
+        color: #674c1d;
     }
 
     .form-data-row .data-cell:nth-child(1)::before {
-        content: 'Nama :';
+        content: "Nama :";
     }
 
     .form-data-row .data-cell:nth-child(2)::before {
-        content: 'No Hp :';
+        content: "No Hp :";
     }
 
     .form-data-row .data-cell:nth-child(3)::before {
-        content: 'Lama Sewa :';
+        content: "Lama Sewa :";
     }
 
     .form-data-row .data-cell:nth-child(4)::before {
-        content: 'Ukuran Kamar :';
+        content: "Ukuran Kamar :";
     }
 
     .form-data-row .data-cell.actions {
@@ -2036,8 +2029,8 @@ header h1 {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #FFEBEB;
-        color: #E53935;
+        background: #ffebeb;
+        color: #e53935;
         border: none;
         border-radius: 8px;
         width: 42px;
@@ -2048,7 +2041,7 @@ header h1 {
     }
 
     .form-data-row .delete-btn-data:hover {
-        background: #E53935;
+        background: #e53935;
         color: white;
     }
 
@@ -2334,7 +2327,7 @@ header h1 {
     max-height: fit-content;
     width: 100%;
     min-width: 0;
-    background: #FFF8EBFF;
+    background: #fff8ebff;
     border-radius: 5px;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(103, 76, 29, 0.2);
@@ -2377,7 +2370,7 @@ header h1 {
 .right-text {
     font-family: "poppins", sans-serif;
     line-height: 1.2;
-    color: #674C1D;
+    color: #674c1d;
     font-size: 0.9rem;
     font-weight: bolder;
     flex: 1;
@@ -2389,12 +2382,11 @@ header h1 {
 .right-text {
     text-align: right;
     align-items: flex-end;
-
 }
 
 .room-type {
-    -webkit-text-stroke: 0.5px #674C1D;
-    -webkit-text-fill-color: #FFF8EB;
+    -webkit-text-stroke: 0.5px #674c1d;
+    -webkit-text-fill-color: #fff8eb;
     display: block;
     white-space: nowrap;
     overflow: hidden;
@@ -2475,7 +2467,7 @@ header h1 {
 .pgv-more-btn {
     width: 120px;
     height: 40px;
-    background-color: #674C1D;
+    background-color: #674c1d;
     color: white;
     border: none;
     border-radius: 20px;
@@ -2490,8 +2482,8 @@ header h1 {
 .plu-more-btn:hover,
 .gtw-more-btn:hover,
 .pgv-more-btn:hover {
-    background-color: #FFF8EB;
-    color: #674C1D;
+    background-color: #fff8eb;
+    color: #674c1d;
     box-shadow: 0 4px 8px rgba(103, 76, 29, 0.2);
 }
 
@@ -3270,7 +3262,7 @@ header h1 {
 .delete-data-content p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-    color: #674C1D;
+    color: #674c1d;
     font-family: "Poppins", sans-serif;
 }
 
@@ -3297,7 +3289,7 @@ header h1 {
 .popup-cancel-data,
 .popup-cancel-delete-data {
     color: #333;
-    border: 1px solid #674C1D;
+    border: 1px solid #674c1d;
     background-color: white;
 }
 
@@ -3306,13 +3298,13 @@ header h1 {
 .popup-cancel-delete-comment:hover,
 .popup-cancel-data:hover,
 .popup-cancel-delete-data:hover {
-    background-color: #D0D0D0;
+    background-color: #d0d0d0;
 }
 
 .popup-delete,
 .popup-delete-comment,
 .popup-delete-data {
-    background-color: #674C1D;
+    background-color: #674c1d;
     color: white;
 }
 
@@ -3328,9 +3320,8 @@ header h1 {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-
 .popup-apply-comment {
-    background-color: #674C1D;
+    background-color: #674c1d;
     color: white;
 }
 
@@ -3373,7 +3364,7 @@ header h1 {
 }
 
 .tpj-comment-user {
-    color: #674C1D;
+    color: #674c1d;
     font-size: 0.9rem;
     font-weight: bold;
     font-family: "Poppins", sans-serif;
@@ -3384,7 +3375,7 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 2px;
-    color: #674C1D;
+    color: #674c1d;
 }
 
 .tpj-star-rating i,
@@ -3395,7 +3386,7 @@ header h1 {
 .tpj-quote-icon,
 .tpc-quote-icon {
     font-size: 3rem;
-    color: #674C1D;
+    color: #674c1d;
     line-height: 1;
     font-family: "42dot Sans", sans-serif;
     font-weight: bold;
@@ -3506,7 +3497,7 @@ header h1 {
 .tpj-comment-text,
 .tpc-comment-text {
     font-size: 0.8rem;
-    color: #674C1D;
+    color: #674c1d;
     line-height: 1.4;
     margin: 12px 0;
     font-family: "Montserrat", sans-serif;
@@ -3529,7 +3520,6 @@ header h1 {
     .comment-cards {
         grid-template-columns: repeat(2, 1fr);
     }
-
 
     .tpj-comment-user {
         font-size: 0.85rem;
@@ -3555,7 +3545,6 @@ header h1 {
         grid-template-columns: 1fr;
         height: 85%;
     }
-
 
     .tpj-comment-user {
         font-size: 0.8rem;
@@ -3585,8 +3574,6 @@ header h1 {
 /* Responsive untuk layar sangat kecil */
 /* Start of Selection */
 @media screen and (max-width: 480px) {
-
-
     .comment-cards {
         height: 45vh;
         grid-template-columns: 1fr;
@@ -3636,9 +3623,6 @@ header h1 {
 }
 
 /* End of Selection */
-
-
-
 
 /* Form Data Section Styling */
 .form-data-section {
@@ -3716,7 +3700,7 @@ header h1 {
 .plu-detail-btn:hover,
 .gtw-detail-btn:hover,
 .pgv-detail-btn:hover {
-    background-color: #674C1D;
+    background-color: #674c1d;
 }
 
 .form-data-row .delete-btn,
@@ -3835,14 +3819,13 @@ header h1 {
     margin-bottom: 20px;
 }
 
-
 .detail-container .back-btn:hover,
 .tpc-detail-container .tpc-back-btn:hover,
 .gkl-detail-container:hover .gkl-back-btn:hover,
 .plu-detail-container .plu-back-btn:hover,
 .gtw-detail-container .gtw-back-btn:hover,
 .pgv-detail-container:hover .pgv-back-btn:hover {
-    background: #D2691E;
+    background: #d2691e;
 }
 
 /* Responsive Design untuk Form Data */
@@ -3871,7 +3854,6 @@ header h1 {
         background-color: white;
         box-shadow: 0 4px 12px rgba(103, 76, 29, 0.08);
         border: none;
-
     }
 
     .form-data-row:last-child {
@@ -3901,28 +3883,27 @@ header h1 {
 
     .form-data-row .data-cell:not(.actions)::before {
         font-family: "Poppins", sans-serif;
-        color: #674C1D;
+        color: #674c1d;
         width: 110px;
         flex-shrink: 0;
         font-weight: 500;
     }
 
     .form-data-row .data-cell:nth-child(1)::before {
-        content: 'Nama';
+        content: "Nama";
     }
 
     .form-data-row .data-cell:nth-child(2)::before {
-        content: 'No Hp';
+        content: "No Hp";
     }
 
     .form-data-row .data-cell:nth-child(3)::before {
-        content: 'Lama Sewa';
+        content: "Lama Sewa";
     }
 
     .form-data-row .data-cell:nth-child(4)::before {
-        content: 'Ukuran Kamar';
+        content: "Ukuran Kamar";
     }
-
 
     .data-cell.actions {
         display: block;
@@ -3942,14 +3923,12 @@ header h1 {
         border-radius: 8px;
     }
 
-
-
     .form-data-row .delete-btn-data {
         position: absolute;
         top: 15px;
         right: 15px;
-        background: #FFEBEB;
-        color: #E53935;
+        background: #ffebeb;
+        color: #e53935;
         width: 35px;
         height: 35px;
         padding: 0;
@@ -3961,15 +3940,15 @@ header h1 {
     }
 
     .form-data-row .delete-btn-data:hover {
-        background: #E53935;
+        background: #e53935;
         color: white;
     }
 
-    .form-data-row> :nth-child(n) {
+    .form-data-row > :nth-child(n) {
         display: flex !important;
     }
 
-    .form-data-row>.actions {
+    .form-data-row > .actions {
         display: block !important;
     }
 }
@@ -3985,7 +3964,6 @@ header h1 {
 }
 
 @media screen and (max-width: 992px) {
-
     .form-data-header,
     .form-data-row {
         font-size: 0.95rem;
@@ -3998,7 +3976,6 @@ header h1 {
 }
 
 @media screen and (max-width: 768px) {
-
     .form-data-header,
     .form-data-row {
         font-size: 0.9rem;
@@ -4024,7 +4001,6 @@ header h1 {
 }
 
 @media screen and (max-width: 576px) {
-
     .form-data-header,
     .form-data-row {
         grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -4033,8 +4009,8 @@ header h1 {
     }
 
     /* Menyembunyikan kolom Ukuran Kamar */
-    .form-data-header> :nth-child(4),
-    .form-data-row> :nth-child(4) {
+    .form-data-header > :nth-child(4),
+    .form-data-row > :nth-child(4) {
         display: none;
     }
 
@@ -4057,7 +4033,6 @@ header h1 {
 }
 
 @media screen and (max-width: 480px) {
-
     .form-data-header,
     .form-data-row {
         grid-template-columns: 2fr 1fr 1fr;
@@ -4066,8 +4041,8 @@ header h1 {
     }
 
     /* Menyembunyikan kolom Lama Sewa */
-    .form-data-header> :nth-child(3),
-    .form-data-row> :nth-child(3) {
+    .form-data-header > :nth-child(3),
+    .form-data-row > :nth-child(3) {
         display: none;
     }
 
@@ -4083,7 +4058,6 @@ header h1 {
 }
 
 @media screen and (max-width: 426px) {
-
     .detail-btn,
     .tpc-detail-btn,
     .gkl-detail-btn,
@@ -4093,12 +4067,9 @@ header h1 {
         font-size: 0.6rem;
         padding: 2px 4px;
     }
-
-
 }
 
 @media screen and (max-width: 400px) {
-
     .form-data-header,
     .form-data-row {
         grid-template-columns: 2fr 1fr;
@@ -4107,8 +4078,8 @@ header h1 {
     }
 
     /* Menyembunyikan kolom No HP */
-    .form-data-header> :nth-child(2),
-    .form-data-row> :nth-child(2) {
+    .form-data-header > :nth-child(2),
+    .form-data-row > :nth-child(2) {
         display: none;
     }
 
@@ -4124,7 +4095,6 @@ header h1 {
 }
 
 @media screen and (max-width: 376px) {
-
     .detail-btn,
     .tpc-detail-btn,
     .gkl-detail-btn,
@@ -4136,7 +4106,6 @@ header h1 {
 }
 
 @media screen and (max-width: 320px) {
-
     .form-data-header,
     .form-data-row,
     .data-cell {
@@ -4160,9 +4129,7 @@ header h1 {
     }
 }
 
-
 @media screen and (max-width: 280px) {
-
     .form-data-header,
     .form-data-row {
         font-size: 0.65rem;
@@ -4186,7 +4153,6 @@ header h1 {
 }
 
 @media screen and (max-width: 240px) {
-
     .form-data-header,
     .form-data-row {
         font-size: 0.6rem;
@@ -4210,7 +4176,6 @@ header h1 {
 }
 
 @media screen and (max-width: 200px) {
-
     .form-data-header,
     .form-data-row {
         font-size: 0.55rem;
@@ -4232,7 +4197,6 @@ header h1 {
         padding: 1px 2px;
     }
 }
-
 
 /* ===============================
    Section Wrapper Styles
@@ -4421,22 +4385,18 @@ header h1 {
 .plu-edit-back-btn,
 .gtw-edit-back-btn,
 .pgv-edit-back-btn,
-
 .create-back-btn,
 .tpc-create-back-btn,
 .gkl-create-back-btn,
 .plu-create-back-btn,
 .gtw-create-back-btn,
 .pgv-create-back-btn,
-
-
 .create-save-btn,
 .tpc-create-save-btn,
 .gkl-create-save-btn,
 .plu-create-save-btn,
 .gtw-create-save-btn,
 .pgv-create-save-btn,
-
 .edit-save-btn,
 .tpc-edit-save-btn,
 .gkl-edit-save-btn,
@@ -4457,7 +4417,6 @@ header h1 {
 .plu-edit-back-btn,
 .gtw-edit-back-btn,
 .pgv-edit-back-btn,
-
 .create-back-btn,
 .tpc-create-back-btn,
 .gkl-create-back-btn,
@@ -4474,7 +4433,6 @@ header h1 {
 .plu-create-save-btn,
 .gtw-create-save-btn,
 .pgv-create-save-btn,
-
 .edit-save-btn,
 .tpc-edit-save-btn,
 .gkl-edit-save-btn,
@@ -4491,7 +4449,6 @@ header h1 {
 .plu-edit-back-btn:hover,
 .gtw-edit-back-btn:hover,
 .pgv-edit-back-btn:hover,
-
 .create-back-btn:hover,
 .tpc-create-back-btn:hover,
 .gkl-create-back-btn:hover,
@@ -4507,7 +4464,6 @@ header h1 {
 .plu-create-save-btn:hover,
 .gtw-create-save-btn:hover,
 .pgv-create-save-btn:hover,
-
 .edit-save-btn:hover,
 .tpc-edit-save-btn:hover,
 .gkl-edit-save-btn:hover,
@@ -4648,7 +4604,6 @@ header h1 {
     transition: all 0.3s ease;
 }
 
-
 .image-upload-small i {
     font-size: 1.5rem;
     color: var(--primary-color);
@@ -4672,7 +4627,6 @@ header h1 {
 .image-upload-small:hover i {
     color: var(--secondary-color);
 }
-
 
 @media screen and (max-width: 768px) {
     .edit-room-section {
@@ -4767,7 +4721,7 @@ header h1 {
     width: 100%;
     height: auto;
     max-width: 450px;
-    background: #FFF8EB;
+    background: #fff8eb;
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -4798,7 +4752,7 @@ header h1 {
     right: -15px;
     width: 35px;
     height: 35px;
-    background: #674C1D;
+    background: #674c1d;
     border: none;
     border-radius: 50%;
     color: white;
@@ -4872,7 +4826,7 @@ header h1 {
 }
 
 .popup-carousel-nav:hover {
-    background: #674C1D;
+    background: #674c1d;
 }
 
 .popup-carousel-prev {
@@ -4898,12 +4852,12 @@ header h1 {
 }
 
 .popup-carousel-dot.active {
-    background: #674C1D;
+    background: #674c1d;
 }
 
 .popup-content {
     padding: 20px 0;
-    color: #674C1D;
+    color: #674c1d;
     width: 100%;
 }
 
@@ -5156,7 +5110,7 @@ header h1 {
 .plu-back-btn-slide:hover,
 .gtw-back-btn-slide:hover,
 .pgv-back-btn-slide:hover {
-    background: #D2691E;
+    background: #d2691e;
     transform: translateY(-2px);
 }
 
@@ -5166,7 +5120,7 @@ header h1 {
 .plu-update-btn-slide,
 .gtw-update-btn-slide,
 .pgv-update-btn-slide {
-    background: #4CAF50;
+    background: #4caf50;
     color: white;
     border: none;
     padding: 8px 25px;
@@ -5184,7 +5138,7 @@ header h1 {
 .plu-update-btn-slide:hover,
 .gtw-update-btn-slide:hover,
 .pgv-update-btn-slide:hover {
-    background: #388E3C;
+    background: #388e3c;
     transform: translateY(-2px);
 }
 
@@ -5292,7 +5246,6 @@ header h1 {
 }
 
 @media screen and (max-width: 768px) {
-
     .change-slide-section,
     .tpc-change-slide-section,
     .gkl-change-slide-section,
@@ -5317,8 +5270,6 @@ header h1 {
         font-size: 14px;
     }
 }
-
-
 
 /* Room Pop-up Styles */
 .room-popup-overlay {
@@ -5422,7 +5373,7 @@ header h1 {
 }
 
 .room-popup-nav:hover {
-    background: #674C1D;
+    background: #674c1d;
 }
 
 .room-popup-nav.prev {
@@ -5702,7 +5653,6 @@ header h1 {
 }
 
 @media screen and (max-width: 1200px) {
-
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
@@ -5715,7 +5665,6 @@ header h1 {
 }
 
 @media screen and (max-width: 992px) {
-
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
@@ -5728,7 +5677,6 @@ header h1 {
 }
 
 @media screen and (max-width: 768px) {
-
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
@@ -5759,7 +5707,6 @@ header h1 {
 }
 
 @media screen and (max-width: 576px) {
-
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
@@ -5786,7 +5733,6 @@ header h1 {
 }
 
 @media screen and (max-width: 480px) {
-
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
@@ -5799,7 +5745,6 @@ header h1 {
 }
 
 @media screen and (max-width: 400px) {
-
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
@@ -5826,7 +5771,6 @@ header h1 {
 }
 
 @media screen and (max-width: 320px) {
-
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
@@ -5839,7 +5783,6 @@ header h1 {
 }
 
 @media screen and (max-width: 280px) {
-
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
@@ -5861,7 +5804,6 @@ header h1 {
 }
 
 @media screen and (max-width: 240px) {
-
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
@@ -5874,7 +5816,6 @@ header h1 {
 }
 
 @media screen and (max-width: 200px) {
-
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
@@ -6087,7 +6028,6 @@ header h1 {
     }
 } */
 
-
 .delete-data-popup {
     display: none;
     position: fixed;
@@ -6160,26 +6100,25 @@ header h1 {
 
     .form-data-row .data-cell:not(.actions)::before {
         font-family: "Poppins", sans-serif;
-        color: #674C1D;
+        color: #674c1d;
         font-weight: 500;
     }
 
     .form-data-row .data-cell:nth-child(1)::before {
-        content: 'Nama';
+        content: "Nama";
     }
 
     .form-data-row .data-cell:nth-child(2)::before {
-        content: 'No Hp';
+        content: "No Hp";
     }
 
     .form-data-row .data-cell:nth-child(3)::before {
-        content: 'Lama Sewa';
+        content: "Lama Sewa";
     }
 
     .form-data-row .data-cell:nth-child(4)::before {
-        content: 'Ukuran Kamar';
+        content: "Ukuran Kamar";
     }
-
 
     .data-cell.actions {
         display: block;
@@ -6204,8 +6143,8 @@ header h1 {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #FFEBEB;
-        color: #E53935;
+        background: #ffebeb;
+        color: #e53935;
         border: none;
         border-radius: 8px;
         width: 42px;
@@ -6216,15 +6155,402 @@ header h1 {
     }
 
     .form-data-row .delete-btn-data:hover {
-        background: #E53935;
+        background: #e53935;
         color: white;
     }
 
-    .form-data-row> :nth-child(n) {
+    .form-data-row > :nth-child(n) {
         display: grid !important;
     }
 
-    .form-data-row>.actions {
+    .form-data-row > .actions {
         display: block !important;
+    }
+}
+
+/* ========================================== */
+/* BSC (BASSURA CITY) SPECIFIC STYLES */
+/* ========================================== */
+
+.bsc-section {
+    display: none;
+}
+
+.bsc-section.active {
+    display: block;
+}
+
+/* BSC Carousel Styles */
+#bsc-section .carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+#bsc-section .carousel-slide {
+    display: none;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+#bsc-section .carousel-slide.active {
+    display: block;
+}
+
+#bsc-section .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* BSC Room Cards */
+#bsc-room-cards .room-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+#bsc-room-cards .room-card:hover {
+    border-color: #674c1d;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(103, 76, 29, 0.15);
+}
+
+#bsc-room-cards .room-card-header .left-text {
+    color: #674c1d;
+    font-weight: 600;
+}
+
+#bsc-room-cards .room-type {
+    color: #674c1d;
+    font-weight: 500;
+}
+
+/* BSC Comment Cards */
+#bsc-comment-cards .comment-card {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border-left: 4px solid #674c1d;
+    transition: all 0.3s ease;
+}
+
+#bsc-comment-cards .comment-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(103, 76, 29, 0.1);
+    border-left-color: #8b4513;
+}
+
+#bsc-comment-cards .comment-user {
+    color: #674c1d;
+    font-weight: 600;
+}
+
+#bsc-comment-cards .star-rating i {
+    color: #ffc107;
+}
+
+/* BSC Form Data */
+#bsc-form-data-section .form-data-container {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#bsc-form-data-section .form-data-header {
+    background: linear-gradient(135deg, #674c1d 0%, #8b4513 100%);
+    color: white;
+}
+
+#bsc-form-data-section .form-data-row:hover {
+    background: rgba(103, 76, 29, 0.05);
+}
+
+#bsc-form-data-section .detail-btn {
+    background: #674c1d;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+#bsc-form-data-section .detail-btn:hover {
+    background: #8b4513;
+    transform: translateY(-1px);
+}
+
+#bsc-form-data-section .delete-btn-data {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+#bsc-form-data-section .delete-btn-data:hover {
+    background: #c82333;
+    transform: translateY(-1px);
+}
+
+/* BSC Section Headers */
+#bsc-section .section-header h2 {
+    color: #674c1d;
+    position: relative;
+}
+
+#bsc-section .section-header h2::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #674c1d, #8b4513);
+    border-radius: 2px;
+}
+
+/* BSC Buttons */
+#bsc-section .change-btn,
+#bsc-section .back-btn,
+#bsc-section .add-room-btn {
+    background: linear-gradient(135deg, #674c1d 0%, #8b4513 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(103, 76, 29, 0.3);
+}
+
+#bsc-section .change-btn:hover,
+#bsc-section .back-btn:hover,
+#bsc-section .add-room-btn:hover {
+    background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(103, 76, 29, 0.4);
+}
+
+/* BSC Create/Edit Room Forms */
+#bsc-create-room .room-form-container,
+#bsc-edit-room .room-form-container {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+#bsc-create-room .image-upload-large,
+#bsc-edit-room .image-upload-large {
+    border: 3px dashed #674c1d;
+    background: rgba(103, 76, 29, 0.05);
+    transition: all 0.3s ease;
+}
+
+#bsc-create-room .image-upload-large:hover,
+#bsc-edit-room .image-upload-large:hover {
+    border-color: #8b4513;
+    background: rgba(103, 76, 29, 0.1);
+    transform: scale(1.02);
+}
+
+#bsc-create-room .image-upload-small,
+#bsc-edit-room .image-upload-small {
+    border: 2px dashed #674c1d;
+    background: rgba(103, 76, 29, 0.05);
+    transition: all 0.3s ease;
+}
+
+#bsc-create-room .image-upload-small:hover,
+#bsc-edit-room .image-upload-small:hover {
+    border-color: #8b4513;
+    background: rgba(103, 76, 29, 0.1);
+    transform: scale(1.05);
+}
+
+/* BSC Action Buttons */
+#bsc-section .create-save-btn,
+#bsc-section .edit-back-btn {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+#bsc-section .create-save-btn:hover,
+#bsc-section .edit-back-btn:hover {
+    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+}
+
+#bsc-section .create-back-btn {
+    background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+#bsc-section .create-back-btn:hover {
+    background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
+}
+
+/* BSC Comment Actions */
+#bsc-comment-cards .apply-btn {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+#bsc-comment-cards .apply-btn:hover {
+    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+    transform: translateY(-1px);
+}
+
+#bsc-comment-cards .unapply-btn {
+    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+#bsc-comment-cards .unapply-btn:hover {
+    background: linear-gradient(135deg, #fd7e14 0%, #dc3545 100%);
+    transform: translateY(-1px);
+}
+
+#bsc-comment-cards .delete-btn {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+#bsc-comment-cards .delete-btn:hover {
+    background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
+    transform: translateY(-1px);
+}
+
+/* BSC Room Action Buttons */
+#bsc-room-cards .edit-room-btn {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+#bsc-room-cards .edit-room-btn:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    transform: translateY(-1px);
+}
+
+#bsc-room-cards .delete-room-btn {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+#bsc-room-cards .delete-room-btn:hover {
+    background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
+    transform: translateY(-1px);
+}
+
+/* BSC More Button */
+#bsc-room-cards .more-btn {
+    background: rgba(103, 76, 29, 0.9);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+#bsc-room-cards .more-btn:hover {
+    background: rgba(103, 76, 29, 1);
+    transform: translateY(-1px);
+}
+
+/* Responsive BSC Styles */
+@media screen and (max-width: 768px) {
+    #bsc-section .carousel-slide {
+        height: 300px;
+    }
+
+    #bsc-section .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    #bsc-section .change-btn,
+    #bsc-section .back-btn,
+    #bsc-section .add-room-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #bsc-section .carousel-slide {
+        height: 250px;
+    }
+
+    #bsc-section .section-header h2 {
+        font-size: 1.3rem;
+    }
+
+    #bsc-section .change-btn,
+    #bsc-section .back-btn,
+    #bsc-section .add-room-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
     }
 }

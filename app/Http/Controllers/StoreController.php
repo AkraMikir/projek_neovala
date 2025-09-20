@@ -176,5 +176,51 @@ if ($request->has('room_section')) {
     return redirect()->back()->with('error', 'Form tidak dikenali atau data tidak lengkap.');
 }
 
+// BSC Room Management
+public function createRoom(Request $request)
+{
+    $request->validate([
+        'main_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'apartment_type' => 'required|string',
+        'room_image_1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'room_image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'room_image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'room_image_4' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    try {
+        // Upload main image
+        $mainImagePath = $request->file('main_image')->store('rooms/' . $request->apartment_type, 'public');
+        
+        // Upload room images
+        $roomImages = [];
+        for ($i = 1; $i <= 4; $i++) {
+            if ($request->hasFile("room_image_$i")) {
+                $roomImages[] = $request->file("room_image_$i")->store('rooms/' . $request->apartment_type, 'public');
+            }
+        }
+
+        // Create room record
+        $room = Room::create([
+            'apartment_type' => $request->apartment_type,
+            'main_image' => $mainImagePath,
+            'room_image_1' => $roomImages[0] ?? null,
+            'room_image_2' => $roomImages[1] ?? null,
+            'room_image_3' => $roomImages[2] ?? null,
+            'room_image_4' => $roomImages[3] ?? null,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Room created successfully',
+            'room' => $room
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Error creating room: ' . $e->getMessage()
+        ], 500);
+    }
+}
 
 }
