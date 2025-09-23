@@ -90,21 +90,37 @@
 
             <div class="carousel-container">
                 <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/IMG_0115 (Copy).jpg') }}" alt="Slide 1">
+                    <img src="{{ asset('images/images/home pages/DJI_20250307171433_0096_D.JPG') }}" alt="Slide 1">
                 </div>
                 <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/IMG_0020 (Copy).jpg') }}" alt="Slide 2">
+                    <img src="{{ asset('images/images/home pages/DJI_20250321175315_0129_D.JPG') }}" alt="Slide 2">
                 </div>
                 <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/IMG_0362.png') }}" alt="Slide 3">
+                    <img src="{{ asset('images/images/home pages/DJI_20250327155326_0216_D.JPG') }}" alt="Slide 3">
                 </div>
                 <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/IMG_1073.png') }}" alt="Slide 4">
+                    <img src="{{ asset('images/images/home pages/DJI_20250403160456_0254_D.JPG') }}" alt="Slide 4">
+                </div>
+                <div class="carousel-slide">
+                    <img src="{{ asset('images/images/home pages/DJI_20250404164436_0280_D.JPG') }}" alt="Slide 5">
+                </div>
+                <div class="carousel-slide">
+                    <img src="{{ asset('images/images/home pages/DJI_20250405123913_0309_D.JPG') }}" alt="Slide 6">
+                </div>
+                <div class="carousel-slide">
+                    <img src="{{ asset('images/images/home pages/DJI_20250827130441_0466_D.JPG') }}" alt="Slide 7">
+                </div>
+                <div class="carousel-slide">
+                    <img src="{{ asset('images/images/home pages/DJI_20250905143026_0543_D.JPG') }}" alt="Slide 8">
                 </div>
             </div>
 
             <div class="carousel-dots">
                 <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
                 <span class="dot"></span>
                 <span class="dot"></span>
                 <span class="dot"></span>
@@ -225,7 +241,7 @@
             <!-- Apartment Card 7 -->
             <div class="apartment-card">
                 <div class="apartment-image">
-                    <img src="{{ asset('images/placeholder-gpc.jpg') }}" alt="Apartment 7">
+                    <img src="{{ asset('images\images\discover-GPC\IMG_0646.png') }}" alt="Apartment 7">
                     <div class="apartment-content">
                         <h3 class="apartment-name">GREEN PRAMUKA CITY</h3>
                         <a href="{{ route('discoverGPC') }}" class="view-details-btn">DISCOVER</a>
@@ -236,7 +252,7 @@
             <!-- Apartment Card 8 -->
             <div class="apartment-card">
                 <div class="apartment-image">
-                    <img src="{{ asset('images/placeholder-bsc.jpg') }}" alt="Apartment 8">
+                    <img src="{{ asset('images\images\discover-BSC\IMG_1882.png') }}" alt="Apartment 8">
                     <div class="apartment-content">
                         <h3 class="apartment-name">BASSURA CITY</h3>
                         <a href="{{ route('discoverBSC') }}" class="view-details-btn">DISCOVER</a>

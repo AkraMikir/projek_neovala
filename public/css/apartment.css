@@ -1638,6 +1638,18 @@ body.menu-open {
     background-position: center;
 }
 
+.booking-section-GPC {
+    background-image: url('../../images/images/discover-GPC/IMG_0667.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.booking-section-BSC {
+    background-image: url('../../images/images/discover-BSC/IMG_9677.png');
+    background-size: cover;
+    background-position: center;
+}
+
 .booking-overlay {
     position: absolute;
     top: 0;

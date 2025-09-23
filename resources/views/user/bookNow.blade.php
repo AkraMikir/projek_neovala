@@ -116,7 +116,7 @@
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
                     </div>
-                    <img src="{{ asset('images/images/discover-gkl/IMG_0143 (Copy).jpg') }}" alt="WhatsApp Booking" class="main-image">
+                    <img src="{{ asset('images\images\discover-GKL\IMG_3011.jpg') }}" alt="WhatsApp Booking" class="main-image">
                     <div class="booking-overlay">
                         <span class="booking-text">Book via WhatsApp</span>
                     </div>
@@ -125,7 +125,7 @@
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
                     </div>
-                    <img src="{{ asset('images/images/discover-gkl/IMG_0143 (Copy).jpg') }}" alt="Tiket.com Booking" class="main-image">
+                    <img src="{{ asset('images\images\discover-GKL\IMG_3011.jpg') }}" alt="Tiket.com Booking" class="main-image">
                     <div class="booking-overlay">
                         <span class="booking-text">Book via Tiket.com</span>
                     </div>
@@ -216,7 +216,7 @@
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
                     </div>
-                    <img src="{{ asset('images/placeholder-gpc.jpg') }}" alt="WhatsApp Booking" class="main-image">
+                    <img src="{{ asset('images\images\discover-GPC\IMG_0646.png') }}" alt="WhatsApp Booking" class="main-image">
                     <div class="booking-overlay">
                         <span class="booking-text">Book via WhatsApp</span>
                     </div>
@@ -225,7 +225,7 @@
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
                     </div>
-                    <img src="{{ asset('images/placeholder-gpc.jpg') }}" alt="Tiket.com Booking" class="main-image">
+                    <img src="{{ asset('images\images\discover-GPC\IMG_0646.png') }}" alt="Tiket.com Booking" class="main-image">
                     <div class="booking-overlay">
                         <span class="booking-text">Book via Tiket.com</span>
                     </div>
@@ -241,7 +241,7 @@
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
                     </div>
-                    <img src="{{ asset('images/placeholder-bsc.jpg') }}" alt="WhatsApp Booking" class="main-image">
+                    <img src="{{ asset('images\images\discover-BSC\IMG_1882.png') }}" alt="WhatsApp Booking" class="main-image">
                     <div class="booking-overlay">
                         <span class="booking-text">Book via WhatsApp</span>
                     </div>
@@ -250,7 +250,7 @@
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
                     </div>
-                    <img src="{{ asset('images/placeholder-bsc.jpg') }}" alt="Tiket.com Booking" class="main-image">
+                    <img src="{{ asset('images\images\discover-BSC\IMG_1882.png') }}" alt="Tiket.com Booking" class="main-image">
                     <div class="booking-overlay">
                         <span class="booking-text">Book via Tiket.com</span>
                     </div>
