@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\KomentarBsc;
+use App\Models\KomentarBsr;
 
-class KomentarBscController extends Controller
+class KomentarBsrController extends Controller
 {
     public function store(Request $request)
     {
@@ -16,12 +16,12 @@ class KomentarBscController extends Controller
             'hideIdentity' => 'nullable|in:on',
         ]);
 
-        KomentarBsc::create([
+        KomentarBsr::create([
             'instagram' => $request->has('hideIdentity') ? null : $request->input('instagram'),
             'message' => $validated['message'],
             'rating' => $validated['rating'],
             'hide_identity' => $request->has('hideIdentity'),
-            'section' => 'bsc',
+            'section' => 'bsr',
             'status' => 'pending',
         ]);
 
@@ -30,7 +30,7 @@ class KomentarBscController extends Controller
 
     public function accept($id)
     {
-        $komentar = KomentarBsc::findOrFail($id);
+        $komentar = KomentarBsr::findOrFail($id);
         $komentar->status = 'accepted';
         $komentar->save();
 
@@ -39,7 +39,7 @@ class KomentarBscController extends Controller
 
     public function unapply($id)
     {
-        $komentar = KomentarBsc::findOrFail($id);
+        $komentar = KomentarBsr::findOrFail($id);
         $komentar->status = 'pending';
         $komentar->save();
 
@@ -48,8 +48,8 @@ class KomentarBscController extends Controller
 
     public function delete($id)
     {
-        $komentar = KomentarBsc::findOrFail($id);
-        $komentar->delete();
+        $komentar = KomentarBsr::findOrFail($id);
+        $komentar->delete(); // <- ini menghapus dari DB
         return redirect()->back()->with('success', 'Komentar telah dihapus.');
     }
 }

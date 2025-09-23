@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!--Test-->
-
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -42,9 +40,6 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <!-- Font Awesome untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-    </form>
 </head>
 
 <body>
@@ -80,10 +75,10 @@
                         <li><a href="#" class="plu-link">URBANO</a></li>
                         <li><a href="#" class="gtw-link">CICADAS</a></li>
                         <li><a href="#" class="pgv-link">PODOMORO</a></li>
-                        <li><a href="#" class="bsc-link">BASSURA CITY</a></li>
+                        <li><a href="#" class="bsr-link">BASSURA</a></li>
                         <form method="POST" action="{{ route('admin.logout') }}">
                             @csrf
-                            <button type="submit" class="btn-logout">Logout</button>
+                            <button type="submit">Logout</button>
                         </form>
 
                     </ul>
@@ -155,10 +150,10 @@
                         <button class="pgv-link">Click here to go to Admin Panel</button>
                     </div>
                 </div>
-                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/bsc-bg.jpg');">
+                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.jpg');">
                     <div class="card-content">
-                        <h2>BASSURA CITY ADMIN PANEL</h2>
-                        <button class="bsc-link">Click here to go to Admin Panel</button>
+                        <h2>BASSURA ROOM ADMIN PANEL</h2>
+                        <button class="bsr-link">Click here to go to Admin Panel</button>
                     </div>
                 </div>
             </div>
@@ -3308,224 +3303,451 @@
     </div>
     <!--PODOMORO End-->
 
-    <!-- ========================================== -->
-    <!-- BASSURA CITY (BSC) SECTION -->
-    <!-- ========================================== -->
-    <div class="admin-section" id="bsc-section" style="display: none;">
-        <!-- BSC Current Slide Show -->
-        <div class="slide-section">
-            <div class="section-header">
-                <h2>Current Slide Show - Bassura City</h2>
-                <button class="bsc-change-btn">Change Now</button>
-            </div>
-            <div class="current-slide">
-                <div class="carousel-container">
-                    <div class="carousel-slide active">
-                        <img src="{{ asset('images/carousel/bsc/bsc1.jpg') }}" alt="BSC Slide 1">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="{{ asset('images/carousel/bsc/bsc2.jpg') }}" alt="BSC Slide 2">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="{{ asset('images/carousel/bsc/bsc3.jpg') }}" alt="BSC Slide 3">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="{{ asset('images/carousel/bsc/bsc4.jpg') }}" alt="BSC Slide 4">
-                    </div>
-                </div>
-                <div class="carousel-nav">
-                    <button class="carousel-button prev" onclick="bscPrevSlide()">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="carousel-button next" onclick="bscNextSlide()">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <div class="carousel-dots">
-                        <span class="carousel-dot active" onclick="bscCurrentSlide(1)"></span>
-                        <span class="carousel-dot" onclick="bscCurrentSlide(2)"></span>
-                        <span class="carousel-dot" onclick="bscCurrentSlide(3)"></span>
-                        <span class="carousel-dot" onclick="bscCurrentSlide(4)"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Change Slide Section BSR -->
+    <div class="bsr-change-slide-section" id="bsrChangeSlideSection" style="display: none;">
+        <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="carousel_section" value="BSR">
 
-        <!-- BSC Change Slide -->
-        <div class="change-slide-section" id="bsc-change-slide" style="display: none;">
-            <div class="section-header">
-                <h2>Change Slide - Bassura City</h2>
-                <button class="bsc-back-btn">Back</button>
+            <div class="header-admin">
+                <header>
+                    <h1>Change Slide Bassura</h1>
+                </header>
+                <div class="button-container">
+                    <button type="button" class="bsr-back-btn-slide">Back</button>
+                    <button type="submit" class="bsr-update-btn-slide" style="display: none;">Update</button>
+                </div>
             </div>
+
             <div class="slide-grid">
-                <div class="slide-item">
+                <div class="slide-item" data-index="0">
                     <div class="slide-image">
-                        <img src="{{ asset('images/carousel/bsc/bsc1.jpg') }}" alt="BSC Current 1">
+                        <img src="{{ $carouselImagesBySection['BSR'][1] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 1 BSR">
                         <div class="slide-overlay">
-                            <button class="select-btn" onclick="bscSelectSlide(1)">
+                            <input type="file" class="file-input" name="images[1]" accept="image/*" hidden>
+                            <button class="select-btn" type="button">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="slide-item">
+                <div class="slide-item" data-index="1">
                     <div class="slide-image">
-                        <img src="{{ asset('images/carousel/bsc/bsc2.jpg') }}" alt="BSC Current 2">
+                        <img src="{{ $carouselImagesBySection['BSR'][2] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 2 BSR">
                         <div class="slide-overlay">
-                            <button class="select-btn" onclick="bscSelectSlide(2)">
+                            <input type="file" class="file-input" name="images[2]" accept="image/*" hidden>
+                            <button class="select-btn" type="button">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="slide-item">
+                <div class="slide-item" data-index="2">
                     <div class="slide-image">
-                        <img src="{{ asset('images/carousel/bsc/bsc3.jpg') }}" alt="BSC Current 3">
+                        <img src="{{ $carouselImagesBySection['BSR'][3] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 3 BSR">
                         <div class="slide-overlay">
-                            <button class="select-btn" onclick="bscSelectSlide(3)">
+                            <input type="file" class="file-input" name="images[3]" accept="image/*" hidden>
+                            <button class="select-btn" type="button">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="slide-item">
+                <div class="slide-item" data-index="3">
                     <div class="slide-image">
-                        <img src="{{ asset('images/carousel/bsc/bsc4.jpg') }}" alt="BSC Current 4">
+                        <img src="{{ $carouselImagesBySection['BSR'][4] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 4 BSR">
                         <div class="slide-overlay">
-                            <button class="select-btn" onclick="bscSelectSlide(4)">
+                            <input type="file" class="file-input" name="images[4]" accept="image/*" hidden>
+                            <button class="select-btn" type="button">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
+    </div>
 
-        <!-- BSC Showing Apartment Room -->
-        <div class="room-section" id="bsc-room-section" style="display: none;">
-            <div class="section-header">
-                <h2>Showing Apartment Room - Bassura City</h2>
-                <button class="bsc-add-room-btn">Tambah Room</button>
-            </div>
-            <div class="room-cards" id="bsc-room-cards">
-                <!-- Room cards will be loaded here -->
-            </div>
+    <!-- Edit Room Section BSR -->
+    <div class="bsr-edit-room-section" id="bsrEditRoomSection" style="display: none;">
+        <div class="header-admin">
+            <header>
+                <h1>Edit Room Bassura</h1>
+            </header>
         </div>
+        <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="room_section" value="">
+            <input type="hidden" name="room_id" value="">
 
-        <!-- BSC Create Room -->
-        <div class="create-room-section" id="bsc-create-room" style="display: none;">
-            <div class="section-header">
-                <h2>Buat Room - Bassura City</h2>
-                <button class="bsc-back-btn">Back</button>
-            </div>
             <div class="room-form-container">
                 <div class="room-main-image">
-                    <div class="image-upload-large" onclick="document.getElementById('bsc-main-image').click()">
-                        <i class="fas fa-camera"></i>
-                        <p>Upload Main Image</p>
-                        <input type="file" id="bsc-main-image" accept="image/*" style="display: none;">
+                    <div class="image-upload-large">
+                        <i class="fas fa-image"></i>
+                        <p>Insert Room Main Photo</p>
+                        <img id="mainEditImage" src="" alt="Main Room Photo" style="display: none;">
+                        <input type="file" name="main_photo" class="room-photo-input" accept="image/*" hidden>
                     </div>
                 </div>
+
+                <!-- Additional Room Photos -->
                 <div class="room-additional-images">
-                    <div class="image-upload-small" onclick="document.getElementById('bsc-room-image-1').click()">
-                        <i class="fas fa-plus"></i>
-                        <p>Room 1</p>
-                        <input type="file" id="bsc-room-image-1" accept="image/*" style="display: none;">
-                    </div>
-                    <div class="image-upload-small" onclick="document.getElementById('bsc-room-image-2').click()">
-                        <i class="fas fa-plus"></i>
-                        <p>Room 2</p>
-                        <input type="file" id="bsc-room-image-2" accept="image/*" style="display: none;">
-                    </div>
-                    <div class="image-upload-small" onclick="document.getElementById('bsc-room-image-3').click()">
-                        <i class="fas fa-plus"></i>
-                        <p>Room 3</p>
-                        <input type="file" id="bsc-room-image-3" accept="image/*" style="display: none;">
-                    </div>
-                    <div class="image-upload-small" onclick="document.getElementById('bsc-room-image-4').click()">
-                        <i class="fas fa-plus"></i>
-                        <p>Room 4</p>
-                        <input type="file" id="bsc-room-image-4" accept="image/*" style="display: none;">
-                    </div>
+                    @for ($i = 0; $i < 4; $i++) <div class="image-upload-small">
+                        <i class="fas fa-image"></i>
+                        <p>Insert Room Photo</p>
+                        <img class="popupEditImage" src="" alt="Room Additional {{ $i + 1 }}" style="display: none;">
+                        <input type="file" name="popup{{ $i + 1 }}" class="room-photo-input" accept="image/*" hidden>
                 </div>
-                <div class="back-button-container">
-                    <button class="bsc-create-back-btn">Back</button>
-                    <button class="create-save-btn" onclick="bscCreateRoom()">Buat Room</button>
-                </div>
+                @endfor
             </div>
+
+            <!-- Buttons -->
+            <div class="back-button-container">
+                <button type="button" class="bsr-edit-back-btn">Back</button>
+                <button type="submit" class="bsr-edit-save-btn">Save Changes</button>
+            </div>
+    </div>
+    </form>
+    </div>
+
+    <!-- Create New Room Section BSR -->
+    <div class="bsr-create-room-section" id="bsrCreateRoomSection" style="display: none;">
+        <div class="header-admin">
+            <header>
+                <h1>Buat Room Bassura</h1>
+            </header>
         </div>
 
-        <!-- BSC Edit Room -->
-        <div class="edit-room-section" id="bsc-edit-room" style="display: none;">
-            <div class="section-header">
-                <h2>Edit Room - Bassura City</h2>
-                <button class="bsc-back-btn">Back</button>
-            </div>
+        <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data"
+            onsubmit="console.log('Form submitting...'); return true;">
+            @csrf
+            <input type="hidden" name="room_section" value="room_bassura">
+
             <div class="room-form-container">
+                <!-- Main Image -->
                 <div class="room-main-image">
-                    <div class="image-upload-large" onclick="document.getElementById('bsc-edit-main-image').click()">
-                        <i class="fas fa-camera"></i>
-                        <p>Upload Main Image</p>
-                        <input type="file" id="bsc-edit-main-image" accept="image/*" style="display: none;">
+                    <div class="image-upload-large">
+                        <i class="fas fa-image"></i>
+                        <p>insert room main photo</p>
+                        <input type="file" name="main_photo" class="room-photo-input" accept="image/*" hidden>
                     </div>
                 </div>
+
+                <!-- Additional Images -->
                 <div class="room-additional-images">
-                    <div class="image-upload-small" onclick="document.getElementById('bsc-edit-room-image-1').click()">
-                        <i class="fas fa-plus"></i>
-                        <p>Room 1</p>
-                        <input type="file" id="bsc-edit-room-image-1" accept="image/*" style="display: none;">
+                    <div class="image-upload-small">
+                        <i class="fas fa-image"></i>
+                        <p>Photo 1</p>
+                        <input type="file" name="popup1" class="room-photo-input" accept="image/*" hidden>
                     </div>
-                    <div class="image-upload-small" onclick="document.getElementById('bsc-edit-room-image-2').click()">
-                        <i class="fas fa-plus"></i>
-                        <p>Room 2</p>
-                        <input type="file" id="bsc-edit-room-image-2" accept="image/*" style="display: none;">
+                    <div class="image-upload-small">
+                        <i class="fas fa-image"></i>
+                        <p>Photo 2</p>
+                        <input type="file" name="popup2" class="room-photo-input" accept="image/*" hidden>
                     </div>
-                    <div class="image-upload-small" onclick="document.getElementById('bsc-edit-room-image-3').click()">
-                        <i class="fas fa-plus"></i>
-                        <p>Room 3</p>
-                        <input type="file" id="bsc-edit-room-image-3" accept="image/*" style="display: none;">
+                    <div class="image-upload-small">
+                        <i class="fas fa-image"></i>
+                        <p>Photo 3</p>
+                        <input type="file" name="popup3" class="room-photo-input" accept="image/*" hidden>
                     </div>
-                    <div class="image-upload-small" onclick="document.getElementById('bsc-edit-room-image-4').click()">
-                        <i class="fas fa-plus"></i>
-                        <p>Room 4</p>
-                        <input type="file" id="bsc-edit-room-image-4" accept="image/*" style="display: none;">
+                    <div class="image-upload-small">
+                        <i class="fas fa-image"></i>
+                        <p>Photo 4</p>
+                        <input type="file" name="popup4" class="room-photo-input" accept="image/*" hidden>
                     </div>
                 </div>
+
+                <!-- Buttons -->
                 <div class="back-button-container">
-                    <button class="bsc-edit-back-btn">Back</button>
-                    <button class="create-save-btn" onclick="bscUpdateRoom()">Update Room</button>
+                    <button type="button" class="bsr-create-back-btn">Back</button>
+                    <button type="submit" class="bsr-create-save-btn">Create Room</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Section BASSURA Start-->
+    <div class="bsr-section" id="bsrSection" style="display: none;">
+        <div class="header-admin">
+            <header>
+                <h1>BASSURA ADMIN PANEL</h1>
+            </header>
+        </div>
+
+        <!-- Current Slide Show Section -->
+        <div class="bsr-slide-section">
+            <div class="section-header">
+                <h2>Current Slide Show</h2>
+                <button class="bsr-change-btn" type="button">Change Now</button>
+            </div>
+            <div class="bsr-current-slide">
+                <div class="bsr-carousel-container">
+                    <div class="bsr-carousel-slide">
+                        <img src="{{ $carouselImagesBySection['BSR'][1] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 1 BSR">
+                    </div>
+                    <div class="bsr-carousel-slide">
+                        <img src="{{ $carouselImagesBySection['BSR'][2] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 2 BSR">
+                    </div>
+                    <div class="bsr-carousel-slide">
+                        <img src="{{ $carouselImagesBySection['BSR'][3] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 3 BSR">
+                    </div>
+                    <div class="bsr-carousel-slide">
+                        <img src="{{ $carouselImagesBySection['BSR'][4] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 4 BSR">
+                    </div>
+                </div>
+                <button class="bsr-carousel-button prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="bsr-carousel-button next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="bsr-carousel-nav">
+                    <div class="bsr-carousel-dot active"></div>
+                    <div class="bsr-carousel-dot"></div>
+                    <div class="bsr-carousel-dot"></div>
+                    <div class="bsr-carousel-dot"></div>
                 </div>
             </div>
         </div>
 
-        <!-- BSC All Comments -->
-        <div class="comment-section" id="bsc-comment-section" style="display: none;">
+        <!-- Room Section -->
+        <div class="room-section">
             <div class="section-header">
-                <h2>All Bassura City Comments</h2>
+                <h2>Showing Apartemen Room</h2>
+                <button class="bsr-add-room-btn" onclick="showSection(document.getElementById('bsrCreateRoomSection'))">
+                    + ROOM</button>
             </div>
-            <div class="comment-cards" id="bsc-comment-cards">
-                <!-- Comments will be loaded here -->
+            <div class="room-cards">
+                @foreach ($roomsBySection['room_bassura'] as $room)
+                <!-- Room Card -->
+                <div class="room-card">
+                    <div class="room-card-header">
+                        <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
+                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <div class="right-text">BASSURA <span class="room-type">APARTMENT</span></div>
+                    </div>
+                    <div class="room-card-image">
+                        <img src="{{ $room['main_photo'] }}" alt="Room {{ $room['room_name'] }}">
+                    </div>
+                    <div class="room-action-buttons">
+                        <button class="bsr-edit-room-btn" data-room='@json($room)'>
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="bsr-more-btn" data-popup-id="roomPopup{{ $room['room_name'] }}">MORE</button>
+                        <button class="bsr-delete-room-btn" data-room-id="{{ $room['folder'] }}"
+                            data-room-section="{{ $room['section'] }}" data-db-id="{{ $room['id'] }}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Popup Room -->
+                <div class="room-popup-overlay" id="roomPopup{{ $room['room_name'] }}">
+                    <div class="room-popup-container" id="carousel-{{ Str::slug($room['room_name']) }}">
+                        <button class="room-popup-close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="room-popup-carousel">
+                            <div class="room-popup-carousel-container">
+                                @foreach ($room['popup_photos'] as $index => $popup)
+                                <div class="room-popup-slide {{ $index === 0 ? 'active' : '' }}">
+                                    <img src="{{ $popup }}" alt="Room {{ $room['room_name'] }} View {{ $index + 1 }}">
+                                </div>
+                                @endforeach
+                            </div>
+                            <button class="room-popup-nav next" data-room="{{ Str::slug($room['room_name']) }}">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="room-popup-nav prev" data-room="{{ Str::slug($room['room_name']) }}">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
 
-        <!-- BSC Form Data -->
-        <div class="form-data-section" id="bsc-form-data-section" style="display: none;">
+        <!-- Comment Section -->
+        <div class="comment-section">
             <div class="section-header">
-                <h2>Form Data - Bassura City</h2>
+                <h2>All BSR Comment</h2>
+            </div>
+            <div class="comment-cards">
+                @foreach (\App\Models\KomentarBsr::where('section', 'bsr')->latest()->get() as $komen)
+                <div class="comment-card">
+                    <div class="comment-header bsr-quote-wrapper">
+                        <span class="bsr-quote-icon">"</span>
+                    </div>
+                    <div class="comment-content">
+                        <p class="bsr-comment-text">{{ $komen->message }}</p>
+                    </div>
+                    <div class="comment-footer">
+                        <div class="comment-info">
+                            <span class="bsr-comment-user">
+                                {{ $komen->hide_identity ? '@***********' : '@' . $komen->instagram }}
+                            </span>
+                            <div class="bsr-star-rating">
+                                @for ($i = 1; $i <= 5; $i++) <i
+                                    class="fas fa-star {{ $i > $komen->rating ? 'text-muted' : '' }}"></i>
+                                    @endfor
+                            </div>
+                        </div>
+                        <div class="comment-actions">
+                            @if ($komen->status === 'pending')
+                            <button type="button" class="apply-btn" data-id="{{ $komen->id }}"
+                                data-section="bsr">Apply</button>
+                            @else
+                            <button type="button" class="unapply-btn" data-id="{{ $komen->id }}"
+                                data-section="bsr">Unapply</button>
+                            @endif
+                            <button type="button" class="delete-btn" data-id="{{ $komen->id }}" data-section="bsr"><i
+                                    class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <!-- APPLY BSR -->
+        <div class="apply-comment-popup apply-popup-bsr" style="display: none;">
+            <div class="popup-content apply-content">
+                <p>Anda yakin ingin menambahkan komentar ini?</p>
+                <form id="applyForm-bsr" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <div class="popup-buttons">
+                        <button type="button" class="popup-btn popup-cancel-comment">Tidak</button>
+                        <button type="submit" class="popup-btn popup-apply-comment">Tambah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- UNAPPLY BSR -->
+        <div class="apply-comment-popup unapply-popup-bsr" style="display: none;">
+            <div class="popup-content apply-content">
+                <p>Anda yakin ingin mengembalikan komentar ke status pending?</p>
+                <form id="unapplyForm-bsr" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <div class="popup-buttons">
+                        <button type="button" class="popup-btn popup-cancel-unapply-comment">Tidak</button>
+                        <button type="submit" class="popup-btn popup-apply-comment">Unapply</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- DELETE BSR -->
+        <div class="delete-comment-popup delete-popup-bsr" style="display: none;">
+            <div class="popup-content delete-comment-content">
+                <p>Anda yakin ingin menghapus komentar ini?</p>
+                <form id="deleteForm-bsr" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <div class="popup-buttons">
+                        <button type="button" class="popup-btn popup-cancel-delete-comment">Tidak</button>
+                        <button type="submit" class="popup-btn popup-delete-comment">Hapus</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Form Data Section -->
+        <div class="form-data-section" data-apartment="Bassura City by Neovala">
+            <div class="section-header">
+                <h2>Form Data BSR</h2>
             </div>
             <div class="form-data-container">
                 <div class="form-data-header">
                     <div class="header-cell">Nama</div>
-                    <div class="header-cell">No Hp</div>
+                    <div class="header-cell">No HP</div>
                     <div class="header-cell">Lama Sewa</div>
                     <div class="header-cell">Ukuran Kamar</div>
                     <div class="header-cell">Actions</div>
                 </div>
-                <div class="form-data-body" id="bsc-form-data-body">
-                    <!-- Form data will be loaded here -->
+                <div class="form-data-body">
+                    @if(isset($formData) && count($formData) > 0)
+                    @foreach($formData as $data)
+                    <div class="form-data-row" data-id="{{ $data->id }}">
+                        <div class="data-cell">{{ $data->nama }}</div>
+                        <div class="data-cell">{{ $data->nomor_wa }}</div>
+                        <div class="data-cell">{{ $data->durasi }}</div>
+                        <div class="data-cell">{{ $data->tipe_kamar }}</div>
+                        <div class="data-cell actions">
+                            <button class="bsr-detail-btn" onclick="showDetail('{{ $data->id }}')">Detail</button>
+                            <button class="bsr-delete-btn-data trigger-delete-popup" data-id="{{ $data->id }}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    @endforeach
+                    @else
+                    <div class="form-data-row">
+                        <div class="data-cell" colspan="5">Tidak ada data</div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- BSR Detail Data Section -->
+    <div class="bsr-detail-data-section" id="bsrDetailDataSection" style="display: none;">
+        <div class="header-admin">
+            <header>
+                <h1>Detail Data Penyewa BSR</h1>
+            </header>
+        </div>
+
+        <div class="bsr-detail-container">
+            <button class="bsr-back-btn" onclick="showSection(document.getElementById('bsrSection'))">Back</button>
+
+            <div class="detail-content">
+                <table class="detail-table">
+                    <tr>
+                        <td class="detail-label">Nama</td>
+                        <td class="detail-value" id="detailNama"></td>
+                    </tr>
+                    <tr>
+                        <td class="detail-label">No Telp</td>
+                        <td class="detail-value" id="detailNoTelp"></td>
+                    </tr>
+                    <tr>
+                        <td class="detail-label">Lama Sewa</td>
+                        <td class="detail-value" id="detailLamaSewa"></td>
+                    </tr>
+                    <tr>
+                        <td class="detail-label">Ukuran Kamar</td>
+                        <td class="detail-value" id="detailUkuranKamar"></td>
+                    </tr>
+                    <tr>
+                        <td class="detail-label">Tanggal Masuk</td>
+                        <td class="detail-value" id="detailTanggalMasuk"></td>
+                    </tr>
+                    <tr>
+                        <td class="detail-label">Jam Kedatangan</td>
+                        <td class="detail-value" id="detailJamKedatangan"></td>
+                    </tr>
+                    <tr>
+                        <td class="detail-label">Catatan Tambahan</td>
+                        <td class="detail-value" id="detailCatatan"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--BASSURA End-->
 
     <!-- Delete Confirmation Popup -->
     <div class="delete-popup">
@@ -3553,32 +3775,6 @@
 
     </div>
     <script src="{{ asset('js/admin.js') }}"></script>
-    <script src="{{ asset('js/bsc-admin.js') }}"></script>
-    <script>
-    let logoutTimer;
-    let hasLogged = false; // Flag to ensure only one log
-
-    function resetLogoutTimer() {
-        clearTimeout(logoutTimer);
-
-        if (!hasLogged) {
-            console.log("Inactivity timer started");
-            hasLogged = true;
-        }
-
-        clearTimeout(logoutTimer);
-        logoutTimer = setTimeout(() => {
-            document.getElementById('logoutForm').submit();
-        }, 10 * 60 * 1000); // 10 minutes
-    }
-
-    // These events reset the timer
-    ['click', 'mousemove', 'keydown', 'scroll', 'touchstart'].forEach(event => {
-        window.addEventListener(event, resetLogoutTimer);
-    });
-
-    resetLogoutTimer(); // Start the timer when page loads
-    </script>
 </body>
 
 </html>

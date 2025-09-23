@@ -18,7 +18,7 @@ use App\Http\Controllers\KomentarPluController;
 use App\Http\Controllers\KomentarGwcController;
 use App\Http\Controllers\KomentarPgvController;
 use App\Http\Controllers\KomentarGpcController;
-use App\Http\Controllers\KomentarBscController;
+use App\Http\Controllers\KomentarBsrController;
 
 
 Route::get('/storage-link', function() {
@@ -77,7 +77,7 @@ Route::get('/discover-gpc', [TampilanApartmentController::class, 'gpc'])->name('
 //=======================================
 //DISCOVER BSC
 //=======================================
-Route::get('/discover-bsc', [TampilanApartmentController::class, 'bsc'])->name('discoverBSC');
+Route::get('/discover-bsc', [TampilanApartmentController::class, 'bsr'])->name('discoverBSC');
 
 
 //=======================================
@@ -186,10 +186,10 @@ Route::patch('/komentar-gpc/{id}/unapply', [KomentarGpcController::class, 'unapp
 Route::delete('/komentar-gpc/{id}/delete', [KomentarGpcController::class, 'delete'])->name('komentar-gpc.delete');
 
 // Route untuk komentar bsc
-Route::post('/komentar-bsc', [KomentarBscController::class, 'store'])->name('komentar-bsc.store');
-Route::patch('/komentar-bsc/{id}/accept', [KomentarBscController::class, 'accept'])->name('komentar-bsc.accept');
-Route::patch('/komentar-bsc/{id}/unapply', [KomentarBscController::class, 'unapply'])->name('komentar-bsc.unapply');
-Route::delete('/komentar-bsc/{id}/delete', [KomentarBscController::class, 'delete'])->name('komentar-bsc.delete');
+Route::post('/komentar-bsr', [KomentarBsrController::class, 'store'])->name('komentar-bsr.store');
+Route::patch('/komentar-bsr/{id}/accept', [KomentarBsrController::class, 'accept'])->name('komentar-bsr.accept');
+Route::patch('/komentar-bsr/{id}/unapply', [KomentarBsrController::class, 'unapply'])->name('komentar-bsr.unapply');
+Route::delete('/komentar-bsr/{id}/delete', [KomentarBsrController::class, 'delete'])->name('komentar-bsr.delete');
 
 // Route existing untuk accept/unapply/delete tetap bisa digunakan (bekerja untuk semua section)
 

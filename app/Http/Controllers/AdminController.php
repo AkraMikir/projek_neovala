@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
-use App\Http\Controllers\Controller;
 
     class AdminController extends Controller
     {
@@ -32,13 +31,9 @@ public function login(Request $request)
         return view('admin.admin');
     }
 
-    public function logout(Request $request)
+    public function logout()
 {
     Auth::guard('admin')->logout();
-
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
-
-    return redirect()->route('admin.login')->with('message', 'You have been logged out.');
+    return redirect('/');
 }
 }

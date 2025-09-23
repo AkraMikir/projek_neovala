@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class KomentarBsc extends Model
+class KomentarBsr extends Model
 {
     use HasFactory;
 
-    protected $table = 'komentar_bscs';
+    protected $table = 'komentar_bsr';
 
     protected $fillable = [
         'instagram',

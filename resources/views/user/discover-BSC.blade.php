@@ -210,12 +210,16 @@
             <h3 class="location-subtitle">Segera kunjungi apartemen kami!</h3>
             <div class="location-container">
                 <div class="location-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3102009743498!2d106.8804363!3d-6.2227662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f365eb00a437%3A0xcdd434cd1cb2a1f4!2sJual%20Sewa%20Apartemen%20Bassura%20City%20-%20ICAL!5e0!3m2!1sid!2sid!4v1758249725663!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3102009743498!2d106.8804363!3d-6.2227662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f365eb00a437%3A0xcdd434cd1cb2a1f4!2sJual%20Sewa%20Apartemen%20Bassura%20City%20-%20ICAL!5e0!3m2!1sid!2sid!4v1758249725663!5m2!1sid!2sid"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="location-info">
                     <div class="location-address">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>Jl. Bassura Raya No.1, RT.001/RW.001, Cakung, Kec. Cakung, Kota Jakarta Timur, DKI Jakarta 13910</p>
+                        <p>Jl. Bassura Raya No.1, RT.001/RW.001, Cakung, Kec. Cakung, Kota Jakarta Timur, DKI Jakarta
+                            13910</p>
                     </div>
                     <div class="location-features">
                         <div class="feature-item">
@@ -275,8 +279,8 @@
                     </button>
                     <div class="testimoni-slider">
                         <!-- Comment Card 1 -->
-                        @foreach (\App\Models\KomentarBsc::where('status', 'accepted')->where('section',
-                        'bsc')->latest()->get() as $komen)
+                        @foreach (\App\Models\KomentarBsr::where('status', 'accepted')->where('section',
+                        'bsr')->latest()->get() as $komen)
                         <div class="testimoni-card">
                             <span class="quote-icon">"</span>
                             <p class="comment-text">
@@ -304,7 +308,7 @@
 
             <div class="feedback-section">
                 <h2 class="feedback-title">GIVE US FEEDBACK</h2>
-                <form class="feedback-form" id="feedbackForm" method="POST" action="{{ route('komentar-bsc.store') }}">
+                <form class="feedback-form" id="feedbackForm" method="POST" action="{{ route('komentar-bsr.store') }}">
                     @csrf
                     <div class="rating-input">
                         <input type="hidden" name="rating" id="ratingInput" value="0">

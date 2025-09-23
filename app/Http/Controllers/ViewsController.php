@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Komentar;
-use App\Models\KomentarBsc;
 use App\Models\Promo;
 use App\Models\Carousel;
 use Illuminate\Support\Facades\Storage;
@@ -44,8 +43,7 @@ class ViewsController extends Controller
             'room_patraland_urbano',
             'room_gateway_cicadas',
             'room_podomoro_golf_view',
-            'room_green_pramuka_city',
-            'room_bassura_city'
+            'room_bassura'
         ];
 
         $roomsBySection = [];
@@ -82,8 +80,7 @@ class ViewsController extends Controller
     'Patraland Urbano by Neovala',
     'Grand Kamala Lagoon by Neovala',
     'Gateway Cicadas by Neovala',
-    'Green Pramuka City by Neovala',
-    'Bassura City by Neovala',
+    'Basura by Neovala',
 ];
 
 $apartmentForms = [];
@@ -104,24 +101,5 @@ foreach ($apartmentSections as $apartment) {
     'apartmentSections'
 ));
 
-    }
-
-    // BSC Admin Functions
-    public function bscRooms()
-    {
-        $rooms = Room::where('apartment_type', 'bsc')->get();
-        return response()->json(['rooms' => $rooms]);
-    }
-
-    public function bscComments()
-    {
-        $comments = KomentarBsc::all();
-        return response()->json(['comments' => $comments]);
-    }
-
-    public function roomDetails($id)
-    {
-        $room = Room::find($id);
-        return response()->json($room);
     }
 }

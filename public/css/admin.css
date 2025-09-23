@@ -3,12 +3,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Arial", sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 :root {
-    --primary-color: #8b4513;
-    --secondary-color: #d2691e;
+    --primary-color: #8B4513;
+    --secondary-color: #D2691E;
     --background-color: #f5f5f5;
     --text-color: #333;
     --sidebar-width: 250px;
@@ -38,7 +38,7 @@ body {
     top: 20px;
     left: 20px;
     z-index: 1001;
-    background: #674c1d;
+    background: #674C1D;
     border: none;
     color: white;
     width: 40px;
@@ -50,6 +50,7 @@ body {
     justify-content: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 
 .logo {
     display: flex;
@@ -103,12 +104,6 @@ nav ul {
 
 .menu-button:hover {
     background-color: rgba(139, 69, 19, 0.1);
-}
-
-.btn-logout {
-    margin-top: 10px;
-    border: solid 2px black;
-    background-color: #fff8eb;
 }
 
 /* Submenu Styles */
@@ -200,7 +195,7 @@ header h1 {
 }
 
 .admin-card::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -387,36 +382,38 @@ header h1 {
 
 /* Add background images to cards */
 .admin-card:nth-child(1) {
-    background-image: url("../assets/testimoni-bg.jpg");
+    background-image: url('../assets/testimoni-bg.jpg');
 }
 
 .admin-card:nth-child(2) {
-    background-image: url("../assets/promo-bg.jpg");
+    background-image: url('../assets/promo-bg.jpg');
 }
 
 .admin-card:nth-child(3) {
-    background-image: url("../assets/juanda-bg.jpg");
+    background-image: url('../assets/juanda-bg.jpg');
 }
 
 .admin-card:nth-child(4) {
-    background-image: url("../assets/cibubur-bg.jpg");
+    background-image: url('../assets/cibubur-bg.jpg');
 }
 
 .admin-card:nth-child(5) {
-    background-image: url("../assets/lagoon-bg.jpg");
+    background-image: url('../assets/lagoon-bg.jpg');
 }
 
 .admin-card:nth-child(6) {
-    background-image: url("../assets/urbano-bg.jpg");
+    background-image: url('../assets/urbano-bg.jpg');
 }
 
 .admin-card:nth-child(7) {
-    background-image: url("../assets/cicadas-bg.jpg");
+    background-image: url('../assets/cicadas-bg.jpg');
 }
 
 .admin-card:nth-child(8) {
-    background-image: url("../assets/podomoro-bg.jpg");
+    background-image: url('../assets/podomoro-bg.jpg');
 }
+
+
 
 .sidebar-toggle i {
     font-size: 1.2rem;
@@ -424,7 +421,7 @@ header h1 {
 }
 
 .sidebar-toggle:hover {
-    background: #8b4513;
+    background: #8B4513;
     transform: scale(1.05);
 }
 
@@ -452,7 +449,7 @@ header h1 {
     .sidebar-toggle.active {
         left: 260px;
         background: white;
-        color: #674c1d;
+        color: #674C1D;
     }
 
     .main-content {
@@ -983,6 +980,8 @@ header h1 {
     font-family: inherit;
 }
 
+
+
 .komentar-card {
     background: white;
     border-radius: 15px;
@@ -993,6 +992,7 @@ header h1 {
     position: relative;
     display: flex;
     flex-direction: column;
+    max-height: 25vh;
 }
 
 .komentar-card:hover {
@@ -1044,34 +1044,24 @@ header h1 {
     position: static;
 }
 
+
 .edit-btn:hover {
     background: rgba(139, 69, 19, 0.1);
 }
 
+
 .komentar-content {
     color: var(--text-color);
-    font-size: 0.9rem;
+    margin-bottom: 15px;
     line-height: 1.5;
-    margin: 15px 0;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-all;
-    -ms-word-break: break-all;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    max-width: 100%;
-    height: 100%;
-    padding-right: 10px;
 }
 
 .komentar-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px 0 5px 0;
-    padding-top: 20px;
+    margin-top: 15px;
+    padding-top: 15px;
     border-top: 1px solid #eee;
 }
 
@@ -1248,11 +1238,14 @@ header h1 {
 .gkl-section,
 .plu-section,
 .gtw-section,
-.pgv-section {
+.pgv-section,
+.bsr-section {
     height: 100%;
     overflow-y: auto;
     padding: 20px;
     background-color: #fff8eb;
+    box-sizing: border-box;
+    max-height: calc(100vh - 40px);
 }
 
 .section-header {
@@ -1274,7 +1267,8 @@ header h1 {
 .gkl-change-btn,
 .plu-change-btn,
 .gtw-change-btn,
-.pgv-change-btn {
+.pgv-change-btn,
+.bsr-change-btn {
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -1291,7 +1285,8 @@ header h1 {
 .gkl-change-btn:hover,
 .plu-change-btn:hover,
 .gtw-change-btn:hover,
-.pgv-change-btn:hover {
+.pgv-change-btn,
+.bsr-change-btn:hover {
     background-color: var(--secondary-color);
     transform: translateY(-2px);
 }
@@ -1307,9 +1302,11 @@ header h1 {
     .plu-change-btn,
     .gtw-change-btn,
     .pgv-change-btn,
+.bsr-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 9px 18px;
         font-size: 0.95rem;
     }
@@ -1325,7 +1322,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 8px 16px;
         font-size: 0.9rem;
     }
@@ -1348,7 +1346,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 7px 14px;
         font-size: 0.85rem;
     }
@@ -1364,7 +1363,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 6px 12px;
         font-size: 0.8rem;
     }
@@ -1380,7 +1380,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 5px 10px;
         font-size: 0.75rem;
     }
@@ -1396,7 +1397,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 4px 8px;
         font-size: 0.7rem;
     }
@@ -1412,7 +1414,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 4px 8px;
         font-size: 0.65rem;
     }
@@ -1428,7 +1431,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 3px 6px;
         font-size: 0.6rem;
     }
@@ -1444,7 +1448,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 3px 6px;
         font-size: 0.55rem;
     }
@@ -1460,7 +1465,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 2px 4px;
         font-size: 0.5rem;
     }
@@ -1472,7 +1478,8 @@ header h1 {
 .gkl-slide-section,
 .plu-slide-section,
 .gtw-slide-section,
-.pgv-slide-section {
+.pgv-slide-section,
+.bsr-slide-section {
     background: white;
     border-radius: 10px;
     padding: 20px;
@@ -1485,7 +1492,8 @@ header h1 {
 .gkl-current-slide,
 .plu-current-slide,
 .gtw-current-slide,
-.pgv-current-slide {
+.pgv-current-slide,
+.bsr-current-slide {
     width: 100%;
     height: 600px;
     overflow: hidden;
@@ -1500,7 +1508,8 @@ header h1 {
 .gkl-carousel-container,
 .plu-carousel-container,
 .gtw-carousel-container,
-.pgv-carousel-container {
+.pgv-carousel-container,
+.bsr-carousel-container {
     position: relative;
     width: 400%;
     height: 100%;
@@ -1513,7 +1522,8 @@ header h1 {
 .gkl-carousel-slide,
 .plu-carousel-slide,
 .gtw-carousel-slide,
-.pgv-carousel-slide {
+.pgv-carousel-slide,
+.bsr-carousel-slide {
     width: 25%;
     height: 100%;
 }
@@ -1523,7 +1533,8 @@ header h1 {
 .gkl-carousel-slide img,
 .plu-carousel-slide img,
 .gtw-carousel-slide img,
-.pgv-carousel-slide img {
+.pgv-carousel-slide,
+.bsr-carousel-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1534,7 +1545,8 @@ header h1 {
 .gkl-change-btn,
 .plu-change-btn,
 .gtw-change-btn,
-.pgv-change-btn {
+.pgv-change-btn,
+.bsr-change-btn {
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -1556,7 +1568,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 9px 18px;
         font-size: 0.95rem;
     }
@@ -1572,7 +1585,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 8px 16px;
         font-size: 0.9rem;
     }
@@ -1621,25 +1635,25 @@ header h1 {
     }
 
     .form-data-row .data-cell:not(.actions)::before {
-        content: "";
+        content: '';
         font-weight: 500;
-        color: #674c1d;
+        color: #674C1D;
     }
 
     .form-data-row .data-cell:nth-child(1)::before {
-        content: "Nama :";
+        content: 'Nama :';
     }
 
     .form-data-row .data-cell:nth-child(2)::before {
-        content: "No Hp :";
+        content: 'No Hp :';
     }
 
     .form-data-row .data-cell:nth-child(3)::before {
-        content: "Lama Sewa :";
+        content: 'Lama Sewa :';
     }
 
     .form-data-row .data-cell:nth-child(4)::before {
-        content: "Ukuran Kamar :";
+        content: 'Ukuran Kamar :';
     }
 
     .form-data-row .data-cell.actions {
@@ -1658,7 +1672,8 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         flex-grow: 1;
         padding: 0.75rem;
         font-size: 0.95rem;
@@ -1669,8 +1684,8 @@ header h1 {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #ffebeb;
-        color: #e53935;
+        background: #FFEBEB;
+        color: #E53935;
         border: none;
         border-radius: 8px;
         width: 42px;
@@ -1681,7 +1696,7 @@ header h1 {
     }
 
     .form-data-row .delete-btn-data:hover {
-        background: #e53935;
+        background: #E53935;
         color: white;
     }
 
@@ -1708,7 +1723,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 7px 14px;
         font-size: 0.85rem;
     }
@@ -1724,7 +1740,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 6px 12px;
         font-size: 0.8rem;
     }
@@ -1740,7 +1757,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 5px 10px;
         font-size: 0.75rem;
     }
@@ -1756,7 +1774,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 4px 8px;
         font-size: 0.7rem;
     }
@@ -1772,7 +1791,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 4px 8px;
         font-size: 0.65rem;
     }
@@ -1788,7 +1808,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 3px 6px;
         font-size: 0.6rem;
     }
@@ -1804,7 +1825,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 3px 6px;
         font-size: 0.55rem;
     }
@@ -1820,7 +1842,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 2px 4px;
         font-size: 0.5rem;
     }
@@ -1832,7 +1855,8 @@ header h1 {
 .gkl-slide-section,
 .plu-slide-section,
 .gtw-slide-section,
-.pgv-slide-section {
+.pgv-slide-section,
+.bsr-slide-section {
     background: white;
     border-radius: 10px;
     padding: 20px;
@@ -1845,7 +1869,8 @@ header h1 {
 .gkl-current-slide,
 .plu-current-slide,
 .gtw-current-slide,
-.pgv-current-slide {
+.pgv-current-slide,
+.bsr-current-slide {
     width: 100%;
     height: 600px;
     overflow: hidden;
@@ -1860,7 +1885,8 @@ header h1 {
 .gkl-carousel-container,
 .plu-carousel-container,
 .gtw-carousel-container,
-.pgv-carousel-container {
+.pgv-carousel-container,
+.bsr-carousel-container {
     position: relative;
     width: 400%;
     height: 100%;
@@ -1873,7 +1899,8 @@ header h1 {
 .gkl-carousel-slide,
 .plu-carousel-slide,
 .gtw-carousel-slide,
-.pgv-carousel-slide {
+.pgv-carousel-slide,
+.bsr-carousel-slide {
     width: 25%;
     height: 100%;
 }
@@ -1883,7 +1910,8 @@ header h1 {
 .gkl-carousel-slide img,
 .plu-carousel-slide img,
 .gtw-carousel-slide img,
-.pgv-carousel-slide img {
+.pgv-carousel-slide,
+.bsr-carousel-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1894,7 +1922,8 @@ header h1 {
 .gkl-change-btn,
 .plu-change-btn,
 .gtw-change-btn,
-.pgv-change-btn {
+.pgv-change-btn,
+.bsr-change-btn {
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -1916,7 +1945,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 9px 18px;
         font-size: 0.95rem;
     }
@@ -1932,7 +1962,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 8px 16px;
         font-size: 0.9rem;
     }
@@ -1981,25 +2012,25 @@ header h1 {
     }
 
     .form-data-row .data-cell:not(.actions)::before {
-        content: "";
+        content: '';
         font-weight: 500;
-        color: #674c1d;
+        color: #674C1D;
     }
 
     .form-data-row .data-cell:nth-child(1)::before {
-        content: "Nama :";
+        content: 'Nama :';
     }
 
     .form-data-row .data-cell:nth-child(2)::before {
-        content: "No Hp :";
+        content: 'No Hp :';
     }
 
     .form-data-row .data-cell:nth-child(3)::before {
-        content: "Lama Sewa :";
+        content: 'Lama Sewa :';
     }
 
     .form-data-row .data-cell:nth-child(4)::before {
-        content: "Ukuran Kamar :";
+        content: 'Ukuran Kamar :';
     }
 
     .form-data-row .data-cell.actions {
@@ -2018,7 +2049,8 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         flex-grow: 1;
         padding: 0.75rem;
         font-size: 0.95rem;
@@ -2029,8 +2061,8 @@ header h1 {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #ffebeb;
-        color: #e53935;
+        background: #FFEBEB;
+        color: #E53935;
         border: none;
         border-radius: 8px;
         width: 42px;
@@ -2041,7 +2073,7 @@ header h1 {
     }
 
     .form-data-row .delete-btn-data:hover {
-        background: #e53935;
+        background: #E53935;
         color: white;
     }
 
@@ -2068,7 +2100,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 7px 14px;
         font-size: 0.85rem;
     }
@@ -2084,7 +2117,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 6px 12px;
         font-size: 0.8rem;
     }
@@ -2100,7 +2134,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 5px 10px;
         font-size: 0.75rem;
     }
@@ -2116,7 +2151,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 4px 8px;
         font-size: 0.7rem;
     }
@@ -2132,7 +2168,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 4px 8px;
         font-size: 0.65rem;
     }
@@ -2148,7 +2185,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 3px 6px;
         font-size: 0.6rem;
     }
@@ -2164,7 +2202,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 3px 6px;
         font-size: 0.55rem;
     }
@@ -2180,7 +2219,8 @@ header h1 {
     .gkl-change-btn,
     .plu-change-btn,
     .gtw-change-btn,
-    .pgv-change-btn {
+    .pgv-change-btn,
+.bsr-change-btn {
         padding: 2px 4px;
         font-size: 0.5rem;
     }
@@ -2191,7 +2231,8 @@ header h1 {
 .gkl-carousel-nav,
 .plu-carousel-nav,
 .gtw-carousel-nav,
-.pgv-carousel-nav {
+.pgv-carousel-nav,
+.bsr-carousel-nav {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -2206,7 +2247,8 @@ header h1 {
 .gkl-carousel-dot,
 .plu-carousel-dot,
 .gtw-carousel-dot,
-.pgv-carousel-dot {
+.pgv-carousel-dot,
+.bsr-carousel-dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -2220,7 +2262,8 @@ header h1 {
 .gkl-carousel-dot.active,
 .plu-carousel-dot.active,
 .gtw-carousel-dot.active,
-.pgv-carousel-dot.active {
+.pgv-carousel-dot,
+.bsr-carousel-dot.active {
     background: white;
     transform: scale(1.2);
 }
@@ -2230,7 +2273,8 @@ header h1 {
 .gkl-carousel-button,
 .plu-carousel-button,
 .gtw-carousel-button,
-.pgv-carousel-button {
+.pgv-carousel-button,
+.bsr-carousel-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -2253,7 +2297,8 @@ header h1 {
 .gkl-carousel-button:hover,
 .plu-carousel-button:hover,
 .gtw-carousel-button:hover,
-.pgv-carousel-button:hover {
+.pgv-carousel-button,
+.bsr-carousel-button:hover {
     background: rgba(0, 0, 0, 0.8);
 }
 
@@ -2262,7 +2307,8 @@ header h1 {
 .gkl-carousel-button.prev,
 .plu-carousel-button.prev,
 .gtw-carousel-button.prev,
-.pgv-carousel-button.prev {
+.pgv-carousel-button,
+.bsr-carousel-button.prev {
     left: 20px;
 }
 
@@ -2271,7 +2317,8 @@ header h1 {
 .gkl-carousel-button.next,
 .plu-carousel-button.next,
 .gtw-carousel-button.next,
-.pgv-carousel-button.next {
+.pgv-carousel-button,
+.bsr-carousel-button.next {
     right: 20px;
 }
 
@@ -2291,7 +2338,8 @@ header h1 {
 .gkl-add-room-btn,
 .plu-add-room-btn,
 .gtw-add-room-btn,
-.pgv-add-room-btn {
+.pgv-add-room-btn,
+.bsr-add-room-btn {
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -2308,7 +2356,8 @@ header h1 {
 .gkl-add-room-btn:hover,
 .plu-add-room-btn:hover,
 .gtw-add-room-btn:hover,
-.pgv-add-room-btn:hover {
+.pgv-add-room-btn:hover,
+.bsr-add-room-btn:hover {
     background-color: var(--secondary-color);
     transform: translateY(-2px);
 }
@@ -2324,10 +2373,9 @@ header h1 {
 }
 
 .room-card {
-    max-height: fit-content;
     width: 100%;
     min-width: 0;
-    background: #fff8ebff;
+    background: #FFF8EBFF;
     border-radius: 5px;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(103, 76, 29, 0.2);
@@ -2370,7 +2418,7 @@ header h1 {
 .right-text {
     font-family: "poppins", sans-serif;
     line-height: 1.2;
-    color: #674c1d;
+    color: #674C1D;
     font-size: 0.9rem;
     font-weight: bolder;
     flex: 1;
@@ -2382,11 +2430,12 @@ header h1 {
 .right-text {
     text-align: right;
     align-items: flex-end;
+
 }
 
 .room-type {
-    -webkit-text-stroke: 0.5px #674c1d;
-    -webkit-text-fill-color: #fff8eb;
+    -webkit-text-stroke: 0.5px #674C1D;
+    -webkit-text-fill-color: #FFF8EB;
     display: block;
     white-space: nowrap;
     overflow: hidden;
@@ -2406,8 +2455,7 @@ header h1 {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 20px;
-    min-height: 50px;
+    margin-top: 10px;
 }
 
 .edit-room-btn,
@@ -2416,7 +2464,8 @@ header h1 {
 .gkl-edit-room-btn,
 .plu-edit-room-btn,
 .gtw-edit-room-btn,
-.pgv-edit-room-btn {
+.pgv-edit-room-btn,
+.bsr-edit-room-btn {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -2434,12 +2483,14 @@ header h1 {
 .gkl-edit-room-btn,
 .plu-edit-room-btn,
 .gtw-edit-room-btn,
-.pgv-edit-room-btn {
+.pgv-edit-room-btn,
+.bsr-edit-room-btn {
     background: #0953ff33;
     color: #0953ff;
 }
 
-.delete-room-btn {
+.delete-room-btn,
+.bsr-delete-room-btn {
     background: rgba(255, 68, 68, 0.3);
     color: #ff4444;
 }
@@ -2449,12 +2500,14 @@ header h1 {
 .gkl-edit-room-btn:hover,
 .plu-edit-room-btn:hover,
 .gtw-edit-room-btn:hover,
-.pgv-edit-room-btn:hover {
+.pgv-edit-room-btn:hover,
+.bsr-edit-room-btn:hover {
     background: #0953ff;
     color: white;
 }
 
-.delete-room-btn:hover {
+.delete-room-btn:hover,
+.bsr-delete-room-btn:hover {
     background: rgba(255, 68, 68, 1);
     color: white;
 }
@@ -2464,10 +2517,11 @@ header h1 {
 .gkl-more-btn,
 .plu-more-btn,
 .gtw-more-btn,
-.pgv-more-btn {
+.pgv-more-btn,
+.bsr-more-btn {
     width: 120px;
     height: 40px;
-    background-color: #674c1d;
+    background-color: #674C1D;
     color: white;
     border: none;
     border-radius: 20px;
@@ -2481,9 +2535,10 @@ header h1 {
 .gkl-more-btn:hover,
 .plu-more-btn:hover,
 .gtw-more-btn:hover,
-.pgv-more-btn:hover {
-    background-color: #fff8eb;
-    color: #674c1d;
+.pgv-more-btn,
+.bsr-more-btn:hover {
+    background-color: #FFF8EB;
+    color: #674C1D;
     box-shadow: 0 4px 8px rgba(103, 76, 29, 0.2);
 }
 
@@ -2507,7 +2562,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.95rem;
         padding: 9px 18px;
     }
@@ -2531,12 +2587,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 38px;
         height: 38px;
     }
@@ -2546,7 +2604,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 110px;
         height: 38px;
         font-size: 0.85rem;
@@ -2564,7 +2623,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.9rem;
         padding: 8px 16px;
     }
@@ -2588,12 +2648,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 35px;
         height: 35px;
     }
@@ -2603,7 +2665,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 100px;
         height: 35px;
         font-size: 0.8rem;
@@ -2624,7 +2687,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.85rem;
         padding: 7px 14px;
     }
@@ -2652,12 +2716,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 32px;
         height: 32px;
     }
@@ -2667,7 +2733,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 90px;
         height: 32px;
         font-size: 0.75rem;
@@ -2688,7 +2755,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.8rem;
         padding: 6px 12px;
     }
@@ -2716,12 +2784,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 30px;
         height: 30px;
     }
@@ -2731,7 +2801,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 80px;
         height: 30px;
         font-size: 0.7rem;
@@ -2751,7 +2822,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.8rem;
         padding: 6px 12px;
     }
@@ -2779,12 +2851,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 30px;
         height: 30px;
     }
@@ -2794,7 +2868,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 80px;
         height: 30px;
         font-size: 0.7rem;
@@ -2814,7 +2889,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.75rem;
         padding: 5px 10px;
     }
@@ -2842,12 +2918,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 28px;
         height: 28px;
     }
@@ -2857,7 +2935,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 75px;
         height: 28px;
         font-size: 0.65rem;
@@ -2877,7 +2956,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.7rem;
         padding: 4px 8px;
     }
@@ -2901,12 +2981,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 25px;
         height: 25px;
     }
@@ -2916,7 +2998,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 70px;
         height: 25px;
         font-size: 0.6rem;
@@ -2936,7 +3019,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.7rem;
         padding: 5px 10px;
     }
@@ -2960,12 +3044,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 24px;
         height: 24px;
     }
@@ -2975,7 +3061,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 65px;
         height: 24px;
         font-size: 0.6rem;
@@ -2995,7 +3082,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.65rem;
         padding: 4px 8px;
     }
@@ -3019,12 +3107,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 22px;
         height: 22px;
     }
@@ -3034,7 +3124,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 65px;
         height: 22px;
         font-size: 0.55rem;
@@ -3053,7 +3144,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.6rem;
         padding: 3px 6px;
     }
@@ -3077,12 +3169,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 20px;
         height: 20px;
     }
@@ -3092,7 +3186,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 60px;
         height: 20px;
         font-size: 0.5rem;
@@ -3111,7 +3206,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.55rem;
         padding: 3px 6px;
     }
@@ -3135,12 +3231,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 18px;
         height: 18px;
     }
@@ -3150,7 +3248,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 55px;
         height: 18px;
         font-size: 0.45rem;
@@ -3169,7 +3268,8 @@ header h1 {
     .gkl-add-room-btn,
     .plu-add-room-btn,
     .gtw-add-room-btn,
-    .pgv-add-room-btn {
+    .pgv-add-room-btn,
+.bsr-add-room-btn {
         font-size: 0.5rem;
         padding: 2px 4px;
     }
@@ -3193,12 +3293,14 @@ header h1 {
     .plu-edit-room-btn,
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
+.bsr-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
-    .pgv-delete-room-btn {
+    .pgv-delete-room-btn,
+.bsr-delete-room-btn {
         width: 16px;
         height: 16px;
     }
@@ -3208,7 +3310,8 @@ header h1 {
     .gkl-more-btn,
     .plu-more-btn,
     .gtw-more-btn,
-    .pgv-more-btn {
+    .pgv-more-btn,
+.bsr-more-btn {
         width: 50px;
         height: 16px;
         font-size: 0.4rem;
@@ -3262,7 +3365,7 @@ header h1 {
 .delete-data-content p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-    color: #674c1d;
+    color: #674C1D;
     font-family: "Poppins", sans-serif;
 }
 
@@ -3289,7 +3392,7 @@ header h1 {
 .popup-cancel-data,
 .popup-cancel-delete-data {
     color: #333;
-    border: 1px solid #674c1d;
+    border: 1px solid #674C1D;
     background-color: white;
 }
 
@@ -3298,13 +3401,13 @@ header h1 {
 .popup-cancel-delete-comment:hover,
 .popup-cancel-data:hover,
 .popup-cancel-delete-data:hover {
-    background-color: #d0d0d0;
+    background-color: #D0D0D0;
 }
 
 .popup-delete,
 .popup-delete-comment,
 .popup-delete-data {
-    background-color: #674c1d;
+    background-color: #674C1D;
     color: white;
 }
 
@@ -3320,8 +3423,9 @@ header h1 {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+
 .popup-apply-comment {
-    background-color: #674c1d;
+    background-color: #674C1D;
     color: white;
 }
 
@@ -3337,7 +3441,6 @@ header h1 {
     padding: 20px;
     margin-bottom: 30px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    height: 100vh;
 }
 
 .comment-cards {
@@ -3345,7 +3448,7 @@ header h1 {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     width: 100%;
-    height: 85%;
+    height: 40vh;
     overflow-y: scroll;
 }
 
@@ -3363,30 +3466,34 @@ header h1 {
     margin: 0 auto;
 }
 
-.tpj-comment-user {
-    color: #674c1d;
+.tpj-comment-user,
+.bsr-comment-user {
+    color: #674C1D;
     font-size: 0.9rem;
     font-weight: bold;
     font-family: "Poppins", sans-serif;
 }
 
 .tpj-star-rating,
-.tpc-star-rating {
+.tpc-star-rating,
+.bsr-star-rating {
     display: flex;
     align-items: center;
     gap: 2px;
-    color: #674c1d;
+    color: #674C1D;
 }
 
 .tpj-star-rating i,
-.tpc-star-rating i {
+.tpc-star-rating i,
+.bsr-star-rating i {
     font-size: 14px;
 }
 
 .tpj-quote-icon,
-.tpc-quote-icon {
+.tpc-quote-icon,
+.bsr-quote-icon {
     font-size: 3rem;
-    color: #674c1d;
+    color: #674C1D;
     line-height: 1;
     font-family: "42dot Sans", sans-serif;
     font-weight: bold;
@@ -3410,7 +3517,6 @@ header h1 {
 .comment-content {
     margin-bottom: 15px;
     position: relative;
-    height: 90%;
 }
 
 .comment-content p {
@@ -3422,7 +3528,8 @@ header h1 {
 .comment-footer {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0 10px;
+    align-items: flex-end;
+    padding-top: 10px;
     border-top: 1px solid #eee;
 }
 
@@ -3495,9 +3602,10 @@ header h1 {
 }
 
 .tpj-comment-text,
-.tpc-comment-text {
+.tpc-comment-text,
+.bsr-comment-text {
     font-size: 0.8rem;
-    color: #674c1d;
+    color: #674C1D;
     line-height: 1.4;
     margin: 12px 0;
     font-family: "Montserrat", sans-serif;
@@ -3521,7 +3629,9 @@ header h1 {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .tpj-comment-user {
+
+    .tpj-comment-user,
+.bsr-comment-user {
         font-size: 0.85rem;
     }
 
@@ -3538,15 +3648,17 @@ header h1 {
 /* Responsive untuk layar kecil */
 @media screen and (max-width: 926px) {
     .comment-section {
-        height: 90vh;
+        height: 60vh;
     }
 
     .comment-cards {
         grid-template-columns: 1fr;
-        height: 85%;
+        height: 60%;
     }
 
-    .tpj-comment-user {
+
+    .tpj-comment-user,
+.bsr-comment-user {
         font-size: 0.8rem;
     }
 
@@ -3574,6 +3686,8 @@ header h1 {
 /* Responsive untuk layar sangat kecil */
 /* Start of Selection */
 @media screen and (max-width: 480px) {
+
+
     .comment-cards {
         height: 45vh;
         grid-template-columns: 1fr;
@@ -3585,7 +3699,8 @@ header h1 {
         padding: 8px;
     }
 
-    .tpj-comment-user {
+    .tpj-comment-user,
+.bsr-comment-user {
         font-size: 0.65rem;
     }
 
@@ -3623,6 +3738,9 @@ header h1 {
 }
 
 /* End of Selection */
+
+
+
 
 /* Form Data Section Styling */
 .form-data-section {
@@ -3684,7 +3802,8 @@ header h1 {
 .gkl-detail-btn,
 .plu-detail-btn,
 .gtw-detail-btn,
-.pgv-detail-btn {
+.pgv-detail-btn,
+.bsr-detail-btn {
     background: var(--primary-color);
     color: white;
     border: none;
@@ -3699,8 +3818,9 @@ header h1 {
 .gkl-detail-btn:hover,
 .plu-detail-btn:hover,
 .gtw-detail-btn:hover,
-.pgv-detail-btn:hover {
-    background-color: #674c1d;
+.pgv-detail-btn,
+.bsr-detail-btn:hover {
+    background-color: #674C1D;
 }
 
 .form-data-row .delete-btn,
@@ -3728,7 +3848,8 @@ header h1 {
 .gkl-detail-data-section,
 .plu-detail-data-section,
 .gtw-detail-data-section,
-.pgv-detail-data-section {
+.pgv-detail-data-section,
+.bsr-detail-data-section {
     padding: 20px;
     position: fixed;
     top: 0;
@@ -3746,7 +3867,8 @@ header h1 {
 .gkl-detail-data-section,
 .plu-detail-data-section,
 .gtw-detail-data-section,
-.pgv-detail-data-section {
+.pgv-detail-data-section,
+.bsr-detail-data-section {
     width: 100%;
     position: fixed;
     top: 0;
@@ -3765,7 +3887,8 @@ header h1 {
 .gkl-detail-container,
 .plu-detail-container,
 .gtw-detail-container,
-.pgv-detail-container {
+.pgv-detail-container,
+.bsr-detail-container {
     background: white;
     padding: 2rem;
     border-radius: 8px;
@@ -3808,7 +3931,9 @@ header h1 {
 .gkl-detail-container .gkl-back-btn,
 .plu-detail-container .plu-back-btn,
 .gtw-detail-container .gtw-back-btn,
-.pgv-detail-container .pgv-back-btn {
+.pgv-detail-container,
+.bsr-detail-container .pgv-back-btn,
+.bsr-back-btn {
     background: var(--primary-color);
     color: white;
     border: none;
@@ -3819,13 +3944,16 @@ header h1 {
     margin-bottom: 20px;
 }
 
+
 .detail-container .back-btn:hover,
 .tpc-detail-container .tpc-back-btn:hover,
 .gkl-detail-container:hover .gkl-back-btn:hover,
 .plu-detail-container .plu-back-btn:hover,
 .gtw-detail-container .gtw-back-btn:hover,
-.pgv-detail-container:hover .pgv-back-btn:hover {
-    background: #d2691e;
+.pgv-detail-container,
+.bsr-detail-container:hover .pgv-back-btn,
+.bsr-back-btn:hover {
+    background: #D2691E;
 }
 
 /* Responsive Design untuk Form Data */
@@ -3854,6 +3982,7 @@ header h1 {
         background-color: white;
         box-shadow: 0 4px 12px rgba(103, 76, 29, 0.08);
         border: none;
+
     }
 
     .form-data-row:last-child {
@@ -3883,27 +4012,28 @@ header h1 {
 
     .form-data-row .data-cell:not(.actions)::before {
         font-family: "Poppins", sans-serif;
-        color: #674c1d;
+        color: #674C1D;
         width: 110px;
         flex-shrink: 0;
         font-weight: 500;
     }
 
     .form-data-row .data-cell:nth-child(1)::before {
-        content: "Nama";
+        content: 'Nama';
     }
 
     .form-data-row .data-cell:nth-child(2)::before {
-        content: "No Hp";
+        content: 'No Hp';
     }
 
     .form-data-row .data-cell:nth-child(3)::before {
-        content: "Lama Sewa";
+        content: 'Lama Sewa';
     }
 
     .form-data-row .data-cell:nth-child(4)::before {
-        content: "Ukuran Kamar";
+        content: 'Ukuran Kamar';
     }
+
 
     .data-cell.actions {
         display: block;
@@ -3916,19 +4046,22 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         width: 100%;
         padding: 12px;
         font-size: 1rem;
         border-radius: 8px;
     }
 
+
+
     .form-data-row .delete-btn-data {
         position: absolute;
         top: 15px;
         right: 15px;
-        background: #ffebeb;
-        color: #e53935;
+        background: #FFEBEB;
+        color: #E53935;
         width: 35px;
         height: 35px;
         padding: 0;
@@ -3940,15 +4073,15 @@ header h1 {
     }
 
     .form-data-row .delete-btn-data:hover {
-        background: #e53935;
+        background: #E53935;
         color: white;
     }
 
-    .form-data-row > :nth-child(n) {
+    .form-data-row> :nth-child(n) {
         display: flex !important;
     }
 
-    .form-data-row > .actions {
+    .form-data-row>.actions {
         display: block !important;
     }
 }
@@ -3964,6 +4097,7 @@ header h1 {
 }
 
 @media screen and (max-width: 992px) {
+
     .form-data-header,
     .form-data-row {
         font-size: 0.95rem;
@@ -3976,6 +4110,7 @@ header h1 {
 }
 
 @media screen and (max-width: 768px) {
+
     .form-data-header,
     .form-data-row {
         font-size: 0.9rem;
@@ -3994,13 +4129,15 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         padding: 6px 12px;
         font-size: 0.9rem;
     }
 }
 
 @media screen and (max-width: 576px) {
+
     .form-data-header,
     .form-data-row {
         grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -4009,8 +4146,8 @@ header h1 {
     }
 
     /* Menyembunyikan kolom Ukuran Kamar */
-    .form-data-header > :nth-child(4),
-    .form-data-row > :nth-child(4) {
+    .form-data-header> :nth-child(4),
+    .form-data-row> :nth-child(4) {
         display: none;
     }
 
@@ -4026,13 +4163,15 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         padding: 5px 10px;
         font-size: 0.85rem;
     }
 }
 
 @media screen and (max-width: 480px) {
+
     .form-data-header,
     .form-data-row {
         grid-template-columns: 2fr 1fr 1fr;
@@ -4041,8 +4180,8 @@ header h1 {
     }
 
     /* Menyembunyikan kolom Lama Sewa */
-    .form-data-header > :nth-child(3),
-    .form-data-row > :nth-child(3) {
+    .form-data-header> :nth-child(3),
+    .form-data-row> :nth-child(3) {
         display: none;
     }
 
@@ -4051,25 +4190,31 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         padding: 4px 8px;
         font-size: 0.8rem;
     }
 }
 
 @media screen and (max-width: 426px) {
+
     .detail-btn,
     .tpc-detail-btn,
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         font-size: 0.6rem;
         padding: 2px 4px;
     }
+
+
 }
 
 @media screen and (max-width: 400px) {
+
     .form-data-header,
     .form-data-row {
         grid-template-columns: 2fr 1fr;
@@ -4078,8 +4223,8 @@ header h1 {
     }
 
     /* Menyembunyikan kolom No HP */
-    .form-data-header > :nth-child(2),
-    .form-data-row > :nth-child(2) {
+    .form-data-header> :nth-child(2),
+    .form-data-row> :nth-child(2) {
         display: none;
     }
 
@@ -4088,24 +4233,28 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         padding: 3px 6px;
         font-size: 0.75rem;
     }
 }
 
 @media screen and (max-width: 376px) {
+
     .detail-btn,
     .tpc-detail-btn,
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         font-size: 0.5rem;
     }
 }
 
 @media screen and (max-width: 320px) {
+
     .form-data-header,
     .form-data-row,
     .data-cell {
@@ -4118,7 +4267,8 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         padding: 2px 4px;
         font-size: 0.45rem;
     }
@@ -4129,7 +4279,9 @@ header h1 {
     }
 }
 
+
 @media screen and (max-width: 280px) {
+
     .form-data-header,
     .form-data-row {
         font-size: 0.65rem;
@@ -4141,7 +4293,8 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         padding: 2px 4px;
         font-size: 0.65rem;
     }
@@ -4153,6 +4306,7 @@ header h1 {
 }
 
 @media screen and (max-width: 240px) {
+
     .form-data-header,
     .form-data-row {
         font-size: 0.6rem;
@@ -4164,7 +4318,8 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         padding: 2px 3px;
         font-size: 0.6rem;
     }
@@ -4176,6 +4331,7 @@ header h1 {
 }
 
 @media screen and (max-width: 200px) {
+
     .form-data-header,
     .form-data-row {
         font-size: 0.55rem;
@@ -4187,7 +4343,8 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         padding: 1px 2px;
         font-size: 0.55rem;
     }
@@ -4198,6 +4355,7 @@ header h1 {
     }
 }
 
+
 /* ===============================
    Section Wrapper Styles
    =============================== */
@@ -4207,12 +4365,14 @@ header h1 {
 .plu-create-room-section,
 .gtw-create-room-section,
 .pgv-create-room-section,
+.bsr-create-room-section,
 .edit-room-section,
 .tpc-edit-room-section,
 .gkl-edit-room-section,
 .plu-edit-room-section,
 .gtw-edit-room-section,
-.pgv-edit-room-section {
+.pgv-edit-room-section,
+.bsr-edit-room-section {
     padding: 2rem;
     background-color: #fff8eb;
     height: calc(100vh - 80px);
@@ -4228,7 +4388,8 @@ header h1 {
 .gkl-edit-room-section,
 .plu-edit-room-section,
 .gtw-edit-room-section,
-.pgv-edit-room-section {
+.pgv-edit-room-section,
+.bsr-edit-room-section {
     background-color: #ffffff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
@@ -4341,6 +4502,139 @@ header h1 {
     margin-top: 0.5rem;
 }
 
+/* Image in edit room sections */
+.bsr-edit-room-section img,
+.bsr-create-room-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+/* BSR Delete Button Specific Styling */
+.bsr-delete-room-btn {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+    background: rgba(255, 68, 68, 0.3) !important;
+    color: #ff4444 !important;
+}
+
+.bsr-delete-room-btn:hover {
+    background: rgba(255, 68, 68, 1) !important;
+    color: white !important;
+    transform: scale(1.05) !important;
+}
+
+.bsr-delete-room-btn i {
+    font-size: 14px !important;
+}
+
+/* Responsive BSR Delete Button */
+@media screen and (max-width: 1200px) {
+    .bsr-delete-room-btn {
+        width: 38px !important;
+        height: 38px !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .bsr-delete-room-btn {
+        width: 35px !important;
+        height: 35px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .bsr-delete-room-btn {
+        width: 32px !important;
+        height: 32px !important;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .bsr-delete-room-btn {
+        width: 30px !important;
+        height: 30px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .bsr-delete-room-btn {
+        width: 28px !important;
+        height: 28px !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .bsr-delete-room-btn {
+        width: 25px !important;
+        height: 25px !important;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .bsr-delete-room-btn {
+        width: 24px !important;
+        height: 24px !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .bsr-delete-room-btn {
+        width: 22px !important;
+        height: 22px !important;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .bsr-delete-room-btn {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
+
+@media screen and (max-width: 240px) {
+    .bsr-delete-room-btn {
+        width: 18px !important;
+        height: 18px !important;
+    }
+}
+
+@media screen and (max-width: 200px) {
+    .bsr-delete-room-btn {
+        width: 16px !important;
+        height: 16px !important;
+    }
+}
+
+/* Hide icon and label when image is present */
+.bsr-edit-room-section .image-upload-large:has(img),
+.bsr-edit-room-section .image-upload-small:has(img),
+.bsr-create-room-section .image-upload-large:has(img),
+.bsr-create-room-section .image-upload-small:has(img) {
+    position: relative;
+}
+
+.bsr-edit-room-section .image-upload-large:has(img) i,
+.bsr-edit-room-section .image-upload-large:has(img) p,
+.bsr-edit-room-section .image-upload-small:has(img) i,
+.bsr-edit-room-section .image-upload-small:has(img) p,
+.bsr-create-room-section .image-upload-large:has(img) i,
+.bsr-create-room-section .image-upload-large:has(img) p,
+.bsr-create-room-section .image-upload-small:has(img) i,
+.bsr-create-room-section .image-upload-small:has(img) p {
+    display: none;
+}
+
 /* ===============================
    Buttons Area
    =============================== */
@@ -4385,24 +4679,32 @@ header h1 {
 .plu-edit-back-btn,
 .gtw-edit-back-btn,
 .pgv-edit-back-btn,
+.bsr-edit-back-btn,
+
 .create-back-btn,
 .tpc-create-back-btn,
 .gkl-create-back-btn,
 .plu-create-back-btn,
 .gtw-create-back-btn,
 .pgv-create-back-btn,
+.bsr-create-back-btn,
+
+
 .create-save-btn,
 .tpc-create-save-btn,
 .gkl-create-save-btn,
 .plu-create-save-btn,
 .gtw-create-save-btn,
 .pgv-create-save-btn,
+.bsr-create-save-btn,
+
 .edit-save-btn,
 .tpc-edit-save-btn,
 .gkl-edit-save-btn,
 .plu-edit-save-btn,
 .gtw-edit-save-btn,
-.pgv-edit-save-btn {
+.pgv-edit-save-btn,
+.bsr-edit-save-btn {
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 5px;
@@ -4417,12 +4719,15 @@ header h1 {
 .plu-edit-back-btn,
 .gtw-edit-back-btn,
 .pgv-edit-back-btn,
+.bsr-edit-back-btn,
+
 .create-back-btn,
 .tpc-create-back-btn,
 .gkl-create-back-btn,
 .plu-create-back-btn,
 .gtw-create-back-btn,
-.pgv-create-back-btn {
+.pgv-create-back-btn,
+.bsr-create-back-btn {
     background-color: #f0f0f0;
     color: #333;
 }
@@ -4433,12 +4738,15 @@ header h1 {
 .plu-create-save-btn,
 .gtw-create-save-btn,
 .pgv-create-save-btn,
+.bsr-create-save-btn,
+
 .edit-save-btn,
 .tpc-edit-save-btn,
 .gkl-edit-save-btn,
 .plu-edit-save-btn,
 .gtw-edit-save-btn,
-.pgv-edit-save-btn {
+.pgv-edit-save-btn,
+.bsr-edit-save-btn {
     background-color: var(--primary-color);
     color: white;
 }
@@ -4448,13 +4756,16 @@ header h1 {
 .gkl-edit-back-btn:hover,
 .plu-edit-back-btn:hover,
 .gtw-edit-back-btn:hover,
-.pgv-edit-back-btn:hover,
+.pgv-edit-back-btn,
+.bsr-edit-back-btn:hover,
+
 .create-back-btn:hover,
 .tpc-create-back-btn:hover,
 .gkl-create-back-btn:hover,
 .plu-create-back-btn:hover,
 .gtw-create-back-btn:hover,
-.pgv-create-back-btn:hover {
+.pgv-create-back-btn,
+.bsr-create-back-btn:hover {
     background-color: #e0e0e0;
 }
 
@@ -4463,13 +4774,16 @@ header h1 {
 .gkl-create-save-btn:hover,
 .plu-create-save-btn:hover,
 .gtw-create-save-btn:hover,
-.pgv-create-save-btn:hover,
+.pgv-create-save-btn,
+.bsr-create-save-btn:hover,
+
 .edit-save-btn:hover,
 .tpc-edit-save-btn:hover,
 .gkl-edit-save-btn:hover,
 .plu-edit-save-btn:hover,
 .gtw-edit-save-btn:hover,
-.pgv-edit-save-btn:hover {
+.pgv-edit-save-btn,
+.bsr-edit-save-btn:hover {
     background-color: var(--secondary-color);
 }
 
@@ -4604,6 +4918,7 @@ header h1 {
     transition: all 0.3s ease;
 }
 
+
 .image-upload-small i {
     font-size: 1.5rem;
     color: var(--primary-color);
@@ -4627,6 +4942,7 @@ header h1 {
 .image-upload-small:hover i {
     color: var(--secondary-color);
 }
+
 
 @media screen and (max-width: 768px) {
     .edit-room-section {
@@ -4659,12 +4975,14 @@ header h1 {
     .plu-create-back-btn,
     .gtw-create-back-btn,
     .pgv-create-back-btn,
+.bsr-create-back-btn,
     .edit-save-btn,
     .tpc-edit-save-btn,
     .gkl-edit-save-btn,
     .plu-edit-save-btn,
     .gtw-edit-save-btn,
-    .pgv-edit-save-btn {
+    .pgv-edit-save-btn,
+.bsr-edit-save-btn {
         width: 100%;
     }
 }
@@ -4721,7 +5039,7 @@ header h1 {
     width: 100%;
     height: auto;
     max-width: 450px;
-    background: #fff8eb;
+    background: #FFF8EB;
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -4752,7 +5070,7 @@ header h1 {
     right: -15px;
     width: 35px;
     height: 35px;
-    background: #674c1d;
+    background: #674C1D;
     border: none;
     border-radius: 50%;
     color: white;
@@ -4826,7 +5144,7 @@ header h1 {
 }
 
 .popup-carousel-nav:hover {
-    background: #674c1d;
+    background: #674C1D;
 }
 
 .popup-carousel-prev {
@@ -4852,12 +5170,12 @@ header h1 {
 }
 
 .popup-carousel-dot.active {
-    background: #674c1d;
+    background: #674C1D;
 }
 
 .popup-content {
     padding: 20px 0;
-    color: #674c1d;
+    color: #674C1D;
     width: 100%;
 }
 
@@ -5060,7 +5378,8 @@ header h1 {
 .gkl-change-slide-section,
 .plu-change-slide-section,
 .gtw-change-slide-section,
-.pgv-change-slide-section {
+.pgv-change-slide-section,
+.bsr-change-slide-section {
     padding: 20px;
     overflow-y: auto;
     height: calc(100vh - 100px);
@@ -5071,7 +5390,8 @@ header h1 {
 .gkl-change-slide-section,
 .plu-change-slide-section,
 .gtw-change-slide-section,
-.pgv-change-slide-section {
+.pgv-change-slide-section,
+.bsr-change-slide-section {
     width: 100%;
 }
 
@@ -5092,7 +5412,8 @@ header h1 {
 .gkl-back-btn-slide,
 .plu-back-btn-slide,
 .gtw-back-btn-slide,
-.pgv-back-btn-slide {
+.pgv-back-btn,
+.bsr-back-btn-slide {
     background: var(--primary-color);
     color: white;
     border: none;
@@ -5109,8 +5430,9 @@ header h1 {
 .gkl-back-btn-slide:hover,
 .plu-back-btn-slide:hover,
 .gtw-back-btn-slide:hover,
-.pgv-back-btn-slide:hover {
-    background: #d2691e;
+.pgv-back-btn,
+.bsr-back-btn-slide:hover {
+    background: #D2691E;
     transform: translateY(-2px);
 }
 
@@ -5119,8 +5441,9 @@ header h1 {
 .gkl-update-btn-slide,
 .plu-update-btn-slide,
 .gtw-update-btn-slide,
-.pgv-update-btn-slide {
-    background: #4caf50;
+.pgv-update-btn-slide,
+.bsr-update-btn-slide {
+    background: #4CAF50;
     color: white;
     border: none;
     padding: 8px 25px;
@@ -5137,8 +5460,9 @@ header h1 {
 .gkl-update-btn-slide:hover,
 .plu-update-btn-slide:hover,
 .gtw-update-btn-slide:hover,
-.pgv-update-btn-slide:hover {
-    background: #388e3c;
+.pgv-update-btn-slide,
+.bsr-update-btn-slide:hover {
+    background: #388E3C;
     transform: translateY(-2px);
 }
 
@@ -5147,7 +5471,8 @@ header h1 {
 .gkl-update-btn-slide.show,
 .plu-update-btn-slide.show,
 .gtw-update-btn-slide.show,
-.pgv-update-btn-slide.show {
+.pgv-update-btn-slide,
+.bsr-update-btn-slide.show {
     display: block;
 }
 
@@ -5162,13 +5487,15 @@ header h1 {
     .gkl-back-btn-slide,
     .plu-back-btn-slide,
     .gtw-back-btn-slide,
-    .pgv-back-btn-slide,
+    .pgv-back-btn,
+.bsr-back-btn-slide,
     .update-btn,
     .tpc-update-btn-slide,
     .gkl-update-btn-slide,
     .plu-update-btn-slide,
     .gtw-update-btn-slide,
-    .pgv-update-btn-slide {
+    .pgv-update-btn-slide,
+.bsr-update-btn-slide {
         padding: 6px 20px;
         font-size: 14px;
     }
@@ -5246,12 +5573,14 @@ header h1 {
 }
 
 @media screen and (max-width: 768px) {
+
     .change-slide-section,
     .tpc-change-slide-section,
     .gkl-change-slide-section,
     .plu-change-slide-section,
     .gtw-change-slide-section,
-    .pgv-change-slide-section {
+    .pgv-change-slide-section,
+.bsr-change-slide-section {
         padding: 10px;
         height: calc(100vh - 80px);
     }
@@ -5265,11 +5594,14 @@ header h1 {
     .gkl-back-btn-slide,
     .plu-back-btn-slide,
     .gtw-back-btn-slide,
-    .pgv-back-btn-slide {
+    .pgv-back-btn,
+.bsr-back-btn-slide {
         padding: 6px 20px;
         font-size: 14px;
     }
 }
+
+
 
 /* Room Pop-up Styles */
 .room-popup-overlay {
@@ -5291,7 +5623,7 @@ header h1 {
 
 .room-popup-container {
     position: relative;
-    width: min(80vw, 500px);
+    width: min(80vw, 600px);
     aspect-ratio: 1/1;
     background-color: white;
     border-radius: 10px;
@@ -5373,7 +5705,7 @@ header h1 {
 }
 
 .room-popup-nav:hover {
-    background: #674c1d;
+    background: #674C1D;
 }
 
 .room-popup-nav.prev {
@@ -5653,36 +5985,42 @@ header h1 {
 }
 
 @media screen and (max-width: 1200px) {
+
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
     .plu-current-slide,
     .gtw-current-slide,
-    .pgv-current-slide {
+    .pgv-current-slide,
+.bsr-current-slide {
         height: 500px;
         max-width: 1000px;
     }
 }
 
 @media screen and (max-width: 992px) {
+
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
     .plu-current-slide,
     .gtw-current-slide,
-    .pgv-current-slide {
+    .pgv-current-slide,
+.bsr-current-slide {
         height: 400px;
         max-width: 800px;
     }
 }
 
 @media screen and (max-width: 768px) {
+
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
     .plu-current-slide,
     .gtw-current-slide,
-    .pgv-current-slide {
+    .pgv-current-slide,
+.bsr-current-slide {
         height: 350px;
         max-width: 600px;
     }
@@ -5707,12 +6045,14 @@ header h1 {
 }
 
 @media screen and (max-width: 576px) {
+
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
     .plu-current-slide,
     .gtw-current-slide,
-    .pgv-current-slide {
+    .pgv-current-slide,
+.bsr-current-slide {
         height: 300px;
         max-width: 450px;
     }
@@ -5733,24 +6073,28 @@ header h1 {
 }
 
 @media screen and (max-width: 480px) {
+
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
     .plu-current-slide,
     .gtw-current-slide,
-    .pgv-current-slide {
+    .pgv-current-slide,
+.bsr-current-slide {
         height: 250px;
         max-width: 380px;
     }
 }
 
 @media screen and (max-width: 400px) {
+
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
     .plu-current-slide,
     .gtw-current-slide,
-    .pgv-current-slide {
+    .pgv-current-slide,
+.bsr-current-slide {
         height: 200px;
         max-width: 320px;
     }
@@ -5771,24 +6115,28 @@ header h1 {
 }
 
 @media screen and (max-width: 320px) {
+
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
     .plu-current-slide,
     .gtw-current-slide,
-    .pgv-current-slide {
+    .pgv-current-slide,
+.bsr-current-slide {
         height: 180px;
         max-width: 280px;
     }
 }
 
 @media screen and (max-width: 280px) {
+
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
     .plu-current-slide,
     .gtw-current-slide,
-    .pgv-current-slide {
+    .pgv-current-slide,
+.bsr-current-slide {
         height: 160px;
         max-width: 240px;
     }
@@ -5804,24 +6152,28 @@ header h1 {
 }
 
 @media screen and (max-width: 240px) {
+
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
     .plu-current-slide,
     .gtw-current-slide,
-    .pgv-current-slide {
+    .pgv-current-slide,
+.bsr-current-slide {
         height: 140px;
         max-width: 200px;
     }
 }
 
 @media screen and (max-width: 200px) {
+
     .current-slide,
     .tpc-current-slide,
     .gkl-current-slide,
     .plu-current-slide,
     .gtw-current-slide,
-    .pgv-current-slide {
+    .pgv-current-slide,
+.bsr-current-slide {
         height: 120px;
         max-width: 180px;
     }
@@ -6001,6 +6353,75 @@ header h1 {
     transform: scale(1.2);
 }
 
+/* ========================================
+   BSR SECTION SPECIFIC STYLES
+   ======================================== */
+
+/* Ensure BSR section has proper scrolling */
+.bsr-section {
+    position: relative;
+    height: calc(100vh - 40px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+}
+
+.bsr-section::-webkit-scrollbar {
+    width: 6px;
+}
+
+.bsr-section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.bsr-section::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+.bsr-section::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* BSR Carousel specific improvements */
+.bsr-current-slide {
+    margin-bottom: 20px;
+}
+
+.bsr-carousel-container {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* BSR Room cards improvements */
+.bsr-section .room-cards {
+    margin-bottom: 30px;
+}
+
+/* BSR Comment section improvements */
+.bsr-section .comment-section {
+    margin-bottom: 30px;
+}
+
+/* BSR Form data section improvements */
+.bsr-section .form-data-section {
+    margin-bottom: 20px;
+}
+
+/* BSR Change slide section improvements */
+.bsr-change-slide-section {
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+/* BSR Create/Edit room section improvements */
+.bsr-create-room-section,
+.bsr-edit-room-section {
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
 @media screen and (max-width: 768px) {
 
 
@@ -6027,6 +6448,7 @@ header h1 {
         height: 10px;
     }
 } */
+
 
 .delete-data-popup {
     display: none;
@@ -6100,25 +6522,26 @@ header h1 {
 
     .form-data-row .data-cell:not(.actions)::before {
         font-family: "Poppins", sans-serif;
-        color: #674c1d;
+        color: #674C1D;
         font-weight: 500;
     }
 
     .form-data-row .data-cell:nth-child(1)::before {
-        content: "Nama";
+        content: 'Nama';
     }
 
     .form-data-row .data-cell:nth-child(2)::before {
-        content: "No Hp";
+        content: 'No Hp';
     }
 
     .form-data-row .data-cell:nth-child(3)::before {
-        content: "Lama Sewa";
+        content: 'Lama Sewa';
     }
 
     .form-data-row .data-cell:nth-child(4)::before {
-        content: "Ukuran Kamar";
+        content: 'Ukuran Kamar';
     }
+
 
     .data-cell.actions {
         display: block;
@@ -6132,7 +6555,8 @@ header h1 {
     .gkl-detail-btn,
     .plu-detail-btn,
     .gtw-detail-btn,
-    .pgv-detail-btn {
+    .pgv-detail-btn,
+.bsr-detail-btn {
         width: 100%;
         padding: 12px;
         font-size: 1rem;
@@ -6143,8 +6567,8 @@ header h1 {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #ffebeb;
-        color: #e53935;
+        background: #FFEBEB;
+        color: #E53935;
         border: none;
         border-radius: 8px;
         width: 42px;
@@ -6155,402 +6579,15 @@ header h1 {
     }
 
     .form-data-row .delete-btn-data:hover {
-        background: #e53935;
+        background: #E53935;
         color: white;
     }
 
-    .form-data-row > :nth-child(n) {
+    .form-data-row> :nth-child(n) {
         display: grid !important;
     }
 
-    .form-data-row > .actions {
+    .form-data-row>.actions {
         display: block !important;
-    }
-}
-
-/* ========================================== */
-/* BSC (BASSURA CITY) SPECIFIC STYLES */
-/* ========================================== */
-
-.bsc-section {
-    display: none;
-}
-
-.bsc-section.active {
-    display: block;
-}
-
-/* BSC Carousel Styles */
-#bsc-section .carousel-container {
-    position: relative;
-    max-width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-#bsc-section .carousel-slide {
-    display: none;
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-}
-
-#bsc-section .carousel-slide.active {
-    display: block;
-}
-
-#bsc-section .carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-/* BSC Room Cards */
-#bsc-room-cards .room-card {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border: 2px solid #e9ecef;
-    transition: all 0.3s ease;
-}
-
-#bsc-room-cards .room-card:hover {
-    border-color: #674c1d;
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(103, 76, 29, 0.15);
-}
-
-#bsc-room-cards .room-card-header .left-text {
-    color: #674c1d;
-    font-weight: 600;
-}
-
-#bsc-room-cards .room-type {
-    color: #674c1d;
-    font-weight: 500;
-}
-
-/* BSC Comment Cards */
-#bsc-comment-cards .comment-card {
-    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    border-left: 4px solid #674c1d;
-    transition: all 0.3s ease;
-}
-
-#bsc-comment-cards .comment-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(103, 76, 29, 0.1);
-    border-left-color: #8b4513;
-}
-
-#bsc-comment-cards .comment-user {
-    color: #674c1d;
-    font-weight: 600;
-}
-
-#bsc-comment-cards .star-rating i {
-    color: #ffc107;
-}
-
-/* BSC Form Data */
-#bsc-form-data-section .form-data-container {
-    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    border: 1px solid #e9ecef;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-#bsc-form-data-section .form-data-header {
-    background: linear-gradient(135deg, #674c1d 0%, #8b4513 100%);
-    color: white;
-}
-
-#bsc-form-data-section .form-data-row:hover {
-    background: rgba(103, 76, 29, 0.05);
-}
-
-#bsc-form-data-section .detail-btn {
-    background: #674c1d;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-#bsc-form-data-section .detail-btn:hover {
-    background: #8b4513;
-    transform: translateY(-1px);
-}
-
-#bsc-form-data-section .delete-btn-data {
-    background: #dc3545;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-#bsc-form-data-section .delete-btn-data:hover {
-    background: #c82333;
-    transform: translateY(-1px);
-}
-
-/* BSC Section Headers */
-#bsc-section .section-header h2 {
-    color: #674c1d;
-    position: relative;
-}
-
-#bsc-section .section-header h2::after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, #674c1d, #8b4513);
-    border-radius: 2px;
-}
-
-/* BSC Buttons */
-#bsc-section .change-btn,
-#bsc-section .back-btn,
-#bsc-section .add-room-btn {
-    background: linear-gradient(135deg, #674c1d 0%, #8b4513 100%);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(103, 76, 29, 0.3);
-}
-
-#bsc-section .change-btn:hover,
-#bsc-section .back-btn:hover,
-#bsc-section .add-room-btn:hover {
-    background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(103, 76, 29, 0.4);
-}
-
-/* BSC Create/Edit Room Forms */
-#bsc-create-room .room-form-container,
-#bsc-edit-room .room-form-container {
-    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    border: 2px solid #e9ecef;
-    border-radius: 12px;
-    padding: 2rem;
-}
-
-#bsc-create-room .image-upload-large,
-#bsc-edit-room .image-upload-large {
-    border: 3px dashed #674c1d;
-    background: rgba(103, 76, 29, 0.05);
-    transition: all 0.3s ease;
-}
-
-#bsc-create-room .image-upload-large:hover,
-#bsc-edit-room .image-upload-large:hover {
-    border-color: #8b4513;
-    background: rgba(103, 76, 29, 0.1);
-    transform: scale(1.02);
-}
-
-#bsc-create-room .image-upload-small,
-#bsc-edit-room .image-upload-small {
-    border: 2px dashed #674c1d;
-    background: rgba(103, 76, 29, 0.05);
-    transition: all 0.3s ease;
-}
-
-#bsc-create-room .image-upload-small:hover,
-#bsc-edit-room .image-upload-small:hover {
-    border-color: #8b4513;
-    background: rgba(103, 76, 29, 0.1);
-    transform: scale(1.05);
-}
-
-/* BSC Action Buttons */
-#bsc-section .create-save-btn,
-#bsc-section .edit-back-btn {
-    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
-}
-
-#bsc-section .create-save-btn:hover,
-#bsc-section .edit-back-btn:hover {
-    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
-}
-
-#bsc-section .create-back-btn {
-    background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
-}
-
-#bsc-section .create-back-btn:hover {
-    background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
-}
-
-/* BSC Comment Actions */
-#bsc-comment-cards .apply-btn {
-    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-#bsc-comment-cards .apply-btn:hover {
-    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
-    transform: translateY(-1px);
-}
-
-#bsc-comment-cards .unapply-btn {
-    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-#bsc-comment-cards .unapply-btn:hover {
-    background: linear-gradient(135deg, #fd7e14 0%, #dc3545 100%);
-    transform: translateY(-1px);
-}
-
-#bsc-comment-cards .delete-btn {
-    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-#bsc-comment-cards .delete-btn:hover {
-    background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
-    transform: translateY(-1px);
-}
-
-/* BSC Room Action Buttons */
-#bsc-room-cards .edit-room-btn {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-#bsc-room-cards .edit-room-btn:hover {
-    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
-    transform: translateY(-1px);
-}
-
-#bsc-room-cards .delete-room-btn {
-    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-#bsc-room-cards .delete-room-btn:hover {
-    background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
-    transform: translateY(-1px);
-}
-
-/* BSC More Button */
-#bsc-room-cards .more-btn {
-    background: rgba(103, 76, 29, 0.9);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-}
-
-#bsc-room-cards .more-btn:hover {
-    background: rgba(103, 76, 29, 1);
-    transform: translateY(-1px);
-}
-
-/* Responsive BSC Styles */
-@media screen and (max-width: 768px) {
-    #bsc-section .carousel-slide {
-        height: 300px;
-    }
-
-    #bsc-section .section-header h2 {
-        font-size: 1.5rem;
-    }
-
-    #bsc-section .change-btn,
-    #bsc-section .back-btn,
-    #bsc-section .add-room-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    #bsc-section .carousel-slide {
-        height: 250px;
-    }
-
-    #bsc-section .section-header h2 {
-        font-size: 1.3rem;
-    }
-
-    #bsc-section .change-btn,
-    #bsc-section .back-btn,
-    #bsc-section .add-room-btn {
-        padding: 8px 16px;
-        font-size: 0.8rem;
     }
 }
