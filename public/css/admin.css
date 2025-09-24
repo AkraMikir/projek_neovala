@@ -1239,7 +1239,8 @@ header h1 {
 .plu-section,
 .gtw-section,
 .pgv-section,
-.bsr-section {
+.bsr-section,
+.gpc-section {
     height: 100%;
     overflow-y: auto;
     padding: 20px;
@@ -1268,7 +1269,8 @@ header h1 {
 .plu-change-btn,
 .gtw-change-btn,
 .pgv-change-btn,
-.bsr-change-btn {
+.bsr-change-btn,
+.gpc-change-btn {
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -1286,7 +1288,8 @@ header h1 {
 .plu-change-btn:hover,
 .gtw-change-btn:hover,
 .pgv-change-btn,
-.bsr-change-btn:hover {
+.bsr-change-btn:hover,
+.gpc-change-btn:hover {
     background-color: var(--secondary-color);
     transform: translateY(-2px);
 }
@@ -1479,7 +1482,8 @@ header h1 {
 .plu-slide-section,
 .gtw-slide-section,
 .pgv-slide-section,
-.bsr-slide-section {
+.bsr-slide-section,
+.gpc-slide-section {
     background: white;
     border-radius: 10px;
     padding: 20px;
@@ -1493,7 +1497,8 @@ header h1 {
 .plu-current-slide,
 .gtw-current-slide,
 .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
     width: 100%;
     height: 600px;
     overflow: hidden;
@@ -1509,7 +1514,8 @@ header h1 {
 .plu-carousel-container,
 .gtw-carousel-container,
 .pgv-carousel-container,
-.bsr-carousel-container {
+.bsr-carousel-container,
+.gpc-carousel-container {
     position: relative;
     width: 400%;
     height: 100%;
@@ -1523,7 +1529,8 @@ header h1 {
 .plu-carousel-slide,
 .gtw-carousel-slide,
 .pgv-carousel-slide,
-.bsr-carousel-slide {
+.bsr-carousel-slide,
+.gpc-carousel-slide {
     width: 25%;
     height: 100%;
 }
@@ -1533,8 +1540,9 @@ header h1 {
 .gkl-carousel-slide img,
 .plu-carousel-slide img,
 .gtw-carousel-slide img,
-.pgv-carousel-slide,
-.bsr-carousel-slide img {
+.pgv-carousel-slide img,
+.bsr-carousel-slide img,
+.gpc-carousel-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1673,7 +1681,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         flex-grow: 1;
         padding: 0.75rem;
         font-size: 0.95rem;
@@ -1856,7 +1865,8 @@ header h1 {
 .plu-slide-section,
 .gtw-slide-section,
 .pgv-slide-section,
-.bsr-slide-section {
+.bsr-slide-section,
+.gpc-slide-section {
     background: white;
     border-radius: 10px;
     padding: 20px;
@@ -1870,7 +1880,8 @@ header h1 {
 .plu-current-slide,
 .gtw-current-slide,
 .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
     width: 100%;
     height: 600px;
     overflow: hidden;
@@ -1886,7 +1897,8 @@ header h1 {
 .plu-carousel-container,
 .gtw-carousel-container,
 .pgv-carousel-container,
-.bsr-carousel-container {
+.bsr-carousel-container,
+.gpc-carousel-container {
     position: relative;
     width: 400%;
     height: 100%;
@@ -1900,7 +1912,8 @@ header h1 {
 .plu-carousel-slide,
 .gtw-carousel-slide,
 .pgv-carousel-slide,
-.bsr-carousel-slide {
+.bsr-carousel-slide,
+.gpc-carousel-slide {
     width: 25%;
     height: 100%;
 }
@@ -1911,7 +1924,8 @@ header h1 {
 .plu-carousel-slide img,
 .gtw-carousel-slide img,
 .pgv-carousel-slide,
-.bsr-carousel-slide img {
+.bsr-carousel-slide,
+.gpc-carousel-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -2050,7 +2064,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         flex-grow: 1;
         padding: 0.75rem;
         font-size: 0.95rem;
@@ -2232,7 +2247,8 @@ header h1 {
 .plu-carousel-nav,
 .gtw-carousel-nav,
 .pgv-carousel-nav,
-.bsr-carousel-nav {
+.bsr-carousel-nav,
+.gpc-carousel-nav {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -2248,7 +2264,8 @@ header h1 {
 .plu-carousel-dot,
 .gtw-carousel-dot,
 .pgv-carousel-dot,
-.bsr-carousel-dot {
+.bsr-carousel-dot,
+.gpc-carousel-dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -2263,7 +2280,8 @@ header h1 {
 .plu-carousel-dot.active,
 .gtw-carousel-dot.active,
 .pgv-carousel-dot,
-.bsr-carousel-dot.active {
+.bsr-carousel-dot.active,
+.gpc-carousel-dot.active {
     background: white;
     transform: scale(1.2);
 }
@@ -2274,7 +2292,8 @@ header h1 {
 .plu-carousel-button,
 .gtw-carousel-button,
 .pgv-carousel-button,
-.bsr-carousel-button {
+.bsr-carousel-button,
+.gpc-carousel-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -2297,8 +2316,9 @@ header h1 {
 .gkl-carousel-button:hover,
 .plu-carousel-button:hover,
 .gtw-carousel-button:hover,
-.pgv-carousel-button,
-.bsr-carousel-button:hover {
+.pgv-carousel-button:hover,
+.bsr-carousel-button:hover,
+.gpc-carousel-button:hover {
     background: rgba(0, 0, 0, 0.8);
 }
 
@@ -2307,8 +2327,9 @@ header h1 {
 .gkl-carousel-button.prev,
 .plu-carousel-button.prev,
 .gtw-carousel-button.prev,
-.pgv-carousel-button,
-.bsr-carousel-button.prev {
+.pgv-carousel-button.prev,
+.bsr-carousel-button.prev,
+.gpc-carousel-button.prev {
     left: 20px;
 }
 
@@ -2317,8 +2338,9 @@ header h1 {
 .gkl-carousel-button.next,
 .plu-carousel-button.next,
 .gtw-carousel-button.next,
-.pgv-carousel-button,
-.bsr-carousel-button.next {
+.pgv-carousel-button.next,
+.bsr-carousel-button.next,
+.gpc-carousel-button.next {
     right: 20px;
 }
 
@@ -2339,7 +2361,9 @@ header h1 {
 .plu-add-room-btn,
 .gtw-add-room-btn,
 .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn,
+.gpc-add-room-btn {
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -2357,7 +2381,9 @@ header h1 {
 .plu-add-room-btn:hover,
 .gtw-add-room-btn:hover,
 .pgv-add-room-btn:hover,
-.bsr-add-room-btn:hover {
+.bsr-add-room-btn,
+.gpc-add-room-btn:hover,
+.gpc-add-room-btn:hover {
     background-color: var(--secondary-color);
     transform: translateY(-2px);
 }
@@ -2465,7 +2491,9 @@ header h1 {
 .plu-edit-room-btn,
 .gtw-edit-room-btn,
 .pgv-edit-room-btn,
-.bsr-edit-room-btn {
+.bsr-edit-room-btn,
+.gpc-edit-room-btn,
+.gpc-edit-room-btn {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -2484,13 +2512,15 @@ header h1 {
 .plu-edit-room-btn,
 .gtw-edit-room-btn,
 .pgv-edit-room-btn,
-.bsr-edit-room-btn {
+.bsr-edit-room-btn,
+.gpc-edit-room-btn {
     background: #0953ff33;
     color: #0953ff;
 }
 
 .delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
     background: rgba(255, 68, 68, 0.3);
     color: #ff4444;
 }
@@ -2501,13 +2531,15 @@ header h1 {
 .plu-edit-room-btn:hover,
 .gtw-edit-room-btn:hover,
 .pgv-edit-room-btn:hover,
-.bsr-edit-room-btn:hover {
+.bsr-edit-room-btn,
+.gpc-edit-room-btn:hover {
     background: #0953ff;
     color: white;
 }
 
 .delete-room-btn:hover,
-.bsr-delete-room-btn:hover {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn:hover {
     background: rgba(255, 68, 68, 1);
     color: white;
 }
@@ -2518,7 +2550,8 @@ header h1 {
 .plu-more-btn,
 .gtw-more-btn,
 .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
     width: 120px;
     height: 40px;
     background-color: #674C1D;
@@ -2536,7 +2569,8 @@ header h1 {
 .plu-more-btn:hover,
 .gtw-more-btn:hover,
 .pgv-more-btn,
-.bsr-more-btn:hover {
+.bsr-more-btn,
+.gpc-more-btn:hover {
     background-color: #FFF8EB;
     color: #674C1D;
     box-shadow: 0 4px 8px rgba(103, 76, 29, 0.2);
@@ -2563,7 +2597,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.95rem;
         padding: 9px 18px;
     }
@@ -2588,13 +2623,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 38px;
         height: 38px;
     }
@@ -2605,7 +2642,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 110px;
         height: 38px;
         font-size: 0.85rem;
@@ -2624,7 +2662,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.9rem;
         padding: 8px 16px;
     }
@@ -2649,13 +2688,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 35px;
         height: 35px;
     }
@@ -2666,7 +2707,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 100px;
         height: 35px;
         font-size: 0.8rem;
@@ -2688,7 +2730,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.85rem;
         padding: 7px 14px;
     }
@@ -2717,13 +2760,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 32px;
         height: 32px;
     }
@@ -2734,7 +2779,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 90px;
         height: 32px;
         font-size: 0.75rem;
@@ -2756,7 +2802,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.8rem;
         padding: 6px 12px;
     }
@@ -2785,13 +2832,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 30px;
         height: 30px;
     }
@@ -2802,7 +2851,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 80px;
         height: 30px;
         font-size: 0.7rem;
@@ -2823,7 +2873,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.8rem;
         padding: 6px 12px;
     }
@@ -2852,13 +2903,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 30px;
         height: 30px;
     }
@@ -2869,7 +2922,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 80px;
         height: 30px;
         font-size: 0.7rem;
@@ -2890,7 +2944,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.75rem;
         padding: 5px 10px;
     }
@@ -2919,13 +2974,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 28px;
         height: 28px;
     }
@@ -2936,7 +2993,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 75px;
         height: 28px;
         font-size: 0.65rem;
@@ -2957,7 +3015,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.7rem;
         padding: 4px 8px;
     }
@@ -2982,13 +3041,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 25px;
         height: 25px;
     }
@@ -2999,7 +3060,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 70px;
         height: 25px;
         font-size: 0.6rem;
@@ -3020,7 +3082,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.7rem;
         padding: 5px 10px;
     }
@@ -3045,13 +3108,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 24px;
         height: 24px;
     }
@@ -3062,7 +3127,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 65px;
         height: 24px;
         font-size: 0.6rem;
@@ -3083,7 +3149,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.65rem;
         padding: 4px 8px;
     }
@@ -3108,13 +3175,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 22px;
         height: 22px;
     }
@@ -3125,7 +3194,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 65px;
         height: 22px;
         font-size: 0.55rem;
@@ -3145,7 +3215,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.6rem;
         padding: 3px 6px;
     }
@@ -3170,13 +3241,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 20px;
         height: 20px;
     }
@@ -3187,7 +3260,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 60px;
         height: 20px;
         font-size: 0.5rem;
@@ -3207,7 +3281,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.55rem;
         padding: 3px 6px;
     }
@@ -3232,13 +3307,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 18px;
         height: 18px;
     }
@@ -3249,7 +3326,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 55px;
         height: 18px;
         font-size: 0.45rem;
@@ -3269,7 +3347,8 @@ header h1 {
     .plu-add-room-btn,
     .gtw-add-room-btn,
     .pgv-add-room-btn,
-.bsr-add-room-btn {
+.bsr-add-room-btn,
+.gpc-add-room-btn {
         font-size: 0.5rem;
         padding: 2px 4px;
     }
@@ -3294,13 +3373,15 @@ header h1 {
     .gtw-edit-room-btn,
     .pgv-edit-room-btn,
 .bsr-edit-room-btn,
+.gpc-edit-room-btn,
     .delete-room-btn,
     .tpc-delete-room-btn,
     .gkl-delete-room-btn,
     .plu-delete-room-btn,
     .gtw-delete-room-btn,
     .pgv-delete-room-btn,
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 16px;
         height: 16px;
     }
@@ -3311,7 +3392,8 @@ header h1 {
     .plu-more-btn,
     .gtw-more-btn,
     .pgv-more-btn,
-.bsr-more-btn {
+.bsr-more-btn,
+.gpc-more-btn {
         width: 50px;
         height: 16px;
         font-size: 0.4rem;
@@ -3467,7 +3549,8 @@ header h1 {
 }
 
 .tpj-comment-user,
-.bsr-comment-user {
+.bsr-comment-user,
+.gpc-comment-user {
     color: #674C1D;
     font-size: 0.9rem;
     font-weight: bold;
@@ -3476,7 +3559,8 @@ header h1 {
 
 .tpj-star-rating,
 .tpc-star-rating,
-.bsr-star-rating {
+.bsr-star-rating,
+.gpc-star-rating {
     display: flex;
     align-items: center;
     gap: 2px;
@@ -3485,13 +3569,15 @@ header h1 {
 
 .tpj-star-rating i,
 .tpc-star-rating i,
-.bsr-star-rating i {
+.bsr-star-rating,
+.gpc-star-rating i {
     font-size: 14px;
 }
 
 .tpj-quote-icon,
 .tpc-quote-icon,
-.bsr-quote-icon {
+.bsr-quote-icon,
+.gpc-quote-icon {
     font-size: 3rem;
     color: #674C1D;
     line-height: 1;
@@ -3603,7 +3689,8 @@ header h1 {
 
 .tpj-comment-text,
 .tpc-comment-text,
-.bsr-comment-text {
+.bsr-comment-text,
+.gpc-comment-text {
     font-size: 0.8rem;
     color: #674C1D;
     line-height: 1.4;
@@ -3631,7 +3718,8 @@ header h1 {
 
 
     .tpj-comment-user,
-.bsr-comment-user {
+.bsr-comment-user,
+.gpc-comment-user {
         font-size: 0.85rem;
     }
 
@@ -3658,7 +3746,8 @@ header h1 {
 
 
     .tpj-comment-user,
-.bsr-comment-user {
+.bsr-comment-user,
+.gpc-comment-user {
         font-size: 0.8rem;
     }
 
@@ -3700,7 +3789,8 @@ header h1 {
     }
 
     .tpj-comment-user,
-.bsr-comment-user {
+.bsr-comment-user,
+.gpc-comment-user {
         font-size: 0.65rem;
     }
 
@@ -3803,7 +3893,8 @@ header h1 {
 .plu-detail-btn,
 .gtw-detail-btn,
 .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
     background: var(--primary-color);
     color: white;
     border: none;
@@ -3819,7 +3910,8 @@ header h1 {
 .plu-detail-btn:hover,
 .gtw-detail-btn:hover,
 .pgv-detail-btn,
-.bsr-detail-btn:hover {
+.bsr-detail-btn,
+.gpc-detail-btn:hover {
     background-color: #674C1D;
 }
 
@@ -3933,7 +4025,8 @@ header h1 {
 .gtw-detail-container .gtw-back-btn,
 .pgv-detail-container,
 .bsr-detail-container .pgv-back-btn,
-.bsr-back-btn {
+.bsr-back-btn,
+.gpc-back-btn {
     background: var(--primary-color);
     color: white;
     border: none;
@@ -3947,12 +4040,12 @@ header h1 {
 
 .detail-container .back-btn:hover,
 .tpc-detail-container .tpc-back-btn:hover,
-.gkl-detail-container:hover .gkl-back-btn:hover,
+.gkl-detail-container .gkl-back-btn:hover,
 .plu-detail-container .plu-back-btn:hover,
 .gtw-detail-container .gtw-back-btn:hover,
-.pgv-detail-container,
-.bsr-detail-container:hover .pgv-back-btn,
-.bsr-back-btn:hover {
+.pgv-detail-container .pgv-back-btn:hover,
+.bsr-detail-container .bsr-back-btn:hover,
+.gpc-back-btn:hover {
     background: #D2691E;
 }
 
@@ -4047,7 +4140,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         width: 100%;
         padding: 12px;
         font-size: 1rem;
@@ -4130,7 +4224,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         padding: 6px 12px;
         font-size: 0.9rem;
     }
@@ -4164,7 +4259,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         padding: 5px 10px;
         font-size: 0.85rem;
     }
@@ -4191,7 +4287,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         padding: 4px 8px;
         font-size: 0.8rem;
     }
@@ -4205,7 +4302,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         font-size: 0.6rem;
         padding: 2px 4px;
     }
@@ -4234,7 +4332,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         padding: 3px 6px;
         font-size: 0.75rem;
     }
@@ -4248,7 +4347,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         font-size: 0.5rem;
     }
 }
@@ -4268,7 +4368,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         padding: 2px 4px;
         font-size: 0.45rem;
     }
@@ -4294,7 +4395,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         padding: 2px 4px;
         font-size: 0.65rem;
     }
@@ -4319,7 +4421,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         padding: 2px 3px;
         font-size: 0.6rem;
     }
@@ -4344,7 +4447,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         padding: 1px 2px;
         font-size: 0.55rem;
     }
@@ -4366,13 +4470,15 @@ header h1 {
 .gtw-create-room-section,
 .pgv-create-room-section,
 .bsr-create-room-section,
+.gpc-create-room-section,
 .edit-room-section,
 .tpc-edit-room-section,
 .gkl-edit-room-section,
 .plu-edit-room-section,
 .gtw-edit-room-section,
 .pgv-edit-room-section,
-.bsr-edit-room-section {
+.bsr-edit-room-section,
+.gpc-edit-room-section {
     padding: 2rem;
     background-color: #fff8eb;
     height: calc(100vh - 80px);
@@ -4389,7 +4495,8 @@ header h1 {
 .plu-edit-room-section,
 .gtw-edit-room-section,
 .pgv-edit-room-section,
-.bsr-edit-room-section {
+.bsr-edit-room-section,
+.gpc-edit-room-section {
     background-color: #ffffff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
@@ -4503,8 +4610,10 @@ header h1 {
 }
 
 /* Image in edit room sections */
-.bsr-edit-room-section img,
-.bsr-create-room-section img {
+.bsr-edit-room-section,
+.gpc-edit-room-section img,
+.bsr-create-room-section,
+.gpc-create-room-section img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -4513,7 +4622,8 @@ header h1 {
 }
 
 /* BSR Delete Button Specific Styling */
-.bsr-delete-room-btn {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn {
     width: 40px !important;
     height: 40px !important;
     border-radius: 50% !important;
@@ -4528,110 +4638,135 @@ header h1 {
     color: #ff4444 !important;
 }
 
-.bsr-delete-room-btn:hover {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn:hover {
     background: rgba(255, 68, 68, 1) !important;
     color: white !important;
     transform: scale(1.05) !important;
 }
 
-.bsr-delete-room-btn i {
+.bsr-delete-room-btn,
+.gpc-delete-room-btn i {
     font-size: 14px !important;
 }
 
 /* Responsive BSR Delete Button */
 @media screen and (max-width: 1200px) {
-    .bsr-delete-room-btn {
+    .bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 38px !important;
         height: 38px !important;
     }
 }
 
 @media screen and (max-width: 992px) {
-    .bsr-delete-room-btn {
+    .bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 35px !important;
         height: 35px !important;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .bsr-delete-room-btn {
+    .bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 32px !important;
         height: 32px !important;
     }
 }
 
 @media screen and (max-width: 576px) {
-    .bsr-delete-room-btn {
+    .bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 30px !important;
         height: 30px !important;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .bsr-delete-room-btn {
+    .bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 28px !important;
         height: 28px !important;
     }
 }
 
 @media screen and (max-width: 400px) {
-    .bsr-delete-room-btn {
+    .bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 25px !important;
         height: 25px !important;
     }
 }
 
 @media screen and (max-width: 360px) {
-    .bsr-delete-room-btn {
+    .bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 24px !important;
         height: 24px !important;
     }
 }
 
 @media screen and (max-width: 320px) {
-    .bsr-delete-room-btn {
+    .bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 22px !important;
         height: 22px !important;
     }
 }
 
 @media screen and (max-width: 280px) {
-    .bsr-delete-room-btn {
+    .bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 20px !important;
         height: 20px !important;
     }
 }
 
 @media screen and (max-width: 240px) {
-    .bsr-delete-room-btn {
+    .bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 18px !important;
         height: 18px !important;
     }
 }
 
 @media screen and (max-width: 200px) {
-    .bsr-delete-room-btn {
+    .bsr-delete-room-btn,
+.gpc-delete-room-btn {
         width: 16px !important;
         height: 16px !important;
     }
 }
 
 /* Hide icon and label when image is present */
-.bsr-edit-room-section .image-upload-large:has(img),
-.bsr-edit-room-section .image-upload-small:has(img),
-.bsr-create-room-section .image-upload-large:has(img),
-.bsr-create-room-section .image-upload-small:has(img) {
+.bsr-edit-room-section,
+.gpc-edit-room-section .image-upload-large:has(img),
+.bsr-edit-room-section,
+.gpc-edit-room-section .image-upload-small:has(img),
+.bsr-create-room-section,
+.gpc-create-room-section .image-upload-large:has(img),
+.bsr-create-room-section,
+.gpc-create-room-section .image-upload-small:has(img) {
     position: relative;
 }
 
-.bsr-edit-room-section .image-upload-large:has(img) i,
-.bsr-edit-room-section .image-upload-large:has(img) p,
-.bsr-edit-room-section .image-upload-small:has(img) i,
-.bsr-edit-room-section .image-upload-small:has(img) p,
-.bsr-create-room-section .image-upload-large:has(img) i,
-.bsr-create-room-section .image-upload-large:has(img) p,
-.bsr-create-room-section .image-upload-small:has(img) i,
-.bsr-create-room-section .image-upload-small:has(img) p {
+.bsr-edit-room-section,
+.gpc-edit-room-section .image-upload-large:has(img) i,
+.bsr-edit-room-section,
+.gpc-edit-room-section .image-upload-large:has(img) p,
+.bsr-edit-room-section,
+.gpc-edit-room-section .image-upload-small:has(img) i,
+.bsr-edit-room-section,
+.gpc-edit-room-section .image-upload-small:has(img) p,
+.bsr-create-room-section,
+.gpc-create-room-section .image-upload-large:has(img) i,
+.bsr-create-room-section,
+.gpc-create-room-section .image-upload-large:has(img) p,
+.bsr-create-room-section,
+.gpc-create-room-section .image-upload-small:has(img) i,
+.bsr-create-room-section,
+.gpc-create-room-section .image-upload-small:has(img) p {
     display: none;
 }
 
@@ -4680,6 +4815,7 @@ header h1 {
 .gtw-edit-back-btn,
 .pgv-edit-back-btn,
 .bsr-edit-back-btn,
+.gpc-edit-back-btn,
 
 .create-back-btn,
 .tpc-create-back-btn,
@@ -4688,6 +4824,7 @@ header h1 {
 .gtw-create-back-btn,
 .pgv-create-back-btn,
 .bsr-create-back-btn,
+.gpc-create-back-btn,
 
 
 .create-save-btn,
@@ -4697,6 +4834,7 @@ header h1 {
 .gtw-create-save-btn,
 .pgv-create-save-btn,
 .bsr-create-save-btn,
+.gpc-create-save-btn,
 
 .edit-save-btn,
 .tpc-edit-save-btn,
@@ -4704,7 +4842,8 @@ header h1 {
 .plu-edit-save-btn,
 .gtw-edit-save-btn,
 .pgv-edit-save-btn,
-.bsr-edit-save-btn {
+.bsr-edit-save-btn,
+.gpc-edit-save-btn {
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 5px;
@@ -4720,6 +4859,7 @@ header h1 {
 .gtw-edit-back-btn,
 .pgv-edit-back-btn,
 .bsr-edit-back-btn,
+.gpc-edit-back-btn,
 
 .create-back-btn,
 .tpc-create-back-btn,
@@ -4727,7 +4867,8 @@ header h1 {
 .plu-create-back-btn,
 .gtw-create-back-btn,
 .pgv-create-back-btn,
-.bsr-create-back-btn {
+.bsr-create-back-btn,
+.gpc-create-back-btn {
     background-color: #f0f0f0;
     color: #333;
 }
@@ -4739,6 +4880,7 @@ header h1 {
 .gtw-create-save-btn,
 .pgv-create-save-btn,
 .bsr-create-save-btn,
+.gpc-create-save-btn,
 
 .edit-save-btn,
 .tpc-edit-save-btn,
@@ -4746,7 +4888,8 @@ header h1 {
 .plu-edit-save-btn,
 .gtw-edit-save-btn,
 .pgv-edit-save-btn,
-.bsr-edit-save-btn {
+.bsr-edit-save-btn,
+.gpc-edit-save-btn {
     background-color: var(--primary-color);
     color: white;
 }
@@ -4757,7 +4900,8 @@ header h1 {
 .plu-edit-back-btn:hover,
 .gtw-edit-back-btn:hover,
 .pgv-edit-back-btn,
-.bsr-edit-back-btn:hover,
+.bsr-edit-back-btn,
+.gpc-edit-back-btn:hover,
 
 .create-back-btn:hover,
 .tpc-create-back-btn:hover,
@@ -4765,7 +4909,8 @@ header h1 {
 .plu-create-back-btn:hover,
 .gtw-create-back-btn:hover,
 .pgv-create-back-btn,
-.bsr-create-back-btn:hover {
+.bsr-create-back-btn,
+.gpc-create-back-btn:hover {
     background-color: #e0e0e0;
 }
 
@@ -4775,7 +4920,8 @@ header h1 {
 .plu-create-save-btn:hover,
 .gtw-create-save-btn:hover,
 .pgv-create-save-btn,
-.bsr-create-save-btn:hover,
+.bsr-create-save-btn,
+.gpc-create-save-btn:hover,
 
 .edit-save-btn:hover,
 .tpc-edit-save-btn:hover,
@@ -4783,7 +4929,8 @@ header h1 {
 .plu-edit-save-btn:hover,
 .gtw-edit-save-btn:hover,
 .pgv-edit-save-btn,
-.bsr-edit-save-btn:hover {
+.bsr-edit-save-btn,
+.gpc-edit-save-btn:hover {
     background-color: var(--secondary-color);
 }
 
@@ -4976,13 +5123,15 @@ header h1 {
     .gtw-create-back-btn,
     .pgv-create-back-btn,
 .bsr-create-back-btn,
+.gpc-create-back-btn,
     .edit-save-btn,
     .tpc-edit-save-btn,
     .gkl-edit-save-btn,
     .plu-edit-save-btn,
     .gtw-edit-save-btn,
     .pgv-edit-save-btn,
-.bsr-edit-save-btn {
+.bsr-edit-save-btn,
+.gpc-edit-save-btn {
         width: 100%;
     }
 }
@@ -5379,7 +5528,8 @@ header h1 {
 .plu-change-slide-section,
 .gtw-change-slide-section,
 .pgv-change-slide-section,
-.bsr-change-slide-section {
+.bsr-change-slide-section,
+.gpc-change-slide-section {
     padding: 20px;
     overflow-y: auto;
     height: calc(100vh - 100px);
@@ -5391,7 +5541,8 @@ header h1 {
 .plu-change-slide-section,
 .gtw-change-slide-section,
 .pgv-change-slide-section,
-.bsr-change-slide-section {
+.bsr-change-slide-section,
+.gpc-change-slide-section {
     width: 100%;
 }
 
@@ -5413,7 +5564,9 @@ header h1 {
 .plu-back-btn-slide,
 .gtw-back-btn-slide,
 .pgv-back-btn,
-.bsr-back-btn-slide {
+.bsr-back-btn,
+.bsr-back-btn-slide,
+.gpc-back-btn-slide {
     background: var(--primary-color);
     color: white;
     border: none;
@@ -5430,8 +5583,10 @@ header h1 {
 .gkl-back-btn-slide:hover,
 .plu-back-btn-slide:hover,
 .gtw-back-btn-slide:hover,
-.pgv-back-btn,
-.bsr-back-btn-slide:hover {
+.pgv-back-btn:hover,
+.bsr-back-btn:hover,
+.bsr-back-btn-slide:hover,
+.gpc-back-btn-slide:hover {
     background: #D2691E;
     transform: translateY(-2px);
 }
@@ -5442,7 +5597,8 @@ header h1 {
 .plu-update-btn-slide,
 .gtw-update-btn-slide,
 .pgv-update-btn-slide,
-.bsr-update-btn-slide {
+.bsr-update-btn-slide,
+.gpc-update-btn-slide {
     background: #4CAF50;
     color: white;
     border: none;
@@ -5460,8 +5616,9 @@ header h1 {
 .gkl-update-btn-slide:hover,
 .plu-update-btn-slide:hover,
 .gtw-update-btn-slide:hover,
-.pgv-update-btn-slide,
-.bsr-update-btn-slide:hover {
+.pgv-update-btn-slide:hover,
+.bsr-update-btn-slide:hover,
+.gpc-update-btn-slide:hover {
     background: #388E3C;
     transform: translateY(-2px);
 }
@@ -5471,8 +5628,9 @@ header h1 {
 .gkl-update-btn-slide.show,
 .plu-update-btn-slide.show,
 .gtw-update-btn-slide.show,
-.pgv-update-btn-slide,
-.bsr-update-btn-slide.show {
+.pgv-update-btn-slide.show,
+.bsr-update-btn-slide.show,
+.gpc-update-btn-slide.show {
     display: block;
 }
 
@@ -5488,14 +5646,17 @@ header h1 {
     .plu-back-btn-slide,
     .gtw-back-btn-slide,
     .pgv-back-btn,
+.bsr-back-btn,
 .bsr-back-btn-slide,
+.gpc-back-btn-slide,
     .update-btn,
     .tpc-update-btn-slide,
     .gkl-update-btn-slide,
     .plu-update-btn-slide,
     .gtw-update-btn-slide,
     .pgv-update-btn-slide,
-.bsr-update-btn-slide {
+.bsr-update-btn-slide,
+.gpc-update-btn-slide {
         padding: 6px 20px;
         font-size: 14px;
     }
@@ -5580,7 +5741,8 @@ header h1 {
     .plu-change-slide-section,
     .gtw-change-slide-section,
     .pgv-change-slide-section,
-.bsr-change-slide-section {
+.bsr-change-slide-section,
+.gpc-change-slide-section {
         padding: 10px;
         height: calc(100vh - 80px);
     }
@@ -5595,7 +5757,9 @@ header h1 {
     .plu-back-btn-slide,
     .gtw-back-btn-slide,
     .pgv-back-btn,
-.bsr-back-btn-slide {
+.bsr-back-btn,
+.bsr-back-btn-slide,
+.gpc-back-btn-slide {
         padding: 6px 20px;
         font-size: 14px;
     }
@@ -5992,7 +6156,8 @@ header h1 {
     .plu-current-slide,
     .gtw-current-slide,
     .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
         height: 500px;
         max-width: 1000px;
     }
@@ -6006,7 +6171,8 @@ header h1 {
     .plu-current-slide,
     .gtw-current-slide,
     .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
         height: 400px;
         max-width: 800px;
     }
@@ -6020,7 +6186,8 @@ header h1 {
     .plu-current-slide,
     .gtw-current-slide,
     .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
         height: 350px;
         max-width: 600px;
     }
@@ -6052,7 +6219,8 @@ header h1 {
     .plu-current-slide,
     .gtw-current-slide,
     .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
         height: 300px;
         max-width: 450px;
     }
@@ -6080,7 +6248,8 @@ header h1 {
     .plu-current-slide,
     .gtw-current-slide,
     .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
         height: 250px;
         max-width: 380px;
     }
@@ -6094,7 +6263,8 @@ header h1 {
     .plu-current-slide,
     .gtw-current-slide,
     .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
         height: 200px;
         max-width: 320px;
     }
@@ -6122,7 +6292,8 @@ header h1 {
     .plu-current-slide,
     .gtw-current-slide,
     .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
         height: 180px;
         max-width: 280px;
     }
@@ -6136,7 +6307,8 @@ header h1 {
     .plu-current-slide,
     .gtw-current-slide,
     .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
         height: 160px;
         max-width: 240px;
     }
@@ -6159,7 +6331,8 @@ header h1 {
     .plu-current-slide,
     .gtw-current-slide,
     .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
         height: 140px;
         max-width: 200px;
     }
@@ -6173,7 +6346,8 @@ header h1 {
     .plu-current-slide,
     .gtw-current-slide,
     .pgv-current-slide,
-.bsr-current-slide {
+.bsr-current-slide,
+.gpc-current-slide {
         height: 120px;
         max-width: 180px;
     }
@@ -6384,12 +6558,10 @@ header h1 {
     background: var(--secondary-color);
 }
 
-/* BSR Carousel specific improvements */
-.bsr-current-slide {
-    margin-bottom: 20px;
-}
+/* BSR Carousel specific improvements - margin-bottom removed to match other sections */
 
-.bsr-carousel-container {
+.bsr-carousel-container,
+.gpc-carousel-container {
     border-radius: 8px;
     overflow: hidden;
 }
@@ -6400,6 +6572,140 @@ header h1 {
 }
 
 /* BSR Comment section improvements */
+
+/* GPC Create Room Section */
+.gpc-create-room-section {
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #fff8eb;
+    box-sizing: border-box;
+    max-height: calc(100vh - 40px);
+}
+
+.gpc-create-back-btn,
+.gpc-create-save-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.gpc-create-back-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.gpc-create-back-btn:hover {
+    background-color: #5a6268;
+}
+
+.gpc-create-save-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.gpc-create-save-btn:hover {
+    background-color: #218838;
+}
+
+/* GPC Edit Room Section */
+.gpc-edit-room-section {
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #fff8eb;
+    box-sizing: border-box;
+    max-height: calc(100vh - 40px);
+}
+
+.gpc-edit-back-btn,
+.gpc-edit-save-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.gpc-edit-back-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.gpc-edit-back-btn:hover {
+    background-color: #5a6268;
+}
+
+.gpc-edit-save-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.gpc-edit-save-btn:hover {
+    background-color: #0056b3;
+}
+
+/* GPC Detail Data Section */
+.gpc-detail-data-section {
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #fff8eb;
+    box-sizing: border-box;
+    max-height: calc(100vh - 40px);
+}
+
+.gpc-detail-data-section .detail-container {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gpc-detail-data-section .detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.gpc-detail-data-section .detail-header h2 {
+    color: #333;
+    margin: 0;
+}
+
+.gpc-detail-data-section .detail-content {
+    display: grid;
+    gap: 15px;
+}
+
+.gpc-detail-data-section .detail-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.gpc-detail-data-section .detail-item label {
+    font-weight: bold;
+    color: #495057;
+    min-width: 150px;
+    margin-right: 15px;
+}
+
+.gpc-detail-data-section .detail-item span {
+    color: #333;
+    flex: 1;
+}
 .bsr-section .comment-section {
     margin-bottom: 30px;
 }
@@ -6410,14 +6716,17 @@ header h1 {
 }
 
 /* BSR Change slide section improvements */
-.bsr-change-slide-section {
+.bsr-change-slide-section,
+.gpc-change-slide-section {
     min-height: 100vh;
     padding-bottom: 50px;
 }
 
 /* BSR Create/Edit room section improvements */
 .bsr-create-room-section,
-.bsr-edit-room-section {
+.gpc-create-room-section,
+.bsr-edit-room-section,
+.gpc-edit-room-section {
     min-height: 100vh;
     padding-bottom: 50px;
 }
@@ -6556,7 +6865,8 @@ header h1 {
     .plu-detail-btn,
     .gtw-detail-btn,
     .pgv-detail-btn,
-.bsr-detail-btn {
+.bsr-detail-btn,
+.gpc-detail-btn {
         width: 100%;
         padding: 12px;
         font-size: 1rem;

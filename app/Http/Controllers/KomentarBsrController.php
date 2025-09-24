@@ -34,7 +34,10 @@ class KomentarBsrController extends Controller
         $komentar->status = 'accepted';
         $komentar->save();
 
-        return redirect()->back()->with('success', 'Komentar telah di-apply.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Komentar telah di-apply.'
+        ]);
     }
 
     public function unapply($id)
@@ -43,13 +46,19 @@ class KomentarBsrController extends Controller
         $komentar->status = 'pending';
         $komentar->save();
 
-        return redirect()->back()->with('success', 'Komentar telah dikembalikan ke status pending.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Komentar telah dikembalikan ke status pending.'
+        ]);
     }
 
     public function delete($id)
     {
         $komentar = KomentarBsr::findOrFail($id);
         $komentar->delete(); // <- ini menghapus dari DB
-        return redirect()->back()->with('success', 'Komentar telah dihapus.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Komentar telah dihapus.'
+        ]);
     }
 }

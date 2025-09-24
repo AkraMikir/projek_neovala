@@ -34,7 +34,7 @@ class KomentarGpcController extends Controller
         $komentar->status = 'accepted';
         $komentar->save();
 
-        return redirect()->back()->with('success', 'Komentar telah di-apply.');
+        return response()->json(['success' => true, 'message' => 'Komentar telah di-apply.']);
     }
 
     public function unapply($id)
@@ -43,13 +43,13 @@ class KomentarGpcController extends Controller
         $komentar->status = 'pending';
         $komentar->save();
 
-        return redirect()->back()->with('success', 'Komentar telah dikembalikan ke status pending.');
+        return response()->json(['success' => true, 'message' => 'Komentar telah dikembalikan ke status pending.']);
     }
 
     public function delete($id)
     {
         $komentar = KomentarGpc::findOrFail($id);
-        $komentar->delete();
-        return redirect()->back()->with('success', 'Komentar telah dihapus.');
+        $komentar->delete(); // <- ini menghapus dari DB
+        return response()->json(['success' => true, 'message' => 'Komentar telah dihapus.']);
     }
 }

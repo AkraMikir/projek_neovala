@@ -76,6 +76,7 @@
                         <li><a href="#" class="gtw-link">CICADAS</a></li>
                         <li><a href="#" class="pgv-link">PODOMORO</a></li>
                         <li><a href="#" class="bsr-link">BASSURA</a></li>
+                        <li><a href="#" class="gpc-link">PRAMUKA</a></li>
                         <form method="POST" action="{{ route('admin.logout') }}">
                             @csrf
                             <button type="submit">Logout</button>
@@ -154,6 +155,12 @@
                     <div class="card-content">
                         <h2>BASSURA ROOM ADMIN PANEL</h2>
                         <button class="bsr-link">Click here to go to Admin Panel</button>
+                    </div>
+                </div>
+                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.jpg');">
+                    <div class="card-content">
+                        <h2>GREEN PRAMUKA CITY ROOM ADMIN PANEL</h2>
+                        <button class="gpc-link">Click here to go to Admin Panel</button>
                     </div>
                 </div>
             </div>
@@ -3748,6 +3755,442 @@
         </div>
     </div>
     <!--BASSURA End-->
+
+    <!-- Change Slide Section GPC -->
+    <div class="gpc-change-slide-section" id="gpcChangeSlideSection" style="display: none;">
+        <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="carousel_section" value="GPC">
+
+            <div class="header-admin">
+                <header>
+                    <h1>Change Slide Green Pramuka City</h1>
+                </header>
+                <div class="button-container">
+                    <button type="button" class="gpc-back-btn-slide">Back</button>
+                    <button type="submit" class="gpc-update-btn-slide" style="display: none;">Update</button>
+                </div>
+            </div>
+
+            <div class="slide-grid">
+                <div class="slide-item" data-index="0">
+                    <div class="slide-image">
+                        <img src="{{ $carouselImagesBySection['GPC'][1] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 1 GPC">
+                        <div class="slide-overlay">
+                            <input type="file" class="file-input" name="images[1]" accept="image/*" hidden>
+                            <button class="select-btn" type="button">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-item" data-index="1">
+                    <div class="slide-image">
+                        <img src="{{ $carouselImagesBySection['GPC'][2] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 2 GPC">
+                        <div class="slide-overlay">
+                            <input type="file" class="file-input" name="images[2]" accept="image/*" hidden>
+                            <button class="select-btn" type="button">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-item" data-index="2">
+                    <div class="slide-image">
+                        <img src="{{ $carouselImagesBySection['GPC'][3] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 3 GPC">
+                        <div class="slide-overlay">
+                            <input type="file" class="file-input" name="images[3]" accept="image/*" hidden>
+                            <button class="select-btn" type="button">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-item" data-index="3">
+                    <div class="slide-image">
+                        <img src="{{ $carouselImagesBySection['GPC'][4] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 4 GPC">
+                        <div class="slide-overlay">
+                            <input type="file" class="file-input" name="images[4]" accept="image/*" hidden>
+                            <button class="select-btn" type="button">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Section GPC Start-->
+    <div class="gpc-section" id="gpcSection" style="display: none;">
+        <div class="header-admin">
+            <header>
+                <h1>GREEN PRAMUKA CITY ADMIN PANEL</h1>
+            </header>
+        </div>
+
+        <!-- Current Slide Show Section -->
+        <div class="gpc-slide-section">
+            <div class="section-header">
+                <h2>Current Slide Show</h2>
+                <button class="gpc-change-btn" type="button" onclick="gpcShowChangeSlide()">Change Now</button>
+            </div>
+            <div class="gpc-current-slide">
+                <div class="gpc-carousel-container">
+                    <div class="gpc-carousel-slide">
+                        <img src="{{ $carouselImagesBySection['GPC'][1] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 1 GPC">
+                    </div>
+                    <div class="gpc-carousel-slide">
+                        <img src="{{ $carouselImagesBySection['GPC'][2] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 2 GPC">
+                    </div>
+                    <div class="gpc-carousel-slide">
+                        <img src="{{ $carouselImagesBySection['GPC'][3] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 3 GPC">
+                    </div>
+                    <div class="gpc-carousel-slide">
+                        <img src="{{ $carouselImagesBySection['GPC'][4] ?? asset('img/default-slide.png') }}"
+                            alt="Slide 4 GPC">
+                    </div>
+                </div>
+                <button class="gpc-carousel-button prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gpc-carousel-button next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="gpc-carousel-nav">
+                    <div class="gpc-carousel-dot active"></div>
+                    <div class="gpc-carousel-dot"></div>
+                    <div class="gpc-carousel-dot"></div>
+                    <div class="gpc-carousel-dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Showing Apartment Room Section -->
+        <div class="room-section">
+            <div class="section-header">
+                <h2>Showing Apartment Room</h2>
+                <button class="gpc-add-room-btn" type="button" onclick="gpcShowCreateRoom()">Tambah Room</button>
+            </div>
+            <div class="room-cards">
+                @foreach($roomsBySection['room_green_pramuka_city'] ?? [] as $room)
+                <div class="room-card" data-room-id="{{ $room['id'] }}">
+                    <div class="room-card-header">
+                        <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
+                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <div class="right-text">BASSURA <span class="room-type">APARTMENT</span></div>
+                    </div>
+                    <div class="room-card-image">
+                        <img src="{{ $room['main_photo'] }}" alt="Room {{ $room['room_name'] }}">
+                    </div>
+                    <div class="room-action-buttons">
+                        <button class="gpc-edit-room-btn" data-room='@json($room)'>
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="gpc-more-btn" data-popup-id="roomPopup{{ $room['room_name'] }}">MORE</button>
+                        <button class="gpc-delete-room-btn" data-room-id="{{ $room['folder'] }}"
+                            data-room-section="{{ $room['section'] }}" data-db-id="{{ $room['id'] }}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Popup Room -->
+                <div class="room-popup-overlay" id="roomPopup{{ $room['room_name'] }}">
+                    <div class="room-popup-container" id="carousel-{{ Str::slug($room['room_name']) }}">
+                        <button class="room-popup-close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="room-popup-carousel">
+                            <div class="room-popup-carousel-container">
+                                @foreach ($room['popup_photos'] as $index => $popup)
+                                <div class="room-popup-slide {{ $index === 0 ? 'active' : '' }}">
+                                    <img src="{{ $popup }}" alt="Room {{ $room['room_name'] }} View {{ $index + 1 }}">
+                                </div>
+                                @endforeach
+                            </div>
+                            <button class="room-popup-nav next" data-room="{{ Str::slug($room['room_name']) }}">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="room-popup-nav prev" data-room="{{ Str::slug($room['room_name']) }}">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <!-- All GPC Comment Section -->
+        <div class="comment-section">
+            <div class="section-header">
+                <h2>All GPC Comment</h2>
+            </div>
+            <div class="comment-cards">
+                @foreach (\App\Models\KomentarGpc::where('section', 'gpc')->latest()->get() as $komen)
+                <div class="comment-card">
+                    <div class="comment-header gpc-quote-wrapper">
+                        <span class="gpc-quote-icon">"</span>
+                    </div>
+                    <div class="comment-content">
+                        <p class="gpc-comment-text">{{ $komen->message }}</p>
+                    </div>
+                    <div class="comment-footer">
+                        <div class="comment-info">
+                            <span class="gpc-comment-user">
+                                {{ $komen->hide_identity ? '@***********' : '@' . $komen->instagram }}
+                            </span>
+                            <div class="gpc-star-rating">
+                                @for ($i = 1; $i <= 5; $i++) <i
+                                    class="fas fa-star {{ $i > $komen->rating ? 'text-muted' : '' }}"></i>
+                                    @endfor
+                            </div>
+                        </div>
+                        <div class="comment-actions">
+                            @if ($komen->status === 'pending')
+                            <button type="button" class="apply-btn" data-id="{{ $komen->id }}" data-section="gpc">Apply</button>
+                            @else
+                            <button type="button" class="unapply-btn" data-id="{{ $komen->id }}" data-section="gpc">Unapply</button>
+                            @endif
+                            <button type="button" class="delete-btn" data-id="{{ $komen->id }}" data-section="gpc"><i
+                                    class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <!-- Form Data Section -->
+        <div class="form-data-section" data-apartment="Green Pramuka City by Neovala">
+            <div class="section-header">
+                <h2>Form Data GPC</h2>
+            </div>
+            <div class="form-data-container">
+                <div class="form-data-header">
+                    <div class="header-cell">Nama</div>
+                    <div class="header-cell">No WA</div>
+                    <div class="header-cell">Durasi</div>
+                    <div class="header-cell">Tipe Kamar</div>
+                    <div class="header-cell">Actions</div>
+                </div>
+                <div class="form-data-body">
+                    @if(isset($formData) && count($formData) > 0)
+                    @foreach($formData as $data)
+                    <div class="form-data-row" data-id="{{ $data->id }}">
+                        <div class="data-cell">{{ $data->nama }}</div>
+                        <div class="data-cell">{{ $data->nomor_wa }}</div>
+                        <div class="data-cell">{{ $data->durasi }}</div>
+                        <div class="data-cell">{{ $data->tipe_kamar }}</div>
+                        <div class="data-cell actions">
+                            <button class="gpc-detail-btn" onclick="showDetail('{{ $data->id }}')">Detail</button>
+                            <button class="gpc-delete-btn-data trigger-delete-popup" data-id="{{ $data->id }}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    @endforeach
+                    @else
+                    <div class="form-data-row">
+                        <div class="data-cell" colspan="5">Tidak ada data</div>
+                    </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- APPLY GPC -->
+    <div class="apply-comment-popup apply-popup-gpc" style="display: none;">
+        <div class="popup-content apply-content">
+            <p>Anda yakin ingin menerima komentar ini?</p>
+            <form id="applyForm-gpc" method="POST">
+                @csrf
+                @method('PATCH')
+                <div class="popup-buttons">
+                    <button type="button" class="popup-btn popup-cancel-comment">Tidak</button>
+                    <button type="submit" class="popup-btn popup-apply-comment">Tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- UNAPPLY GPC -->
+    <div class="apply-comment-popup unapply-popup-gpc" style="display: none;">
+        <div class="popup-content apply-content">
+            <p>Anda yakin ingin mengembalikan komentar ke status pending?</p>
+            <form id="unapplyForm-gpc" method="POST">
+                @csrf
+                @method('PATCH')
+                <div class="popup-buttons">
+                    <button type="button" class="popup-btn popup-cancel-unapply-comment">Tidak</button>
+                    <button type="submit" class="popup-btn popup-apply-comment">Unapply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- DELETE GPC -->
+    <div class="delete-comment-popup delete-popup-gpc" style="display: none;">
+        <div class="popup-content delete-comment-content">
+            <p>Anda yakin ingin menghapus komentar ini?</p>
+            <form id="deleteForm-gpc" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="popup-buttons">
+                    <button type="button" class="popup-btn popup-cancel-delete-comment">Tidak</button>
+                    <button type="submit" class="popup-btn popup-delete-comment">Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--GPC End-->
+
+    <!-- Edit Room Section GPC -->
+    <div class="gpc-edit-room-section" id="gpcEditRoomSection" style="display: none;">
+        <div class="header-admin">
+            <header>
+                <h1>Edit Room Green Pramuka City</h1>
+            </header>
+        </div>
+        <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="room_section" value="">
+            <input type="hidden" name="room_id" value="">
+
+            <div class="room-form-container">
+                <div class="room-main-image">
+                    <div class="image-upload-large">
+                        <i class="fas fa-image"></i>
+                        <p>Insert Room Main Photo</p>
+                        <img id="gpcMainEditImage" src="" alt="Main Room Photo" style="display: none;">
+                        <input type="file" name="main_photo" class="room-photo-input" accept="image/*" hidden>
+                    </div>
+                </div>
+
+                <!-- Additional Room Photos -->
+                <div class="room-additional-images">
+                    @for ($i = 0; $i < 4; $i++) <div class="image-upload-small">
+                        <i class="fas fa-image"></i>
+                        <p>Insert Room Photo</p>
+                        <img class="gpcPopupEditImage" src="" alt="Room Additional {{ $i + 1 }}" style="display: none;">
+                        <input type="file" name="popup{{ $i + 1 }}" class="room-photo-input" accept="image/*" hidden>
+                </div>
+                @endfor
+            </div>
+
+            <!-- Buttons -->
+            <div class="back-button-container">
+                <button type="button" class="gpc-edit-back-btn">Back</button>
+                <button type="submit" class="gpc-edit-save-btn">Save Changes</button>
+            </div>
+    </div>
+    </form>
+    </div>
+
+    <!-- Create New Room Section GPC -->
+    <div class="gpc-create-room-section" id="gpcCreateRoomSection" style="display: none;">
+        <div class="header-admin">
+            <header>
+                <h1>Buat Room Green Pramuka City</h1>
+            </header>
+        </div>
+
+        <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data"
+            onsubmit="console.log('Form submitting...'); return true;">
+            @csrf
+            <input type="hidden" name="room_section" value="room_green_pramuka_city">
+
+            <div class="room-form-container">
+                <!-- Main Image -->
+                <div class="room-main-image">
+                    <div class="image-upload-large">
+                        <i class="fas fa-image"></i>
+                        <p>insert room main photo</p>
+                        <input type="file" name="main_photo" class="room-photo-input" accept="image/*" hidden>
+                    </div>
+                </div>
+
+                <!-- Additional Images -->
+                <div class="room-additional-images">
+                    <div class="image-upload-small">
+                        <i class="fas fa-image"></i>
+                        <p>Photo 1</p>
+                        <input type="file" name="popup1" class="room-photo-input" accept="image/*" hidden>
+                    </div>
+                    <div class="image-upload-small">
+                        <i class="fas fa-image"></i>
+                        <p>Photo 2</p>
+                        <input type="file" name="popup2" class="room-photo-input" accept="image/*" hidden>
+                    </div>
+                    <div class="image-upload-small">
+                        <i class="fas fa-image"></i>
+                        <p>Photo 3</p>
+                        <input type="file" name="popup3" class="room-photo-input" accept="image/*" hidden>
+                    </div>
+                    <div class="image-upload-small">
+                        <i class="fas fa-image"></i>
+                        <p>Photo 4</p>
+                        <input type="file" name="popup4" class="room-photo-input" accept="image/*" hidden>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="back-button-container">
+                    <button type="button" class="gpc-create-back-btn">Back</button>
+                    <button type="submit" class="gpc-create-save-btn">Create Room</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Detail Data Section GPC -->
+    <div class="gpc-detail-data-section" id="gpcDetailDataSection" style="display: none;">
+        <div class="detail-container">
+            <div class="detail-header">
+                <h2>Detail Data Green Pramuka City</h2>
+                <button class="gpc-back-btn" onclick="hideDetail()">Back</button>
+            </div>
+            <div class="detail-content">
+                <div class="detail-item">
+                    <label>Nama:</label>
+                    <span id="detailNama">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>No HP:</label>
+                    <span id="detailNoTelp">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Lama Sewa:</label>
+                    <span id="detailLamaSewa">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Ukuran Kamar:</label>
+                    <span id="detailUkuranKamar">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Tanggal Masuk:</label>
+                    <span id="detailTanggalMasuk">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Jam Kedatangan:</label>
+                    <span id="detailJamKedatangan">-</span>
+                </div>
+                <div class="detail-item">
+                    <label>Catatan:</label>
+                    <span id="detailCatatan">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Delete Confirmation Popup -->
     <div class="delete-popup">

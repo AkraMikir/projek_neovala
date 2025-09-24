@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const gtwSection = document.getElementById('gtwSection');
     const pgvSection = document.getElementById('pgvSection');
     const bsrSection = document.getElementById('bsrSection');
+    const gpcSection = document.getElementById('gpcSection');
 
 
     const changeSlideSection = document.getElementById('changeSlideSection');
@@ -139,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const gtwChangeSlideSection = document.getElementById('gtwChangeSlideSection');
     const pgvChangeSlideSection = document.getElementById('pgvChangeSlideSection');
     const bsrChangeSlideSection = document.getElementById('bsrChangeSlideSection');
+    const gpcChangeSlideSection = document.getElementById('gpcChangeSlideSection');
 
     const editRoomSection = document.getElementById('editRoomSection');
     const tpcEditRoomSection = document.getElementById('tpcEditRoomSection');
@@ -147,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const gtwEditRoomSection = document.getElementById('gtwEditRoomSection');
     const pgvEditRoomSection = document.getElementById('pgvEditRoomSection');
     const bsrEditRoomSection = document.getElementById('bsrEditRoomSection');
+    const gpcEditRoomSection = document.getElementById('gpcEditRoomSection');
 
     const createRoomSection = document.getElementById('createRoomSection');
     const tpcCreateRoomSection = document.getElementById('tpcCreateRoomSection');
@@ -155,6 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const gtwCreateRoomSection = document.getElementById('gtwCreateRoomSection');
     const pgvCreateRoomSection = document.getElementById('pgvCreateRoomSection');
     const bsrCreateRoomSection = document.getElementById('bsrCreateRoomSection');
+    const gpcCreateRoomSection = document.getElementById('gpcCreateRoomSection');
 
         const promoLinks = document.querySelectorAll('.promo-link');
         const komentarLinks = document.querySelectorAll('.komentar-link');
@@ -187,12 +191,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fungsi untuk menampilkan section
     function showSection(section) {
         // Sembunyikan semua section
-        document.querySelectorAll('.admin-section, .promo-section, .komentar-section, .tpj-section, .tpc-section, .gkl-section, .plu-section, .gtw-section, .pgv-section, .bsr-section, .change-slide-section, .tpc-change-slide-section, .gkl-change-slide-section, .plu-change-slide-section, .gtw-change-slide-section, .pgv-change-slide-section, .bsr-change-slide-section, .edit-room-section, .tpc-edit-room-section, .gkl-edit-room-section, .plu-edit-room-section, .gtw-edit-room-section, .pgv-edit-room-section, .bsr-edit-room-section, .create-room-section, .tpc-create-room-section, .gkl-create-room-section, .plu-create-room-section, .gtw-create-room-section, .pgv-create-room-section, .bsr-create-room-section, .detail-data-section, .tpc-detail-data-section, .gkl-detail-data-section, .plu-detail-data-section, .gtw-detail-data-section, .pgv-detail-data-section, .bsr-detail-data-section ').forEach(s => {
+        document.querySelectorAll('.admin-section, .promo-section, .komentar-section, .tpj-section, .tpc-section, .gkl-section, .plu-section, .gtw-section, .pgv-section, .bsr-section, .gpc-section, .change-slide-section, .tpc-change-slide-section, .gkl-change-slide-section, .plu-change-slide-section, .gtw-change-slide-section, .pgv-change-slide-section, .bsr-change-slide-section, .gpc-change-slide-section, .edit-room-section, .tpc-edit-room-section, .gkl-edit-room-section, .plu-edit-room-section, .gtw-edit-room-section, .pgv-edit-room-section, .bsr-edit-room-section, .gpc-edit-room-section, .create-room-section, .tpc-create-room-section, .gkl-create-room-section, .plu-create-room-section, .gtw-create-room-section, .pgv-create-room-section, .bsr-create-room-section, .gpc-create-room-section, .detail-data-section, .tpc-detail-data-section, .gkl-detail-data-section, .plu-detail-data-section, .gtw-detail-data-section, .pgv-detail-data-section, .bsr-detail-data-section, .gpc-detail-data-section').forEach(s => {
             s.style.display = 'none';
         });
 
         // Tampilkan section yang dipilih
         section.style.display = 'block';
+        
+        // Initialize GPC section when shown
+        if (section.id === 'gpcSection') {
+            gpcInitSection();
+        }
     }
 
     // Event listener untuk logo (kembali ke main content)
@@ -204,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listener untuk tombol-tombol navigasi
-    document.querySelectorAll('.promo-link, .komentar-link, .tpj-link, .tpc-link, .gkl-link, .plu-link, .gtw-link, .pgv-link, .bsr-link').forEach(link => {
+    document.querySelectorAll('.promo-link, .komentar-link, .tpj-link, .tpc-link, .gkl-link, .plu-link, .gtw-link, .pgv-link, .bsr-link, .gpc-link').forEach(link => {
         link.addEventListener('click', function(e) {
                 e.preventDefault();
             const sectionId = this.classList.contains('promo-link') ? 'promoSection' :
@@ -215,7 +224,8 @@ document.addEventListener('DOMContentLoaded', function() {
                              this.classList.contains('plu-link') ? 'pluSection' :
                              this.classList.contains('gtw-link') ? 'gtwSection' :
                              this.classList.contains('pgv-link') ? 'pgvSection' :
-                             this.classList.contains('bsr-link') ? 'bsrSection' : null;
+                             this.classList.contains('bsr-link') ? 'bsrSection' :
+                             this.classList.contains('gpc-link') ? 'gpcSection' : null;
 
             if (sectionId) {
                 showSection(document.getElementById(sectionId));
@@ -266,6 +276,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    document.querySelectorAll('.gpc-edit-back-btn, .gpc-create-back-btn, .gpc-back-btn-slide, .gpc-back-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            showSection(document.getElementById('gpcSection'));
+        });
+    });
+
 
         // Event listener untuk tombol change slide
         document.querySelector('.change-btn').addEventListener('click', function() {
@@ -296,12 +312,16 @@ document.addEventListener('DOMContentLoaded', function() {
             showSection(document.getElementById('bsrChangeSlideSection'));
     });
 
+        document.querySelector('.gpc-change-btn').addEventListener('click', function() {
+            showSection(document.getElementById('gpcChangeSlideSection'));
+    });
+
     // Delete Room Functionality
     const deletePopup = document.querySelector('.delete-popup');
     let cardToDelete = null;
 
     // Show popup
-    document.querySelectorAll('.delete-room-btn, .bsr-delete-room-btn').forEach(btn => {
+    document.querySelectorAll('.delete-room-btn, .bsr-delete-room-btn, .gpc-delete-room-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             deletePopup.classList.add('active');
@@ -318,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Confirm delete
     document.querySelector('.popup-delete').addEventListener('click', () => {
         if (cardToDelete) {
-            const deleteBtn = cardToDelete.querySelector('.delete-room-btn, .bsr-delete-room-btn');
+            const deleteBtn = cardToDelete.querySelector('.delete-room-btn, .bsr-delete-room-btn, .gpc-delete-room-btn');
             const dbId = deleteBtn.getAttribute('data-db-id');
 
             fetch(`/admin/delete/room/${dbId}`, {
@@ -406,8 +426,8 @@ const komentarForm = document.getElementById('komentarForm');
 const submitBtn = document.getElementById('submitBtn');
 const methodInput = document.getElementById('formMethod');
 
-// DELETE KOMENTAR
-const deleteKomentarButtons = document.querySelectorAll('.komentar-card .delete-btn');
+// DELETE KOMENTAR (Main komentar section only - not apartment sections)
+const deleteKomentarButtons = document.querySelectorAll('.komentar-card .delete-btn:not([data-section])');
 deleteKomentarButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         e.preventDefault(); // Cegah aksi default link
@@ -1056,22 +1076,7 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
             });
         });
 
-        // Comment Apply & Delete Buttons
-        document.querySelectorAll('.apply-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Implementasi untuk apply comment
-                console.log('Apply comment clicked');
-            });
-        });
-
-        document.querySelectorAll('.comment-card .delete-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (confirm('Apakah Anda yakin ingin menghapus komentar ini?')) {
-                    // Implementasi untuk delete comment
-                    console.log('Delete comment clicked');
-                }
-            });
-        });
+        // Comment Apply & Delete Buttons - handled by specific onclick functions
 
         // Form Data Detail & Delete Buttons
         document.querySelectorAll('.detail-btn').forEach(btn => {
@@ -1162,6 +1167,14 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
         });
     }
 
+    const gpcAddRoomBtn = document.querySelector('.gpc-add-room-btn');
+    if (gpcAddRoomBtn) {
+        gpcAddRoomBtn.addEventListener('click', () => {
+            console.log('gpc Add Room clicked');
+            showSection(document.getElementById('gpcCreateRoomSection'));
+        });
+    }
+
     // Edit Room Buttons
     if (editRoomButtons) {
         editRoomButtons.forEach(btn => {
@@ -1218,6 +1231,15 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
         });
     }
 
+    const gpcEditRoomButtons = document.querySelectorAll('.gpc-edit-room-btn');
+    if (gpcEditRoomButtons) {
+        gpcEditRoomButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                showSection(document.getElementById('gpcEditRoomSection'));
+            });
+        });
+    }
+
     // Back Button di Edit Room
     if (editBackBtn) {
         editBackBtn.addEventListener('click', () => {
@@ -1253,6 +1275,13 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
         });
     });
 
+    document.querySelectorAll('.gpc-more-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=> {
+            const popupId = btn.getAttribute('data-popup-id');
+            document.getElementById(popupId)?.classList.add('active');
+        });
+    });
+
 
     // Detail Button Click Handler
     const detailButtons = document.querySelectorAll('.detail-btn');
@@ -1262,6 +1291,7 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
     const gtwDetailButtons = document.querySelectorAll('.gtw-detail-btn');
     const pgvDetailButtons = document.querySelectorAll('.pgv-detail-btn');
     const bsrDetailButtons = document.querySelectorAll('.bsr-detail-btn');
+    const gpcDetailButtons = document.querySelectorAll('.gpc-detail-btn');
 
     const detailBackBtn = document.querySelector('.detail-container .back-btn');
     const tpcDetailBackBtn = document.querySelector('.tpc-detail-container .tpc-back-btn');
@@ -1270,6 +1300,7 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
     const gtwDetailBackBtn = document.querySelector('.gtw-detail-container .gtw-back-btn');
     const pgvDetailBackBtn = document.querySelector('.pgv-detail-container .pgv-back-btn');
     const bsrDetailBackBtn = document.querySelector('.bsr-detail-container .bsr-back-btn');
+    const gpcDetailBackBtn = document.querySelector('.gpc-detail-container .gpc-back-btn');
 
     //tpj detail controll
     detailButtons.forEach(button => {
@@ -1312,28 +1343,6 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
 
             // Tampilkan section detail
             showSection(document.getElementById('tpcDetailDataSection'));
-        });
-    });
-
-    //gkl detail controll
-    gklDetailButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Mendapatkan data dari row
-            const row = this.closest('.form-data-row');
-            const nama = row.querySelector('.data-cell:nth-child(1)').textContent;
-            const noTelp = row.querySelector('.data-cell:nth-child(2)').textContent;
-            const lamaSewa = row.querySelector('.data-cell:nth-child(3)').textContent;
-            const ukuranKamar = row.querySelector('.data-cell:nth-child(4)').textContent;
-
-            // Update detail section dengan data
-            document.getElementById('detailNama').textContent = nama;
-            document.getElementById('detailNoTelp').textContent = noTelp;
-            document.getElementById('detailLamaSewa').textContent = lamaSewa;
-            document.getElementById('detailUkuranKamar').textContent = ukuranKamar;
-
-            // Tampilkan section detail
-            showSection(document.getElementById('gklDetailDataSection'));
         });
     });
 
@@ -1447,6 +1456,28 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
         });
     });
 
+    //gpc detail controll
+    gpcDetailButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Mendapatkan data dari row
+            const row = this.closest('.form-data-row');
+            const nama = row.querySelector('.data-cell:nth-child(1)').textContent;
+            const noTelp = row.querySelector('.data-cell:nth-child(2)').textContent;
+            const lamaSewa = row.querySelector('.data-cell:nth-child(3)').textContent;
+            const ukuranKamar = row.querySelector('.data-cell:nth-child(4)').textContent;
+
+            // Update detail section dengan data
+            document.getElementById('detailNama').textContent = nama;
+            document.getElementById('detailNoTelp').textContent = noTelp;
+            document.getElementById('detailLamaSewa').textContent = lamaSewa;
+            document.getElementById('detailUkuranKamar').textContent = ukuranKamar;
+
+            // Tampilkan section detail
+            showSection(document.getElementById('gpcDetailDataSection'));
+        });
+    });
+
     // tpj Back Button Handler
     if (detailBackBtn) {
         detailBackBtn.addEventListener('click', function(e) {
@@ -1499,6 +1530,14 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
         bsrDetailBackBtn.addEventListener('click', function(e) {
             e.preventDefault();
             showSection(document.getElementById('bsrSection'));
+        });
+    }
+
+    //gpc back button handler
+    if (gpcDetailBackBtn) {
+        gpcDetailBackBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showSection(document.getElementById('gpcSection'));
         });
     }
 
@@ -1796,6 +1835,63 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
     // Auto advance slides every 5 seconds
     setInterval(bsrNextSlide, 5000);
 
+    // GPC Carousel
+    const gpcCarousel = document.querySelector('.gpc-carousel-container');
+    const gpcSlides = document.querySelectorAll('.gpc-carousel-slide');
+    const gpcDots = document.querySelectorAll('.gpc-carousel-dot');
+    const gpcPrevButton = document.querySelector('.gpc-carousel-button.prev');
+    const gpcNextButton = document.querySelector('.gpc-carousel-button.next');
+    let gpcCurrentSlide = 0;
+    
+    console.log('GPC Carousel Debug:');
+    console.log('GPC Carousel element:', gpcCarousel);
+    console.log('GPC Slides found:', gpcSlides.length);
+    console.log('GPC Dots found:', gpcDots.length);
+    console.log('GPC Prev Button:', gpcPrevButton);
+    console.log('GPC Next Button:', gpcNextButton);
+
+    function gpcUpdateCarousel() {
+        console.log('GPC Update Carousel - Current slide:', gpcCurrentSlide);
+        console.log('GPC Carousel element:', gpcCarousel);
+        console.log('GPC Slides count:', gpcSlides.length);
+        
+        if (gpcCarousel) {
+            gpcCarousel.style.transform = `translateX(-${gpcCurrentSlide * 25}%)`;
+            console.log('GPC Transform applied:', gpcCarousel.style.transform);
+        }
+        
+        gpcDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === gpcCurrentSlide);
+        });
+    }
+
+    function gpcNextSlide() {
+        gpcCurrentSlide = (gpcCurrentSlide + 1) % gpcSlides.length;
+        gpcUpdateCarousel();
+    }
+
+    function gpcPrevSlide() {
+        gpcCurrentSlide = (gpcCurrentSlide - 1 + gpcSlides.length) % gpcSlides.length;
+        gpcUpdateCarousel();
+    }
+
+    // Event listeners for GPC carousel
+    if (gpcPrevButton && gpcNextButton) {
+        gpcPrevButton.addEventListener('click', gpcPrevSlide);
+        gpcNextButton.addEventListener('click', gpcNextSlide);
+    }
+
+    // Add click events to GPC dots
+    gpcDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            gpcCurrentSlide = index;
+            gpcUpdateCarousel();
+        });
+    });
+
+    // Auto advance GPC slides every 5 seconds
+    setInterval(gpcNextSlide, 5000);
+
     // Event listener untuk select-btn (termasuk BSR)
     document.addEventListener('click', (e) => {
         if (e.target.closest('.select-btn')) {
@@ -1832,6 +1928,7 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
     const updateGtwBtn = document.querySelector('.gtw-update-btn-slide');
     const updatePgvBtn = document.querySelector('.pgv-update-btn-slide');
     const updateBsrBtn = document.querySelector('.bsr-update-btn-slide');
+const updateGpcBtn = document.querySelector('.gpc-update-btn-slide');
 
 inputs.forEach(input => {
     input.addEventListener('change', () => {
@@ -1868,6 +1965,15 @@ document.addEventListener('change', (e) => {
     if (e.target.classList.contains('file-input') && e.target.closest('.bsr-change-slide-section')) {
         if (updateBsrBtn) {
             updateBsrBtn.style.display = 'inline-block';
+        }
+    }
+});
+
+// Event listener untuk GPC update button
+document.addEventListener('change', (e) => {
+    if (e.target.classList.contains('file-input') && e.target.closest('.gpc-change-slide-section')) {
+        if (updateGpcBtn) {
+            updateGpcBtn.style.display = 'inline-block';
         }
     }
 });
@@ -1913,8 +2019,25 @@ document.querySelectorAll('.room-popup-nav').forEach(button => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    // === RESTORE CURRENT SECTION ===
+    // Check if there's a stored section to restore after page refresh
+    const storedSection = localStorage.getItem('currentSection');
+    if (storedSection && storedSection !== 'adminPanel') {
+        // Clear the stored section
+        localStorage.removeItem('currentSection');
+        // Show the stored section
+        const targetSection = document.getElementById(storedSection);
+        if (targetSection) {
+            showSection(targetSection);
+        }
+    }
+
     // === APPLY ===
     document.querySelectorAll('.apply-btn').forEach(btn => {
+        // Skip buttons that have onclick handlers (like GPC)
+        if (btn.hasAttribute('onclick')) {
+            return;
+        }
         btn.addEventListener('click', () => {
             const id = btn.dataset.id?.trim();
             const section = btn.dataset.section?.trim();
@@ -1940,6 +2063,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // === UNAPPLY ===
     document.querySelectorAll('.unapply-btn').forEach(btn => {
+        // Skip buttons that have onclick handlers (like GPC)
+        if (btn.hasAttribute('onclick')) {
+            return;
+        }
         btn.addEventListener('click', () => {
             const id = btn.dataset.id?.trim();
             const section = btn.dataset.section?.trim();
@@ -1957,14 +2084,133 @@ document.addEventListener("DOMContentLoaded", () => {
     // Cancel ALL Unapply Popups
     document.querySelectorAll('.popup-cancel-unapply-comment').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.unapply-comment-popup').forEach(popup => {
+            document.querySelectorAll('.apply-comment-popup').forEach(popup => {
                 popup.style.display = 'none';
+            });
+        });
+    });
+
+    // === FORM SUBMISSIONS ===
+    // Handle Apply Form Submissions
+    document.querySelectorAll('form[id^="applyForm-"]').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const url = this.action;
+            
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message || 'Komentar telah di-apply.');
+                    // Store current section before refresh
+                    const currentSection = document.querySelector('.section.active')?.id || 'adminPanel';
+                    localStorage.setItem('currentSection', currentSection);
+                    // Refresh page
+                    window.location.reload();
+                } else {
+                    alert('Gagal meng-apply komentar.');
+                }
+            })
+            .catch(error => {
+                console.error('Error applying comment:', error);
+                console.error('URL:', url);
+                console.error('Form data:', formData);
+                alert('Terjadi kesalahan saat meng-apply komentar. URL: ' + url);
+            });
+        });
+    });
+
+    // Handle Unapply Form Submissions
+    document.querySelectorAll('form[id^="unapplyForm-"]').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const url = this.action;
+            
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message || 'Komentar telah dikembalikan ke status pending.');
+                    // Store current section before refresh
+                    const currentSection = document.querySelector('.section.active')?.id || 'adminPanel';
+                    localStorage.setItem('currentSection', currentSection);
+                    // Refresh page
+                    window.location.reload();
+                } else {
+                    alert('Gagal meng-unapply komentar.');
+                }
+            })
+            .catch(error => {
+                console.error('Error unapplying comment:', error);
+                console.error('URL:', url);
+                console.error('Form data:', formData);
+                alert('Terjadi kesalahan saat meng-unapply komentar. URL: ' + url);
+            });
+        });
+    });
+
+    // Handle Delete Form Submissions
+    document.querySelectorAll('form[id^="deleteForm-"]').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const url = this.action;
+            
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message || 'Komentar telah dihapus.');
+                    // Store current section before refresh
+                    const currentSection = document.querySelector('.section.active')?.id || 'adminPanel';
+                    localStorage.setItem('currentSection', currentSection);
+                    // Refresh page
+                    window.location.reload();
+                } else {
+                    alert('Gagal menghapus komentar.');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting comment:', error);
+                console.error('URL:', url);
+                console.error('Form data:', formData);
+                alert('Terjadi kesalahan saat menghapus komentar. URL: ' + url);
             });
         });
     });
 
     // === DELETE ===
     document.querySelectorAll('.delete-btn').forEach(btn => {
+        // Skip buttons that have onclick handlers (like GPC)
+        if (btn.hasAttribute('onclick')) {
+            return;
+        }
         btn.addEventListener('click', () => {
             const id = btn.dataset.id?.trim();
             const section = btn.dataset.section?.trim();
@@ -2138,4 +2384,359 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// ==============================
+// GPC SECTION FUNCTIONS
+// ==============================
+
+// GPC Carousel Functions - REMOVED DUPLICATE
+
+// GPC Room Management
+function gpcLoadRooms() {
+    fetch('/admin/rooms/gpc')
+        .then(response => response.json())
+        .then(rooms => {
+            const roomCards = document.querySelector('.gpc-section .room-cards');
+            if (roomCards) {
+                roomCards.innerHTML = rooms.map(room => `
+                    <div class="room-card" data-room-id="${room.id}">
+                        <div class="room-card-image">
+                            <img src="${room.main_photo || '/images/placeholder.jpg'}" alt="${room.room_name}">
+                            <div class="room-action-buttons">
+                                <button class="gpc-edit-room-btn" onclick="gpcEditRoom(${room.id})">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="gpc-delete-room-btn" onclick="gpcDeleteRoom(${room.id})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button class="gpc-more-btn" onclick="gpcShowRoomDetails(${room.id})">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="room-card-header">
+                            <div class="left-text">${room.room_name}</div>
+                            <div class="right-text">
+                                <div class="room-type">GPC</div>
+                                <div class="room-logo">
+                                    <img src="/images/logo/logo.png" alt="GPC Logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        })
+        .catch(error => console.error('Error loading GPC rooms:', error));
+}
+
+function gpcLoadComments() {
+    fetch('/admin/comments/gpc')
+        .then(response => response.json())
+        .then(comments => {
+            const commentSection = document.querySelector('.gpc-section .comment-section .comment-cards');
+            if (commentSection) {
+                commentSection.innerHTML = comments.map(comment => `
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="comment-content">
+                            <div class="gpc-comment-user">${comment.instagram || 'Anonymous'}</div>
+                            <div class="gpc-star-rating">
+                                ${'★'.repeat(comment.rating)}${'☆'.repeat(5 - comment.rating)}
+                            </div>
+                            <div class="gpc-quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="gpc-comment-text">${comment.message}</p>
+                        </div>
+                        <div class="comment-footer">
+                            <div class="comment-info">
+                                <span>${new Date(comment.created_at).toLocaleDateString()}</span>
+                            </div>
+                            <div class="comment-actions">
+                                ${comment.status === 'accepted' ? 
+                                    `<button class="unapply-btn" onclick="gpcUnapplyComment(${comment.id})">Unapply</button>` :
+                                    `<button class="apply-btn" onclick="gpcApplyComment(${comment.id})">Apply</button>`
+                                }
+                                <button class="delete-btn" onclick="gpcDeleteComment(${comment.id})">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        })
+        .catch(error => console.error('Error loading GPC comments:', error));
+}
+
+function gpcApplyComment(id) {
+    console.log('Applying GPC comment:', id);
+    fetch(`/komentar-gpc/${id}/accept`, {
+        method: 'PATCH',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            // Reload the page to show updated comments
+            location.reload();
+        } else {
+            alert('Failed to apply comment');
+        }
+    })
+    .catch(error => {
+        console.error('Error applying comment:', error);
+        alert('Error applying comment');
+    });
+}
+
+function gpcUnapplyComment(id) {
+    console.log('Unapplying GPC comment:', id);
+    fetch(`/komentar-gpc/${id}/unapply`, {
+        method: 'PATCH',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            // Reload the page to show updated comments
+            location.reload();
+        } else {
+            alert('Failed to unapply comment');
+        }
+    })
+    .catch(error => {
+        console.error('Error unapplying comment:', error);
+        alert('Error unapplying comment');
+    });
+}
+
+function gpcDeleteComment(id) {
+    if (confirm('Are you sure you want to delete this comment?')) {
+        console.log('Deleting GPC comment:', id);
+        fetch(`/komentar-gpc/${id}/delete`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                // Reload the page to show updated comments
+                location.reload();
+            } else {
+                alert('Failed to delete comment');
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting comment:', error);
+            alert('Error deleting comment');
+        });
+    }
+}
+
+function gpcEditRoom(id) {
+    // Hide current section and show edit section
+    document.querySelector('.gpc-section').style.display = 'none';
+    document.querySelector('.gpc-edit-room-section').style.display = 'block';
+    
+    // Load room details for editing
+    fetch(`/admin/room/details/${id}`)
+        .then(response => response.json())
+        .then(room => {
+            // Populate edit form with room data
+            const editForm = document.querySelector('.gpc-edit-room-section form');
+            if (editForm) {
+                editForm.setAttribute('data-room-id', room.id);
+                // Populate form fields with room data
+            }
+        })
+        .catch(error => console.error('Error loading room details:', error));
+}
+
+function gpcDeleteRoom(id) {
+    if (confirm('Are you sure you want to delete this room?')) {
+        fetch(`/admin/room/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            gpcLoadRooms();
+        })
+        .catch(error => console.error('Error deleting room:', error));
+    }
+}
+
+function gpcShowRoomDetails(id) {
+    // Show room details popup
+    fetch(`/admin/room/details/${id}`)
+        .then(response => response.json())
+        .then(room => {
+            // Create and show popup with room details
+            const popup = document.createElement('div');
+            popup.className = 'room-popup-overlay active';
+            popup.innerHTML = `
+                <div class="room-popup-container">
+                    <button class="room-popup-close" onclick="this.closest('.room-popup-overlay').remove()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="room-popup-carousel">
+                        <div class="room-popup-carousel-container">
+                            ${room.popup_photos ? room.popup_photos.map(photo => `
+                                <div class="room-popup-slide">
+                                    <img src="${photo}" alt="Room Photo">
+                                </div>
+                            `).join('') : ''}
+                        </div>
+                        <button class="room-popup-nav prev" onclick="gpcPrevRoomSlide()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="room-popup-nav next" onclick="gpcNextRoomSlide()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="popup-content">
+                        <h3 class="popup-title">${room.room_name}</h3>
+                        <p class="popup-description">Green Pramuka City Room</p>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(popup);
+        })
+        .catch(error => console.error('Error loading room details:', error));
+}
+
+let gpcRoomCurrentSlide = 0;
+
+function gpcNextRoomSlide() {
+    const slides = document.querySelectorAll('.room-popup-slide');
+    if (slides.length > 0) {
+        slides[gpcRoomCurrentSlide].classList.remove('active');
+        gpcRoomCurrentSlide = (gpcRoomCurrentSlide + 1) % slides.length;
+        slides[gpcRoomCurrentSlide].classList.add('active');
+    }
+}
+
+function gpcPrevRoomSlide() {
+    const slides = document.querySelectorAll('.room-popup-slide');
+    if (slides.length > 0) {
+        slides[gpcRoomCurrentSlide].classList.remove('active');
+        gpcRoomCurrentSlide = (gpcRoomCurrentSlide - 1 + slides.length) % slides.length;
+        slides[gpcRoomCurrentSlide].classList.add('active');
+    }
+}
+
+function gpcShowCreateRoom() {
+    document.querySelector('.gpc-section').style.display = 'none';
+    document.querySelector('.gpc-create-room-section').style.display = 'block';
+}
+
+// GPC Edit Room Function
+document.querySelectorAll('.gpc-edit-room-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const roomData = JSON.parse(button.getAttribute('data-room'));
+        
+        // Debug: Log the room data
+        console.log('GPC Edit Room - Room Data:', roomData);
+
+        document.querySelector('#gpcEditRoomSection input[name="room_section"]').value = roomData.section || '';
+        document.querySelector('#gpcEditRoomSection input[name="room_id"]').value = roomData.id || '';
+
+        const mainPhotoContainer = document.querySelector('#gpcEditRoomSection .room-main-image .image-upload-large');
+        const mainImgTag = mainPhotoContainer.querySelector('#gpcMainEditImage');
+
+        if (mainImgTag && roomData.main_photo) {
+            mainImgTag.src = roomData.main_photo;
+            mainImgTag.style.display = 'block';
+            mainImgTag.classList.add('preview-image');
+            mainImgTag.style.width = '100%';
+            mainImgTag.style.height = 'auto';
+            mainImgTag.style.maxHeight = '100%';
+            mainImgTag.style.objectFit = 'cover';
+            mainImgTag.style.aspectRatio = '1 / 1';
+            mainImgTag.style.borderRadius = '8px';
+        }
+
+        const mainIcon = mainPhotoContainer.querySelector('i');
+        const mainLabel = mainPhotoContainer.querySelector('p');
+        if (mainIcon) mainIcon.style.display = 'none';
+        if (mainLabel) mainLabel.style.display = 'none';
+
+        const additionalContainers = document.querySelectorAll('#gpcEditRoomSection .room-additional-images .image-upload-small');
+
+        additionalContainers.forEach((container, index) => {
+            const img = container.querySelector('.gpcPopupEditImage');
+            const popupKey = 'popup' + (index + 1);
+            const popupPhoto = roomData[popupKey];
+            
+            // Debug: Log popup photo data
+            console.log(`GPC Edit Room - Popup ${index + 1}:`, popupKey, popupPhoto);
+
+            if (popupPhoto) {
+                if (img) {
+                    img.src = popupPhoto;
+                    img.style.display = 'block';
+                    img.classList.add('preview-image');
+                    img.style.width = '100%';
+                    img.style.height = 'auto';
+                    img.style.maxHeight = '100%';
+                    img.style.objectFit = 'cover';
+                    img.style.aspectRatio = '1 / 1';
+                    img.style.borderRadius = '8px';
+                    console.log(`GPC Edit Room - Image ${index + 1} set to:`, popupPhoto);
+                }
+
+                const icon = container.querySelector('i');
+                const label = container.querySelector('p');
+                if (icon) icon.style.display = 'none';
+                if (label) label.style.display = 'none';
+            } else {
+                if (img) {
+                    img.src = '';
+                    img.style.display = 'none';
+                }
+                console.log(`GPC Edit Room - No image for popup ${index + 1}`);
+            }
+        });
+
+        document.getElementById('gpcEditRoomSection').style.display = 'block';
+    });
+});
+
+function gpcShowChangeSlide() {
+    document.querySelector('.gpc-section').style.display = 'none';
+    document.querySelector('.gpc-change-slide-section').style.display = 'block';
+}
+
+function gpcBackToSection() {
+    document.querySelector('.gpc-section').style.display = 'block';
+    document.querySelector('.gpc-create-room-section').style.display = 'none';
+    document.querySelector('.gpc-edit-room-section').style.display = 'none';
+    document.querySelector('.gpc-change-slide-section').style.display = 'none';
+}
+
+// Initialize GPC section when shown
+function gpcInitSection() {
+    gpcLoadRooms();
+    gpcLoadComments();
+    gpcUpdateCarousel();
+}
 

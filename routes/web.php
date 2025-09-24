@@ -209,3 +209,9 @@ Route::post('/admin/room/create', [StoreController::class, 'createRoom'])->middl
 Route::post('/admin/room/update/{id}', [EditController::class, 'updateRoom'])->middleware('auth:admin');
 Route::delete('/admin/room/delete/{id}', [DeleteController::class, 'deleteRoom'])->middleware('auth:admin');
 Route::get('/admin/room/details/{id}', [ViewsController::class, 'roomDetails'])->middleware('auth:admin');
+
+// ==============================
+// ROUTE GPC ADMIN
+// ==============================
+Route::get('/admin/rooms/gpc', [ViewsController::class, 'gpcRooms'])->middleware('auth:admin');
+Route::get('/admin/comments/gpc', [ViewsController::class, 'gpcComments'])->middleware('auth:admin');
