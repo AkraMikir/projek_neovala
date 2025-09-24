@@ -116,43 +116,43 @@
 
             <div class="service-container-apart">
                 <div class="service-item-apart">
-                    <i class="fas fa-money-bill-wave"></i>
+                    <i class="fas fa-home"></i>
                 </div>
                 <div class="service-item-apart">
-                    <i class="fas fa-tags"></i>
+                    <i class="fas fa-dumbbell"></i>
                 </div>
                 <div class="service-item-apart">
-                    <i class="far fa-calendar-alt"></i>
+                    <i class="fas fa-running"></i>
                 </div>
                 <div class="service-item-apart">
-                    <i class="fas fa-bed"></i>
+                    <i class="fas fa-swimming-pool"></i>
                 </div>
                 <div class="service-item-apart">
-                    <i class="fas fa-clock"></i>
+                    <i class="fas fa-shopping-cart"></i>
                 </div>
                 <div class="service-item-apart">
-                    <i class="fas fa-pump-soap"></i>
+                    <i class="fas fa-child"></i>
                 </div>
             </div>
 
             <div class="facilities-grid">
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-bsc.jpg') }}" alt="Vending Machine">
+                    <img src="{{ asset('images/images/discover-BSC/gazebo.jpg') }}" alt="Gazebo">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-bsc.jpg') }}" alt="Swimming Pool">
+                    <img src="{{ asset('images/images/discover-BSC/gym.jpg') }}" alt="Gym Center">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-bsc.jpg') }}" alt="Waterplay">
+                    <img src="{{ asset('images/images/discover-BSC/jogging.jpg') }}" alt="Jogging Track">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-bsc.jpg') }}" alt="Playground">
+                    <img src="{{ asset('images/images/discover-BSC/kolam.jpg') }}" alt="Swimming Pool">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-bsc.jpg') }}" alt="Lobby Area">
+                    <img src="{{ asset('images/images/discover-BSC/mall.jpg') }}" alt="Mall Bassura">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-bsc.jpg') }}" alt="Garden">
+                    <img src="{{ asset('images/images/discover-BSC/playground.jpg') }}" alt="Mini Playground">
                 </div>
             </div>
         </section>

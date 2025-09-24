@@ -116,43 +116,43 @@
 
             <div class="service-container-apart">
                 <div class="service-item-apart">
-                    <i class="fas fa-money-bill-wave"></i>
+                    <i class="fas fa-credit-card"></i>
                 </div>
                 <div class="service-item-apart">
-                    <i class="fas fa-tags"></i>
+                    <i class="fas fa-store"></i>
                 </div>
                 <div class="service-item-apart">
-                    <i class="far fa-calendar-alt"></i>
+                    <i class="fas fa-tree"></i>
                 </div>
                 <div class="service-item-apart">
-                    <i class="fas fa-bed"></i>
+                    <i class="fas fa-swimming-pool"></i>
                 </div>
                 <div class="service-item-apart">
-                    <i class="fas fa-clock"></i>
+                    <i class="fas fa-shopping-cart"></i>
                 </div>
                 <div class="service-item-apart">
-                    <i class="fas fa-pump-soap"></i>
+                    <i class="fas fa-home"></i>
                 </div>
             </div>
 
             <div class="facilities-grid">
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-gpc.jpg') }}" alt="Vending Machine">
+                    <img src="{{ asset('images/images/discover-GPC/atm.jpg') }}" alt="ATM Center">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-gpc.jpg') }}" alt="Swimming Pool">
+                    <img src="{{ asset('images/images/discover-GPC/gazebo.jpg') }}" alt="Gazebo">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-gpc.jpg') }}" alt="Waterplay">
+                    <img src="{{ asset('images/images/discover-GPC/jungle.jpg') }}" alt="Jungle Pond">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-gpc.jpg') }}" alt="Playground">
+                    <img src="{{ asset('images/images/discover-GPC/kolam.jpg') }}" alt="Swimming Pool">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-gpc.jpg') }}" alt="Lobby Area">
+                    <img src="{{ asset('images/images/discover-GPC/mall.jpg') }}" alt="Mall Access">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/placeholder-gpc.jpg') }}" alt="Garden">
+                    <img src="{{ asset('images/images/discover-GPC/market.jpg') }}" alt="Mini Market">
                 </div>
             </div>
         </section>
