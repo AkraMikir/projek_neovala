@@ -33,6 +33,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/footer-logo.png') }}">
     <title>Neovala</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
     html {
         scroll-behavior: smooth;
@@ -525,6 +526,7 @@
         </div>
     </footer>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/tracking.js') }}"></script>
     <script>
     // Smooth scrolling to hash
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

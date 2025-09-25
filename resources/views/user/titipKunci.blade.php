@@ -351,5 +351,6 @@
     </div>
 </footer>   
 </body>
-<script src="{{ asset('js/script.js') }}"></script> 
+<script src="{{ asset('js/script.js') }}"></script>
+<script src="{{ asset('js/tracking.js') }}"></script>
 </html>

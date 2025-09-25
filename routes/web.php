@@ -19,12 +19,20 @@ use App\Http\Controllers\KomentarGwcController;
 use App\Http\Controllers\KomentarPgvController;
 use App\Http\Controllers\KomentarGpcController;
 use App\Http\Controllers\KomentarBsrController;
+use App\Http\Controllers\EventController;
 
 
 Route::get('/storage-link', function() {
     Artisan::call('storage:link');
     return 'Alhamdulillah sudah bisa ya mas ganteng';
 });
+
+// ==============================
+// ROUTE UNTUK EVENT TRACKING API
+// ==============================
+Route::post('/api/track', [EventController::class, 'track'])->name('api.track');
+Route::get('/api/dashboard-stats', [EventController::class, 'getDashboardStats'])->name('api.dashboard-stats');
+Route::get('/api/event-details', [EventController::class, 'getEventDetails'])->name('api.event-details');
 
 // ==============================
 // ROUTE UNTUK USER PAGE
@@ -215,3 +223,8 @@ Route::get('/admin/room/details/{id}', [ViewsController::class, 'roomDetails'])-
 // ==============================
 Route::get('/admin/rooms/gpc', [ViewsController::class, 'gpcRooms'])->middleware('auth:admin');
 Route::get('/admin/comments/gpc', [ViewsController::class, 'gpcComments'])->middleware('auth:admin');
+
+// ==============================
+// ROUTE TRACKING DASHBOARD ADMIN
+// ==============================
+Route::get('/admin/tracking', [EventController::class, 'trackingDashboard'])->middleware('auth:admin')->name('admin.tracking');

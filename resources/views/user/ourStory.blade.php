@@ -233,4 +233,5 @@
 </footer>    
 </body>
 <script src="../js/script.js"></script>
+<script src="{{ asset('js/tracking.js') }}"></script>
 </html>

@@ -682,6 +682,16 @@
     });
     </script>
 
+    <script src="{{ asset('js/tracking.js') }}"></script>
+    <script>
+    // Track apartment discovery
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.neovalaTracker) {
+            window.neovalaTracker.trackApartmentDiscovery('Bassura City');
+        }
+    });
+    </script>
+
 </body>
 
 </html>

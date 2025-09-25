@@ -678,6 +678,16 @@
     });
     </script>
 
+    <script src="{{ asset('js/tracking.js') }}"></script>
+    <script>
+    // Track apartment discovery
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.neovalaTracker) {
+            window.neovalaTracker.trackApartmentDiscovery('Green Pramuka City');
+        }
+    });
+    </script>
+
 </body>
 
 </html>

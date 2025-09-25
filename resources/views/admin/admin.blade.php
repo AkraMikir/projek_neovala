@@ -77,12 +77,27 @@
                         <li><a href="#" class="pgv-link">PODOMORO</a></li>
                         <li><a href="#" class="bsr-link">BASSURA</a></li>
                         <li><a href="#" class="gpc-link">PRAMUKA</a></li>
-                        <form method="POST" action="{{ route('admin.logout') }}">
-                            @csrf
-                            <button type="submit">Logout</button>
-                        </form>
-
                     </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-button">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('admin.tracking') }}" class="tracking-link">Event Tracking</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-button">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                    <form method="POST" action="{{ route('admin.logout') }}" style="display: none;">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
                 </li>
             </ul>
         </nav>
