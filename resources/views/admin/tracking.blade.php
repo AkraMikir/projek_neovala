@@ -42,7 +42,7 @@
 
     .tracking-dashboard {
         padding: 20px;
-        background: #f8f9fa;
+        background: #fff8eb;
         min-height: 100vh;
         width: 100vw;
         max-width: 100vw;

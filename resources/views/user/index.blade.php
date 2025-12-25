@@ -410,7 +410,7 @@
                     <div class="contact-item">
                         <img src="{{ asset('images/logo/ic_baseline-phone.png') }}" alt="Phone Icon"
                             class="contact-icon">
-                        <span>telp. 0878-1593-3353</span>
+                        <span>telp. 0896-6964-9690</span>
                     </div>
                     <div class="contact-item">
                         <img src="{{ asset('images/logo/bxs_map.png') }}" alt="Location Icon" class="contact-icon">
@@ -466,7 +466,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>GUEST SERVICE</h3>
-                <p>0878-1593-3353</p>
+                <p>0896-6964-9690</p>
 
                 <h3>CONNECT WITH US</h3>
                 <ul>

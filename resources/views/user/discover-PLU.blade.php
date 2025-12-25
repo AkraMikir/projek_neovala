@@ -381,7 +381,7 @@
 
             <div class="footer-booking-discover">
                 <h3>WhatsApp Booking</h3>
-                <p>0878-5262-4656</p>
+                <p>0877-6854-5010</p>
                 <h3>Tiket.com Booking</h3>
                 <p>Tiket.com</p>
             </div>
@@ -389,13 +389,13 @@
             <div class="footer-social-discover">
                 <h3>Social Media PLU Neovala</h3>
                 <div class="social-icons-discover">
-                    <a href="https://instagram.com/neovala.patralandurbano" target="_blank">
+                    <a href="https://www.instagram.com/neovala.urbanopatraland/" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="TikTok: https://tiktok.com/@neovala.patralandurbano" target="_blank">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://tiktok.com/@neovala.patralandurbano" target="_blank">
+                    <a href="https://www.tiktok.com/@neovala.urbanopatraland?lang=en" target="_blank">
                         <i class="fab fa-tiktok"></i>
                     </a>
                     <a href="https://twitter.com/neovala_plu" target="_blank">

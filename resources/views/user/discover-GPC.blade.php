@@ -254,7 +254,7 @@
                         <i class="fab fa-whatsapp"></i>
                         <span class="whatsapp-text">WhatsApp</span>
                     </a>
-                    <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-green-pramuka-city"
+                    <a href="https://www.tiket.com/homes/indonesia/studio-room-gpc-1-malam-by-neovala-809001759225711910?checkin=2025-11-16&checkout=2025-11-17&adult=1&room=1&utm_external=organic&utm_medium=nha_pdp%3Bshare_button"
                         class="booking-btn tiket-btn">
                         <span class="tiket-text">tiket</span>
                         <div class="tiket-element"></div><span class="tiket-text">com</span>

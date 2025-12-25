@@ -185,7 +185,7 @@
     <div class="footer-content">
         <div class="footer-section">
             <h3>GUEST SERVICE</h3>
-            <p>0878-1593-3353</p>
+            <p>0896-6964-9690</p>
             
             <h3>CONNECT WITH US</h3>
             <ul>

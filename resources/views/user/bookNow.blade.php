@@ -137,7 +137,7 @@
         <div class="booking-section">
             <h2>BOOKING PATRALAND URBANO</h2>
             <div class="booking-images">
-                <a href="https://wa.me/6287852624656" target="_blank" class="booking-image">
+                <a href="https://wa.me/6287768545010" target="_blank" class="booking-image">
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
                     </div>
@@ -212,7 +212,7 @@
         <div class="booking-section">
             <h2>BOOKING GREEN PRAMUKA CITY</h2>
             <div class="booking-images">
-                <a href="https://wa.me/6281234567890" target="_blank" class="booking-image">
+                <a href="https://wa.me/6285719035729" target="_blank" class="booking-image">
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
                     </div>
@@ -221,7 +221,7 @@
                         <span class="booking-text">Book via WhatsApp</span>
                     </div>
                 </a>
-                <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-green-pramuka-city" target="_blank" class="booking-image">
+                <a href="https://www.tiket.com/homes/indonesia/studio-room-gpc-1-malam-by-neovala-809001759225711910?checkin=2025-11-16&checkout=2025-11-17&adult=1&room=1&utm_external=organic&utm_medium=nha_pdp%3Bshare_button" target="_blank" class="booking-image">
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
                     </div>
@@ -237,7 +237,7 @@
         <div class="booking-section">
             <h2>BOOKING BASSURA CITY</h2>
             <div class="booking-images">
-                <a href="https://wa.me/6281234567891" target="_blank" class="booking-image">
+                <a href="https://wa.me/6287852624656" target="_blank" class="booking-image">
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
                     </div>
@@ -264,7 +264,7 @@
     <div class="footer-content">
         <div class="footer-section">
             <h3>GUEST SERVICE</h3>
-            <p>0878-1593-3353</p>
+            <p>0896-6964-9690</p>
             
             <h3>CONNECT WITH US</h3>
             <ul>
