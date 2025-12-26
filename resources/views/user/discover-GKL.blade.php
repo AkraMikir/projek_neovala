@@ -394,11 +394,14 @@
             const slider = document.querySelector('.testimoni-slider');
             const prevBtn = document.querySelector('.slider-nav-btn.prev');
             const nextBtn = document.querySelector('.slider-nav-btn.next');
-            const cards = document.querySelectorAll('.testimoni-card');
+            let cards = document.querySelectorAll('.testimoni-card');
             const indicator = document.querySelector('.slider-indicator');
 
-            if (slider && prevBtn && nextBtn && cards.length > 0) {
-                function updateSliderLayout() {
+            // Define functions in outer scope so they can be accessed by form handler
+            let updateSliderLayout, updateButtonVisibility;
+
+            if (slider && prevBtn && nextBtn) {
+                updateSliderLayout = function() {
                     const isMobile = window.innerWidth <= 768;
 
                     if (isMobile) {
@@ -432,9 +435,10 @@
                     }
                 }
 
-                function updateButtonVisibility() {
+                updateButtonVisibility = function() {
                     const isMobile = window.innerWidth <= 768;
                     if (!isMobile) {
+                        cards = document.querySelectorAll('.testimoni-card');
                         const cardWidth = cards[0] ? cards[0].offsetWidth + 30 : 330;
 
                         if (slider.scrollLeft <= 0) {
@@ -488,6 +492,10 @@
 
                 updateSliderLayout();
                 updateButtonVisibility();
+            } else {
+                // Initialize empty functions if slider doesn't exist yet
+                updateSliderLayout = function() {};
+                updateButtonVisibility = function() {};
             }
 
             // Room Popup Functionality
@@ -604,6 +612,102 @@
                     popup.style.display = 'none';
                     document.body.style.overflow = '';
                 }, 500);
+            }
+
+            // Handle Feedback Form Submission
+            const feedbackForm = document.getElementById('feedbackForm');
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const formData = new FormData(this);
+                    const submitBtn = this.querySelector('.submit-feedback-btn');
+                    const originalText = submitBtn.textContent;
+
+                    // Disable submit button
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Mengirim...';
+
+                    fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Add new comment to slider
+                            const testimoniSlider = document.querySelector('.testimoni-slider');
+                            if (testimoniSlider && data.komentar) {
+                                const newCard = document.createElement('div');
+                                newCard.className = 'testimoni-card';
+                                
+                                const instagramDisplay = data.komentar.hide_identity 
+                                    ? '@*******' 
+                                    : '@' + data.komentar.instagram;
+
+                                let starsHtml = '';
+                                for (let i = 1; i <= 5; i++) {
+                                    const starSrc = i <= data.komentar.rating ? starFilledPath : starEmptyPath;
+                                    starsHtml += `<img src="${starSrc}" alt="Star" class="star-icon">`;
+                                }
+
+                                newCard.innerHTML = `
+                                    <span class="quote-icon">"</span>
+                                    <p class="comment-text">${data.komentar.message}</p>
+                                    <div class="comment-footer">
+                                        <span class="comment-user">${instagramDisplay}</span>
+                                        <div class="star-rating">${starsHtml}</div>
+                                    </div>
+                                `;
+
+                                // Insert at the beginning (newest first)
+                                testimoniSlider.insertBefore(newCard, testimoniSlider.firstChild);
+
+                                // Update cards reference
+                                cards = document.querySelectorAll('.testimoni-card');
+                                
+                                // Update slider layout if function exists
+                                if (typeof updateSliderLayout === 'function') {
+                                    updateSliderLayout();
+                                }
+
+                                // Update button visibility if function exists
+                                if (typeof updateButtonVisibility === 'function') {
+                                    updateButtonVisibility();
+                                }
+
+                                // Scroll to show new comment
+                                testimoniSlider.scrollLeft = 0;
+                            }
+
+                            // Show success message
+                            alert(data.message || 'Terima kasih atas feedback Anda!');
+
+                            // Reset form
+                            this.reset();
+                            ratingInput.value = 0;
+                            stars.forEach(star => {
+                                star.classList.remove('fas');
+                                star.classList.add('far');
+                            });
+                        } else {
+                            alert('Gagal mengirim feedback. Silakan coba lagi.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error submitting feedback:', error);
+                        alert('Terjadi kesalahan saat mengirim feedback. Silakan coba lagi.');
+                    })
+                    .finally(() => {
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                    });
+                });
             }
         });
     </script>
