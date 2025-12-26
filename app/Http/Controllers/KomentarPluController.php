@@ -15,16 +15,31 @@ class KomentarPluController extends Controller
         'hideIdentity' => 'nullable|in:on',
     ]);
 
-    KomentarPlu::create([
+    $komentar = KomentarPlu::create([
         'instagram' => $request->has('hideIdentity') ? 'Anonymous' : $request->input('instagram'),
         'message' => $validated['message'],
         'rating' => $validated['rating'],
         'hide_identity' => $request->has('hideIdentity'),
         'section' => 'plu',
-        'status' => 'pending',
+        'status' => 'accepted', // Set langsung accepted agar langsung muncul
     ]);
 
-        return redirect()->back()->with('success', 'Terima kasih atas feedback Anda!');
+    // Jika request AJAX, return JSON
+    if ($request->expectsJson() || $request->ajax()) {
+        return response()->json([
+            'success' => true,
+            'message' => 'Terima kasih atas feedback Anda!',
+            'komentar' => [
+                'id' => $komentar->id,
+                'message' => $komentar->message,
+                'instagram' => $komentar->instagram,
+                'hide_identity' => $komentar->hide_identity,
+                'rating' => $komentar->rating,
+            ]
+        ]);
+    }
+
+    return redirect()->back()->with('success', 'Terima kasih atas feedback Anda!');
     }
 
     public function accept($id)
