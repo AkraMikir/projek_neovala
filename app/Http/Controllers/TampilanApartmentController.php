@@ -59,25 +59,32 @@ class TampilanApartmentController extends Controller
 }
 
     public function tpc()
-{
-    $section = 'TPC';
+    {
+        $section = 'TPC';
 
-    // Ambil carousel berdasarkan section
-    $carousel = Carousel::where('section', $section)->first();
-    $carouselImages = [];
+        // Ambil carousel berdasarkan section
+        $carousel = Carousel::where('section', $section)->first();
 
-    if ($carousel) {
-        for ($i = 1; $i <= 4; $i++) {
-            $imagePath = $carousel->{'image' . $i};
-            if ($imagePath) {
-                $carouselImages[$i] = asset('storage/' . $imagePath);
+        // Siapkan array gambar jika ada carousel
+        $carouselImages = [];
+
+        if ($carousel) {
+            for ($i = 1; $i <= 4; $i++) {
+                $imagePath = $carousel->{'image' . $i};
+                // Pastikan path tidak null dan tidak kosong
+                if (!empty($imagePath) && $imagePath !== null) {
+                    // Pastikan file benar-benar ada di storage
+                    if (Storage::disk('public')->exists($imagePath)) {
+                        $carouselImages[$i] = asset('storage/' . $imagePath);
+                    }
+                }
             }
         }
-    }
 
-    $carouselImagesBySection = [
-        $section => $carouselImages
-    ];
+        // Kirim ke view dalam bentuk $carouselImagesBySection agar konsisten dengan struktur blade
+        $carouselImagesBySection = [
+            $section => $carouselImages
+        ];
 
     // Ambil data Room berdasarkan section
     $rooms = Room::where('section', 'room_transpark_cibubur')->get();
