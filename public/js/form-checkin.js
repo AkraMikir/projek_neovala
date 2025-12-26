@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         "Transpark Juanda by Neovala": "6287874176270",
                         "Transpark Cibubur by Neovala": "6281805191817",
                         "Podomoro Golf View by Neovala": "6281220391217",
-                        "Patraland Urbano by Neovala": "6287852624656",
+                        "Patraland Urbano by Neovala": "6283844466345",
                         "Grand Kamala Lagoon by Neovala": "6285161518151",
                         "Gateway Cicadas by Neovala": "6289630253533",
                         "Bassura City by Neovala": "6287852624656",

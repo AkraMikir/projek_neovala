@@ -177,7 +177,7 @@
                         </div>
                     </div>
                     <div class="direction-btn-wrapper">
-                        <a href="https://maps.app.goo.gl/y2oRkHHYe7YH8TrFA" target="_blank" class="direction-btn">
+                        <a href="https://g.co/kgs/t3h9nTP" target="_blank" class="direction-btn">
                             <i class="fas fa-directions"></i> Petunjuk Arah
                         </a>
                     </div>

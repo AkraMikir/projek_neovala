@@ -171,7 +171,7 @@
                         </div>
                     </div>
                     <div class="direction-btn-wrapper">
-                        <a href="https://maps.app.goo.gl/yU4Utfhcfr7BS6ML8" target="_blank" class="direction-btn">
+                        <a href="https://g.co/kgs/VsY99UR" target="_blank" class="direction-btn">
                             <i class="fas fa-directions"></i> Petunjuk Arah
                         </a>
                     </div>
@@ -185,7 +185,7 @@
                 <h2 class="booking-title">SEWA APARTEMEN<br>Patraland Urbano</h2>
                 <h3 class="booking-subtitle">DI NEOVALA ROOM</h3>
                 <div class="booking-buttons">
-                    <a href="https://wa.me/6287852624656" class="booking-btn whatsapp-btn">
+                    <a href="https://wa.me/6283844466345" class="booking-btn whatsapp-btn">
                         <i class="fab fa-whatsapp"></i>
                         <span class="whatsapp-text">WhatsApp</span>
                     </a>
