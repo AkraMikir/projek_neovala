@@ -265,8 +265,12 @@ class TampilanApartmentController extends Controller
         if ($carousel) {
             for ($i = 1; $i <= 4; $i++) {
                 $imagePath = $carousel->{'image' . $i};
-                if ($imagePath) {
-                    $carouselImages[$i] = asset('storage/' . $imagePath);
+                // Pastikan path tidak null dan tidak kosong
+                if (!empty($imagePath) && $imagePath !== null) {
+                    // Pastikan file benar-benar ada di storage
+                    if (Storage::disk('public')->exists($imagePath)) {
+                        $carouselImages[$i] = asset('storage/' . $imagePath);
+                    }
                 }
             }
         }
@@ -353,8 +357,12 @@ class TampilanApartmentController extends Controller
         if ($carousel) {
             for ($i = 1; $i <= 4; $i++) {
                 $imagePath = $carousel->{'image' . $i};
-                if ($imagePath) {
-                    $carouselImages[$i] = asset('storage/' . $imagePath);
+                // Pastikan path tidak null dan tidak kosong
+                if (!empty($imagePath) && $imagePath !== null) {
+                    // Pastikan file benar-benar ada di storage
+                    if (Storage::disk('public')->exists($imagePath)) {
+                        $carouselImages[$i] = asset('storage/' . $imagePath);
+                    }
                 }
             }
         }
