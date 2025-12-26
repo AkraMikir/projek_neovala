@@ -1435,22 +1435,31 @@
             </div>
             <div class="gkl-current-slide">
                 <div class="gkl-carousel-container">
-                    <div class="gkl-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GKL'][1] ?? asset('img/default-slide.png') }}"
-                            alt="Slide 1 GKL">
-                    </div>
-                    <div class="gkl-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GKL'][2] ?? asset('img/default-slide.png') }}"
-                            alt="Slide 2 GKL">
-                    </div>
-                    <div class="gkl-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GKL'][3] ?? asset('img/default-slide.png') }}"
-                            alt="Slide 3 GKL">
-                    </div>
-                    <div class="gkl-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GKL'][4] ?? asset('img/default-slide.png') }}"
-                            alt="Slide 4 GKL">
-                    </div>
+                    @if(isset($carouselImagesBySection['GKL'][1]) && $carouselImagesBySection['GKL'][1])
+                        <div class="gkl-carousel-slide">
+                            <img src="{{ $carouselImagesBySection['GKL'][1] }}" alt="Slide 1 GKL">
+                        </div>
+                    @endif
+                    @if(isset($carouselImagesBySection['GKL'][2]) && $carouselImagesBySection['GKL'][2])
+                        <div class="gkl-carousel-slide">
+                            <img src="{{ $carouselImagesBySection['GKL'][2] }}" alt="Slide 2 GKL">
+                        </div>
+                    @endif
+                    @if(isset($carouselImagesBySection['GKL'][3]) && $carouselImagesBySection['GKL'][3])
+                        <div class="gkl-carousel-slide">
+                            <img src="{{ $carouselImagesBySection['GKL'][3] }}" alt="Slide 3 GKL">
+                        </div>
+                    @endif
+                    @if(isset($carouselImagesBySection['GKL'][4]) && $carouselImagesBySection['GKL'][4])
+                        <div class="gkl-carousel-slide">
+                            <img src="{{ $carouselImagesBySection['GKL'][4] }}" alt="Slide 4 GKL">
+                        </div>
+                    @endif
+                    @if(!isset($carouselImagesBySection['GKL']) || (empty($carouselImagesBySection['GKL'][1]) && empty($carouselImagesBySection['GKL'][2]) && empty($carouselImagesBySection['GKL'][3]) && empty($carouselImagesBySection['GKL'][4])))
+                        <div class="gkl-carousel-slide" style="display: flex; align-items: center; justify-content: center; background: #f0f0f0; color: #999;">
+                            <p>No images uploaded yet</p>
+                        </div>
+                    @endif
                 </div>
                 <button class="gkl-carousel-button prev">
                     <i class="fas fa-chevron-left"></i>
@@ -1679,8 +1688,13 @@
             <div class="slide-grid">
                 <div class="slide-item" data-index="0">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GKL'][1] ?? asset('img/default-slide.png') }}"
-                            alt="Slide 1 GKL">
+                        @if(isset($carouselImagesBySection['GKL'][1]) && $carouselImagesBySection['GKL'][1])
+                            <img src="{{ $carouselImagesBySection['GKL'][1] }}" alt="Slide 1 GKL">
+                        @else
+                            <div style="width: 100%; height: 100%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;">
+                                <i class="fas fa-image" style="font-size: 48px;"></i>
+                            </div>
+                        @endif
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[1]" accept="image/*" hidden>
                             <button type="button" class="select-btn">
@@ -1691,8 +1705,13 @@
                 </div>
                 <div class="slide-item" data-index="1">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GKL'][2] ?? asset('img/default-slide.png') }}"
-                            alt="Slide 2 GKL">
+                        @if(isset($carouselImagesBySection['GKL'][2]) && $carouselImagesBySection['GKL'][2])
+                            <img src="{{ $carouselImagesBySection['GKL'][2] }}" alt="Slide 2 GKL">
+                        @else
+                            <div style="width: 100%; height: 100%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;">
+                                <i class="fas fa-image" style="font-size: 48px;"></i>
+                            </div>
+                        @endif
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[2]" accept="image/*" hidden>
                             <button type="button" class="select-btn">
@@ -1703,8 +1722,13 @@
                 </div>
                 <div class="slide-item" data-index="2">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GKL'][3] ?? asset('img/default-slide.png') }}"
-                            alt="Slide 3 GKL">
+                        @if(isset($carouselImagesBySection['GKL'][3]) && $carouselImagesBySection['GKL'][3])
+                            <img src="{{ $carouselImagesBySection['GKL'][3] }}" alt="Slide 3 GKL">
+                        @else
+                            <div style="width: 100%; height: 100%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;">
+                                <i class="fas fa-image" style="font-size: 48px;"></i>
+                            </div>
+                        @endif
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[3]" accept="image/*" hidden>
                             <button type="button" class="select-btn">
@@ -1715,8 +1739,13 @@
                 </div>
                 <div class="slide-item" data-index="3">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GKL'][4] ?? asset('img/default-slide.png') }}"
-                            alt="Slide 4 GKL">
+                        @if(isset($carouselImagesBySection['GKL'][4]) && $carouselImagesBySection['GKL'][4])
+                            <img src="{{ $carouselImagesBySection['GKL'][4] }}" alt="Slide 4 GKL">
+                        @else
+                            <div style="width: 100%; height: 100%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;">
+                                <i class="fas fa-image" style="font-size: 48px;"></i>
+                            </div>
+                        @endif
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[4]" accept="image/*" hidden>
                             <button type="button" class="select-btn">

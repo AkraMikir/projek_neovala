@@ -1902,19 +1902,46 @@ document.querySelectorAll('.bsr-edit-room-btn').forEach(button => {
     });
 
 
-    // Preview gambar saat dipilih (termasuk BSR)
+    // Preview gambar saat dipilih (termasuk semua section)
     document.addEventListener('change', (e) => {
         if (e.target.classList.contains('file-input')) {
             const input = e.target;
             const file = input.files[0];
+            if (!file) return;
+            
             const reader = new FileReader();
             reader.onload = function (event) {
-                const img = input.closest('.slide-image').querySelector('img');
+                const slideImage = input.closest('.slide-image');
+                if (!slideImage) return;
+                
+                let img = slideImage.querySelector('img');
+                
+                // Jika tidak ada img tag, cek apakah ada placeholder div
+                if (!img) {
+                    const placeholder = slideImage.querySelector('div');
+                    if (placeholder) {
+                        // Ganti placeholder dengan img tag
+                        placeholder.remove();
+                        img = document.createElement('img');
+                        img.alt = 'Preview';
+                        slideImage.insertBefore(img, slideImage.firstChild);
+                    } else {
+                        // Buat img tag baru
+                        img = document.createElement('img');
+                        img.alt = 'Preview';
+                        slideImage.insertBefore(img, slideImage.firstChild);
+                    }
+                }
+                
                 if (img) {
                     img.src = event.target.result;
+                    img.style.display = 'block';
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
                 }
             }
-            if (file) reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
         }
     });
 
@@ -1940,10 +1967,13 @@ inputs.forEach(input => {
         updateTpcBtn.style.display = 'inline-block';
     });
 });
-inputs.forEach(input => {
-    input.addEventListener('change', () => {
-        updateGklBtn.style.display = 'inline-block';
-    });
+// Event listener untuk GKL update button - hanya untuk file input di dalam section GKL
+document.addEventListener('change', (e) => {
+    if (e.target.classList.contains('file-input') && e.target.closest('.gkl-change-slide-section')) {
+        if (updateGklBtn) {
+            updateGklBtn.style.display = 'inline-block';
+        }
+    }
 });
 inputs.forEach(input => {
     input.addEventListener('change', () => {

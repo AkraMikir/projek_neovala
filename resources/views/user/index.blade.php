@@ -1,132 +1,23 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/footer-logo.png') }}">
-    <title>Neovala</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <style>
-    html {
-        scroll-behavior: smooth;
-    }
-    </style>
+@section('title', 'Neovala - Premium Apartment Rental')
 
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="nav-content">
-            <div class="burger-menu">
-                <div class="burger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-            <div class="logo-left">
-                <a href="{{ route('home') }}#home "><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.png') }}"
-                        alt="Logo Neovala Light" class="logo-light"></a>
-                <a href="{{ route('home') }}#home"><img src="{{ asset('images/logo/NEOVALA-DARK.png') }}"
-                        alt="Logo Neovala Dark" class="logo-dark"></a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#apartment-section"><i class="bi bi-building"></i> Apartment</a></li>
-                <li><a href="#titip-kunci-section"><i class="bi bi-key"></i> Titip Kunci</a></li>
-                <li><a href="#promo-section"><i class="bi bi-gift"></i> Promo</a></li>
-                <li><a href="#our-story-section"><i class="bi bi-people"></i> About Us</a></li>
-                <li><a href="#comment-section"><i class="bi bi-chat-dots"></i> Testimoni</a></li>
-                <li><a href="#footer"><i class="bi bi-geo-alt"></i> Find Us</a></li>
-                <div class="sidebar-footer">
-                    <p><img src="{{ asset('images/logo/NEOVALA-DARK.png') }}" alt="Logo Neovala Dark"
-                            class="logo-sidebar">NEOVALA</p>
-                </div>
-            </ul>
-            <div class="logo-right"><a href="{{ route('home') }}#home">NEOVALA</a></div>
-        </div>
-    </nav>
-    <div class="nav-overlay"></div>
-
+@section('content')
     <!-- Header dengan Carousel -->
     <header class="header" id="home">
-        <div class="carousel">
-            <!-- Tambahkan overlay text -->
-            <div class="header-text-overlay">
-                <p> Inovasi akomodasi modern dengan kenyamanan premium, layanan istimewa, dan
-                    desain elegan. Hadir untuk memberikan pengalaman menginap yang berkesan dan
-                    solusi hunian terbaik.</p>
-            </div>
-
-            <button class="carousel-button prev">&#10094;</button>
-            <button class="carousel-button next">&#10095;</button>
-
-            <div class="carousel-container">
-                <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/DJI_20250307171433_0096_D.JPG') }}" alt="Slide 1">
-                </div>
-                <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/DJI_20250321175315_0129_D.JPG') }}" alt="Slide 2">
-                </div>
-                <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/DJI_20250327155326_0216_D.JPG') }}" alt="Slide 3">
-                </div>
-                <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/DJI_20250403160456_0254_D.JPG') }}" alt="Slide 4">
-                </div>
-                <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/DJI_20250404164436_0280_D.JPG') }}" alt="Slide 5">
-                </div>
-                <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/DJI_20250405123913_0309_D.JPG') }}" alt="Slide 6">
-                </div>
-                <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/DJI_20250827130441_0466_D.JPG') }}" alt="Slide 7">
-                </div>
-                <div class="carousel-slide">
-                    <img src="{{ asset('images/images/home pages/DJI_20250905143026_0543_D.JPG') }}" alt="Slide 8">
-                </div>
-            </div>
-
-            <div class="carousel-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
+        <x-carousel 
+            :images="[
+                asset('images/images/home pages/DJI_20250307171433_0096_D.JPG'),
+                asset('images/images/home pages/DJI_20250321175315_0129_D.JPG'),
+                asset('images/images/home pages/DJI_20250327155326_0216_D.JPG'),
+                asset('images/images/home pages/DJI_20250403160456_0254_D.JPG'),
+                asset('images/images/home pages/DJI_20250404164436_0280_D.JPG'),
+                asset('images/images/home pages/DJI_20250405123913_0309_D.JPG'),
+                asset('images/images/home pages/DJI_20250827130441_0466_D.JPG'),
+                asset('images/images/home pages/DJI_20250905143026_0543_D.JPG')
+            ]"
+            overlay-text="Inovasi akomodasi modern dengan kenyamanan premium, layanan istimewa, dan desain elegan. Hadir untuk memberikan pengalaman menginap yang berkesan dan solusi hunian terbaik."
+        />
     </header>
 
     <!-- Main Content -->
@@ -173,93 +64,47 @@
         <h2 class="apartment-title">WE ARE AVAILABLE AT</h2>
         <div class="apartment-container">
 
-            <!-- Apartment Card 1 -->
-            <div class="apartment-card">
-                <div class="apartment-image">
-                    <img src="{{ asset('images/images/home pages/IMG_0020 (Copy).jpg') }}" alt="Apartment 1">
-                    <div class="apartment-content">
-                        <h3 class="apartment-name">TRANSPARK JUANDA</h3>
-                        <a href="{{ route('discoverTPJ') }}" class="view-details-btn">DISCOVER</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Apartment Card 2 -->
-            <div class="apartment-card">
-                <div class="apartment-image">
-                    <img src="{{ asset('images/images/home pages/IMG_9497.png') }}" alt="Apartment 2">
-                    <div class="apartment-content">
-                        <h3 class="apartment-name">TRANSPARK CIBUBUR</h3>
-                        <a href="{{ route('discoverTPC') }}" class="view-details-btn">DISCOVER</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Apartment Card 3 -->
-            <div class="apartment-card">
-                <div class="apartment-image">
-                    <img src="{{ asset('images/images/home pages/IMG_0117 (Copy).jpg') }}" alt="Apartment 3">
-                    <div class="apartment-content">
-                        <h3 class="apartment-name">GRAND KAMALA LAGOON</h3>
-                        <a href="{{ route('discoverGKL') }}" class="view-details-btn">DISCOVER</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Apartment Card 4 -->
-            <div class="apartment-card">
-                <div class="apartment-image">
-                    <img src="{{ asset('images/images/home pages/IMG_1073.png') }}" alt="Apartment 4">
-                    <div class="apartment-content">
-                        <h3 class="apartment-name">PATRALAND URBANO</h3>
-                        <a href="{{ route('discoverPLU') }}" class="view-details-btn">DISCOVER</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Apartment Card 5 -->
-            <div class="apartment-card">
-                <div class="apartment-image">
-                    <img src="{{ asset('images/images/home pages/IMG_3976.png') }}" alt="Apartment 5">
-                    <div class="apartment-content">
-                        <h3 class="apartment-name">GATEWAY CICADAS</h3>
-                        <a href="{{ route('discoverGWC') }}" class="view-details-btn">DISCOVER</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Apartment Card 6 -->
-            <div class="apartment-card">
-                <div class="apartment-image">
-                    <img src="{{ asset('images/images/home pages/IMG_0362.png') }}" alt="Apartment 6">
-                    <div class="apartment-content">
-                        <h3 class="apartment-name">PODOMORO GOLF VIEW</h3>
-                        <a href="{{ route('discoverPGV') }}" class="view-details-btn">DISCOVER</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Apartment Card 7 -->
-            <div class="apartment-card">
-                <div class="apartment-image">
-                    <img src="{{ asset('images\images\discover-GPC\IMG_0646.png') }}" alt="Apartment 7">
-                    <div class="apartment-content">
-                        <h3 class="apartment-name">GREEN PRAMUKA CITY</h3>
-                        <a href="{{ route('discoverGPC') }}" class="view-details-btn">DISCOVER</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Apartment Card 8 -->
-            <div class="apartment-card">
-                <div class="apartment-image">
-                    <img src="{{ asset('images\images\discover-BSC\IMG_1882.png') }}" alt="Apartment 8">
-                    <div class="apartment-content">
-                        <h3 class="apartment-name">BASSURA CITY</h3>
-                        <a href="{{ route('discoverBSC') }}" class="view-details-btn">DISCOVER</a>
-                    </div>
-                </div>
-            </div>
+            <!-- Apartment Cards -->
+            <x-apartment-card 
+                image="{{ asset('images/images/home pages/IMG_0020 (Copy).jpg') }}"
+                name="TRANSPARK JUANDA"
+                :route="route('discoverTPJ')"
+            />
+            <x-apartment-card 
+                image="{{ asset('images/images/home pages/IMG_9497.png') }}"
+                name="TRANSPARK CIBUBUR"
+                :route="route('discoverTPC')"
+            />
+            <x-apartment-card 
+                image="{{ asset('images/images/home pages/IMG_0117 (Copy).jpg') }}"
+                name="GRAND KAMALA LAGOON"
+                :route="route('discoverGKL')"
+            />
+            <x-apartment-card 
+                image="{{ asset('images/images/home pages/IMG_1073.png') }}"
+                name="PATRALAND URBANO"
+                :route="route('discoverPLU')"
+            />
+            <x-apartment-card 
+                image="{{ asset('images/images/home pages/IMG_3976.png') }}"
+                name="GATEWAY CICADAS"
+                :route="route('discoverGWC')"
+            />
+            <x-apartment-card 
+                image="{{ asset('images/images/home pages/IMG_0362.png') }}"
+                name="PODOMORO GOLF VIEW"
+                :route="route('discoverPGV')"
+            />
+            <x-apartment-card 
+                image="{{ asset('images/images/discover-GPC/IMG_0646.png') }}"
+                name="GREEN PRAMUKA CITY"
+                :route="route('discoverGPC')"
+            />
+            <x-apartment-card 
+                image="{{ asset('images/images/discover-BSC/IMG_1882.png') }}"
+                name="BASSURA CITY"
+                :route="route('discoverBSC')"
+            />
         </div>
     </section>
 
@@ -366,23 +211,6 @@
             </div>
         </div>
     </div>
-    <script>
-    document.querySelectorAll('.view-more-btn-promo').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('promoModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        });
-    });
-    document.getElementById('closePromoModal').onclick = function() {
-        document.getElementById('promoModal').style.display = 'none';
-        document.body.style.overflow = '';
-    };
-    document.querySelector('.promo-modal-overlay').onclick = function() {
-        document.getElementById('promoModal').style.display = 'none';
-        document.body.style.overflow = '';
-    };
-    </script>
 
     <!-- Our Story Section -->
     <section class="our-story-section" id="our-story-section">
@@ -428,7 +256,7 @@
                 <div class="story-image">
                     <img src="{{ asset('images/logo/story.png') }}" alt="Neovala Building">
                 </div>
-                <a href="{{ route('ourStory') }}" class="read-more-btn">READ MORE</a></button>
+                <a href="{{ route('ourStory') }}" class="read-more-btn">READ MORE</a>
             </div>
         </div>
     </section>
@@ -438,96 +266,31 @@
         <h2 class="comment-title">WHAT THEY SAY?</h2>
         <div class="comment-container">
             @foreach ($komentars as $komentar)
-            <div class="comment-card">
-                <div class="comment-header">
-                    <span class="quote-icon">"</span>
-                    <h3 class="comment-location">{{ strtoupper($komentar->apartmen) }}</h3>
-                </div>
-                <p class="comment-text">
-                    {{ $komentar->isi }}
-                </p>
-                <div class="comment-footer">
-                    <span class="comment-user">{{ '@' . $komentar->instagram }}</span>
-                    <div class="star-rating">
-                        @for ($i = 0; $i < $komentar->bintang; $i++)
-                            <img src="{{ asset('images/logo/star-filled.png') }}" alt="Star"
-                                class="star-icon star-filled">
-                            @endfor
-                    </div>
-                </div>
-            </div>
+                <x-comment-card :komentar="$komentar" />
             @endforeach
         </div>
     </section>
+@endsection
 
+@push('scripts')
+<script>
+    // Promo Modal Script
+    document.querySelectorAll('.view-more-btn-promo').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('promoModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    document.getElementById('closePromoModal').onclick = function() {
+        document.getElementById('promoModal').style.display = 'none';
+        document.body.style.overflow = '';
+    };
+    document.querySelector('.promo-modal-overlay').onclick = function() {
+        document.getElementById('promoModal').style.display = 'none';
+        document.body.style.overflow = '';
+    };
 
-    <!-- Footer -->
-    <footer class="footer" id="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>GUEST SERVICE</h3>
-                <p>0896-6964-9690</p>
-
-                <h3>CONNECT WITH US</h3>
-                <ul>
-                    <li><a href="https://www.instagram.com/neovalaofficial/" target="_blank">INSTAGRAM</a></li>
-                    <li><a href="https://www.facebook.com/people/Neovala-Official/61573750236974"
-                            target="_blank">FACEBOOK</a></li>
-                    <li><a href="https://www.tiktok.com/@neovalaofficial" target="_blank">TIKTOK</a></li>
-                    <li><a href="https://twitter.com/neovalaofficial" target="_blank">TWITTER</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>FOLLOW US</h3>
-                <div class="social-icons">
-                    <a href="mailto:neovalaofficial@gmail.com" target="_blank"><i class="bi bi-envelope"
-                            style="font-size: 2rem;"></i></a>
-                    <a href="https://instagram.com/neovalaofficial" target="_blank"><i class="bi bi-instagram"
-                            style="font-size: 2rem;"></i></a>
-                </div>
-
-                <h3>PAYMENT WITH</h3>
-                <ul>
-                    <li>BCA</li>
-                    <li>MANDIRI</li>
-                    <li>QRIS</li>
-                    <li>BAYAR DI TEMPAT</li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>AVAILABLE AT:</h3>
-                <ul class="footer-section-available">
-                    <li><a class="footer-section-available" href="{{ route('discoverTPJ') }}">TRANSPARK JUANDA</a></li>
-                    <li><a class="footer-section-available" href="{{ route('discoverTPC') }}">TRANSPARK CIBUBUR</a></li>
-                    <li><a class="footer-section-available" href="{{ route('discoverGKL') }}">GRAND KAMALA LAGOON</a>
-                    </li>
-                    <li><a class="footer-section-available" href="{{ route('discoverPLU') }}">PATRAJAND URBANO</a></li>
-                    <li><a class="footer-section-available" href="{{ route('discoverGWC') }}">GATEWAY CICADAS</a></li>
-                    <li><a class="footer-section-available" href="{{ route('discoverPGV') }}">PODOMORO GOLF VIEW</a>
-                    </li>
-                    <li><a class="footer-section-available" href="{{ route('discoverGPC') }}">GREEN PRAMUKA CITY</a>
-                    </li>
-                    <li><a class="footer-section-available" href="{{ route('discoverBSC') }}">BASSURA CITY</a>
-                    </li>
-                    <div class="footer-logo">
-                        <h2>NEOVALA</h2><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.png') }}" alt="">
-                    </div>
-                </ul>
-            </div>
-
-        </div>
-        <!-- <a href="{{ url('/admin/login') }}">
-            Admin Login
-        </a> -->
-        <div class="footer-bottom">
-            <p>© Copyright Neovala from 2023. All right reserved Your Level Information</p>
-        </div>
-    </footer>
-    <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/tracking.js') }}"></script>
-    <script>
     // Smooth scrolling to hash
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -538,8 +301,5 @@
             });
         });
     });
-    </script>
-
-</body>
-
-</html>
+</script>
+@endpush

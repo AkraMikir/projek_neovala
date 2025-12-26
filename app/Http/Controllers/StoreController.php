@@ -29,15 +29,18 @@ class StoreController extends Controller
             $carousel = new Carousel(['section' => $section]);
         }
 
-        $errors = [];
+        // Hapus validasi yang memaksa semua gambar harus diisi
+        // User bisa upload satu per satu gambar
+        $hasAnyFile = false;
         for ($i = 1; $i <= 4; $i++) {
-            if (!$carousel->{'image' . $i} && !$request->hasFile("images.$i")) {
-                $errors[] = "Gambar ke-$i harus diisi.";
+            if ($request->hasFile("images.$i")) {
+                $hasAnyFile = true;
+                break;
             }
         }
 
-        if (count($errors)) {
-            return redirect()->back()->withErrors($errors);
+        if (!$hasAnyFile) {
+            return redirect()->back()->withErrors(['images' => 'Pilih minimal satu gambar untuk diupload.']);
         }
 
         for ($i = 1; $i <= 4; $i++) {
@@ -51,11 +54,27 @@ class StoreController extends Controller
                 $filename = "slide_$i." . $request->file("images.$i")->getClientOriginalExtension();
                 $path = $request->file("images.$i")->storeAs("carousel_images/$section", $filename, 'public');
 
+                // Pastikan path disimpan dengan benar
                 $carousel->{'image' . $i} = $path;
             }
         }
 
-        $carousel->save();
+        // Simpan ke database
+        $saved = $carousel->save();
+        
+        if (!$saved) {
+            return redirect()->back()->withErrors(['error' => 'Gagal menyimpan data ke database.']);
+        }
+        
+        // Refresh model untuk memastikan data terbaru
+        $carousel->refresh();
+        
+        // Verifikasi data tersimpan
+        $verification = Carousel::where('section', $section)->first();
+        if (!$verification) {
+            return redirect()->back()->withErrors(['error' => 'Data tidak ditemukan setelah penyimpanan.']);
+        }
+        
         return redirect()->back()->with('success', 'Slide berhasil diperbarui!');
     }
 

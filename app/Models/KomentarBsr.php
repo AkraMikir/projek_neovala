@@ -9,7 +9,7 @@ class KomentarBsr extends Model
 {
     use HasFactory;
 
-    protected $table = 'komentar_bsr';
+    protected $table = 'komentar_bsrs';
 
     protected $fillable = [
         'instagram',
