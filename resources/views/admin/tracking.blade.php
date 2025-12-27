@@ -98,7 +98,7 @@
 
     .stats-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 20px;
         margin-bottom: 30px;
         width: 100%;
@@ -111,13 +111,24 @@
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         text-align: center;
-        transition: transform 0.3s;
+        transition: all 0.3s ease;
         width: 100%;
         box-sizing: border-box;
+        border-top: 3px solid transparent;
     }
 
     .stat-card:hover {
         transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgba(103, 76, 29, 0.15);
+        border-top-color: #674c1d;
+    }
+
+    .stat-card:first-child {
+        border-top-color: #1976d2;
+    }
+
+    .stat-card:first-child .stat-icon {
+        background: #1976d2;
     }
 
     .stat-icon {
@@ -455,6 +466,12 @@
         color: #666;
     }
 
+    @media (max-width: 1400px) {
+        .stats-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
     @media (max-width: 1200px) {
         .stats-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -524,8 +541,17 @@
             </a>
 
             <div class="tracking-header">
-                <h1><i class="bi bi-graph-up"></i> Event Tracking Dashboard</h1>
-                <p>Pantau aktivitas pengunjung website Neovala secara real-time</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <h1><i class="bi bi-graph-up"></i> Event Tracking Dashboard</h1>
+                        <p>Pantau aktivitas pengunjung website Neovala secara real-time</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <span style="color: #666; font-size: 0.9rem;">
+                            <i class="bi bi-info-circle"></i> Data sudah dioptimasi untuk mencegah duplicate
+                        </span>
+                    </div>
+                </div>
             </div>
 
             <div class="filter-section">
@@ -545,11 +571,20 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <div class="stat-number" id="uniqueVisitors">{{ $stats['unique_visitors'] ?? 0 }}</div>
+                    <div class="stat-label">Unique Visitors</div>
+                    <div class="stat-description">Pengunjung unik (berdasarkan IP)</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
                         <i class="bi bi-eye"></i>
                     </div>
                     <div class="stat-number" id="totalVisits">{{ $stats['total_visits'] }}</div>
                     <div class="stat-label">Total Kunjungan</div>
-                    <div class="stat-description">Pengunjung website</div>
+                    <div class="stat-description">Total page views</div>
                 </div>
 
                 <div class="stat-card">
@@ -764,10 +799,13 @@
                 .then(response => response.json())
                 .then(data => {
                     // Update stats
-                    document.getElementById('totalVisits').textContent = data.total_visits;
-                    document.getElementById('totalDownloads').textContent = data.total_downloads;
-                    document.getElementById('totalBookNow').textContent = data.total_book_now;
-                    document.getElementById('totalFormSubmit').textContent = data.total_form_submit;
+                    if (document.getElementById('uniqueVisitors')) {
+                        document.getElementById('uniqueVisitors').textContent = data.unique_visitors || 0;
+                    }
+                    document.getElementById('totalVisits').textContent = data.total_visits || 0;
+                    document.getElementById('totalDownloads').textContent = data.total_downloads || 0;
+                    document.getElementById('totalBookNow').textContent = data.total_book_now || 0;
+                    document.getElementById('totalFormSubmit').textContent = data.total_form_submit || 0;
 
                     // Calculate and update conversion rates
                     const visits = data.total_visits || 0;
@@ -786,11 +824,11 @@
                     // Update chart bars
                     updateChartBars(visits, downloads, bookNow, formSubmit);
 
-                    // Update today stats (simplified - using same data for demo)
-                    document.getElementById('todayVisits').textContent = visits;
-                    document.getElementById('todayDownloads').textContent = downloads;
-                    document.getElementById('todayBookNow').textContent = bookNow;
-                    document.getElementById('todayForms').textContent = formSubmit;
+                    // Update today stats
+                    document.getElementById('todayVisits').textContent = data.today_visits || 0;
+                    document.getElementById('todayDownloads').textContent = data.today_downloads || 0;
+                    document.getElementById('todayBookNow').textContent = data.today_book_now || 0;
+                    document.getElementById('todayForms').textContent = data.today_form_submit || 0;
 
                     // Update recent events
                     updateRecentEvents(data.recent_events);

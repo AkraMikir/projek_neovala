@@ -21,6 +21,20 @@ class Event extends Model
         'updated_at' => 'datetime'
     ];
 
+    /**
+     * Scope untuk mendapatkan unique visitors
+     */
+    public function scopeUniqueVisitors($query, $startDate = null, $endDate = null)
+    {
+        if ($startDate && $endDate) {
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+        
+        return $query->where('event_name', 'visit')
+            ->distinct('ip_address')
+            ->count('ip_address');
+    }
+
     // Scope untuk filter event berdasarkan nama
     public function scopeEventName($query, $eventName)
     {

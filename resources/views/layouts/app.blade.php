@@ -44,6 +44,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     
+    <!-- Ads Tracking Scripts (Meta Pixel & Google Ads) -->
+    @include('components.ads-tracking')
+    
     <!-- Additional CSS -->
     @stack('styles')
     

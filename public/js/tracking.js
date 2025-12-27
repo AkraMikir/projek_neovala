@@ -7,20 +7,64 @@ class NeovalaTracker {
     constructor() {
         this.apiUrl = '/api/track';
         this.isTrackingEnabled = true;
-        this.sessionId = this.generateSessionId();
+        this.sessionId = this.getOrCreateSessionId();
         this.init();
+    }
+
+    /**
+     * Get or create session ID (persist across page reloads)
+     */
+    getOrCreateSessionId() {
+        const storageKey = 'neovala_session_id';
+        const sessionExpiry = 30 * 60 * 1000; // 30 minutes
+        
+        let sessionId = sessionStorage.getItem(storageKey);
+        let sessionTimestamp = sessionStorage.getItem(storageKey + '_timestamp');
+        
+        // Check if session expired or doesn't exist
+        if (!sessionId || !sessionTimestamp || (Date.now() - parseInt(sessionTimestamp)) > sessionExpiry) {
+            sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            sessionStorage.setItem(storageKey, sessionId);
+            sessionStorage.setItem(storageKey + '_timestamp', Date.now().toString());
+        }
+        
+        return sessionId;
+    }
+
+    /**
+     * Check if visit already tracked in this session
+     */
+    isVisitTracked() {
+        const storageKey = 'neovala_visit_tracked';
+        const currentUrl = window.location.pathname;
+        const trackedUrl = sessionStorage.getItem(storageKey);
+        
+        // Track visit only once per URL per session
+        if (trackedUrl === currentUrl) {
+            return true;
+        }
+        
+        // Mark as tracked
+        sessionStorage.setItem(storageKey, currentUrl);
+        return false;
     }
 
     /**
      * Initialize tracking
      */
     init() {
-        // Track page visit on load
-        this.trackEvent('visit', {
-            url: window.location.href,
-            referrer: document.referrer,
-            session_id: this.sessionId
-        });
+        // Track page visit on load (only once per URL per session)
+        if (!this.isVisitTracked()) {
+            // Add small delay to ensure page is fully loaded
+            setTimeout(() => {
+                this.trackEvent('visit', {
+                    url: window.location.href,
+                    referrer: document.referrer,
+                    session_id: this.sessionId,
+                    is_new_session: !sessionStorage.getItem('neovala_visit_tracked')
+                });
+            }, 100);
+        }
 
         // Track download promo clicks
         this.trackDownloadPromo();
@@ -32,12 +76,6 @@ class NeovalaTracker {
         this.trackFormSubmissions();
     }
 
-    /**
-     * Generate unique session ID
-     */
-    generateSessionId() {
-        return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    }
 
     /**
      * Track any event
@@ -74,9 +112,119 @@ class NeovalaTracker {
             if (!response.ok) {
                 console.warn('Failed to track event:', eventName);
             }
+
+            // Track ke Meta Pixel dan Google Ads
+            this.trackToAdsPlatforms(eventName, metadata);
         } catch (error) {
             console.warn('Error tracking event:', error);
         }
+    }
+
+    /**
+     * Track event ke Meta Pixel dan Google Ads
+     */
+    trackToAdsPlatforms(eventName, metadata = {}) {
+        // Track ke Meta Pixel (Facebook Pixel)
+        this.trackMetaPixel(eventName, metadata);
+        
+        // Track ke Google Ads
+        this.trackGoogleAds(eventName, metadata);
+    }
+
+    /**
+     * Track event ke Meta Pixel
+     */
+    trackMetaPixel(eventName, metadata = {}) {
+        // Cek apakah fbq (Facebook Pixel) tersedia
+        if (typeof fbq === 'undefined') {
+            return;
+        }
+
+        // Mapping event name ke Meta Pixel event
+        const metaEventMap = {
+            'visit': 'PageView',
+            'download_promo': 'Lead',
+            'book_now': 'InitiateCheckout',
+            'form_submit': 'CompleteRegistration',
+        };
+
+        const metaEventName = metaEventMap[eventName] || 'PageView';
+
+        try {
+            // Track standard event
+            if (metaEventName !== 'PageView') {
+                fbq('track', metaEventName, {
+                    content_name: metadata.promo_title || metadata.apartment_name || 'Neovala',
+                    content_category: eventName,
+                    value: metadata.value || 0,
+                    currency: 'IDR'
+                });
+            }
+
+            // Track custom event juga untuk lebih detail
+            fbq('trackCustom', eventName, {
+                ...metadata,
+                page_url: window.location.href
+            });
+        } catch (error) {
+            console.warn('Error tracking to Meta Pixel:', error);
+        }
+    }
+
+    /**
+     * Track event ke Google Ads
+     */
+    trackGoogleAds(eventName, metadata = {}) {
+        // Cek apakah gtag (Google Analytics/Ads) tersedia
+        if (typeof gtag === 'undefined') {
+            return;
+        }
+
+        try {
+            // Get conversion label untuk event ini
+            const conversionLabel = this.getGoogleAdsConversionLabel(eventName);
+            
+            // Jika ada conversion label, track sebagai conversion
+            if (conversionLabel) {
+                gtag('event', 'conversion', {
+                    'send_to': conversionLabel,
+                    'value': metadata.value || 0,
+                    'currency': 'IDR',
+                    'transaction_id': metadata.transaction_id || this.sessionId,
+                    'event_category': 'engagement',
+                    'event_label': eventName
+                });
+            }
+
+            // Track sebagai custom event juga (selalu track untuk analytics)
+            gtag('event', eventName, {
+                'event_category': 'user_action',
+                'event_label': eventName,
+                'value': metadata.value || 0
+            });
+        } catch (error) {
+            console.warn('Error tracking to Google Ads:', error);
+        }
+    }
+
+    /**
+     * Get Google Ads conversion label untuk event tertentu
+     * Mengambil dari window.googleAdsConversionLabels yang di-set oleh ads-tracking component
+     */
+    getGoogleAdsConversionLabel(eventName) {
+        // Cek apakah ada conversion labels dari backend
+        if (window.googleAdsConversionLabels && window.googleAdsConversionLabels[eventName]) {
+            return window.googleAdsConversionLabels[eventName];
+        }
+
+        // Fallback: cek data attribute di body
+        const dataAttr = document.body.getAttribute(`data-google-ads-${eventName.replace('_', '-')}-label`);
+        if (dataAttr) {
+            return dataAttr;
+        }
+
+        // Default fallback (jika tidak ada konfigurasi)
+        return null; // Return null agar tidak track jika tidak ada label
     }
 
     /**
