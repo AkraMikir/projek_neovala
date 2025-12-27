@@ -39,7 +39,7 @@ class KomentarGklController extends Controller
         ]);
     }
 
-    return redirect()->back()->with('success', 'Terima kasih atas feedback Anda!');
+        return redirect()->back()->with('success', 'Terima kasih atas feedback Anda!');
     }
 
     public function accept($id)

@@ -273,7 +273,7 @@
 @endsection
 
 @push('scripts')
-<script>
+    <script>
     // Promo Modal Script
     document.querySelectorAll('.view-more-btn-promo').forEach(btn => {
         btn.addEventListener('click', function(e) {
@@ -301,5 +301,5 @@
             });
         });
     });
-</script>
+    </script>
 @endpush

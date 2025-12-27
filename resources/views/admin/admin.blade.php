@@ -1436,24 +1436,24 @@
             <div class="gkl-current-slide">
                 <div class="gkl-carousel-container">
                     @if(isset($carouselImagesBySection['GKL'][1]) && $carouselImagesBySection['GKL'][1])
-                        <div class="gkl-carousel-slide">
+                    <div class="gkl-carousel-slide">
                             <img src="{{ $carouselImagesBySection['GKL'][1] }}" alt="Slide 1 GKL">
-                        </div>
+                    </div>
                     @endif
                     @if(isset($carouselImagesBySection['GKL'][2]) && $carouselImagesBySection['GKL'][2])
-                        <div class="gkl-carousel-slide">
+                    <div class="gkl-carousel-slide">
                             <img src="{{ $carouselImagesBySection['GKL'][2] }}" alt="Slide 2 GKL">
-                        </div>
+                    </div>
                     @endif
                     @if(isset($carouselImagesBySection['GKL'][3]) && $carouselImagesBySection['GKL'][3])
-                        <div class="gkl-carousel-slide">
+                    <div class="gkl-carousel-slide">
                             <img src="{{ $carouselImagesBySection['GKL'][3] }}" alt="Slide 3 GKL">
-                        </div>
+                    </div>
                     @endif
                     @if(isset($carouselImagesBySection['GKL'][4]) && $carouselImagesBySection['GKL'][4])
-                        <div class="gkl-carousel-slide">
+                    <div class="gkl-carousel-slide">
                             <img src="{{ $carouselImagesBySection['GKL'][4] }}" alt="Slide 4 GKL">
-                        </div>
+                    </div>
                     @endif
                     @if(!isset($carouselImagesBySection['GKL']) || (empty($carouselImagesBySection['GKL'][1]) && empty($carouselImagesBySection['GKL'][2]) && empty($carouselImagesBySection['GKL'][3]) && empty($carouselImagesBySection['GKL'][4])))
                         <div class="gkl-carousel-slide" style="display: flex; align-items: center; justify-content: center; background: #f0f0f0; color: #999;">

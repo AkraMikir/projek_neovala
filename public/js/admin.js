@@ -1971,7 +1971,7 @@ inputs.forEach(input => {
 document.addEventListener('change', (e) => {
     if (e.target.classList.contains('file-input') && e.target.closest('.gkl-change-slide-section')) {
         if (updateGklBtn) {
-            updateGklBtn.style.display = 'inline-block';
+        updateGklBtn.style.display = 'inline-block';
         }
     }
 });

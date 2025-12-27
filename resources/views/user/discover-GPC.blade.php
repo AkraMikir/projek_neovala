@@ -3,11 +3,11 @@
 @section('title', 'Discover Green Pramuka City')
 
 @section('nav-links')
-    <li><a href="#facilities-section"><i class="bi bi-building"></i> Facilities</a></li>
-    <li><a href="#room-section"><i class="bi bi-door-open"></i> Room</a></li>
-    <li><a href="#location-section"><i class="bi bi-geo-alt"></i> Location</a></li>
-    <li><a href="#booking-section"><i class="bi bi-cash-coin"></i> Sewa Apartemen</a></li>
-    <li><a href="#testimoni-section"><i class="bi bi-chat-dots"></i> Testimoni</a></li>
+                <li><a href="#facilities-section"><i class="bi bi-building"></i> Facilities</a></li>
+                <li><a href="#room-section"><i class="bi bi-door-open"></i> Room</a></li>
+                <li><a href="#location-section"><i class="bi bi-geo-alt"></i> Location</a></li>
+                <li><a href="#booking-section"><i class="bi bi-cash-coin"></i> Sewa Apartemen</a></li>
+                <li><a href="#testimoni-section"><i class="bi bi-chat-dots"></i> Testimoni</a></li>
     <li><a href="#footer"><i class="bi bi-geo-alt"></i> Find Us</a></li>
 @endsection
 
@@ -141,7 +141,7 @@
             <h3 class="location-subtitle">Segera kunjungi apartemen kami!</h3>
             <div class="location-container">
                 <div class="location-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5689295303537!2d106.87323350000001!3d-6.1883943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5be7d6eb1cf%3A0xe02105c172125ad4!2sGreen%20Pramuka%20City!5e0!3m2!1sid!2sid!4v1758249443633!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5689295303537!2d106.87323350000001!3d-6.1883943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5be7d6eb1cf%3A0xe02105c172125ad4!2sGreen%20Pramuka%20City!5e0!3m2!1sid!2sid!4v1758249443633!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="location-info">
                     <div class="location-address">
@@ -217,9 +217,9 @@
                                 <div class="star-rating">
                                     @for ($i = 1; $i <= 5; $i++)
                                         <img
-                                            src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.png') }}"
-                                            alt="Star" class="star-icon">
-                                    @endfor
+                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.png') }}"
+                                        alt="Star" class="star-icon">
+                                        @endfor
                                 </div>
                             </div>
                         </div>
@@ -335,149 +335,149 @@
 @push('scripts')
     <script src="{{ asset('js/form-checkin.js') }}"></script>
     <script>
-        const starFilledPath = "{{ asset('images/logo/star-filled.png') }}";
-        const starEmptyPath = "{{ asset('images/logo/star-empty.png') }}";
+    const starFilledPath = "{{ asset('images/logo/star-filled.png') }}";
+    const starEmptyPath = "{{ asset('images/logo/star-empty.png') }}";
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Star Rating System
-            const stars = document.querySelectorAll('.star-rating-select i');
-            const ratingInput = document.getElementById('ratingInput');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Star Rating System
+        const stars = document.querySelectorAll('.star-rating-select i');
+        const ratingInput = document.getElementById('ratingInput');
 
             if (stars.length > 0 && ratingInput) {
-                stars.forEach((star, index) => {
-                    star.addEventListener('mouseover', () => {
-                        for (let i = 0; i <= index; i++) {
-                            stars[i].classList.remove('far');
-                            stars[i].classList.add('fas');
-                        }
-                    });
+        stars.forEach((star, index) => {
+            star.addEventListener('mouseover', () => {
+                for (let i = 0; i <= index; i++) {
+                    stars[i].classList.remove('far');
+                    stars[i].classList.add('fas');
+                }
+            });
 
-                    star.addEventListener('mouseout', () => {
-                        stars.forEach((s, i) => {
-                            if (i > ratingInput.value - 1) {
-                                s.classList.remove('fas');
-                                s.classList.add('far');
-                            }
-                        });
-                    });
-
-                    star.addEventListener('click', () => {
-                        ratingInput.value = index + 1;
-                        stars.forEach((s, i) => {
-                            if (i <= index) {
-                                s.classList.remove('far');
-                                s.classList.add('fas');
-                            } else {
-                                s.classList.remove('fas');
-                                s.classList.add('far');
-                            }
-                        });
-                    });
+            star.addEventListener('mouseout', () => {
+                stars.forEach((s, i) => {
+                    if (i > ratingInput.value - 1) {
+                        s.classList.remove('fas');
+                        s.classList.add('far');
+                    }
                 });
+            });
+
+            star.addEventListener('click', () => {
+                ratingInput.value = index + 1;
+                stars.forEach((s, i) => {
+                    if (i <= index) {
+                        s.classList.remove('far');
+                        s.classList.add('fas');
+                    } else {
+                        s.classList.remove('fas');
+                        s.classList.add('far');
+                    }
+                });
+            });
+        });
             }
 
-            // Comment Slider Navigation
-            const slider = document.querySelector('.testimoni-slider');
-            const prevBtn = document.querySelector('.slider-nav-btn.prev');
-            const nextBtn = document.querySelector('.slider-nav-btn.next');
+        // Comment Slider Navigation
+        const slider = document.querySelector('.testimoni-slider');
+        const prevBtn = document.querySelector('.slider-nav-btn.prev');
+        const nextBtn = document.querySelector('.slider-nav-btn.next');
             let cards = document.querySelectorAll('.testimoni-card');
-            const indicator = document.querySelector('.slider-indicator');
+        const indicator = document.querySelector('.slider-indicator');
 
             // Define functions in outer scope so they can be accessed by form handler
             let updateSliderLayout, updateButtonVisibility;
 
             if (slider && prevBtn && nextBtn) {
                 updateSliderLayout = function() {
-                    const isMobile = window.innerWidth <= 768;
+            const isMobile = window.innerWidth <= 768;
 
-                    if (isMobile) {
-                        slider.style.flexDirection = 'column';
-                        slider.style.height = '400px';
-                        slider.style.overflowY = 'auto';
-                        slider.style.overflowX = 'hidden';
+            if (isMobile) {
+                slider.style.flexDirection = 'column';
+                slider.style.height = '400px';
+                slider.style.overflowY = 'auto';
+                slider.style.overflowX = 'hidden';
 
-                        cards.forEach(card => {
-                            card.style.width = '100%';
-                            card.style.minWidth = 'unset';
-                        });
+                cards.forEach(card => {
+                    card.style.width = '100%';
+                    card.style.minWidth = 'unset';
+                });
 
-                        prevBtn.style.display = 'none';
-                        nextBtn.style.display = 'none';
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
                         if (indicator) indicator.style.display = 'flex';
-                    } else {
-                        slider.style.flexDirection = 'row';
-                        slider.style.height = 'auto';
-                        slider.style.overflowX = 'auto';
-                        slider.style.overflowY = 'hidden';
+            } else {
+                slider.style.flexDirection = 'row';
+                slider.style.height = 'auto';
+                slider.style.overflowX = 'auto';
+                slider.style.overflowY = 'hidden';
 
-                        cards.forEach(card => {
-                            card.style.width = '300px';
-                            card.style.minWidth = '300px';
-                        });
+                cards.forEach(card => {
+                    card.style.width = '300px';
+                    card.style.minWidth = '300px';
+                });
 
-                        prevBtn.style.display = 'flex';
-                        nextBtn.style.display = 'flex';
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
                         if (indicator) indicator.style.display = 'none';
-                    }
-                }
+            }
+        }
 
                 updateButtonVisibility = function() {
-                    const isMobile = window.innerWidth <= 768;
+            const isMobile = window.innerWidth <= 768;
                     if (!isMobile) {
                         cards = document.querySelectorAll('.testimoni-card');
                         const cardWidth = cards[0] ? cards[0].offsetWidth + 30 : 330;
 
-                        if (slider.scrollLeft <= 0) {
-                            prevBtn.style.opacity = '0';
-                            prevBtn.style.pointerEvents = 'none';
-                        } else {
-                            prevBtn.style.opacity = '1';
-                            prevBtn.style.pointerEvents = 'auto';
-                        }
-
-                        const remainingCards = Math.floor((slider.scrollWidth - slider.scrollLeft - slider.clientWidth) / cardWidth);
-                        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth || remainingCards <= 0) {
-                            nextBtn.style.opacity = '0';
-                            nextBtn.style.pointerEvents = 'none';
-                        } else {
-                            nextBtn.style.opacity = '1';
-                            nextBtn.style.pointerEvents = 'auto';
-                        }
-                    }
+                if (slider.scrollLeft <= 0) {
+                        prevBtn.style.opacity = '0';
+                        prevBtn.style.pointerEvents = 'none';
+                } else {
+                        prevBtn.style.opacity = '1';
+                        prevBtn.style.pointerEvents = 'auto';
                 }
 
-                window.addEventListener('resize', () => {
-                    updateSliderLayout();
-                    updateButtonVisibility();
-                });
+                        const remainingCards = Math.floor((slider.scrollWidth - slider.scrollLeft - slider.clientWidth) / cardWidth);
+                if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth || remainingCards <= 0) {
+                        nextBtn.style.opacity = '0';
+                        nextBtn.style.pointerEvents = 'none';
+                } else {
+                        nextBtn.style.opacity = '1';
+                        nextBtn.style.pointerEvents = 'auto';
+                }
+            }
+        }
 
-                slider.addEventListener('scroll', () => {
-                    updateButtonVisibility();
-                    if (slider.scrollTop > 50) {
-                        slider.classList.add('scrolled');
-                    } else {
-                        slider.classList.remove('scrolled');
-                    }
-                });
+        window.addEventListener('resize', () => {
+            updateSliderLayout();
+            updateButtonVisibility();
+        });
 
-                prevBtn.addEventListener('click', () => {
+        slider.addEventListener('scroll', () => {
+            updateButtonVisibility();
+            if (slider.scrollTop > 50) {
+                slider.classList.add('scrolled');
+            } else {
+                slider.classList.remove('scrolled');
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
                     const cardWidth = cards[0] ? cards[0].offsetWidth + 30 : 330;
-                    slider.scrollBy({
-                        left: -cardWidth,
-                        behavior: 'smooth'
-                    });
-                });
+            slider.scrollBy({
+                left: -cardWidth,
+                behavior: 'smooth'
+            });
+        });
 
-                nextBtn.addEventListener('click', () => {
+        nextBtn.addEventListener('click', () => {
                     const cardWidth = cards[0] ? cards[0].offsetWidth + 30 : 330;
-                    slider.scrollBy({
-                        left: cardWidth,
-                        behavior: 'smooth'
-                    });
-                });
+            slider.scrollBy({
+                left: cardWidth,
+                behavior: 'smooth'
+            });
+        });
 
-                updateSliderLayout();
-                updateButtonVisibility();
+        updateSliderLayout();
+        updateButtonVisibility();
             } else {
                 // Initialize empty functions if slider doesn't exist yet
                 updateSliderLayout = function() {};
@@ -485,119 +485,119 @@
             }
 
             // Room Popup Handling
-            const moreBtns = document.querySelectorAll('.more-btn');
+        const moreBtns = document.querySelectorAll('.more-btn');
 
-            moreBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const roomId = btn.dataset.roomId;
-                    const popup = document.getElementById(`roomPopup${roomId}`);
-                    if (!popup) return;
+        moreBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const roomId = btn.dataset.roomId;
+                const popup = document.getElementById(`roomPopup${roomId}`);
+                if (!popup) return;
 
-                    popup.style.display = 'flex';
-                    popup.offsetHeight;
-                    popup.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+                popup.style.display = 'flex';
+                popup.offsetHeight;
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
 
-                    initCarousel(popup);
-                });
+                initCarousel(popup);
+            });
+        });
+
+        function initCarousel(popup) {
+            const carouselContainer = popup.querySelector('.popup-carousel-container');
+            const slides = popup.querySelectorAll('.popup-carousel-slide');
+            const prevBtn = popup.querySelector('.popup-carousel-prev');
+            const nextBtn = popup.querySelector('.popup-carousel-next');
+            const dots = popup.querySelectorAll('.popup-carousel-dot');
+
+            let currentSlide = 0;
+            const slideCount = slides.length;
+
+            // Set dynamic width container & slides
+            carouselContainer.style.width = `${slideCount * 100}%`;
+            slides.forEach(slide => {
+                slide.style.width = `${100 / slideCount}%`;
+                slide.style.flexShrink = '0';
             });
 
-            function initCarousel(popup) {
-                const carouselContainer = popup.querySelector('.popup-carousel-container');
-                const slides = popup.querySelectorAll('.popup-carousel-slide');
-                const prevBtn = popup.querySelector('.popup-carousel-prev');
-                const nextBtn = popup.querySelector('.popup-carousel-next');
-                const dots = popup.querySelectorAll('.popup-carousel-dot');
-
-                let currentSlide = 0;
-                const slideCount = slides.length;
-
-                // Set dynamic width container & slides
-                carouselContainer.style.width = `${slideCount * 100}%`;
-                slides.forEach(slide => {
-                    slide.style.width = `${100 / slideCount}%`;
-                    slide.style.flexShrink = '0';
-                });
-
-                function updateCarousel() {
-                    carouselContainer.style.transform = `translateX(-${(100 / slideCount) * currentSlide}%)`;
-
-                    dots.forEach((dot, index) => {
-                        dot.classList.toggle('active', index === currentSlide);
-                    });
-                }
-
-                if (prevBtn && nextBtn) {
-                    prevBtn.addEventListener('click', () => {
-                        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-                        updateCarousel();
-                    });
-
-                    nextBtn.addEventListener('click', () => {
-                        currentSlide = (currentSlide + 1) % slideCount;
-                        updateCarousel();
-                    });
-                }
+            function updateCarousel() {
+                carouselContainer.style.transform = `translateX(-${(100 / slideCount) * currentSlide}%)`;
 
                 dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        currentSlide = index;
-                        updateCarousel();
-                    });
+                    dot.classList.toggle('active', index === currentSlide);
                 });
+            }
 
-                // Swipe gesture
-                let touchStartX = 0;
-                let touchEndX = 0;
-
-                carouselContainer.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                });
-
-                carouselContainer.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    const threshold = 50;
-                    if (touchEndX < touchStartX - threshold) {
-                        currentSlide = (currentSlide + 1) % slideCount;
-                    } else if (touchEndX > touchStartX + threshold) {
-                        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-                    }
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide - 1 + slideCount) % slideCount;
                     updateCarousel();
                 });
 
-                currentSlide = 0;
-                updateCarousel();
+                nextBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide + 1) % slideCount;
+                    updateCarousel();
+                });
             }
 
-            // Tutup popup
-            const allPopups = document.querySelectorAll('.popup-overlay');
-
-            allPopups.forEach(popup => {
-                const closeBtn = popup.querySelector('.popup-close');
-
-                if (closeBtn) {
-                    closeBtn.addEventListener('click', () => {
-                        closePopup(popup);
-                    });
-                }
-
-                popup.addEventListener('click', (e) => {
-                    if (e.target === popup) {
-                        closePopup(popup);
-                    }
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
                 });
             });
 
-            function closePopup(popup) {
-                popup.classList.add('closing');
-                popup.classList.remove('active');
+            // Swipe gesture
+            let touchStartX = 0;
+            let touchEndX = 0;
 
-                setTimeout(() => {
-                    popup.classList.remove('closing');
-                    popup.style.display = 'none';
-                    document.body.style.overflow = '';
-                }, 500);
+            carouselContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            carouselContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const threshold = 50;
+                if (touchEndX < touchStartX - threshold) {
+                    currentSlide = (currentSlide + 1) % slideCount;
+                } else if (touchEndX > touchStartX + threshold) {
+                    currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                }
+                updateCarousel();
+            });
+
+            currentSlide = 0;
+            updateCarousel();
+        }
+
+        // Tutup popup
+        const allPopups = document.querySelectorAll('.popup-overlay');
+
+        allPopups.forEach(popup => {
+            const closeBtn = popup.querySelector('.popup-close');
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    closePopup(popup);
+                });
             }
+
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) {
+                    closePopup(popup);
+                }
+            });
+        });
+
+        function closePopup(popup) {
+            popup.classList.add('closing');
+            popup.classList.remove('active');
+
+            setTimeout(() => {
+                popup.classList.remove('closing');
+                popup.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 500);
+        }
 
             // Handle Feedback Form Submission
             const feedbackForm = document.getElementById('feedbackForm');
@@ -694,16 +694,16 @@
                     });
                 });
             }
-        });
+    });
     </script>
 
     <script src="{{ asset('js/tracking.js') }}"></script>
     <script>
-        // Track apartment discovery
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.neovalaTracker) {
-                window.neovalaTracker.trackApartmentDiscovery('Green Pramuka City');
-            }
-        });
+    // Track apartment discovery
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.neovalaTracker) {
+            window.neovalaTracker.trackApartmentDiscovery('Green Pramuka City');
+        }
+    });
     </script>
 @endpush
