@@ -624,20 +624,18 @@ html{
     z-index: 1002;
     width: 100vw;
     text-align: center;
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1 !important;
+    visibility: visible !important;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     margin: 0;
     padding: 0;
+    display: block !important;
 }
 
-.book-now-container.visible {
-    opacity: 1;
-    visibility: visible;
-}
+/* Book Now button selalu visible - tidak ada hide/show */
 
 /* Prevent Book Now button from being affected by menu-open state */
-body.menu-open .book-now-container.visible {
+body.menu-open .book-now-container {
     opacity: 1;
     visibility: visible;
     z-index: 10;
@@ -688,7 +686,7 @@ body.menu-open {
     cursor: pointer;
     box-shadow: none;
     text-decoration: none;
-    transform: translateY(20px);
+    transform: translateY(0);
     transition: background 0.6s cubic-bezier(0.4,0,0.2,1),
                 box-shadow 0.6s cubic-bezier(0.4,0,0.2,1),
                 color 0.3s cubic-bezier(0.4,0,0.2,1),
@@ -728,7 +726,7 @@ body.menu-open {
     box-shadow: 0 2px 6px rgba(212, 175, 55, 0.18);
 }
 
-.book-now-container.visible .book-now-btn {
+.book-now-btn {
     transform: translateY(0);
 }
 
@@ -739,10 +737,7 @@ body.menu-open {
         z-index: 998;
     }
     
-    body.menu-open .book-now-container {
-        opacity: 0;
-        visibility: hidden;
-    }
+    /* Book Now button tetap visible bahkan saat menu dibuka */
 }
 
 .book-now-icon {

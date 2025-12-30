@@ -102,6 +102,13 @@ Route::get('/titip-kunci', function () {
     return view('user.titipKunci');
 })->name('titipKunci');
 
+//=======================================
+//GUEST SERVICE
+//=======================================
+Route::get('/guest-service', function () {
+    return view('user.guestService');
+})->name('guestService');
+
 
 // ==============================
 // ROUTE UNTUK ADMIN & LOGIN

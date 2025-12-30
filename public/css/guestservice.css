@@ -1,0 +1,630 @@
+/* Guest Service Page Styles */
+
+/* Navbar Styling untuk Guest Service - memastikan navbar terlihat di atas hero */
+/* Navbar akan otomatis menggunakan styling dari global.css dengan backdrop blur */
+/* Styling khusus untuk memastikan kontras yang baik di atas hero section */
+
+/* Hero Section */
+.guest-service-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.guest-service-hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(103, 76, 29, 0.4) 0%,
+        rgba(103, 76, 29, 0.6) 50%,
+        rgba(103, 76, 29, 0.8) 100%
+    );
+    z-index: 2;
+}
+
+.guest-service-hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 0 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hero-icon-wrapper {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    background: linear-gradient(135deg, #d4af37, #fff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #674C1D;
+    font-size: 4rem;
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.hero-title {
+    font-size: 5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 15px 30px;
+    border-radius: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.hero-feature-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-feature-item i {
+    font-size: 1.5rem;
+    color: #d4af37;
+}
+
+.hero-feature-item span {
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.guest-service-main-section {
+    padding: 80px 20px;
+    background: #FFFFFF;
+    min-height: 100vh;
+    position: relative;
+    margin-top: -50px;
+    z-index: 10;
+    border-radius: 50px 50px 0 0;
+    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.1);
+}
+
+.guest-service-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.guest-service-intro {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.guest-service-main-title {
+    font-size: 4rem;
+    color: #674C1D;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.guest-service-main-subtitle {
+    font-size: 1.5rem;
+    color: #674C1D;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Service Features Grid */
+.service-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.service-feature-card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(103, 76, 29, 0.15);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.service-feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(103, 76, 29, 0.25);
+    border-color: #d4af37;
+}
+
+.feature-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    background: linear-gradient(135deg, #674c1d, #d4af37);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.service-feature-card:hover .feature-icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, #d4af37, #674c1d);
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    color: #674C1D;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px;
+}
+
+.feature-description {
+    font-size: 1rem;
+    color: #674C1D;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Contact Information Section */
+.contact-info-section {
+    margin-bottom: 80px;
+}
+
+.contact-section-title {
+    font-size: 3rem;
+    color: #674C1D;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-methods {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.contact-method-card {
+    background: #FFFFFF;
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(103, 76, 29, 0.15);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.contact-method-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(103, 76, 29, 0.25);
+    border-color: #d4af37;
+}
+
+.contact-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #674c1d, #d4af37);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 2rem;
+}
+
+.contact-icon.whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.contact-icon.email {
+    background: linear-gradient(135deg, #EA4335, #C5221F);
+}
+
+.contact-method-title {
+    font-size: 1.3rem;
+    color: #674C1D;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+}
+
+.contact-method-info {
+    font-size: 1.1rem;
+    color: #674C1D;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.contact-method-link {
+    display: inline-block;
+    padding: 10px 25px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.contact-method-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.contact-method-desc {
+    font-size: 0.9rem;
+    color: #674C1D;
+    font-family: 'Montserrat', sans-serif;
+    opacity: 0.7;
+    margin-top: 10px;
+}
+
+/* Service Hours Section */
+.service-hours-section {
+    margin-bottom: 80px;
+}
+
+.service-hours-card {
+    background: linear-gradient(135deg, #674c1d, #d4af37);
+    border-radius: 20px;
+    padding: 50px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(103, 76, 29, 0.3);
+    color: #FFFFFF;
+}
+
+.service-hours-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.service-hours-title i {
+    font-size: 2.5rem;
+}
+
+.hours-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hours-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.hours-day {
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.hours-time {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+.hours-note {
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* FAQ Section */
+.faq-section {
+    margin-bottom: 50px;
+}
+
+.faq-section-title {
+    font-size: 3rem;
+    color: #674C1D;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: #FFFFFF;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(103, 76, 29, 0.15);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 6px 20px rgba(103, 76, 29, 0.2);
+}
+
+.faq-question {
+    padding: 25px 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #fff8eb;
+}
+
+.faq-question h3 {
+    font-size: 1.2rem;
+    color: #674C1D;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.faq-question i {
+    font-size: 1.5rem;
+    color: #d4af37;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-answer p {
+    padding: 0 30px 25px;
+    font-size: 1rem;
+    color: #674C1D;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .service-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-methods {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .guest-service-hero {
+        height: 80vh;
+        min-height: 500px;
+    }
+
+    .hero-icon-wrapper {
+        width: 90px;
+        height: 90px;
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+
+    .hero-features {
+        gap: 20px;
+    }
+
+    .hero-feature-item {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .hero-feature-item i {
+        font-size: 1.2rem;
+    }
+
+    .hero-feature-item span {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .guest-service-main-section {
+        padding: 60px 15px;
+    }
+
+    .guest-service-main-title {
+        font-size: 2.5rem;
+    }
+
+    .guest-service-main-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .service-features-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .contact-methods {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-section-title,
+    .faq-section-title {
+        font-size: 2rem;
+    }
+
+    .service-hours-card {
+        padding: 30px 20px;
+    }
+
+    .service-hours-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hours-item {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .guest-service-main-title {
+        font-size: 2rem;
+    }
+
+    .guest-service-main-subtitle {
+        font-size: 1rem;
+    }
+
+    .service-feature-card,
+    .contact-method-card {
+        padding: 30px 20px;
+    }
+
+    .feature-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    .contact-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+}
+

@@ -16,15 +16,10 @@ function handleNavbarScroll() {
     function updateNavbarState() {
         if (window.scrollY > headerBottom - navbar.offsetHeight) {
             navbar.classList.add("scrolled");
-            if (bookNowBtn) {
-                bookNowBtn.classList.add("visible");
-            }
         } else {
             navbar.classList.remove("scrolled");
-            if (bookNowBtn) {
-                bookNowBtn.classList.remove("visible");
-            }
         }
+        // Book Now button selalu visible, tidak ada logika hide/show
     }
 
     // Remove existing scroll listener to avoid duplicates
@@ -87,10 +82,8 @@ function handleBurgerMenu() {
         const bookNowBtn = document.querySelector(".book-now-container");
 
         if (isOpening && bookNowBtn) {
-            // Ensure Book Now button stays visible if it was visible
-            if (bookNowBtn.classList.contains("visible")) {
-                bookNowBtn.style.zIndex = "100";
-            }
+            // Ensure Book Now button stays visible
+            bookNowBtn.style.zIndex = "100";
         } else if (bookNowBtn) {
             bookNowBtn.style.zIndex = "";
         }

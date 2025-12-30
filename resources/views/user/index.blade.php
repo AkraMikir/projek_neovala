@@ -108,6 +108,26 @@
         </div>
     </section>
 
+    <!-- Guest Service Section -->
+    <section class="guest-service-section" id="guest-service-section">
+        <div class="guest-service-container">
+            <div class="guest-service-content">
+                <div class="guest-service-left">
+                    <div class="guest-service-icon-wrapper">
+                        <i class="bi bi-headset"></i>
+                    </div>
+                    <a href="{{ route('guestService') }}" class="guest-service-btn">LEARN MORE</a>
+                </div>
+                <div class="guest-service-right">
+                    <h2 class="guest-service-title">GUEST SERVICE</h2>
+                    <p class="guest-service-text">
+                        Layanan pelanggan 24/7 untuk membantu kebutuhan Anda. Tim kami siap membantu dengan profesional dan ramah.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Titip Kunci Section -->
     <section class="titip-kunci-section" id="titip-kunci-section">
         <div class="titip-kunci-container">
@@ -236,18 +256,22 @@
                 </p>
                 <div class="contact-info">
                     <div class="contact-item">
-                        <img src="{{ asset('images/logo/ic_baseline-phone.png') }}" alt="Phone Icon"
-                            class="contact-icon">
+                        <div class="contact-icon-wrapper">
+                            <i class="bi bi-telephone-fill"></i>
+                        </div>
                         <span>telp. 0896-6964-9690</span>
                     </div>
                     <div class="contact-item">
-                        <img src="{{ asset('images/logo/bxs_map.png') }}" alt="Location Icon" class="contact-icon">
+                        <div class="contact-icon-wrapper">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
                         <span>Jl. Insinyur H. Juanda No.19, RT.003/RW.011, Margahayu, Kec. Bekasi Tim., Kota Bks, Jawa
                             Barat 17113</span>
                     </div>
                     <div class="contact-item">
-                        <img src="{{ asset('images/logo/ic_outline-email.png') }}" alt="Email Icon"
-                            class="contact-icon">
+                        <div class="contact-icon-wrapper">
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
                         <span>Email. neovalaofficial@gmail.com</span>
                     </div>
                 </div>
