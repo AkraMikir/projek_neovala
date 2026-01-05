@@ -75,9 +75,9 @@
             <button id="popup-close" class="popup-close" aria-label="Close popup">
                 <i class="bi bi-x-lg"></i>
             </button>
-            <img id="popup-image" src="{{ asset('images/logo/popup-dekstop.jpg') }}" alt="Neovala Promo" class="popup-image popup-image-desktop">
-            <img src="{{ asset('images/logo/popup-table.jpg') }}" alt="Neovala Promo" class="popup-image popup-image-tablet">
-            <img src="{{ asset('images/logo/popup-mobile.jpg') }}" alt="Neovala Promo" class="popup-image popup-image-mobile">
+            <img id="popup-image" src="{{ asset('images/logo/popup-dekstop.JPEG') }}" alt="Neovala Promo" class="popup-image popup-image-desktop">
+            <img src="{{ asset('images/logo/popup-tablet.JPEG') }}" alt="Neovala Promo" class="popup-image popup-image-tablet">
+            <img src="{{ asset('images/logo/popup-mobile.JPEG') }}" alt="Neovala Promo" class="popup-image popup-image-mobile">
         </div>
     </div>
     
