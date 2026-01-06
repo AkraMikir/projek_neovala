@@ -298,22 +298,70 @@
 
 @push('scripts')
     <script>
+    // Ensure body scroll is restored on page load if modal is not active
+    document.addEventListener('DOMContentLoaded', function() {
+        const promoModal = document.getElementById('promoModal');
+        if (promoModal && promoModal.style.display !== 'block') {
+            // Check if any popup is active
+            const activePopups = document.querySelectorAll('.popup-overlay[style*="flex"], .popup-overlay.active');
+            const promoPopup = document.getElementById('popup-overlay');
+            const promoPopupActive = promoPopup && promoPopup.classList.contains('active');
+            
+            if (activePopups.length === 0 && !promoPopupActive) {
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
+
     // Promo Modal Script
     document.querySelectorAll('.view-more-btn-promo').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
-            document.getElementById('promoModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            const promoModal = document.getElementById('promoModal');
+            if (promoModal) {
+                promoModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
         });
     });
-    document.getElementById('closePromoModal').onclick = function() {
-        document.getElementById('promoModal').style.display = 'none';
-        document.body.style.overflow = '';
-    };
-    document.querySelector('.promo-modal-overlay').onclick = function() {
-        document.getElementById('promoModal').style.display = 'none';
-        document.body.style.overflow = '';
-    };
+
+    // Function to close promo modal and restore scroll
+    function closePromoModal() {
+        const promoModal = document.getElementById('promoModal');
+        if (promoModal) {
+            promoModal.style.display = 'none';
+            
+            // Check if any other popup is still active
+            const activePopups = document.querySelectorAll('.popup-overlay[style*="flex"], .popup-overlay.active');
+            const promoPopup = document.getElementById('popup-overlay');
+            const promoPopupActive = promoPopup && promoPopup.classList.contains('active');
+            
+            // Only restore scroll if no popups are active
+            if (activePopups.length === 0 && !promoPopupActive) {
+                document.body.style.overflow = 'auto';
+            }
+        }
+    }
+
+    const closePromoModalBtn = document.getElementById('closePromoModal');
+    if (closePromoModalBtn) {
+        closePromoModalBtn.onclick = closePromoModal;
+    }
+
+    const promoModalOverlay = document.querySelector('.promo-modal-overlay');
+    if (promoModalOverlay) {
+        promoModalOverlay.onclick = closePromoModal;
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const promoModal = document.getElementById('promoModal');
+            if (promoModal && promoModal.style.display === 'block') {
+                closePromoModal();
+            }
+        }
+    });
 
     // Smooth scrolling to hash
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

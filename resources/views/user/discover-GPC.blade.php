@@ -484,6 +484,41 @@
                 updateButtonVisibility = function() {};
             }
 
+            // Force restore scroll immediately and on page load
+            // This ensures scroll works even if popup.js sets overflow hidden
+            document.body.style.overflow = 'auto';
+            
+            // Ensure body scroll is restored on page load if no popups are active
+            document.addEventListener('DOMContentLoaded', function() {
+                // Force restore scroll
+                document.body.style.overflow = 'auto';
+                
+                // Check if any popup is active
+                const activePopups = document.querySelectorAll('.popup-overlay[style*="flex"], .popup-overlay.active');
+                const promoPopup = document.getElementById('popup-overlay');
+                const promoPopupActive = promoPopup && promoPopup.classList.contains('active');
+                
+                if (activePopups.length === 0 && !promoPopupActive) {
+                    document.body.style.overflow = 'auto';
+                }
+                
+                // Force restore after a delay to override popup.js
+                setTimeout(function() {
+                    const activeRoomPopups = document.querySelectorAll('.popup-overlay:not(#popup-overlay)[style*="flex"], .popup-overlay:not(#popup-overlay).active');
+                    if (activeRoomPopups.length === 0) {
+                        document.body.style.overflow = 'auto';
+                    }
+                }, 600);
+            });
+            
+            // Also restore on window load
+            window.addEventListener('load', function() {
+                const activeRoomPopups = document.querySelectorAll('.popup-overlay:not(#popup-overlay)[style*="flex"], .popup-overlay:not(#popup-overlay).active');
+                if (activeRoomPopups.length === 0) {
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
             // Room Popup Handling
         const moreBtns = document.querySelectorAll('.more-btn');
 
@@ -595,9 +630,30 @@
             setTimeout(() => {
                 popup.classList.remove('closing');
                 popup.style.display = 'none';
-                document.body.style.overflow = '';
+                
+                // Check if any other popup is still active
+                const activePopups = document.querySelectorAll('.popup-overlay[style*="flex"], .popup-overlay.active');
+                const promoPopup = document.getElementById('popup-overlay');
+                const promoPopupActive = promoPopup && promoPopup.classList.contains('active');
+                
+                // Only restore scroll if no popups are active
+                if (activePopups.length === 0 && !promoPopupActive) {
+                    document.body.style.overflow = 'auto';
+                }
             }, 500);
         }
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const activeRoomPopups = document.querySelectorAll('.popup-overlay:not(#popup-overlay)[style*="flex"], .popup-overlay:not(#popup-overlay).active');
+                if (activeRoomPopups.length > 0) {
+                    activeRoomPopups.forEach(popup => {
+                        closePopup(popup);
+                    });
+                }
+            }
+        });
 
             // Handle Feedback Form Submission
             const feedbackForm = document.getElementById('feedbackForm');

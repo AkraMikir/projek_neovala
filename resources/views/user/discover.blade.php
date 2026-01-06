@@ -145,6 +145,41 @@
 @push('scripts')
     <script src="{{ asset('js/form-checkin.js') }}"></script>
     <script>
+        // Force restore scroll immediately and on page load
+        // This ensures scroll works even if popup.js sets overflow hidden
+        document.body.style.overflow = 'auto';
+        
+        // Ensure body scroll is restored on page load if no popups are active
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force restore scroll
+            document.body.style.overflow = 'auto';
+            
+            // Check if any popup is active
+            const activePopups = document.querySelectorAll('.popup-overlay[style*="flex"], .popup-overlay.active');
+            const promoPopup = document.getElementById('popup-overlay');
+            const promoPopupActive = promoPopup && promoPopup.classList.contains('active');
+            
+            if (activePopups.length === 0 && !promoPopupActive) {
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Force restore after a delay to override popup.js
+            setTimeout(function() {
+                const activeRoomPopups = document.querySelectorAll('.popup-overlay:not(#popup-overlay)[style*="flex"], .popup-overlay:not(#popup-overlay).active');
+                if (activeRoomPopups.length === 0) {
+                    document.body.style.overflow = 'auto';
+                }
+            }, 600);
+        });
+        
+        // Also restore on window load
+        window.addEventListener('load', function() {
+            const activeRoomPopups = document.querySelectorAll('.popup-overlay:not(#popup-overlay)[style*="flex"], .popup-overlay:not(#popup-overlay).active');
+            if (activeRoomPopups.length === 0) {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
         // Room popup functionality
         document.querySelectorAll('.more-btn').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -152,19 +187,59 @@
                 const popup = document.getElementById('roomPopup' + roomId);
                 if (popup) {
                     popup.style.display = 'flex';
+                    popup.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 }
             });
         });
 
+        // Function to close popup and restore scroll
+        function closeRoomPopup(popup) {
+            if (popup) {
+                popup.style.display = 'none';
+                popup.classList.remove('active');
+                
+                // Check if any other popup is still active
+                const activePopups = document.querySelectorAll('.popup-overlay[style*="flex"], .popup-overlay.active');
+                const promoPopup = document.getElementById('popup-overlay');
+                const promoPopupActive = promoPopup && promoPopup.classList.contains('active');
+                
+                // Only restore scroll if no popups are active
+                if (activePopups.length === 0 && !promoPopupActive) {
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+
         document.querySelectorAll('.popup-close').forEach(btn => {
             btn.addEventListener('click', function() {
                 const popup = this.closest('.popup-overlay');
-                if (popup) {
-                    popup.style.display = 'none';
-                    document.body.style.overflow = '';
+                closeRoomPopup(popup);
+            });
+        });
+
+        // Close popup when clicking outside (on overlay)
+        document.querySelectorAll('.popup-overlay').forEach(popup => {
+            // Skip promo popup (handled by popup.js)
+            if (popup.id === 'popup-overlay') return;
+            
+            popup.addEventListener('click', function(e) {
+                if (e.target === popup) {
+                    closeRoomPopup(popup);
                 }
             });
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const activeRoomPopups = document.querySelectorAll('.popup-overlay:not(#popup-overlay)[style*="flex"], .popup-overlay:not(#popup-overlay).active');
+                if (activeRoomPopups.length > 0) {
+                    activeRoomPopups.forEach(popup => {
+                        closeRoomPopup(popup);
+                    });
+                }
+            }
         });
 
         // Popup carousel navigation
