@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Update form action to update route
             form.action = `/admin/dashboard1/komentar/${id}`;
-            formMethod.value = 'PUT';
+            formMethod.value = 'PATCH';
 
             // Update button text
             submitBtn.textContent = 'Update';

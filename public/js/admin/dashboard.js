@@ -7,36 +7,59 @@ document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
 
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', function () {
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
             sidebar.classList.toggle('active');
+            document.body.classList.toggle('sidebar-open');
 
             // Update toggle icon
             const icon = this.querySelector('i');
-            if (sidebar.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+            if (icon) {
+                if (sidebar.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function (e) {
+            if (window.innerWidth <= 900) {
+                if (sidebar.classList.contains('active') &&
+                    !sidebar.contains(e.target) &&
+                    !sidebarToggle.contains(e.target)) {
+
+                    sidebar.classList.remove('active');
+                    document.body.classList.remove('sidebar-open');
+
+                    const icon = sidebarToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 900) {
+                sidebar.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+
+                const icon = sidebarToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             }
         });
     }
-
-    // Close sidebar when clicking outside on mobile
-    document.addEventListener('click', function (event) {
-        if (window.innerWidth <= 768) {
-            const isClickInsideSidebar = sidebar.contains(event.target);
-            const isClickOnToggle = sidebarToggle && sidebarToggle.contains(event.target);
-
-            if (!isClickInsideSidebar && !isClickOnToggle && sidebar.classList.contains('active')) {
-                sidebar.classList.remove('active');
-                const icon = sidebarToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        }
-    });
 
     // Add animation to stat cards on scroll
     const observerOptions = {

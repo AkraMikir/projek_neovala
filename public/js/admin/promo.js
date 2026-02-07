@@ -15,14 +15,22 @@ document.addEventListener('DOMContentLoaded', function () {
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function (event) {
-                    // Replace placeholder with image preview
-                    imageUploadDiv.innerHTML = '';
-                    const img = document.createElement('img');
+                    // Hide placeholder
+                    if (previewArea) {
+                        previewArea.style.display = 'none';
+                    }
+
+                    // Check if image preview already exists
+                    let img = imageUploadDiv.querySelector('img');
+                    if (!img) {
+                        img = document.createElement('img');
+                        img.style.width = '100%';
+                        img.style.height = '100%';
+                        img.style.objectFit = 'cover';
+                        img.style.borderRadius = '12px'; // Match CSS
+                        imageUploadDiv.appendChild(img);
+                    }
                     img.src = event.target.result;
-                    img.style.width = '100%';
-                    img.style.height = '100%';
-                    img.style.objectFit = 'cover';
-                    imageUploadDiv.appendChild(img);
                 };
                 reader.readAsDataURL(file);
             }

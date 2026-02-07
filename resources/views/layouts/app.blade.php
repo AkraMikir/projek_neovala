@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/footer-logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.png') }}">
     
     <!-- Title -->
     <title>@yield('title', 'Neovala')</title>

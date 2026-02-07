@@ -114,7 +114,7 @@
                 </div>
             </div>
         </div>
-    </div>>
+    </div>
 
     @include('admin.partials.confirmation_modal')
     <script src="{{ asset('js/admin/dashboard.js') }}"></script>
