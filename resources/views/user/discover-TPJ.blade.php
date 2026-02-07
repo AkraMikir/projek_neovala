@@ -690,57 +690,13 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            // Add new comment to slider
-                            const testimoniSlider = document.querySelector('.testimoni-slider');
-                            if (testimoniSlider && data.komentar) {
-                                const newCard = document.createElement('div');
-                                newCard.className = 'testimoni-card';
-                                
-                                const instagramDisplay = data.komentar.hide_identity 
-                                    ? '@*******' 
-                                    : '@' + data.komentar.instagram;
-
-                                let starsHtml = '';
-                                for (let i = 1; i <= 5; i++) {
-                                    const starSrc = i <= data.komentar.rating ? starFilledPath : starEmptyPath;
-                                    starsHtml += `<img src="${starSrc}" alt="Star" class="star-icon">`;
-                                }
-
-                                newCard.innerHTML = `
-                                    <span class="quote-icon">"</span>
-                                    <p class="comment-text">${data.komentar.message}</p>
-                                    <div class="comment-footer">
-                                        <span class="comment-user">${instagramDisplay}</span>
-                                        <div class="star-rating">${starsHtml}</div>
-                                    </div>
-                                `;
-
-                                // Insert at the beginning (newest first)
-                                testimoniSlider.insertBefore(newCard, testimoniSlider.firstChild);
-
-                                // Update cards reference
-                                cards = document.querySelectorAll('.testimoni-card');
-                                
-                                // Update slider layout if function exists
-                                if (typeof updateSliderLayout === 'function') {
-                                    updateSliderLayout();
-                                }
-
-                                // Update button visibility if function exists
-                                if (typeof updateButtonVisibility === 'function') {
-                                    updateButtonVisibility();
-                                }
-
-                                // Scroll to show new comment
-                                testimoniSlider.scrollLeft = 0;
-                            }
-
-                            // Show success message
-                            alert(data.message || 'Terima kasih atas feedback Anda!');
+                            // Show success message (waiting for approval)
+                            alert(data.message || 'Terima kasih! Komentar Anda menunggu persetujuan admin.');
 
                             // Reset form
                             this.reset();
                             ratingInput.value = 0;
+                            const stars = document.querySelectorAll('.star-rating-select i');
                             stars.forEach(star => {
                                 star.classList.remove('fas');
                                 star.classList.add('far');

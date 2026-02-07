@@ -22,14 +22,14 @@ class KomentarTpjController extends Controller
         'rating' => $validated['rating'],
         'hide_identity' => $request->has('hideIdentity'),
         'section' => 'tpj',
-        'status' => 'accepted', // Set langsung accepted agar langsung muncul
+        'status' => 'pending', // Default pending, admin must approve
     ]);
 
     // Jika request AJAX, return JSON
     if ($request->expectsJson() || $request->ajax()) {
         return response()->json([
             'success' => true,
-            'message' => 'Terima kasih atas feedback Anda!',
+            'message' => 'Terima kasih! Peringkat dan ulasan Anda telah kami terima dan menunggu persetujuan admin.',
             'komentar' => [
                 'id' => $komentar->id,
                 'message' => $komentar->message,

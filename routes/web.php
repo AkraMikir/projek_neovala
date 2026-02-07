@@ -235,3 +235,9 @@ Route::get('/admin/comments/gpc', [ViewsController::class, 'gpcComments'])->midd
 // ROUTE TRACKING DASHBOARD ADMIN
 // ==============================
 Route::get('/admin/tracking', [EventController::class, 'trackingDashboard'])->middleware('auth:admin')->name('admin.tracking');
+
+// ==============================
+// NEW MODULAR ADMIN DASHBOARD
+// (For debugging - no auth required)
+// ==============================
+require __DIR__.'/admin_dashboard.php';
