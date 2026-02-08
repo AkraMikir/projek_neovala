@@ -29,7 +29,7 @@ class TpcController extends Controller
             4 => $carousel->image4 ?? null,
         ];
         
-        $rooms = Room::where('section', $this->roomSection)->latest()->get()->map(function($room) {
+        $rooms = Room::where('section', $this->roomSection)->latest()->paginate(6, ['*'], 'rooms_page')->through(function($room) {
             return [
                 'id' => $room->id,
                 'section' => $room->section,
@@ -44,10 +44,10 @@ class TpcController extends Controller
             ];
         });
         
-        $comments = $this->commentModel::where('section', $this->commentSection)->latest()->get();
-        $formData = FormData::where('apartment_type', 'like', '%' . $this->apartmentName . '%')->latest()->get();
+        $comments = $this->commentModel::where('section', $this->commentSection)->latest()->paginate(9, ['*'], 'comments_page');
+        $formData = FormData::where('apartment_type', 'like', '%' . $this->apartmentName . '%')->latest()->paginate(10);
         
-        return view('admin.apartments.apartment_detail', [
+        return view('admin.apartments.' . $this->apartmentCode . '.index', [
             'carouselImages' => $carouselImages,
             'rooms' => $rooms,
             'comments' => $comments,

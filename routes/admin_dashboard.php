@@ -67,87 +67,87 @@ Route::delete('/admin/dashboard1/tpj/form/{id}', [TpjController::class, 'deleteF
 
 // TPC (Transpark Cibubur)
 Route::get('/admin/dashboard1/tpc', [TpcController::class, 'index'])->name('admin.dashboard1.tpc');
-Route::post('/admin/dashboard1/tpc/carousel', [TpcController::class, 'updateCarousel'])->name('admin.dashboard1.tpc.carousel.update');
-Route::post('/admin/dashboard1/tpc/room', [TpcController::class, 'storeRoom'])->name('admin.dashboard1.tpc.room.store');
-Route::post('/admin/dashboard1/tpc/room/{id}', [TpcController::class, 'updateRoom'])->name('admin.dashboard1.tpc.room.update');
-Route::delete('/admin/dashboard1/tpc/room/{id}', [TpcController::class, 'deleteRoom'])->name('admin.dashboard1.tpc.room.delete');
-Route::patch('/admin/dashboard1/tpc/comment/{id}/apply', [TpcController::class, 'applyComment'])->name('admin.dashboard1.tpc.comment.apply');
-Route::patch('/admin/dashboard1/tpc/comment/{id}/unapply', [TpcController::class, 'unapplyComment'])->name('admin.dashboard1.tpc.comment.unapply');
-Route::delete('/admin/dashboard1/tpc/comment/{id}', [TpcController::class, 'deleteComment'])->name('admin.dashboard1.tpc.comment.delete');
-Route::get('/admin/dashboard1/tpc/form/{id}', [TpcController::class, 'viewFormDetail'])->name('admin.dashboard1.tpc.form.view');
-Route::delete('/admin/dashboard1/tpc/form/{id}', [TpcController::class, 'deleteFormData'])->name('admin.dashboard1.tpc.form.delete');
+Route::post('/admin/dashboard1/tpc/carousel', [TpcController::class, 'updateCarousel'])->name('admin.dashboard1.tpc.updateCarousel');
+Route::post('/admin/dashboard1/tpc/room', [TpcController::class, 'storeRoom'])->name('admin.dashboard1.tpc.storeRoom');
+Route::post('/admin/dashboard1/tpc/room/{id}', [TpcController::class, 'updateRoom'])->name('admin.dashboard1.tpc.updateRoom');
+Route::delete('/admin/dashboard1/tpc/room/{id}', [TpcController::class, 'deleteRoom'])->name('admin.dashboard1.tpc.deleteRoom');
+Route::patch('/admin/dashboard1/tpc/comment/{id}/apply', [TpcController::class, 'applyComment'])->name('admin.dashboard1.tpc.applyComment');
+Route::patch('/admin/dashboard1/tpc/comment/{id}/unapply', [TpcController::class, 'unapplyComment'])->name('admin.dashboard1.tpc.unapplyComment');
+Route::delete('/admin/dashboard1/tpc/comment/{id}', [TpcController::class, 'deleteComment'])->name('admin.dashboard1.tpc.deleteComment');
+Route::get('/admin/dashboard1/tpc/form/{id}', [TpcController::class, 'viewFormDetail'])->name('admin.dashboard1.tpc.viewFormDetail');
+Route::delete('/admin/dashboard1/tpc/form/{id}', [TpcController::class, 'deleteFormData'])->name('admin.dashboard1.tpc.deleteFormData');
 
 // GKL (Grand Kamala Lagoon)
 Route::get('/admin/dashboard1/gkl', [GklController::class, 'index'])->name('admin.dashboard1.gkl');
-Route::post('/admin/dashboard1/gkl/carousel', [GklController::class, 'updateCarousel'])->name('admin.dashboard1.gkl.carousel.update');
-Route::post('/admin/dashboard1/gkl/room', [GklController::class, 'storeRoom'])->name('admin.dashboard1.gkl.room.store');
-Route::post('/admin/dashboard1/gkl/room/{id}', [GklController::class, 'updateRoom'])->name('admin.dashboard1.gkl.room.update');
-Route::delete('/admin/dashboard1/gkl/room/{id}', [GklController::class, 'deleteRoom'])->name('admin.dashboard1.gkl.room.delete');
-Route::patch('/admin/dashboard1/gkl/comment/{id}/apply', [GklController::class, 'applyComment'])->name('admin.dashboard1.gkl.comment.apply');
-Route::patch('/admin/dashboard1/gkl/comment/{id}/unapply', [GklController::class, 'unapplyComment'])->name('admin.dashboard1.gkl.comment.unapply');
-Route::delete('/admin/dashboard1/gkl/comment/{id}', [GklController::class, 'deleteComment'])->name('admin.dashboard1.gkl.comment.delete');
-Route::get('/admin/dashboard1/gkl/form/{id}', [GklController::class, 'viewFormDetail'])->name('admin.dashboard1.gkl.form.view');
-Route::delete('/admin/dashboard1/gkl/form/{id}', [GklController::class, 'deleteFormData'])->name('admin.dashboard1.gkl.form.delete');
+Route::post('/admin/dashboard1/gkl/carousel', [GklController::class, 'updateCarousel'])->name('admin.dashboard1.gkl.updateCarousel');
+Route::post('/admin/dashboard1/gkl/room', [GklController::class, 'storeRoom'])->name('admin.dashboard1.gkl.storeRoom');
+Route::post('/admin/dashboard1/gkl/room/{id}', [GklController::class, 'updateRoom'])->name('admin.dashboard1.gkl.updateRoom');
+Route::delete('/admin/dashboard1/gkl/room/{id}', [GklController::class, 'deleteRoom'])->name('admin.dashboard1.gkl.deleteRoom');
+Route::patch('/admin/dashboard1/gkl/comment/{id}/apply', [GklController::class, 'applyComment'])->name('admin.dashboard1.gkl.applyComment');
+Route::patch('/admin/dashboard1/gkl/comment/{id}/unapply', [GklController::class, 'unapplyComment'])->name('admin.dashboard1.gkl.unapplyComment');
+Route::delete('/admin/dashboard1/gkl/comment/{id}', [GklController::class, 'deleteComment'])->name('admin.dashboard1.gkl.deleteComment');
+Route::get('/admin/dashboard1/gkl/form/{id}', [GklController::class, 'viewFormDetail'])->name('admin.dashboard1.gkl.viewFormDetail');
+Route::delete('/admin/dashboard1/gkl/form/{id}', [GklController::class, 'deleteFormData'])->name('admin.dashboard1.gkl.deleteFormData');
 
 // PLU (Patraland Urbano)
 Route::get('/admin/dashboard1/plu', [PluController::class, 'index'])->name('admin.dashboard1.plu');
-Route::post('/admin/dashboard1/plu/carousel', [PluController::class, 'updateCarousel'])->name('admin.dashboard1.plu.carousel.update');
-Route::post('/admin/dashboard1/plu/room', [PluController::class, 'storeRoom'])->name('admin.dashboard1.plu.room.store');
-Route::post('/admin/dashboard1/plu/room/{id}', [PluController::class, 'updateRoom'])->name('admin.dashboard1.plu.room.update');
-Route::delete('/admin/dashboard1/plu/room/{id}', [PluController::class, 'deleteRoom'])->name('admin.dashboard1.plu.room.delete');
-Route::patch('/admin/dashboard1/plu/comment/{id}/apply', [PluController::class, 'applyComment'])->name('admin.dashboard1.plu.comment.apply');
-Route::patch('/admin/dashboard1/plu/comment/{id}/unapply', [PluController::class, 'unapplyComment'])->name('admin.dashboard1.plu.comment.unapply');
-Route::delete('/admin/dashboard1/plu/comment/{id}', [PluController::class, 'deleteComment'])->name('admin.dashboard1.plu.comment.delete');
-Route::get('/admin/dashboard1/plu/form/{id}', [PluController::class, 'viewFormDetail'])->name('admin.dashboard1.plu.form.view');
-Route::delete('/admin/dashboard1/plu/form/{id}', [PluController::class, 'deleteFormData'])->name('admin.dashboard1.plu.form.delete');
+Route::post('/admin/dashboard1/plu/carousel', [PluController::class, 'updateCarousel'])->name('admin.dashboard1.plu.updateCarousel');
+Route::post('/admin/dashboard1/plu/room', [PluController::class, 'storeRoom'])->name('admin.dashboard1.plu.storeRoom');
+Route::post('/admin/dashboard1/plu/room/{id}', [PluController::class, 'updateRoom'])->name('admin.dashboard1.plu.updateRoom');
+Route::delete('/admin/dashboard1/plu/room/{id}', [PluController::class, 'deleteRoom'])->name('admin.dashboard1.plu.deleteRoom');
+Route::patch('/admin/dashboard1/plu/comment/{id}/apply', [PluController::class, 'applyComment'])->name('admin.dashboard1.plu.applyComment');
+Route::patch('/admin/dashboard1/plu/comment/{id}/unapply', [PluController::class, 'unapplyComment'])->name('admin.dashboard1.plu.unapplyComment');
+Route::delete('/admin/dashboard1/plu/comment/{id}', [PluController::class, 'deleteComment'])->name('admin.dashboard1.plu.deleteComment');
+Route::get('/admin/dashboard1/plu/form/{id}', [PluController::class, 'viewFormDetail'])->name('admin.dashboard1.plu.viewFormDetail');
+Route::delete('/admin/dashboard1/plu/form/{id}', [PluController::class, 'deleteFormData'])->name('admin.dashboard1.plu.deleteFormData');
 
 // GWC (Gateway Cicadas)
 Route::get('/admin/dashboard1/gwc', [GwcController::class, 'index'])->name('admin.dashboard1.gwc');
-Route::post('/admin/dashboard1/gwc/carousel', [GwcController::class, 'updateCarousel'])->name('admin.dashboard1.gwc.carousel.update');
-Route::post('/admin/dashboard1/gwc/room', [GwcController::class, 'storeRoom'])->name('admin.dashboard1.gwc.room.store');
-Route::post('/admin/dashboard1/gwc/room/{id}', [GwcController::class, 'updateRoom'])->name('admin.dashboard1.gwc.room.update');
-Route::delete('/admin/dashboard1/gwc/room/{id}', [GwcController::class, 'deleteRoom'])->name('admin.dashboard1.gwc.room.delete');
-Route::patch('/admin/dashboard1/gwc/comment/{id}/apply', [GwcController::class, 'applyComment'])->name('admin.dashboard1.gwc.comment.apply');
-Route::patch('/admin/dashboard1/gwc/comment/{id}/unapply', [GwcController::class, 'unapplyComment'])->name('admin.dashboard1.gwc.comment.unapply');
-Route::delete('/admin/dashboard1/gwc/comment/{id}', [GwcController::class, 'deleteComment'])->name('admin.dashboard1.gwc.comment.delete');
-Route::get('/admin/dashboard1/gwc/form/{id}', [GwcController::class, 'viewFormDetail'])->name('admin.dashboard1.gwc.form.view');
-Route::delete('/admin/dashboard1/gwc/form/{id}', [GwcController::class, 'deleteFormData'])->name('admin.dashboard1.gwc.form.delete');
+Route::post('/admin/dashboard1/gwc/carousel', [GwcController::class, 'updateCarousel'])->name('admin.dashboard1.gwc.updateCarousel');
+Route::post('/admin/dashboard1/gwc/room', [GwcController::class, 'storeRoom'])->name('admin.dashboard1.gwc.storeRoom');
+Route::post('/admin/dashboard1/gwc/room/{id}', [GwcController::class, 'updateRoom'])->name('admin.dashboard1.gwc.updateRoom');
+Route::delete('/admin/dashboard1/gwc/room/{id}', [GwcController::class, 'deleteRoom'])->name('admin.dashboard1.gwc.deleteRoom');
+Route::patch('/admin/dashboard1/gwc/comment/{id}/apply', [GwcController::class, 'applyComment'])->name('admin.dashboard1.gwc.applyComment');
+Route::patch('/admin/dashboard1/gwc/comment/{id}/unapply', [GwcController::class, 'unapplyComment'])->name('admin.dashboard1.gwc.unapplyComment');
+Route::delete('/admin/dashboard1/gwc/comment/{id}', [GwcController::class, 'deleteComment'])->name('admin.dashboard1.gwc.deleteComment');
+Route::get('/admin/dashboard1/gwc/form/{id}', [GwcController::class, 'viewFormDetail'])->name('admin.dashboard1.gwc.viewFormDetail');
+Route::delete('/admin/dashboard1/gwc/form/{id}', [GwcController::class, 'deleteFormData'])->name('admin.dashboard1.gwc.deleteFormData');
 
 // PGV (Podomoro Golf View)
 Route::get('/admin/dashboard1/pgv', [PgvController::class, 'index'])->name('admin.dashboard1.pgv');
-Route::post('/admin/dashboard1/pgv/carousel', [PgvController::class, 'updateCarousel'])->name('admin.dashboard1.pgv.carousel.update');
-Route::post('/admin/dashboard1/pgv/room', [PgvController::class, 'storeRoom'])->name('admin.dashboard1.pgv.room.store');
-Route::post('/admin/dashboard1/pgv/room/{id}', [PgvController::class, 'updateRoom'])->name('admin.dashboard1.pgv.room.update');
-Route::delete('/admin/dashboard1/pgv/room/{id}', [PgvController::class, 'deleteRoom'])->name('admin.dashboard1.pgv.room.delete');
-Route::patch('/admin/dashboard1/pgv/comment/{id}/apply', [PgvController::class, 'applyComment'])->name('admin.dashboard1.pgv.comment.apply');
-Route::patch('/admin/dashboard1/pgv/comment/{id}/unapply', [PgvController::class, 'unapplyComment'])->name('admin.dashboard1.pgv.comment.unapply');
-Route::delete('/admin/dashboard1/pgv/comment/{id}', [PgvController::class, 'deleteComment'])->name('admin.dashboard1.pgv.comment.delete');
-Route::get('/admin/dashboard1/pgv/form/{id}', [PgvController::class, 'viewFormDetail'])->name('admin.dashboard1.pgv.form.view');
-Route::delete('/admin/dashboard1/pgv/form/{id}', [PgvController::class, 'deleteFormData'])->name('admin.dashboard1.pgv.form.delete');
+Route::post('/admin/dashboard1/pgv/carousel', [PgvController::class, 'updateCarousel'])->name('admin.dashboard1.pgv.updateCarousel');
+Route::post('/admin/dashboard1/pgv/room', [PgvController::class, 'storeRoom'])->name('admin.dashboard1.pgv.storeRoom');
+Route::post('/admin/dashboard1/pgv/room/{id}', [PgvController::class, 'updateRoom'])->name('admin.dashboard1.pgv.updateRoom');
+Route::delete('/admin/dashboard1/pgv/room/{id}', [PgvController::class, 'deleteRoom'])->name('admin.dashboard1.pgv.deleteRoom');
+Route::patch('/admin/dashboard1/pgv/comment/{id}/apply', [PgvController::class, 'applyComment'])->name('admin.dashboard1.pgv.applyComment');
+Route::patch('/admin/dashboard1/pgv/comment/{id}/unapply', [PgvController::class, 'unapplyComment'])->name('admin.dashboard1.pgv.unapplyComment');
+Route::delete('/admin/dashboard1/pgv/comment/{id}', [PgvController::class, 'deleteComment'])->name('admin.dashboard1.pgv.deleteComment');
+Route::get('/admin/dashboard1/pgv/form/{id}', [PgvController::class, 'viewFormDetail'])->name('admin.dashboard1.pgv.viewFormDetail');
+Route::delete('/admin/dashboard1/pgv/form/{id}', [PgvController::class, 'deleteFormData'])->name('admin.dashboard1.pgv.deleteFormData');
 
 // BSR (Bassura)
 Route::get('/admin/dashboard1/bsr', [BsrController::class, 'index'])->name('admin.dashboard1.bsr');
-Route::post('/admin/dashboard1/bsr/carousel', [BsrController::class, 'updateCarousel'])->name('admin.dashboard1.bsr.carousel.update');
-Route::post('/admin/dashboard1/bsr/room', [BsrController::class, 'storeRoom'])->name('admin.dashboard1.bsr.room.store');
-Route::post('/admin/dashboard1/bsr/room/{id}', [BsrController::class, 'updateRoom'])->name('admin.dashboard1.bsr.room.update');
-Route::delete('/admin/dashboard1/bsr/room/{id}', [BsrController::class, 'deleteRoom'])->name('admin.dashboard1.bsr.room.delete');
-Route::patch('/admin/dashboard1/bsr/comment/{id}/apply', [BsrController::class, 'applyComment'])->name('admin.dashboard1.bsr.comment.apply');
-Route::patch('/admin/dashboard1/bsr/comment/{id}/unapply', [BsrController::class, 'unapplyComment'])->name('admin.dashboard1.bsr.comment.unapply');
-Route::delete('/admin/dashboard1/bsr/comment/{id}', [BsrController::class, 'deleteComment'])->name('admin.dashboard1.bsr.comment.delete');
-Route::get('/admin/dashboard1/bsr/form/{id}', [BsrController::class, 'viewFormDetail'])->name('admin.dashboard1.bsr.form.view');
-Route::delete('/admin/dashboard1/bsr/form/{id}', [BsrController::class, 'deleteFormData'])->name('admin.dashboard1.bsr.form.delete');
+Route::post('/admin/dashboard1/bsr/carousel', [BsrController::class, 'updateCarousel'])->name('admin.dashboard1.bsr.updateCarousel');
+Route::post('/admin/dashboard1/bsr/room', [BsrController::class, 'storeRoom'])->name('admin.dashboard1.bsr.storeRoom');
+Route::post('/admin/dashboard1/bsr/room/{id}', [BsrController::class, 'updateRoom'])->name('admin.dashboard1.bsr.updateRoom');
+Route::delete('/admin/dashboard1/bsr/room/{id}', [BsrController::class, 'deleteRoom'])->name('admin.dashboard1.bsr.deleteRoom');
+Route::patch('/admin/dashboard1/bsr/comment/{id}/apply', [BsrController::class, 'applyComment'])->name('admin.dashboard1.bsr.applyComment');
+Route::patch('/admin/dashboard1/bsr/comment/{id}/unapply', [BsrController::class, 'unapplyComment'])->name('admin.dashboard1.bsr.unapplyComment');
+Route::delete('/admin/dashboard1/bsr/comment/{id}', [BsrController::class, 'deleteComment'])->name('admin.dashboard1.bsr.deleteComment');
+Route::get('/admin/dashboard1/bsr/form/{id}', [BsrController::class, 'viewFormDetail'])->name('admin.dashboard1.bsr.viewFormDetail');
+Route::delete('/admin/dashboard1/bsr/form/{id}', [BsrController::class, 'deleteFormData'])->name('admin.dashboard1.bsr.deleteFormData');
 
 // GPC (Green Pramuka City)
 Route::get('/admin/dashboard1/gpc', [GpcController::class, 'index'])->name('admin.dashboard1.gpc');
-Route::post('/admin/dashboard1/gpc/carousel', [GpcController::class, 'updateCarousel'])->name('admin.dashboard1.gpc.carousel.update');
-Route::post('/admin/dashboard1/gpc/room', [GpcController::class, 'storeRoom'])->name('admin.dashboard1.gpc.room.store');
-Route::post('/admin/dashboard1/gpc/room/{id}', [GpcController::class, 'updateRoom'])->name('admin.dashboard1.gpc.room.update');
-Route::delete('/admin/dashboard1/gpc/room/{id}', [GpcController::class, 'deleteRoom'])->name('admin.dashboard1.gpc.room.delete');
-Route::patch('/admin/dashboard1/gpc/comment/{id}/apply', [GpcController::class, 'applyComment'])->name('admin.dashboard1.gpc.comment.apply');
-Route::patch('/admin/dashboard1/gpc/comment/{id}/unapply', [GpcController::class, 'unapplyComment'])->name('admin.dashboard1.gpc.comment.unapply');
-Route::delete('/admin/dashboard1/gpc/comment/{id}', [GpcController::class, 'deleteComment'])->name('admin.dashboard1.gpc.comment.delete');
-Route::get('/admin/dashboard1/gpc/form/{id}', [GpcController::class, 'viewFormDetail'])->name('admin.dashboard1.gpc.form.view');
-Route::delete('/admin/dashboard1/gpc/form/{id}', [GpcController::class, 'deleteFormData'])->name('admin.dashboard1.gpc.form.delete');
+Route::post('/admin/dashboard1/gpc/carousel', [GpcController::class, 'updateCarousel'])->name('admin.dashboard1.gpc.updateCarousel');
+Route::post('/admin/dashboard1/gpc/room', [GpcController::class, 'storeRoom'])->name('admin.dashboard1.gpc.storeRoom');
+Route::post('/admin/dashboard1/gpc/room/{id}', [GpcController::class, 'updateRoom'])->name('admin.dashboard1.gpc.updateRoom');
+Route::delete('/admin/dashboard1/gpc/room/{id}', [GpcController::class, 'deleteRoom'])->name('admin.dashboard1.gpc.deleteRoom');
+Route::patch('/admin/dashboard1/gpc/comment/{id}/apply', [GpcController::class, 'applyComment'])->name('admin.dashboard1.gpc.applyComment');
+Route::patch('/admin/dashboard1/gpc/comment/{id}/unapply', [GpcController::class, 'unapplyComment'])->name('admin.dashboard1.gpc.unapplyComment');
+Route::delete('/admin/dashboard1/gpc/comment/{id}', [GpcController::class, 'deleteComment'])->name('admin.dashboard1.gpc.deleteComment');
+Route::get('/admin/dashboard1/gpc/form/{id}', [GpcController::class, 'viewFormDetail'])->name('admin.dashboard1.gpc.viewFormDetail');
+Route::delete('/admin/dashboard1/gpc/form/{id}', [GpcController::class, 'deleteFormData'])->name('admin.dashboard1.gpc.deleteFormData');
 
 // Tracking
 Route::get('/admin/dashboard1/tracking', [TrackingController::class, 'index'])
