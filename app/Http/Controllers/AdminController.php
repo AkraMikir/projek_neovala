@@ -18,7 +18,7 @@ public function login(Request $request)
     $credentials = $request->only('email', 'password');
 
     if (Auth::guard('admin')->attempt($credentials)) {
-        return redirect('/admin/dashboard');
+        return redirect()->route('admin.dashboard1');
     }
 
     return back()->withErrors([
@@ -34,6 +34,6 @@ public function login(Request $request)
     public function logout()
 {
     Auth::guard('admin')->logout();
-    return redirect('/');
+    return redirect('/admin/login');
 }
 }

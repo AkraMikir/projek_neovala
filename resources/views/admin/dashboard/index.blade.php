@@ -153,5 +153,6 @@
     </div>
 
     <script src="{{ asset('js/admin/dashboard.js') }}"></script>
+    <script src="{{ asset('js/admin/session-timeout.js') }}"></script>
 </body>
 </html>

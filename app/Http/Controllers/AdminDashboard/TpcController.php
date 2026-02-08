@@ -9,6 +9,7 @@ use App\Models\KomentarTpc;
 use App\Models\FormData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Services\ImageService;
 
 class TpcController extends Controller
 {
@@ -71,9 +72,14 @@ class TpcController extends Controller
                 }
                 
                 $image = $request->file("images.$index");
-                $filename = time() . '_' . $this->section . '_slide' . $index . '.' . $image->getClientOriginalExtension();
-                $path = $image->storeAs('carousel/' . strtolower($this->section), $filename, 'public');
-                $carousel->{"image$index"} = $path;
+                $filename = ImageService::upload(
+                    $image,
+                    'carousel/' . strtolower($this->section),
+                    1920, 85,
+                    $this->section . '_slide' . $index
+                );
+                
+                $carousel->{"image$index"} = 'carousel/' . strtolower($this->section) . '/' . $filename;
             }
         }
         
@@ -91,17 +97,51 @@ class TpcController extends Controller
             'popup4' => 'nullable|image|mimes:jpeg,jpg,png|max:5120',
         ]);
         
-        $data = ['section' => $this->roomSection];
-        foreach (['main_photo', 'popup1', 'popup2', 'popup3', 'popup4'] as $field) {
+        $section = $this->roomSection;
+
+        // Calculate New Folder
+        $latestFolder = collect(Storage::disk('public')->directories("rooms/$section"))
+            ->map(fn($f) => (int) basename($f))->filter()->max() ?? 0;
+
+        $newFolder = $latestFolder + 1;
+
+        $paths = [];
+        // Handle main_photo
+        if ($request->hasFile('main_photo')) {
+            $filename = ImageService::upload(
+                $request->file('main_photo'),
+                "rooms/$section/$newFolder",
+                1200, 80, 'main_photo'
+            );
+            $paths['main_photo'] = "rooms/$section/$newFolder/$filename";
+        } else {
+            $paths['main_photo'] = null;
+        }
+
+        // Handle popups
+        foreach (['popup1', 'popup2', 'popup3', 'popup4'] as $field) {
             if ($request->hasFile($field)) {
-                $image = $request->file($field);
-                $filename = time() . '_' . $field . '.' . $image->getClientOriginalExtension();
-                $path = $image->storeAs('rooms/' . strtolower($this->roomSection), $filename, 'public');
-                $data[$field] = $path;
+                $filename = ImageService::upload(
+                    $request->file($field),
+                    "rooms/$section/$newFolder",
+                    1200, 80, $field
+                );
+                $paths[$field] = "rooms/$section/$newFolder/$filename";
+            } else {
+                $paths[$field] = null;
             }
         }
         
-        Room::create($data);
+        Room::create([
+            'section' => $section,
+            'folder' => $newFolder,
+            'main_photo' => $paths['main_photo'],
+            'popup1' => $paths['popup1'],
+            'popup2' => $paths['popup2'],
+            'popup3' => $paths['popup3'],
+            'popup4' => $paths['popup4'],
+        ]);
+
         return redirect()->route('admin.dashboard1.' . $this->apartmentCode)->with('success', 'Room created successfully!');
     }
     
@@ -116,6 +156,9 @@ class TpcController extends Controller
             'popup4' => 'nullable|image|mimes:jpeg,jpg,png|max:5120',
         ]);
         
+        $section = $this->roomSection;
+        $folder = $room->folder ?? '1';
+
         foreach (['main_photo', 'popup1', 'popup2', 'popup3', 'popup4'] as $field) {
             if ($request->hasFile($field)) {
                 if ($room->$field && Storage::disk('public')->exists($room->$field)) {
@@ -123,9 +166,13 @@ class TpcController extends Controller
                 }
                 
                 $image = $request->file($field);
-                $filename = time() . '_' . $field . '.' . $image->getClientOriginalExtension();
-                $path = $image->storeAs('rooms/' . strtolower($this->roomSection), $filename, 'public');
-                $room->$field = $path;
+                $filename = ImageService::upload(
+                    $image,
+                    "rooms/$section/$folder",
+                    1200, 80,
+                    $field
+                );
+                $room->$field = "rooms/$section/$folder/$filename";
             }
         }
         
