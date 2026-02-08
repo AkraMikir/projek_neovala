@@ -8,7 +8,7 @@
             @for($i = 1; $i <= 4; $i++)
             <div class="carousel-slide">
                 <img src="{{ $carouselImages[$i] ? asset('storage/' . $carouselImages[$i]) : asset('images/logo/room-title.png') }}"
-                    alt="Slide {{ $i }} TPJ">
+                    alt="Slide {{ $i }} SPL">
             </div>
             @endfor
         </div>

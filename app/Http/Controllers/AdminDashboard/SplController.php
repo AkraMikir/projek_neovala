@@ -5,18 +5,18 @@ namespace App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Room;
 use App\Models\Carousel;
-use App\Models\KomentarTpj;
+use App\Models\KomentarSpl;
 use App\Models\FormData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Services\ImageService;
 
-class TpjController extends Controller
+class SplController extends Controller
 {
-    private $section = 'TPJ';
-    private $apartmentName = 'Transpark Juanda';
-    private $roomSection = 'room_transpark_juanda';
-    private $commentModel = KomentarTpj::class;
+    private $section = 'SPL';
+    private $apartmentName = 'Springlake Summarecon';
+    private $roomSection = 'room_springlake_summarecon';
+    private $commentModel = KomentarSpl::class;
     
     public function index()
     {
@@ -43,17 +43,17 @@ class TpjController extends Controller
             ];
         });
         
-        $comments = $this->commentModel::where('section', 'tpj')->latest()->paginate(9, ['*'], 'comments_page');
+        $comments = $this->commentModel::where('section', 'spl')->latest()->paginate(9, ['*'], 'comments_page');
         $formData = FormData::where('apartment_type', 'like', '%' . $this->apartmentName . '%')->latest()->paginate(10);
         
-        return view('admin.apartments.tpj.index', [
+        return view('admin.apartments.spl.index', [
             'carouselImages' => $carouselImages,
             'rooms' => $rooms,
             'comments' => $comments,
             'formData' => $formData,
             'section' => $this->section,
             'apartmentName' => $this->apartmentName,
-            'apartmentCode' => 'tpj'
+            'apartmentCode' => 'spl'
         ]);
     }
     
@@ -84,7 +84,7 @@ class TpjController extends Controller
         }
         
         $carousel->save();
-        return redirect()->route('admin.dashboard1.tpj')->with('success', 'Carousel updated successfully!');
+        return redirect()->route('admin.dashboard1.spl')->with('success', 'Carousel updated successfully!');
     }
     
     public function storeRoom(Request $request)
@@ -143,7 +143,7 @@ class TpjController extends Controller
             'popup4' => $paths['popup4'],
         ]);
 
-        return redirect()->route('admin.dashboard1.tpj')->with('success', 'Room added successfully!');
+        return redirect()->route('admin.dashboard1.spl')->with('success', 'Room added successfully!');
     }
 
     public function updateRoom(Request $request, $id)
@@ -194,7 +194,7 @@ class TpjController extends Controller
 
         $room->save();
 
-        return redirect()->route('admin.dashboard1.tpj')->with('success', 'Room updated successfully!');
+        return redirect()->route('admin.dashboard1.spl')->with('success', 'Room updated successfully!');
     }
     
     public function deleteRoom($id)
@@ -206,7 +206,7 @@ class TpjController extends Controller
             }
         }
         $room->delete();
-        return redirect()->route('admin.dashboard1.tpj')->with('success', 'Room deleted successfully!');
+        return redirect()->route('admin.dashboard1.spl')->with('success', 'Room deleted successfully!');
     }
     
     public function applyComment($id)
@@ -214,7 +214,7 @@ class TpjController extends Controller
         $comment = $this->commentModel::findOrFail($id);
         $comment->status = 'accepted';
         $comment->save();
-        return redirect()->route('admin.dashboard1.tpj')->with('success', 'Comment accepted!');
+        return redirect()->route('admin.dashboard1.spl')->with('success', 'Comment accepted!');
     }
     
     public function unapplyComment($id)
@@ -222,14 +222,14 @@ class TpjController extends Controller
         $comment = $this->commentModel::findOrFail($id);
         $comment->status = 'pending';
         $comment->save();
-        return redirect()->route('admin.dashboard1.tpj')->with('success', 'Comment set to pending!');
+        return redirect()->route('admin.dashboard1.spl')->with('success', 'Comment set to pending!');
     }
     
     public function deleteComment($id)
     {
         $comment = $this->commentModel::findOrFail($id);
         $comment->delete();
-        return redirect()->route('admin.dashboard1.tpj')->with('success', 'Comment deleted!');
+        return redirect()->route('admin.dashboard1.spl')->with('success', 'Comment deleted!');
     }
     
     public function viewFormDetail($id)
@@ -242,6 +242,6 @@ class TpjController extends Controller
     {
         $data = FormData::findOrFail($id);
         $data->delete();
-        return redirect()->route('admin.dashboard1.tpj')->with('success', 'Form data deleted!');
+        return redirect()->route('admin.dashboard1.spl')->with('success', 'Form data deleted!');
     }
 }

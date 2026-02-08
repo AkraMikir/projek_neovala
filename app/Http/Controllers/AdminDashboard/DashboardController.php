@@ -14,6 +14,7 @@ use App\Models\KomentarGwc;
 use App\Models\KomentarPgv;
 use App\Models\KomentarBsr;
 use App\Models\KomentarGpc;
+use App\Models\KomentarSpl;
 
 class DashboardController extends Controller
 {
@@ -29,11 +30,12 @@ class DashboardController extends Controller
                            KomentarGwc::count() + 
                            KomentarPgv::count() + 
                            KomentarBsr::count() + 
+                           KomentarSpl::count() + 
                            KomentarGpc::count();
         $totalPromos = Promo::count();
         
         $stats = [
-            'apartments' => 8, // Fixed number of apartments
+            'apartments' => 9, // Fixed number of apartments
             'rooms' => $totalRooms,
             'testimonials' => $totalTestimonials,
             'promos' => $totalPromos

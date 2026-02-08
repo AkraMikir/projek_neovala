@@ -140,6 +140,13 @@
                             <a href="{{ route('admin.dashboard1.gpc') }}" class="card-button">Click here to go to Admin Panel</a>
                         </div>
                     </div>
+
+                    <div class="admin-card" style="background-image: url('../../images/images/discover-SPL/IMG_9470.jpg');">
+                        <div class="card-content">
+                            <h2>SPRINGLAKE SUMMARECON ROOM ADMIN PANEL</h2>
+                            <a href="{{ route('admin.dashboard1.spl') }}" class="card-button">Click here to go to Admin Panel</a>
+                        </div>
+                    </div>
                     
                     <div class="admin-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                         <div class="card-content">

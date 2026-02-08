@@ -68,6 +68,10 @@
                 <i class="fas fa-door-open"></i>
                 <span>Pramuka</span>
             </a>
+            <a href="{{ route('admin.dashboard1.spl') }}" class="nav-item {{ request()->routeIs('admin.dashboard1.spl') ? 'active' : '' }}">
+                <i class="fas fa-door-open"></i>
+                <span>Springlake</span>
+            </a>
         </div>
 
         <div class="nav-group">

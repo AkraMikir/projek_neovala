@@ -11,7 +11,7 @@
             <div class="room-card-header">
                 <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
                 <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
-                <div class="right-text">TRANSPARK <span class="room-type">JUANDA</span></div>
+                <div class="right-text">SPRINGLAKE <span class="room-type">SUMMARECON</span></div>
             </div>
             <div class="room-card-image">
                 <img src="{{ $room['main_photo'] ?: asset('images/logo/room-title.png') }}"
@@ -21,14 +21,14 @@
                 <!-- Data attributes for edit -->
                 <button class="edit-room-btn" 
                         data-room="{{ json_encode($room) }}" 
-                        data-update-url="{{ route('admin.dashboard1.tpj.updateRoom', $room['id']) }}"
+                        data-update-url="{{ route('admin.dashboard1.spl.updateRoom', $room['id']) }}"
                         onclick="openEditRoom(this)">
                     <i class="fas fa-edit"></i>
                 </button>
                 
                 <button class="more-btn" onclick="showRoomPopup('roomPopup{{ $room['id'] }}')">MORE</button>
                 
-                <form action="{{ route('admin.dashboard1.tpj.deleteRoom', $room['id']) }}" method="POST" class="d-inline" onsubmit="event.preventDefault(); confirmDelete(this);">
+                <form action="{{ route('admin.dashboard1.spl.deleteRoom', $room['id']) }}" method="POST" class="d-inline" onsubmit="event.preventDefault(); confirmDelete(this);">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="delete-room-btn">
