@@ -58,228 +58,213 @@
     <div class="nav-overlay"></div>
 
     <div class="booking-container">
-        <!-- Booking Transpark Juanda -->
-        <div class="booking-section">
-            <h2>BOOKING TRANSPARK JUANDA</h2>
-            <div class="booking-images">    
-                <a href="https://wa.me/6287874176270" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
+        <h1 class="page-title">CHOOSE YOUR APARTMENT</h1>
+        <div class="booking-grid">
+            <!-- Booking Transpark Juanda -->
+            <div class="booking-card">
+                <div class="card-image-wrapper">
+                    <img src="{{ asset('images/images/home pages/home_utama.png') }}" alt="Transpark Juanda" class="card-image">
+                    <div class="card-overlay">
+                        <h3>TRANSPARK JUANDA</h3>
                     </div>
-                    <img src="{{ asset('images/images/home pages/home_utama.png') }}" alt="WhatsApp Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via WhatsApp</span>
+                </div>
+                <div class="card-content">
+                    <p class="wa-number"><i class="fab fa-whatsapp"></i> +62 878-7417-6270</p>
+                    <div class="booking-buttons">
+                        <a href="https://wa.me/6287874176270" target="_blank" class="booking-btn whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="whatsapp-text">WhatsApp</span>
+                        </a>
+                        <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-transpark-juanda" target="_blank" class="booking-btn tiket-btn">
+                            <span class="tiket-text">tiket</span>
+                            <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
                     </div>
-                </a>
-                <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-transpark-juanda" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
-                    </div>
-                    <img src="{{ asset('images/images/home pages/home_utama.png') }}" alt="Tiket.com Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via Tiket.com</span>
-                    </div>
-                </a>
+                </div>
             </div>
-        </div>
 
-        <!-- Booking Transpark Cibubur -->
-        <div class="booking-section">
-            <h2>BOOKING TRANSPARK CIBUBUR</h2>
-            <div class="booking-images">
-                <a href="https://wa.me/6281805191817" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
+            <!-- Booking Transpark Cibubur -->
+            <div class="booking-card">
+                <div class="card-image-wrapper">
+                    <img src="{{ asset('images/images/discover-TPC/IMG_9440.jpg') }}" alt="Transpark Cibubur" class="card-image">
+                    <div class="card-overlay">
+                        <h3>TRANSPARK CIBUBUR</h3>
                     </div>
-                    <img src="{{ asset('images/images/discover-TPC/IMG_9440.jpg') }}" alt="WhatsApp Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via WhatsApp</span>
+                </div>
+                <div class="card-content">
+                    <p class="wa-number"><i class="fab fa-whatsapp"></i> +62 818-0519-1817</p>
+                    <div class="booking-buttons">
+                        <a href="https://wa.me/6281805191817" target="_blank" class="booking-btn whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="whatsapp-text">WhatsApp</span>
+                        </a>
+                        <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-transpark-cibubur" target="_blank" class="booking-btn tiket-btn">
+                            <span class="tiket-text">tiket</span>
+                            <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
                     </div>
-                </a>
-                <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-transpark-cibubur" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
-                    </div>
-                    <img src="{{ asset('images/images/discover-TPC/IMG_9440.jpg') }}" alt="Tiket.com Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via Tiket.com</span>
-                    </div>
-                </a>
+                </div>
             </div>
-        </div>
 
-        <!-- Booking Grand Kamala Lagoon -->
-        <div class="booking-section">
-            <h2>BOOKING GRAND KAMALA LAGOON</h2>
-            <div class="booking-images">
-                <a href="https://wa.me/6285161518151" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
+            <!-- Booking Grand Kamala Lagoon -->
+            <div class="booking-card">
+                <div class="card-image-wrapper">
+                    <img src="{{ asset('images/images/discover-GKL/IMG_3011.jpg') }}" alt="Grand Kamala Lagoon" class="card-image">
+                    <div class="card-overlay">
+                        <h3>GRAND KAMALA LAGOON</h3>
                     </div>
-                    <img src="{{ asset('images\images\discover-GKL\IMG_3011.jpg') }}" alt="WhatsApp Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via WhatsApp</span>
+                </div>
+                <div class="card-content">
+                    <p class="wa-number"><i class="fab fa-whatsapp"></i> +62 851-6151-8151</p>
+                    <div class="booking-buttons">
+                        <a href="https://wa.me/6285161518151" target="_blank" class="booking-btn whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="whatsapp-text">WhatsApp</span>
+                        </a>
+                        <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-grand-kamala-lagoon-802001739869526174" target="_blank" class="booking-btn tiket-btn">
+                            <span class="tiket-text">tiket</span>
+                            <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
                     </div>
-                </a>
-                <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-grand-kamala-lagoon-802001739869526174 " target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
-                    </div>
-                    <img src="{{ asset('images\images\discover-GKL\IMG_3011.jpg') }}" alt="Tiket.com Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via Tiket.com</span>
-                    </div>
-                </a>
+                </div>
             </div>
-        </div>
 
-        <!-- Booking Patraland Urbano -->
-        <div class="booking-section">
-            <h2>BOOKING PATRALAND URBANO</h2>
-            <div class="booking-images">
-                <a href="https://wa.me/6287768545010" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
+            <!-- Booking Patraland Urbano -->
+            <div class="booking-card">
+                <div class="card-image-wrapper">
+                    <img src="{{ asset('images/images/discover-PLU/IMG_8300.jpg') }}" alt="Patraland Urbano" class="card-image">
+                    <div class="card-overlay">
+                        <h3>PATRALAND URBANO</h3>
                     </div>
-                    <img src="{{ asset('images/images/discover-PLU/IMG_8300.jpg') }}" alt="WhatsApp Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via WhatsApp</span>
+                </div>
+                <div class="card-content">
+                    <p class="wa-number"><i class="fab fa-whatsapp"></i> +62 877-6854-5010</p>
+                    <div class="booking-buttons">
+                        <a href="https://wa.me/6287768545010" target="_blank" class="booking-btn whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="whatsapp-text">WhatsApp</span>
+                        </a>
+                        <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartment-patraland-urbano" target="_blank" class="booking-btn tiket-btn">
+                            <span class="tiket-text">tiket</span>
+                            <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
                     </div>
-                </a>
-                <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartment-patraland-urbano " target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
-                    </div>
-                    <img src="{{ asset('images/images/discover-PLU/IMG_8300.jpg') }}" alt="Tiket.com Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via Tiket.com</span>
-                    </div>
-                </a>
+                </div>
             </div>
-        </div>
 
-        <!-- Booking Gateway Cicadas -->
-        <div class="booking-section">
-            <h2>BOOKING GATEWAY CICADAS</h2>
-            <div class="booking-images">
-                <a href="https://wa.me/6289630253533" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
+            <!-- Booking Gateway Cicadas -->
+            <div class="booking-card">
+                <div class="card-image-wrapper">
+                    <img src="{{ asset('images/images/discover-GWC/IMG_6088.jpg') }}" alt="Gateway Cicadas" class="card-image">
+                    <div class="card-overlay">
+                        <h3>GATEWAY CICADAS</h3>
                     </div>
-                    <img src="{{ asset('images/images/discover-GWC/IMG_6088.jpg') }}" alt="WhatsApp Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via WhatsApp</span>
+                </div>
+                <div class="card-content">
+                    <p class="wa-number"><i class="fab fa-whatsapp"></i> +62 896-3025-3533</p>
+                    <div class="booking-buttons">
+                        <a href="https://wa.me/6289630253533" target="_blank" class="booking-btn whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="whatsapp-text">WhatsApp</span>
+                        </a>
+                        <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-gateway-cicadas" target="_blank" class="booking-btn tiket-btn">
+                            <span class="tiket-text">tiket</span>
+                            <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
                     </div>
-                </a>
-                <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-gateway-cicadas " target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
-                    </div>
-                    <img src="{{ asset('images/images/discover-GWC/IMG_6088.jpg') }}" alt="Tiket.com Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via Tiket.com</span>
-                    </div>
-                </a>
+                </div>
             </div>
-        </div>
 
-        <!-- Booking Podomoro Golf View -->
-        <div class="booking-section">
-            <h2>BOOKING PODOMORO GOLF VIEW</h2>
-            <div class="booking-images">
-                <a href="https://wa.me/6281220391217" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
+            <!-- Booking Podomoro Golf View -->
+            <div class="booking-card">
+                <div class="card-image-wrapper">
+                    <img src="{{ asset('images/images/discover-PGV/IMG_0416.jpg') }}" alt="Podomoro Golf View" class="card-image">
+                    <div class="card-overlay">
+                        <h3>PODOMORO GOLF VIEW</h3>
                     </div>
-                    <img src="{{ asset('images/images/discover-PGV/IMG_0416.jpg') }}" alt="WhatsApp Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via WhatsApp</span>
+                </div>
+                <div class="card-content">
+                    <p class="wa-number"><i class="fab fa-whatsapp"></i> +62 812-2039-1217</p>
+                    <div class="booking-buttons">
+                        <a href="https://wa.me/6281220391217" target="_blank" class="booking-btn whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="whatsapp-text">WhatsApp</span>
+                        </a>
+                        <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-podomoro-golf-view" target="_blank" class="booking-btn tiket-btn">
+                            <span class="tiket-text">tiket</span>
+                            <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
                     </div>
-                </a>
-                <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-podomoro-golf-view " target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
-                    </div>
-                    <img src="{{ asset('images/images/discover-PGV/IMG_0416.jpg') }}" alt="Tiket.com Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via Tiket.com</span>
-                    </div>
-                </a>
+                </div>
             </div>
-        </div>
 
-        <!-- Booking Green Pramuka City -->
-        <div class="booking-section">
-            <h2>BOOKING GREEN PRAMUKA CITY</h2>
-            <div class="booking-images">
-                <a href="https://wa.me/6285719035729" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
+            <!-- Booking Green Pramuka City -->
+            <div class="booking-card">
+                <div class="card-image-wrapper">
+                    <img src="{{ asset('images/images/discover-GPC/IMG_0646.png') }}" alt="Green Pramuka City" class="card-image">
+                    <div class="card-overlay">
+                        <h3>GREEN PRAMUKA CITY</h3>
                     </div>
-                    <img src="{{ asset('images\images\discover-GPC\IMG_0646.png') }}" alt="WhatsApp Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via WhatsApp</span>
+                </div>
+                <div class="card-content">
+                    <p class="wa-number"><i class="fab fa-whatsapp"></i> +62 857-1903-5729</p>
+                    <div class="booking-buttons">
+                        <a href="https://wa.me/6285719035729" target="_blank" class="booking-btn whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="whatsapp-text">WhatsApp</span>
+                        </a>
+                        <a href="https://www.tiket.com/homes/indonesia/studio-room-gpc-1-malam-by-neovala-809001759225711910?checkin=2025-11-16&checkout=2025-11-17&adult=1&room=1&utm_external=organic&utm_medium=nha_pdp%3Bshare_button" target="_blank" class="booking-btn tiket-btn">
+                            <span class="tiket-text">tiket</span>
+                            <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
                     </div>
-                </a>
-                <a href="https://www.tiket.com/homes/indonesia/studio-room-gpc-1-malam-by-neovala-809001759225711910?checkin=2025-11-16&checkout=2025-11-17&adult=1&room=1&utm_external=organic&utm_medium=nha_pdp%3Bshare_button" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
-                    </div>
-                    <img src="{{ asset('images\images\discover-GPC\IMG_0646.png') }}" alt="Tiket.com Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via Tiket.com</span>
-                    </div>
-                </a>
+                </div>
             </div>
-        </div>
 
-        <!-- Booking Bassura City -->
-        <div class="booking-section">
-            <h2>BOOKING BASSURA CITY</h2>
-            <div class="booking-images">
-                <a href="https://wa.me/6287852624656" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
+            <!-- Booking Bassura City -->
+            <div class="booking-card">
+                <div class="card-image-wrapper">
+                    <img src="{{ asset('images/images/discover-BSC/IMG_1882.png') }}" alt="Bassura City" class="card-image">
+                    <div class="card-overlay">
+                        <h3>BASSURA CITY</h3>
                     </div>
-                    <img src="{{ asset('images\images\discover-BSC\IMG_1882.png') }}" alt="WhatsApp Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via WhatsApp</span>
+                </div>
+                <div class="card-content">
+                    <p class="wa-number"><i class="fab fa-whatsapp"></i> +62 878-5262-4656</p>
+                    <div class="booking-buttons">
+                        <a href="https://wa.me/6287852624656" target="_blank" class="booking-btn whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="whatsapp-text">WhatsApp</span>
+                        </a>
+                        <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-bassura-city" target="_blank" class="booking-btn tiket-btn">
+                            <span class="tiket-text">tiket</span>
+                            <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
                     </div>
-                </a>
-                <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-bassura-city" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
-                    </div>
-                    <img src="{{ asset('images\images\discover-BSC\IMG_1882.png') }}" alt="Tiket.com Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via Tiket.com</span>
-                    </div>
-                </a>
+                </div>
             </div>
-        </div>
 
-        <!-- Booking Springlake Summarecon -->
-        <div class="booking-section">
-            <h2>BOOKING SPRINGLAKE SUMMARECON</h2>
-            <div class="booking-images">
-                <a href="https://wa.me/XXXXXXXXXXXX" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
+            <!-- Booking Springlake Summarecon -->
+            <div class="booking-card">
+                <div class="card-image-wrapper">
+                    <img src="{{ asset('images/images/discover-SPL/IMG_9344.jpg') }}" alt="Springlake Summarecon" class="card-image">
+                    <div class="card-overlay">
+                        <h3>SPRINGLAKE SUMMARECON</h3>
                     </div>
-                    <img src="{{ asset('images/images/discover-SPL/IMG_9344.jpg') }}" alt="WhatsApp Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via WhatsApp</span>
+                </div>
+                <div class="card-content">
+                    <p class="wa-number"><i class="fab fa-whatsapp"></i> +62 812-2039-1217</p>
+                    <div class="booking-buttons">
+                        <a href="https://wa.me/6281220391217" target="_blank" class="booking-btn whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="whatsapp-text">WhatsApp</span>
+                        </a>
+                        <a href="#" target="_blank" class="booking-btn tiket-btn">
+                            <span class="tiket-text">tiket</span>
+                            <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
                     </div>
-                </a>
-                <a href="#" target="_blank" class="booking-image">
-                    <div class="small-image">
-                        <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
-                    </div>
-                    <img src="{{ asset('images/images/discover-SPL/IMG_9470.jpg') }}" alt="Tiket.com Booking" class="main-image">
-                    <div class="booking-overlay">
-                        <span class="booking-text">Book via Tiket.com</span>
-                    </div>
-                </a>
+                </div>
             </div>
         </div>
     </div>
