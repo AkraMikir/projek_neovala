@@ -3,86 +3,104 @@
 namespace App\Http\Controllers\AdminDashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\{FormData, Komentar, Room, Promo};
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class TrackingController extends Controller
 {
     public function index(Request $request)
     {
-        // Date range filter (default: last 30 days)
+        // 1. FILTER REQUEST (Default: 30 Hari Terakhir)
         $startDate = $request->input('start_date', Carbon::now()->subDays(30)->format('Y-m-d'));
         $endDate = $request->input('end_date', Carbon::now()->format('Y-m-d'));
-        
-        // Overview Statistics
+
+        // Konversi ke Carbon object untuk query scope
+        $start = Carbon::parse($startDate)->startOfDay();
+        $end = Carbon::parse($endDate)->endOfDay();
+
+        // 2. STATS TOTAL (Semua Waktu / Periode Tertentu)
         $stats = [
-            'total_visits' => 0, // Would need tracking table
-            'total_bookings' => FormData::whereBetween('created_at', [$startDate, $endDate])->count(),
-            'total_testimonials' => Komentar::whereBetween('created_at', [$startDate, $endDate])->count(),
-            'active_rooms' => Room::count(),
+            'total_visits' => UserActivity::visits()->dateRange($start, $end)->count(),
+            'today_visits' => UserActivity::visits()->today()->count(),
+            'total_bookings' => UserActivity::where('activity_type', 'click_book_now')->dateRange($start, $end)->count(),
+            'total_downloads' => UserActivity::where('activity_type', 'click_download_promo')->dateRange($start, $end)->count(),
+            'total_forms' => UserActivity::where('activity_type', 'submit_form')->dateRange($start, $end)->count(),
         ];
-        
-        // Visit trends - placeholder (no tracking table)
-        $visitTrends = collect([]);
-        
-        // Booking trends (last 7 days)
-        $bookingTrends = FormData::select(
-            DB::raw('DATE(created_at) as date'),
-            DB::raw('count(*) as bookings')
-        )
-        ->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
-        ->groupBy('date')
-        ->orderBy('date', 'asc')
-        ->get();
-        
-        // Popular apartments (by booking count) - using apartment_type
-        $popularApartments = FormData::select('apartment_type', DB::raw('count(*) as count'))
-            ->whereBetween('created_at', [$startDate, $endDate])
-            ->whereNotNull('apartment_type')
-            ->where('apartment_type', '!=', '')
+
+        // 3. TRENDS HARIAN (Untuk Grafik)
+        $visitTrends = UserActivity::visits()
+            ->dateRange($start, $end)
+            ->select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))
+            ->groupBy('date')
+            ->orderBy('date', 'asc')
+            ->get();
+            
+        // 4. ACTION BREAKDOWN (Booking, Download, Submit, Comment)
+        $actionTrends = UserActivity::whereIn('activity_type', ['click_book_now', 'click_download_promo', 'submit_form', 'submit_comment'])
+            ->dateRange($start, $end)
+            ->select('activity_type', DB::raw('count(*) as count'))
+            ->groupBy('activity_type')
+            ->get();
+
+        // 5. POPULAR APARTMENTS (Based on stored metadata)
+        $popularApartments = UserActivity::whereNotNull('apartment_type')
+            ->dateRange($start, $end)
+            ->select('apartment_type', DB::raw('count(*) as count'))
             ->groupBy('apartment_type')
             ->orderBy('count', 'desc')
             ->limit(5)
             ->get();
-        
-        // Recent bookings
-        $recentBookings = FormData::whereBetween('created_at', [$startDate, $endDate])
-            ->latest()
+
+        // 6. POPULAR PAGES (Top visited URLs)
+        $popularPages = UserActivity::visits()
+            ->dateRange($start, $end)
+            ->select('page_path', DB::raw('count(*) as visits'))
+            ->groupBy('page_path')
+            ->orderBy('visits', 'desc')
             ->limit(10)
             ->get();
-        
-        // Popular pages - placeholder (no tracking table)
-        $popularPages = collect([]);
-        
-        // Device breakdown - placeholder (no tracking table)
-        $deviceStats = collect([]);
-        
+
+        // 7. DEVICE BREAKDOWN (Mobile vs Desktop)
+        // Simple logic: check 'Mobile' in user_agent string
+        $deviceStats = UserActivity::visits()
+            ->dateRange($start, $end)
+            ->select(DB::raw("CASE WHEN user_agent LIKE '%Mobile%' THEN 'Mobile' ELSE 'Desktop' END as device"), DB::raw('count(*) as count'))
+            ->groupBy('device')
+            ->get();
+
+        // 6. Recent Activity Log (Paginated)
+        $recentActivitiesQuery = UserActivity::dateRange($start, $end)
+            ->latest();
+
+
+
+        $recentActivities = $recentActivitiesQuery->paginate(5)->appends($request->all());
+
         return view('admin.tracking.index', compact(
             'stats',
             'visitTrends',
-            'bookingTrends',
+            'actionTrends',
             'popularApartments',
-            'recentBookings',
             'popularPages',
             'deviceStats',
+            'recentActivities',
             'startDate',
             'endDate'
         ));
     }
-    
+
     public function exportData(Request $request)
     {
         $startDate = $request->input('start_date', Carbon::now()->subDays(30)->format('Y-m-d'));
         $endDate = $request->input('end_date', Carbon::now()->format('Y-m-d'));
         
-        $data = FormData::whereBetween('created_at', [$startDate, $endDate])
-            ->orderBy('created_at', 'desc')
+        $data = UserActivity::dateRange($startDate, $endDate)
+            ->latest()
             ->get();
         
-        // Simple CSV export
-        $filename = 'bookings_' . $startDate . '_to_' . $endDate . '.csv';
+        $filename = 'activity_log_' . $startDate . '_to_' . $endDate . '.csv';
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => 'attachment; filename="' . $filename . '"',
@@ -90,23 +108,59 @@ class TrackingController extends Controller
         
         $callback = function() use ($data) {
             $file = fopen('php://output', 'w');
-            fputcsv($file, ['ID', 'Name', 'WhatsApp', 'Room Type', 'Check In', 'Arrival Time', 'Duration', 'Message', 'Apartment Type', 'Date']);
+            
+            // Defines headers (User Friendly Format)
+            fputcsv($file, [
+                'Date', 
+                'Time', 
+                'User Action', 
+                'Target Page', 
+                'Apartment Unit', 
+                'Interaction Details'
+            ]);
             
             foreach ($data as $row) {
+                // 1. Format Activity Type
+                // Example: 'click_book_now' -> 'Clicked Book Now'
+                $action = ucwords(str_replace(['click_', 'submit_', '_'], ['', '', ' '], $row->activity_type));
+                if ($row->activity_type == 'visit') $action = 'Visited Page';
+                if ($row->activity_type == 'click_book_now') $action = 'Clicked Book Now';
+                if ($row->activity_type == 'submit_form') $action = 'Submitted Form';
+                if ($row->activity_type == 'click_download_promo') $action = 'Downloaded Promo';
+                
+                // 2. Format Page Path
+                $pagePath = $row->page_path ?: parse_url($row->page_url, PHP_URL_PATH);
+                
+                // 3. Extract Details & Apartment
+                $details = $row->target_name;
+                $apartment = $row->apartment_type;
+                
+                // Parse metadata safely
+                if (!empty($row->metadata)) {
+                    $meta = is_string($row->metadata) ? json_decode($row->metadata, true) : $row->metadata;
+                    
+                    // Fallback apartment from metadata
+                    if (!$apartment && isset($meta['apartment_type'])) {
+                        $apartment = $meta['apartment_type'];
+                    }
+                    
+                    // Specific details from Form ID or other meta
+                    if (isset($meta['form_id'])) {
+                        $formName = ucfirst(str_replace('Form', '', $meta['form_id']));
+                        $details = 'Form Type: ' . $formName;
+                    }
+                }
+                
+                // Final Data Row
                 fputcsv($file, [
-                    $row->id,
-                    $row->nama ?? '',
-                    $row->nomor_wa ?? '',
-                    $row->tipe_kamar ?? '',
-                    $row->tanggal_checkin ?? '',
-                    $row->jam_kedatangan ?? '',
-                    $row->durasi ?? '',
-                    $row->pesan ?? '',
-                    $row->apartment_type ?? '',
-                    $row->created_at->format('Y-m-d H:i:s'),
+                    $row->created_at->format('d M Y'), 
+                    $row->created_at->format('H:i'),   
+                    $action,
+                    $pagePath,
+                    $apartment ?: '-',
+                    $details ?: '-'
                 ]);
             }
-            
             fclose($file);
         };
         

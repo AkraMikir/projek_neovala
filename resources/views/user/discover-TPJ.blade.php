@@ -421,8 +421,8 @@
                 slider.style.overflowY = 'hidden';
 
                 cards.forEach(card => {
-                    card.style.width = '300px';
-                    card.style.minWidth = '300px';
+                    card.style.width = '400px';
+                    card.style.minWidth = '400px';
                 });
 
                 prevBtn.style.display = 'flex';

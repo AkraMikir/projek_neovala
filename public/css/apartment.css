@@ -1,10 +1,10 @@
-html{
+html {
     scroll-behavior: smooth;
 }
 
 * {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar {
@@ -75,6 +75,7 @@ html{
     text-decoration: none !important;
     transition: color 0.3s;
 }
+
 .logo-right a:hover,
 .logo-right a:focus {
     color: #bfa14a;
@@ -85,7 +86,7 @@ html{
     color: #674C1D;
 }
 
-.navbar.scrolled{
+.navbar.scrolled {
     background-color: #FFFF;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -178,7 +179,7 @@ html{
 .nav-links.active .close-menu-btn {
     display: block;
 }
-    
+
 .close-menu-btn:hover {
     opacity: 0.5;
 }
@@ -202,12 +203,12 @@ html{
     padding: 0.2rem 1rem;
     transition: all 0.3s ease;
     font-family: "Poppins", sans-serif;
-    font-weight:200;
+    font-weight: 200;
     display: inline-block;
     position: relative;
 }
 
-.nav-links a::after{
+.nav-links a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -221,16 +222,15 @@ html{
 
 .nav-links a:hover::after,
 .nav-links a:focus::after,
-.nav-links a.active::after
-{
+.nav-links a.active::after {
     width: 100%;
 }
 
-.navbar.scrolled .nav-links a{
+.navbar.scrolled .nav-links a {
     color: #674C1D;
 }
 
-.navbar.scrolled .nav-links a::after{
+.navbar.scrolled .nav-links a::after {
     background: #674C1D;
 }
 
@@ -286,6 +286,7 @@ html{
     .logo-left {
         order: 2;
     }
+
     .nav-links {
         position: fixed;
         top: 0;
@@ -305,7 +306,7 @@ html{
         border-bottom: 1px solid #674C1D;
     }
 
-    .nav-links.active{
+    .nav-links.active {
         left: 100px;
     }
 
@@ -342,7 +343,7 @@ html{
         padding: 0.8rem 2rem;
         transition: all 0.3s ease;
         position: relative;
-        border-bottom: 1px solid #674C1D;   
+        border-bottom: 1px solid #674C1D;
     }
 
     .nav-links a::after {
@@ -432,11 +433,10 @@ html{
     left: 0;
     width: 100%;
     height: 300px;
-    background: linear-gradient(to bottom, 
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.5) 50%,
-        rgba(255, 255, 255, 1) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 1) 100%);
     pointer-events: none;
     z-index: 2;
 }
@@ -549,33 +549,37 @@ html{
     font-size: 3rem;
     line-height: 1.6;
     text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.5),
-                 0 0 10px rgba(255, 255, 255, 0.8),
-                 0 0 20px rgba(255, 255, 255, 0.6),
-                 0 0 30px rgba(255, 255, 255, 0.4);
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4);
 }
 
-@media screen and (max-width: 760px){
-    .header-text-overlay-discover p{
+@media screen and (max-width: 760px) {
+    .header-text-overlay-discover p {
         font-size: 2rem;
     }
 }
-@media screen and (max-width: 530px){
-    .header-text-overlay-discover p{
+
+@media screen and (max-width: 530px) {
+    .header-text-overlay-discover p {
         font-size: 1.5rem;
     }
 }
-@media screen and (max-width: 418px){
-    .header-text-overlay-discover p{
+
+@media screen and (max-width: 418px) {
+    .header-text-overlay-discover p {
         font-size: 1.2rem;
     }
 }
-@media screen and (max-width: 350px){
-    .header-text-overlay-discover p{
+
+@media screen and (max-width: 350px) {
+    .header-text-overlay-discover p {
         font-size: 1rem;
     }
 }
-@media screen and (max-width: 305px){
-    .header-text-overlay-discover p{
+
+@media screen and (max-width: 305px) {
+    .header-text-overlay-discover p {
         font-size: 0.8rem;
     }
 }
@@ -597,7 +601,7 @@ html{
 
 .service-item-apart i {
     font-size: 2.5rem;
-    color: #674C1D ;
+    color: #674C1D;
     margin-bottom: 50px;
     transition: transform 0.3s ease;
 }
@@ -687,10 +691,10 @@ body.menu-open {
     box-shadow: none;
     text-decoration: none;
     transform: translateY(0);
-    transition: background 0.6s cubic-bezier(0.4,0,0.2,1),
-                box-shadow 0.6s cubic-bezier(0.4,0,0.2,1),
-                color 0.3s cubic-bezier(0.4,0,0.2,1),
-                transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     isolation: isolate;
     overflow: hidden;
     max-width: none;
@@ -703,9 +707,9 @@ body.menu-open {
     left: -75%;
     width: 70%;
     height: 100%;
-    background: linear-gradient(120deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.32) 50%, rgba(255,255,255,0.08) 100%);
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.32) 50%, rgba(255, 255, 255, 0.08) 100%);
     transform: skewX(-25deg);
-    transition: left 1s cubic-bezier(0.4,0,0.2,1), background 0.6s cubic-bezier(0.4,0,0.2,1);
+    transition: left 1s cubic-bezier(0.4, 0, 0.2, 1), background 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     z-index: 1;
 }
@@ -717,7 +721,7 @@ body.menu-open {
 .book-now-btn:hover {
     background: linear-gradient(to right, #bfa14a, #ffe066, #bfa14a);
     color: #fff8e1;
-    box-shadow: 0 8px 24px 0 rgba(212, 175, 55, 0.35), 0 1.5px 8px 0 rgba(0,0,0,0.18);
+    box-shadow: 0 8px 24px 0 rgba(212, 175, 55, 0.35), 0 1.5px 8px 0 rgba(0, 0, 0, 0.18);
     transform: translateY(-4px) scale(1.03);
 }
 
@@ -736,7 +740,7 @@ body.menu-open {
     .book-now-container {
         z-index: 998;
     }
-    
+
     /* Book Now button tetap visible bahkan saat menu dibuka */
 }
 
@@ -778,7 +782,7 @@ body.menu-open {
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 ;
+    padding: 0;
 }
 
 .facility-item {
@@ -786,8 +790,8 @@ body.menu-open {
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2),
-                0 6px 6px rgba(0, 0, 0, 0.1),
-                0 0 15px rgba(103, 76, 29, 0.3);
+        0 6px 6px rgba(0, 0, 0, 0.1),
+        0 0 15px rgba(103, 76, 29, 0.3);
     transition: transform 0.3s ease;
 }
 
@@ -837,7 +841,7 @@ body.menu-open {
     .facilities-grid {
         grid-template-columns: 1fr;
     }
-    
+
 }
 
 @media screen and (max-width: 480px) {
@@ -879,12 +883,15 @@ body.menu-open {
     gap: 30px;
     overflow-x: auto;
     padding: 30px;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
 }
 
 .room-slider-container::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
 .room-card {
@@ -909,7 +916,8 @@ body.menu-open {
     padding: 1px 0;
 }
 
-.left-text, .right-text {
+.left-text,
+.right-text {
     font-family: "poppins", sans-serif;
     line-height: 1;
     color: #674C1D;
@@ -994,10 +1002,11 @@ body.menu-open {
         height: 250px;
     }
 
-    .left-text, .right-text {
+    .left-text,
+    .right-text {
         font-size: 0.8rem;
     }
-    
+
     .room-logo {
         width: 50px;
         height: auto;
@@ -1017,7 +1026,7 @@ body.menu-open {
         height: 200px;
     }
 
-    .neovala-text, 
+    .neovala-text,
     .apartment-type {
         font-size: 0.7rem;
     }
@@ -1038,6 +1047,7 @@ body.menu-open {
         font-size: 1.5rem;
     }
 }
+
 @media screen and (max-width: 335px) {
     .room-title {
         font-size: 1.2rem;
@@ -1175,7 +1185,8 @@ body.menu-open {
 .submit-btn {
     width: 100%;
     padding: 15px;
-    background: #674C1d; /* Warna WhatsApp */
+    background: #674C1d;
+    /* Warna WhatsApp */
     color: #FFFFFF;
     border: none;
     border-radius: 8px;
@@ -1203,7 +1214,7 @@ body.menu-open {
     .checkin-title {
         font-size: 2rem;
     }
-    
+
     .checkin-form-container {
         padding: 20px;
         margin: 0 20px;
@@ -1224,7 +1235,7 @@ body.menu-open {
     .checkin-title {
         font-size: 1.8rem;
     }
-    
+
     .form-group input,
     .form-group select,
     .form-group textarea {
@@ -1232,7 +1243,7 @@ body.menu-open {
         width: 100%;
         max-width: 100%;
     }
-    
+
     .submit-btn {
         font-size: 1rem;
     }
@@ -1252,11 +1263,13 @@ body.menu-open {
         padding: 8px;
     }
 }
+
 @media screen and (max-width: 289px) {
     .submit-btn {
         font-size: 0.8rem;
     }
 }
+
 @media screen and (max-width: 259px) {
     .submit-btn {
         font-size: 0.6rem;
@@ -1405,17 +1418,18 @@ body.menu-open {
         padding: 30px;
     }
 }
+
 /* Responsive Styles */
 @media screen and (max-width: 992px) {
     .location-container {
         grid-template-columns: 1fr;
         padding: 30px;
     }
-    
+
     .location-map {
         height: 350px;
     }
-    
+
     .location-info {
         padding: 25px;
         gap: 15px;
@@ -1426,49 +1440,49 @@ body.menu-open {
     .location-title {
         font-size: 2rem;
     }
-    
+
     .location-subtitle {
         font-size: 1.6rem;
     }
-    
+
     .location-container {
         padding: 20px;
         gap: 20px;
     }
-    
+
     .location-map {
         height: 300px;
     }
-    
+
     .location-info {
         padding: 20px;
         gap: 15px;
     }
-    
+
     .location-address {
         padding: 20px;
     }
-    
+
     .location-address i {
         font-size: 1.3rem;
     }
-    
+
     .location-address p {
         font-size: 0.9rem;
     }
-    
+
     .feature-item {
         padding: 15px;
     }
-    
+
     .feature-item i {
         font-size: 1.1rem;
     }
-    
+
     .feature-item p {
         font-size: 0.8rem;
     }
-    
+
     .direction-btn {
         font-size: 1rem;
         padding: 12px;
@@ -1479,54 +1493,54 @@ body.menu-open {
     .location-title {
         font-size: 1.8rem;
     }
-    
+
     .location-subtitle {
         font-size: 1.4rem;
     }
-    
+
     .location-container {
         padding: 15px;
         gap: 15px;
     }
-    
+
     .location-map {
         height: 250px;
     }
-    
+
     .location-info {
         padding: 15px;
         gap: 12px;
     }
-    
+
     .location-address {
         padding: 15px;
     }
-    
+
     .location-address i {
         font-size: 1.2rem;
     }
-    
+
     .location-address p {
         font-size: 0.8rem;
     }
-    
+
     .location-features {
         gap: 15px;
     }
-    
+
     .feature-item {
         padding: 12px;
         gap: 8px;
     }
-    
+
     .feature-item i {
         font-size: 1rem;
     }
-    
+
     .feature-item p {
         font-size: 0.75rem;
     }
-    
+
     .direction-btn {
         font-size: 0.9rem;
         padding: 10px;
@@ -1537,54 +1551,54 @@ body.menu-open {
     .location-title {
         font-size: 1.5rem;
     }
-    
+
     .location-subtitle {
         font-size: 1.2rem;
     }
-    
+
     .location-container {
         padding: 10px;
         gap: 10px;
     }
-    
+
     .location-map {
         height: 200px;
     }
-    
+
     .location-info {
         padding: 12px;
         gap: 10px;
     }
-    
+
     .location-address {
         padding: 12px;
     }
-    
+
     .location-address i {
         font-size: 1rem;
     }
-    
+
     .location-address p {
         font-size: 0.7rem;
     }
-    
+
     .location-features {
         grid-template-columns: 1fr;
     }
-    
+
     .feature-item {
         padding: 10px;
         gap: 6px;
     }
-    
+
     .feature-item i {
         font-size: 0.9rem;
     }
-    
+
     .feature-item p {
         font-size: 0.7rem;
     }
-    
+
     .direction-btn {
         padding: 10px;
         font-size: 0.9rem;
@@ -1595,50 +1609,50 @@ body.menu-open {
     .location-title {
         font-size: 1.2rem;
     }
-    
+
     .location-subtitle {
         font-size: 1rem;
     }
-    
+
     .location-container {
         padding: 8px;
         gap: 8px;
     }
-    
+
     .location-map {
         height: 180px;
     }
-    
+
     .location-info {
         padding: 10px;
         gap: 8px;
     }
-    
+
     .location-address {
         padding: 10px;
     }
-    
+
     .location-address i {
         font-size: 0.9rem;
     }
-    
+
     .location-address p {
         font-size: 0.65rem;
     }
-    
+
     .feature-item {
         padding: 8px;
         gap: 5px;
     }
-    
+
     .feature-item i {
         font-size: 0.8rem;
     }
-    
+
     .feature-item p {
         font-size: 0.65rem;
     }
-    
+
     .direction-btn {
         padding: 8px;
         font-size: 0.8rem;
@@ -1649,7 +1663,7 @@ body.menu-open {
 .booking-section {
     position: relative;
     min-height: 400px;
-    
+
     padding: 80px 20px;
     display: flex;
     align-items: center;
@@ -1663,26 +1677,31 @@ body.menu-open {
     background-size: cover;
     background-position: center;
 }
+
 .booking-section-TPC {
     background-image: url('../../images/images/discover-TPC/IMG_9451.jpg');
     background-size: cover;
     background-position: center;
 }
+
 .booking-section-GKL {
     background-image: url('../../images/images/discover-GKL/IMG_0117 (Copy).jpg');
     background-size: cover;
     background-position: center;
 }
+
 .booking-section-PLU {
     background-image: url('../../images/images/discover-PLU/IMG_1069.jpg');
     background-size: cover;
     background-position: center;
 }
+
 .booking-section-GWC {
     background-image: url('../../images/images/discover-GWC/IMG_3977.jpg');
     background-size: cover;
     background-position: center;
 }
+
 .booking-section-PGV {
     background-image: url('../../images/images/discover-PGV/IMG_0361.jpg');
     background-size: cover;
@@ -1725,6 +1744,7 @@ body.menu-open {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1737,7 +1757,7 @@ body.menu-open {
     font-weight: 700;
     margin-bottom: 10px;
     font-family: "Montserrat", sans-serif;
-    text-shadow: 
+    text-shadow:
         2px 2px 8px rgba(0, 0, 0, 0.8),
         0 0 20px rgba(0, 0, 0, 0.5),
         0 0 40px rgba(0, 0, 0, 0.3);
@@ -1751,7 +1771,7 @@ body.menu-open {
     font-weight: 600;
     margin-bottom: 40px;
     font-family: "Montserrat", sans-serif;
-    text-shadow: 
+    text-shadow:
         2px 2px 8px rgba(0, 0, 0, 0.8),
         0 0 15px rgba(0, 0, 0, 0.5),
         0 0 30px rgba(0, 0, 0, 0.3);
@@ -1905,7 +1925,8 @@ body.menu-open {
         min-width: auto;
     }
 
-    .whatsapp-text, .tiket-text {
+    .whatsapp-text,
+    .tiket-text {
         font-size: 1.3rem;
     }
 
@@ -1935,7 +1956,8 @@ body.menu-open {
         max-width: 240px;
     }
 
-    .whatsapp-text, .tiket-text {
+    .whatsapp-text,
+    .tiket-text {
         font-size: 1.1rem;
     }
 
@@ -1965,7 +1987,8 @@ body.menu-open {
         max-width: 200px;
     }
 
-    .whatsapp-text, .tiket-text {
+    .whatsapp-text,
+    .tiket-text {
         font-size: 0.9rem;
     }
 
@@ -1996,7 +2019,8 @@ body.menu-open {
         gap: 8px;
     }
 
-    .whatsapp-text, .tiket-text {
+    .whatsapp-text,
+    .tiket-text {
         font-size: 0.8rem;
     }
 
@@ -2027,7 +2051,8 @@ body.menu-open {
         gap: 6px;
     }
 
-    .whatsapp-text, .tiket-text {
+    .whatsapp-text,
+    .tiket-text {
         font-size: 0.7rem;
     }
 
@@ -2063,13 +2088,13 @@ body.menu-open {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
 
 .scroll-top-btn-discover:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .scroll-top-btn-discover i {
@@ -2157,7 +2182,7 @@ body.menu-open {
     text-align: center;
     margin-top: 40px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-bottom-discover p {
@@ -2175,7 +2200,7 @@ body.menu-open {
         gap: 30px;
     }
 
-    .footer-booking-discover, 
+    .footer-booking-discover,
     .footer-social-discover {
         margin: 0 auto;
     }
@@ -2309,13 +2334,14 @@ body.menu-open {
     background: rgba(249, 249, 249, 0.9765);
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
     height: 200px;
     position: relative;
     overflow: hidden;
+    height: auto;
 }
 
 .testimoni-card:hover {
@@ -2493,7 +2519,7 @@ body.menu-open {
     background: transparent;
 }
 
-.instagram-text{
+.instagram-text {
     position: absolute;
     left: 12px;
     top: 50%;
@@ -2553,7 +2579,7 @@ body.menu-open {
 .hide-identity-toggle::before {
     background: #674C1D;
     left: 2px;
-    opacity: 1  ;
+    opacity: 1;
 }
 
 .hide-identity-toggle::after {
@@ -2625,7 +2651,7 @@ body.menu-open {
         background: rgba(249, 249, 249, 0.9765);
         border-radius: 15px;
         padding: 20px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .testimoni-slider::-webkit-scrollbar {
@@ -2726,7 +2752,7 @@ body.menu-open {
     font-size: 1.2rem;
     transition: all 0.3s ease;
     z-index: 10;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     opacity: 1;
     pointer-events: auto;
 }
@@ -2911,7 +2937,8 @@ body.menu-open {
 .popup-carousel {
     position: relative;
     width: 100%;
-    padding-top: 100%; /* Aspect ratio 1:1 */
+    padding-top: 100%;
+    /* Aspect ratio 1:1 */
     overflow: hidden;
     border-radius: 15px;
     margin-bottom: 20px;
@@ -3190,7 +3217,8 @@ body.menu-open {
 
 @media (max-width: 768px) {
     .testimoni-card {
-        min-height: 160px; /* atau lebih, misal 180px, 200px sesuai kebutuhan */
+        min-height: 160px;
+        /* atau lebih, misal 180px, 200px sesuai kebutuhan */
         height: auto;
     }
 }
