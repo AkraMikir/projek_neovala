@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Promo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Services\ImageService;
 
 class PromoController extends Controller
 {
@@ -37,11 +38,17 @@ class PromoController extends Controller
         // Upload image
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $filename = time() . '_' . str_replace(' ', '_', $validated['title']) . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('promos', $filename, 'public');
+            $customName = time() . '_' . str_replace(' ', '_', $validated['title']);
+            
+            $filename = ImageService::upload(
+                $image,
+                'promos',
+                1200, 80,
+                $customName
+            );
             
             Promo::create([
-                'image' => $path,
+                'image' => 'promos/' . $filename,
                 'title' => $validated['title']
             ]);
             

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Analytics & Tracking - Neovala Admin</title>
+    <title>Analytics & User Activity - Neovala Admin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,43 +21,38 @@
             <!-- Header -->
             <header class="page-header">
                 <div>
-                    <h1>Analytics & Tracking</h1>
-                    <p class="subtitle">Monitor performance and user activity</p>
-                </div>
-                <div class="header-actions">
-                    <button class="btn btn-secondary" id="exportBtn">
-                        <i class="fas fa-download"></i>
-                        Export Data
-                    </button>
+                    <h1>User Activity Monitor</h1>
+                    <p class="subtitle">Real-time tracking for Visits, Clicks, and Submissions</p>
                 </div>
             </header>
 
-            <!-- Date Filter -->
+            <!-- Date Filter & Actions Compact -->
             <div class="filter-card">
                 <form method="GET" id="dateFilterForm">
-                    <div class="filter-row">
-                        <div class="filter-group">
-                            <label for="start_date">Start Date</label>
-                            <input type="date" 
-                                   name="start_date" 
-                                   id="start_date" 
-                                   value="{{ $startDate }}"
-                                   class="form-input">
+                    <div class="filter-container">
+                        <!-- Date Inputs: Side by Side -->
+                        <div class="filter-date-group">
+                            <div class="filter-input-wrapper">
+                                <label for="start_date">Start Date</label>
+                                <input type="date" name="start_date" id="start_date" value="{{ $startDate }}" class="form-input compact-date">
+                            </div>
+                            <div class="filter-input-wrapper">
+                                <label for="end_date">End Date</label>
+                                <input type="date" name="end_date" id="end_date" value="{{ $endDate }}" class="form-input compact-date">
+                            </div>
                         </div>
-                        <div class="filter-group">
-                            <label for="end_date">End Date</label>
-                            <input type="date" 
-                                   name="end_date" 
-                                   id="end_date" 
-                                   value="{{ $endDate }}"
-                                   class="form-input">
-                        </div>
-                        <div class="filter-group">
-                            <label>&nbsp;</label>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-filter"></i>
-                                Apply Filter
+
+                        <!-- Action Buttons: Inline -->
+                        <div class="filter-actions-group">
+                            <button type="submit" class="btn btn-primary compact-btn">
+                                <i class="fas fa-filter"></i> Apply
                             </button>
+                            <button type="button" class="btn btn-secondary compact-btn" id="exportBtn">
+                                <i class="fas fa-print"></i> Print
+                            </button>
+                            <a href="{{ route('home') }}" target="_blank" class="btn btn-primary compact-btn" title="Open User Page">
+                                <i class="fas fa-external-link-alt"></i> Test
+                            </a>
                         </div>
                     </div>
                 </form>
@@ -65,40 +60,48 @@
 
             <!-- Stats Grid -->
             <div class="stats-grid">
-                <div class="stat-card green">
+                <!-- Total Visits -->
+                <div class="stat-card blue">
                     <div class="stat-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-eye"></i>
                     </div>
                     <div class="stat-content">
                         <h3>{{ number_format($stats['total_visits']) }}</h3>
                         <p>Total Visits</p>
+                        <small class="text-muted">Today: {{ number_format($stats['today_visits']) }}</small>
                     </div>
                 </div>
-                <div class="stat-card blue">
+
+                <!-- Book Now Clicks -->
+                <div class="stat-card green">
                     <div class="stat-icon">
-                        <i class="fas fa-calendar-check"></i>
+                        <i class="fas fa-mouse-pointer"></i>
                     </div>
                     <div class="stat-content">
                         <h3>{{ number_format($stats['total_bookings']) }}</h3>
-                        <p>Booking Requests</p>
+                        <p>Clicked "Book Now"</p>
                     </div>
                 </div>
+
+                <!-- Download Promo -->
                 <div class="stat-card purple">
                     <div class="stat-icon">
-                        <i class="fas fa-comments"></i>
+                        <i class="fas fa-file-download"></i>
                     </div>
                     <div class="stat-content">
-                        <h3>{{ number_format($stats['total_testimonials']) }}</h3>
-                        <p>New Testimonials</p>
+                        <h3>{{ number_format($stats['total_downloads']) }}</h3>
+                        <p>Promo Downloads</p>
                     </div>
                 </div>
+
+                <!-- Form Submits -->
                 <div class="stat-card orange">
                     <div class="stat-icon">
-                        <i class="fas fa-door-open"></i>
+                        <i class="fas fa-paper-plane"></i>
                     </div>
                     <div class="stat-content">
-                        <h3>{{ number_format($stats['active_rooms']) }}</h3>
-                        <p>Active Rooms</p>
+                        <h3>{{ number_format($stats['total_forms']) }}</h3>
+                        <p>Forms Submitted</p>
                     </div>
                 </div>
             </div>
@@ -108,74 +111,72 @@
                 <!-- Visit Trends Chart -->
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h3>Visit Trends (Last 7 Days)</h3>
+                        <h3>Daily Traffic Trend</h3>
                     </div>
                     <div class="chart-body">
                         <canvas id="visitTrendsChart"></canvas>
                     </div>
                 </div>
 
-                <!-- Booking Trends Chart -->
+                <!-- Activity Breakdown Chart -->
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h3>Booking Trends (Last 7 Days)</h3>
+                        <h3>User Interaction Breakdown</h3>
                     </div>
                     <div class="chart-body">
-                        <canvas id="bookingTrendsChart"></canvas>
+                        <canvas id="activityBreakdownChart"></canvas>
                     </div>
                 </div>
             </div>
 
             <!-- Analytics Grid -->
             <div class="analytics-grid">
-                <!-- Popular Apartments -->
-                <div class="analytics-card">
-                    <div class="analytics-header">
-                        <h3>Popular Apartments</h3>
-                        <span class="badge">Top 5</span>
-                    </div>
-                    <div class="analytics-body">
-                        @if($popularApartments->count() > 0)
-                            @foreach($popularApartments as $apartment)
-                            <div class="ranking-item">
-                                <div class="ranking-info">
-                                    <span class="ranking-name">{{ $apartment->apartment_type ?? 'Unknown' }}</span>
-                                    <span class="ranking-count">{{ $apartment->count }} bookings</span>
-                                </div>
-                                <div class="ranking-bar">
-                                    <div class="ranking-fill" style="width: {{ ($apartment->count / $popularApartments->first()->count) * 100 }}%"></div>
-                                </div>
-                            </div>
-                            @endforeach
-                        @else
-                            <div class="empty-state-small">
-                                <i class="fas fa-chart-bar"></i>
-                                <p>No data available</p>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-
                 <!-- Popular Pages -->
                 <div class="analytics-card">
                     <div class="analytics-header">
-                        <h3>Popular Pages</h3>
-                        <span class="badge">Top 10</span>
+                        <h3>Most Visited Pages</h3>
                     </div>
                     <div class="analytics-body">
                         @if($popularPages->count() > 0)
                             <div class="list-items">
                                 @foreach($popularPages as $page)
                                 <div class="list-item">
-                                    <span class="list-label">{{ $page->page }}</span>
-                                    <span class="list-value">{{ number_format($page->visits) }}</span>
+                                    <span class="list-label" title="{{ $page->page_path }}">{{ Str::limit($page->page_path, 40) }}</span>
+                                    <span class="badgex badge-blue">{{ number_format($page->visits) }} visits</span>
                                 </div>
                                 @endforeach
                             </div>
                         @else
                             <div class="empty-state-small">
                                 <i class="fas fa-file"></i>
-                                <p>No page data</p>
+                                <p>No page data yet</p>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
+                <!-- Popular Apartments -->
+                <div class="analytics-card">
+                    <div class="analytics-header">
+                        <h3>Top Apartments Interest</h3>
+                    </div>
+                    <div class="analytics-body">
+                        @if($popularApartments->count() > 0)
+                            @foreach($popularApartments as $apt)
+                            <div class="ranking-item">
+                                <div class="ranking-info">
+                                    <span class="ranking-name">{{ $apt->apartment_type ?: 'Unknown' }}</span>
+                                    <span class="ranking-count">{{ $apt->count }} events</span>
+                                </div>
+                                <div class="ranking-bar">
+                                    <div class="ranking-fill" style="width: {{ ($apt->count / $popularApartments->first()->count) * 100 }}%"></div>
+                                </div>
+                            </div>
+                            @endforeach
+                        @else
+                            <div class="empty-state-small">
+                                <i class="fas fa-building"></i>
+                                <p>No apartment interest data</p>
                             </div>
                         @endif
                     </div>
@@ -184,22 +185,22 @@
                 <!-- Device Stats -->
                 <div class="analytics-card">
                     <div class="analytics-header">
-                        <h3>Device Breakdown</h3>
+                        <h3>Device Types</h3>
                     </div>
                     <div class="analytics-body">
-                        @if($deviceStats->count() > 0)
+                         @if($deviceStats->count() > 0)
                             <div class="device-grid">
                                 @foreach($deviceStats as $device)
                                 <div class="device-item">
-                                    <i class="fas fa-{{ $device->device == 'mobile' ? 'mobile-alt' : ($device->device == 'tablet' ? 'tablet-alt' : 'desktop') }}"></i>
-                                    <span class="device-name">{{ ucfirst($device->device) }}</span>
+                                    <i class="fas fa-{{ $device->device == 'Mobile' ? 'mobile-alt' : 'desktop' }}"></i>
+                                    <span class="device-name">{{ $device->device }}</span>
                                     <span class="device-count">{{ number_format($device->count) }}</span>
                                 </div>
                                 @endforeach
                             </div>
                         @else
                             <div class="empty-state-small">
-                                <i class="fas fa-devices"></i>
+                                <i class="fas fa-laptop"></i>
                                 <p>No device data</p>
                             </div>
                         @endif
@@ -207,56 +208,87 @@
                 </div>
             </div>
 
-            <!-- Recent Bookings Table -->
+            <!-- Recent Activity Log -->
             <div class="table-card">
                 <div class="table-header">
-                    <h3>Recent Booking Requests</h3>
-                    <span class="badge">Last 10</span>
+                    <h3>Recent User Activities</h3>
+                    <span class="badge">Live Log</span>
                 </div>
                 <div class="table-responsive">
-                    @if($recentBookings->count() > 0)
+                    @if($recentActivities->count() > 0)
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Name</th>
-                                <th>Apartment</th>
-                                <th>Room Type</th>
-                                <th>Check In</th>
-                                <th>Duration</th>
+                                <th>Time</th>
+                                <th>Activity Type</th>
+                                <th>Page / Target</th>
+                                <th>Details</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($recentBookings as $booking)
+                            @foreach($recentActivities as $act)
                             <tr>
-                                <td>{{ $booking->created_at->format('M d, Y') }}</td>
-                                <td>{{ $booking->nama ?? 'N/A' }}</td>
-                                <td>{{ $booking->apartment_type ?? 'N/A' }}</td>
-                                <td>{{ $booking->tipe_kamar ?? 'N/A' }}</td>
-                                <td>{{ $booking->tanggal_checkin ?? 'N/A' }}</td>
-                                <td>{{ $booking->durasi ?? 'N/A' }} days</td>
+                                <td data-label="Time">{{ $act->created_at->format('M d, H:i') }}</td>
+                                <td data-label="Activity Type">
+                                    @if($act->activity_type == 'visit')
+                                        <span class="badge badge-gray">Visit</span>
+                                    @elseif($act->activity_type == 'click_book_now')
+                                        <span class="badge badge-green">Book Now</span>
+                                    @elseif($act->activity_type == 'submit_form')
+                                        <span class="badge badge-orange">Form Submit</span>
+                                    @else
+                                        <span class="badge badge-blue">{{ str_replace('_', ' ', $act->activity_type) }}</span>
+                                    @endif
+                                </td>
+                                <td data-label="Page / Target">
+                                    <small>{{ $act->page_path }}</small>
+                                </td>
+                                <td data-label="Details">
+                                    @if($act->target_name)
+                                        <span class="text-xs">{{ $act->target_name }}</span>
+                                    @elseif($act->apartment_type)
+                                        <span class="text-xs">Apt: {{ $act->apartment_type }}</span>
+                                    @else
+                                        <span class="text-xs text-muted">-</span>
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     @else
                     <div class="empty-state">
-                        <i class="fas fa-inbox"></i>
-                        <h3>No Recent Bookings</h3>
-                        <p>Booking requests will appear here</p>
+                        <i class="fas fa-history"></i>
+                        <h3>No Recent Activity</h3>
+                        <p>Activities will appear here once users interact with the site.</p>
                     </div>
                     @endif
                 </div>
+
+                @if($recentActivities instanceof \Illuminate\Pagination\LengthAwarePaginator && $recentActivities->hasPages())
+                <div class="table-pagination">
+                    {{ $recentActivities->links('admin.pagination.custom') }}
+                </div>
+                @endif
             </div>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="{{ asset('js/admin/dashboard.js') }}"></script>
     <script src="{{ asset('js/admin/tracking.js') }}"></script>
+    
+    <!-- Pass Data to JS -->
     <script>
-        // Pass data to JavaScript
         const visitTrendsData = @json($visitTrends);
-        const bookingTrendsData = @json($bookingTrends);
+        const actionTrendsData = @json($actionTrends); // { activity_type: 'x', count: 10 }
+        
+        // Helper untuk Export
+        document.getElementById('exportBtn').addEventListener('click', function() {
+            const start = document.getElementById('start_date').value;
+            const end = document.getElementById('end_date').value;
+            window.location.href = "{{ route('admin.dashboard1.tracking.export') }}?start_date=" + start + "&end_date=" + end;
+        });
     </script>
 </body>
 </html>

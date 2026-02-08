@@ -58,27 +58,35 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.disabled = true;
         btn.innerHTML = "Mengirim...";
 
-        fetch("/save-form-data ", {
+        fetch("/save-form-data", { // Removed extra space
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "X-CSRF-TOKEN": document.querySelector(
-                    'meta[name="csrf-token"]'
-                ).content,
+                // Safe check for meta tag
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]')?.content || ''
             },
             body: JSON.stringify(formData),
         })
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) {
-                    const msg = `Checkin From ${formData.apartment_type} via Neovala Website\n\nNama : ${formData.nama}\nNomor WhatsApp : ${formData.nomor_wa}\nTipe Kamar : ${formData.tipe_kamar}\nTanggal Check-in : ${formData.tanggal_checkin}\nJam Kedatangan : ${formData.jam_kedatangan}\nDurasi Menginap : ${formData.durasi}\nPesan Tambahan : ${formData.pesan}`;
+                    const msg = `Checkin From ${formData.apartment_type} via Neovala Website
+                    
+Nama : ${formData.nama}
+Nomor WhatsApp : ${formData.nomor_wa}
+Tipe Kamar : ${formData.tipe_kamar}
+Tanggal Check-in : ${formData.tanggal_checkin}
+Jam Kedatangan : ${formData.jam_kedatangan}
+Durasi Menginap : ${formData.durasi}
+Pesan Tambahan : ${formData.pesan}`;
+
                     const encodedMsg = encodeURIComponent(msg);
 
                     const nomorTujuanMap = {
                         "Transpark Juanda by Neovala": "6287874176270",
                         "Transpark Cibubur by Neovala": "6281805191817",
                         "Podomoro Golf View by Neovala": "6281220391217",
-                        "Patraland Urbano by Neovala": " 6287768545010",
+                        "Patraland Urbano by Neovala": "6287768545010",
                         "Grand Kamala Lagoon by Neovala": "6285161518151",
                         "Gateway Cicadas by Neovala": "6289630253533",
                         "Bassura City by Neovala": "6287852624656",
@@ -88,7 +96,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     const nomorTujuan =
                         nomorTujuanMap[formData.apartment_type] ||
                         "6287815933353";
-                    window.location.href = `https://wa.me/${nomorTujuan}?text=${encodedMsg}`;
+
+                    // Open WhatsApp in new tab
+                    window.open(`https://wa.me/${nomorTujuan}?text=${encodedMsg}`, '_blank');
+
+                    // Optional: Reset form after successful submission
+                    // form.reset(); 
+                    // updateHariTanggal();
                 } else {
                     alert(data.message || "Gagal menyimpan data.");
                 }

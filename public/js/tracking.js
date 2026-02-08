@@ -1,212 +1,161 @@
 /**
- * Neovala Event Tracking System
- * Tracks user interactions on the website
+ * Neovala Analytics Tracking System (Refactored v2)
+ * Features: Session, Debounce, Link Clicks, Form Simulation
  */
 
-class NeovalaTracker {
-    constructor() {
-        this.apiUrl = '/api/track';
-        this.isTrackingEnabled = true;
-        this.sessionId = this.generateSessionId();
-        this.init();
-    }
+const NeovalaAnalytics = {
+    // Configuration
+    apiEndpoint: '/api/track-activity',
+    storageKey: 'neovala_analytics_session', // Key for session ID
 
-    /**
-     * Initialize tracking
-     */
-    init() {
-        // Track page visit on load
-        this.trackEvent('visit', {
-            url: window.location.href,
-            referrer: document.referrer,
-            session_id: this.sessionId
-        });
+    // 1. Session Management
+    getSessionId: function () {
+        let sid = localStorage.getItem(this.storageKey);
+        if (!sid) {
+            sid = 'sess_' + Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+            localStorage.setItem(this.storageKey, sid);
+        }
+        return sid;
+    },
 
-        // Track download promo clicks
-        this.trackDownloadPromo();
-        
-        // Track book now clicks
-        this.trackBookNow();
-        
-        // Track form submissions
-        this.trackFormSubmissions();
-    }
+    // 2. Main Tracking Function
+    track: async function (type, metadata = {}) {
+        // Prepare Payload
+        const payload = {
+            activity_type: type, // 'visit', 'click_book_now', 'click_download_promo', 'submit_form', 'submit_comment'
+            page_url: window.location.href,
+            session_id: this.getSessionId(),
+            metadata: metadata // Flexible object
+        };
 
-    /**
-     * Generate unique session ID
-     */
-    generateSessionId() {
-        return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    }
-
-    /**
-     * Track any event
-     */
-    async trackEvent(eventName, metadata = {}) {
-        if (!this.isTrackingEnabled) return;
+        // Get CSRF Token
+        const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        if (!token) return console.warn('Analytics: CSRF Token Missing');
 
         try {
-            const payload = {
-                event_name: eventName,
-                url: window.location.href,
-                referrer: document.referrer,
-                metadata: {
-                    ...metadata,
-                    timestamp: new Date().toISOString(),
-                    user_agent: navigator.userAgent,
-                    screen_resolution: `${screen.width}x${screen.height}`,
-                    viewport_size: `${window.innerWidth}x${window.innerHeight}`,
-                    language: navigator.language,
-                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-                }
-            };
-
-            const response = await fetch(this.apiUrl, {
+            const response = await fetch(this.apiEndpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                    'X-CSRF-TOKEN': token,
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify(payload)
             });
 
-            if (!response.ok) {
-                console.warn('Failed to track event:', eventName);
-            }
-        } catch (error) {
-            console.warn('Error tracking event:', error);
-        }
-    }
+            const result = await response.json();
 
-    /**
-     * Track download promo clicks
-     */
-    trackDownloadPromo() {
-        // Track download promo buttons
+            if (result.status === 'skipped') {
+                // console.log('Analytics: Duplicate event skipped by server.');
+            } else {
+                console.log('Analytics: Event recorded', type, metadata);
+            }
+
+        } catch (error) {
+            console.error('Analytics Error:', error);
+        }
+    },
+
+    // 3. Auto-Track Page Visits
+    initVisitTracking: function () {
+        let metadata = {};
+
+        // Detect Apartment Type from URL
+        const path = window.location.pathname;
+        if (path.includes('discover-tpj')) metadata.apartment_type = 'TPJ';
+        else if (path.includes('discover-gkl')) metadata.apartment_type = 'GKL';
+        else if (path.includes('discover-tpc')) metadata.apartment_type = 'TPC';
+        else if (path.includes('discover-plu')) metadata.apartment_type = 'PLU';
+        else if (path.includes('discover-gwc')) metadata.apartment_type = 'GWC';
+        else if (path.includes('discover-pgv')) metadata.apartment_type = 'PGV';
+        else if (path.includes('discover-bsr')) metadata.apartment_type = 'BSR';
+        else if (path.includes('discover-gpc')) metadata.apartment_type = 'GPC';
+
+        this.track('visit', metadata);
+    },
+
+    // 4. Bind Click Events (Booking & Promo)
+    initClickTracking: function () {
         document.addEventListener('click', (e) => {
-            const downloadBtn = e.target.closest('.download-btn');
-            if (downloadBtn) {
-                this.trackEvent('download_promo', {
-                    promo_title: downloadBtn.closest('.card')?.querySelector('.card-title')?.textContent || 'Unknown',
-                    download_url: downloadBtn.href || 'Unknown'
+            // A. BOOKING LINKS (WhatsApp / Tiket.com)
+            // Mencari elemen terdekat dengan class .booking-image atau link yang mengandung 'wa.me' / 'tiket.com'
+            const bookingLink = e.target.closest('.booking-image, a[href*="wa.me"], a[href*="tiket.com"]');
+
+            if (bookingLink) {
+                // Tentukan destinasi (WA atau Tiket.com)
+                let destination = 'Unknown';
+                const href = bookingLink.getAttribute('href') || '';
+
+                if (href.includes('wa.me')) destination = 'WhatsApp';
+                else if (href.includes('tiket.com')) destination = 'Tiket.com';
+
+                // Cari nama Apartment dari context (biasanya ada di judul section terdekat)
+                const sectionTitle = bookingLink.closest('.booking-section')?.querySelector('h2')?.innerText || 'General Booking';
+
+                this.track('click_book_now', {
+                    destination_type: destination,
+                    apartment_name: sectionTitle, // "BOOKING TRANSPARK JUANDA"
+                    url: href
+                });
+                return; // Stop checking other types
+            }
+
+            // B. GENERIC BOOK NOW BUTTONS
+            const btnBook = e.target.closest('a[href*="book-now"], .btn-book-now, .book-now-trigger');
+            if (btnBook) {
+                this.track('click_book_now', {
+                    target_name: btnBook.innerText || 'Book Now Button',
+                    destination: btnBook.getAttribute('href')
+                });
+                return;
+            }
+
+            // C. DOWNLOAD PROMO
+            const btnDownload = e.target.closest('.download-promo, a[download]');
+            if (btnDownload) {
+                this.track('click_download_promo', {
+                    target_name: btnDownload.getAttribute('download') || 'Promo File',
+                    url: btnDownload.getAttribute('href')
+                });
+            }
+
+            // D. TITIP KUNCI SUBMIT BUTTON (Simulasi Form Submit)
+            const btnSubmit = e.target.closest('.kirim-btn');
+            if (btnSubmit) {
+                // Ambil form induknya
+                const form = btnSubmit.closest('form');
+                if (form && form.id === 'titipKunciForm') {
+                    this.track('submit_form', {
+                        form_type: 'Titip Kunci (WhatsApp)',
+                        nama_pengirim: form.querySelector('#nama')?.value || 'Unknown'
+                    });
+                }
+            }
+        });
+    },
+
+    // 5. Form Submissions (Real Forms)
+    initFormTracking: function () {
+        document.addEventListener('submit', (e) => {
+            // Cek form comment atau form lain yang beneran submit
+            const form = e.target;
+
+            if (form.action && form.action.includes('komentar')) {
+                this.track('submit_comment', {
+                    form_id: form.id || 'comment-form'
+                });
+            } else {
+                this.track('submit_form', {
+                    form_id: form.id || 'unknown-form'
                 });
             }
         });
     }
+};
 
-    /**
-     * Track book now clicks
-     */
-    trackBookNow() {
-        // Track book now buttons
-        document.addEventListener('click', (e) => {
-            const bookNowBtn = e.target.closest('.book-now-btn, .view-details-btn');
-            if (bookNowBtn) {
-                let eventType = 'book_now';
-                let metadata = {};
-
-                // Check if it's a view details button (apartment discovery)
-                if (bookNowBtn.classList.contains('view-details-btn')) {
-                    eventType = 'book_now';
-                    const apartmentCard = bookNowBtn.closest('.apartment-card');
-                    if (apartmentCard) {
-                        const apartmentName = apartmentCard.querySelector('.apartment-name')?.textContent;
-                        metadata.apartment_name = apartmentName || 'Unknown';
-                    }
-                }
-
-                this.trackEvent(eventType, metadata);
-            }
-        });
-    }
-
-    /**
-     * Track form submissions
-     */
-    trackFormSubmissions() {
-        // Track all form submissions
-        document.addEventListener('submit', (e) => {
-            const form = e.target;
-            
-            // Check if it's a form data submission (booking form)
-            if (form.classList.contains('booking-form') || 
-                form.querySelector('input[name="nama"]') || 
-                form.querySelector('input[name="no_hp"]')) {
-                
-                const formData = new FormData(form);
-                const metadata = {
-                    form_type: 'booking_form',
-                    apartment_type: formData.get('apartment_type') || 'Unknown',
-                    form_fields: Array.from(formData.keys())
-                };
-
-                this.trackEvent('form_submit', metadata);
-            }
-        });
-    }
-
-    /**
-     * Track specific apartment discovery clicks
-     */
-    trackApartmentDiscovery(apartmentName) {
-        this.trackEvent('visit', {
-            apartment_name: apartmentName,
-            discovery_url: window.location.href,
-            page_type: 'apartment_discovery'
-        });
-    }
-
-    /**
-     * Track navigation clicks
-     */
-    trackNavigation(linkText, linkUrl) {
-        this.trackEvent('navigation', {
-            link_text: linkText,
-            link_url: linkUrl,
-            current_page: window.location.href
-        });
-    }
-
-    /**
-     * Track time spent on page
-     */
-    trackTimeOnPage() {
-        const startTime = Date.now();
-        
-        window.addEventListener('beforeunload', () => {
-            const timeSpent = Math.round((Date.now() - startTime) / 1000);
-            this.trackEvent('time_on_page', {
-                time_spent_seconds: timeSpent,
-                page_url: window.location.href
-            });
-        });
-    }
-
-    /**
-     * Enable/disable tracking
-     */
-    setTrackingEnabled(enabled) {
-        this.isTrackingEnabled = enabled;
-    }
-
-    /**
-     * Get tracking status
-     */
-    isEnabled() {
-        return this.isTrackingEnabled;
-    }
-}
-
-// Initialize tracking when DOM is loaded
+// Initialize on DOM Ready
 document.addEventListener('DOMContentLoaded', () => {
-    window.neovalaTracker = new NeovalaTracker();
-    
-    // Track time on page
-    window.neovalaTracker.trackTimeOnPage();
+    NeovalaAnalytics.initVisitTracking();
+    NeovalaAnalytics.initClickTracking();
+    NeovalaAnalytics.initFormTracking();
 });
-
-// Export for use in other scripts
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = NeovalaTracker;
-}

@@ -127,14 +127,14 @@
                         </div>
                     </div>
                     
-                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.jpg');">
+                    <div class="admin-card" style="background-image: url('../../images/images/discover-BSC/img_1882.png');">
                         <div class="card-content">
                             <h2>BASSURA ROOM ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.bsr') }}" class="card-button">Click here to go to Admin Panel</a>
                         </div>
                     </div>
                     
-                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.jpg');">
+                    <div class="admin-card" style="background-image: url('../../images/images/discover-GPC/IMG_0646.png');">
                         <div class="card-content">
                             <h2>GREEN PRAMUKA CITY ROOM ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.gpc') }}" class="card-button">Click here to go to Admin Panel</a>
@@ -153,5 +153,6 @@
     </div>
 
     <script src="{{ asset('js/admin/dashboard.js') }}"></script>
+    <script src="{{ asset('js/admin/session-timeout.js') }}"></script>
 </body>
 </html>

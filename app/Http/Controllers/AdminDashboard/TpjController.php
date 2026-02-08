@@ -9,6 +9,7 @@ use App\Models\KomentarTpj;
 use App\Models\FormData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Services\ImageService;
 
 class TpjController extends Controller
 {
@@ -69,9 +70,16 @@ class TpjController extends Controller
                 }
                 
                 $image = $request->file("images.$index");
-                $filename = time() . '_' . $this->section . '_slide' . $index . '.' . $image->getClientOriginalExtension();
-                $path = $image->storeAs('carousel/' . strtolower($this->section), $filename, 'public');
-                $carousel->{"image$index"} = $path;
+                // Use ImageService for optimization
+                $filename = ImageService::upload(
+                    $image,
+                    'carousel/' . strtolower($this->section),
+                    1920, // Full HD width
+                    85,   // High quality for carousel
+                    $this->section . '_slide' . $index
+                );
+                
+                $carousel->{"image$index"} = 'carousel/' . strtolower($this->section) . '/' . $filename;
             }
         }
         
@@ -101,9 +109,12 @@ class TpjController extends Controller
         $paths = [];
         // Handle main_photo
         if ($request->hasFile('main_photo')) {
-            $ext = $request->file('main_photo')->getClientOriginalExtension();
-            $filename = "main_photo.$ext";
-            $paths['main_photo'] = $request->file('main_photo')->storeAs("rooms/$section/$newFolder", $filename, 'public');
+            $filename = ImageService::upload(
+                $request->file('main_photo'),
+                "rooms/$section/$newFolder",
+                1200, 80, 'main_photo'
+            );
+            $paths['main_photo'] = "rooms/$section/$newFolder/$filename";
         } else {
             $paths['main_photo'] = null;
         }
@@ -111,9 +122,12 @@ class TpjController extends Controller
         // Handle popups
         foreach (['popup1', 'popup2', 'popup3', 'popup4'] as $field) {
             if ($request->hasFile($field)) {
-                $ext = $request->file($field)->getClientOriginalExtension();
-                $filename = "$field.$ext";
-                $paths[$field] = $request->file($field)->storeAs("rooms/$section/$newFolder", $filename, 'public');
+                $filename = ImageService::upload(
+                    $request->file($field),
+                    "rooms/$section/$newFolder",
+                    1200, 80, $field
+                );
+                $paths[$field] = "rooms/$section/$newFolder/$filename";
             } else {
                 $paths[$field] = null;
             }
@@ -153,14 +167,13 @@ class TpjController extends Controller
             if ($room->main_photo && Storage::disk('public')->exists($room->main_photo)) {
                 Storage::disk('public')->delete($room->main_photo);
             }
-            // StoreController logic uses store() for main_photo on update, which hashes name.
-            // But logic also creates consistent folder structure.
-            // If I want main_photo.ext, I should use storeAs.
-            // But StoreController logic for update main_photo was: $request->file('main_photo')->store(...)
-            // I'll stick to storeAs to keep names clean like "main_photo.jpg" inside folder if possible,
-            // OR use store() to match exact line of code from user snippet.
-            // User snippet L138: $mainPath = $request->file('main_photo')->store("rooms/{$section}/{$folder}", 'public');
-            $room->main_photo = $request->file('main_photo')->store("rooms/{$section}/{$folder}", 'public');
+            
+            $filename = ImageService::upload(
+                $request->file('main_photo'),
+                "rooms/$section/$folder",
+                1200, 80, 'main_photo'
+            );
+            $room->main_photo = "rooms/$section/$folder/$filename";
         }
 
         // Update popups
@@ -170,9 +183,12 @@ class TpjController extends Controller
                     Storage::disk('public')->delete($room->$popup);
                 }
 
-                $ext = $request->file($popup)->getClientOriginalExtension();
-                $filename = "$popup.$ext";
-                $room->$popup = $request->file($popup)->storeAs("rooms/{$section}/{$folder}", $filename, 'public');
+                $filename = ImageService::upload(
+                    $request->file($popup),
+                    "rooms/$section/$folder",
+                    1200, 80, $popup
+                );
+                $room->$popup = "rooms/$section/$folder/$filename";
             }
         }
 

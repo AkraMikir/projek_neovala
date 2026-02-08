@@ -28,11 +28,9 @@ Route::get('/storage-link', function() {
 });
 
 // ==============================
-// ROUTE UNTUK EVENT TRACKING API
+// ROUTE UNTUK EVENT TRACKING API (REFACTORED)
 // ==============================
-Route::post('/api/track', [EventController::class, 'track'])->name('api.track');
-Route::get('/api/dashboard-stats', [EventController::class, 'getDashboardStats'])->name('api.dashboard-stats');
-Route::get('/api/event-details', [EventController::class, 'getEventDetails'])->name('api.event-details');
+Route::post('/api/track-activity', [App\Http\Controllers\UserActivityController::class, 'store'])->name('api.track-activity');
 
 // ==============================
 // ROUTE UNTUK USER PAGE
