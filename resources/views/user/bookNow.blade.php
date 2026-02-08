@@ -257,6 +257,31 @@
                 </a>
             </div>
         </div>
+
+        <!-- Booking Springlake Summarecon -->
+        <div class="booking-section">
+            <h2>BOOKING SPRINGLAKE SUMMARECON</h2>
+            <div class="booking-images">
+                <a href="https://wa.me/XXXXXXXXXXXX" target="_blank" class="booking-image">
+                    <div class="small-image">
+                        <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
+                    </div>
+                    <img src="https://placehold.co/600x400?text=Booking+SPL" alt="WhatsApp Booking" class="main-image">
+                    <div class="booking-overlay">
+                        <span class="booking-text">Book via WhatsApp</span>
+                    </div>
+                </a>
+                <a href="#" target="_blank" class="booking-image">
+                    <div class="small-image">
+                        <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
+                    </div>
+                    <img src="https://placehold.co/600x400?text=Booking+SPL" alt="Tiket.com Booking" class="main-image">
+                    <div class="booking-overlay">
+                        <span class="booking-text">Book via Tiket.com</span>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -302,6 +327,7 @@
                 <li><a class="footer-section-available" href="{{ route('discoverPGV') }}">PODOMORO GOLF VIEW</a></li>
                 <li><a class="footer-section-available" href="{{ route('discoverGPC') }}">GREEN PRAMUKA CITY</a></li>
                 <li><a class="footer-section-available" href="{{ route('discoverBSC') }}">BASSURA CITY</a></li>
+                <li><a class="footer-section-available" href="{{ route('discoverSPL') }}">SPRINGLAKE SUMMARECON</a></li>
                 <div class="footer-logo">
                     <h2>NEOVALA</h2><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.png') }}" alt="">
                 </div>

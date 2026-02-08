@@ -40,13 +40,15 @@
                 <li><a class="footer-section-available" href="{{ route('discoverTPC') }}">TRANSPARK CIBUBUR</a></li>
                 <li><a class="footer-section-available" href="{{ route('discoverGKL') }}">GRAND KAMALA LAGOON</a>
                 </li>
-                <li><a class="footer-section-available" href="{{ route('discoverPLU') }}">PATRAJAND URBANO</a></li>
+                <li><a class="footer-section-available" href="{{ route('discoverPLU') }}">PATRALAND URBANO</a></li>
                 <li><a class="footer-section-available" href="{{ route('discoverGWC') }}">GATEWAY CICADAS</a></li>
                 <li><a class="footer-section-available" href="{{ route('discoverPGV') }}">PODOMORO GOLF VIEW</a>
                 </li>
                 <li><a class="footer-section-available" href="{{ route('discoverGPC') }}">GREEN PRAMUKA CITY</a>
                 </li>
                 <li><a class="footer-section-available" href="{{ route('discoverBSC') }}">BASSURA CITY</a>
+                </li>
+                <li><a class="footer-section-available" href="{{ route('discoverSPL') }}">SPRINGLAKE SUMMARECON</a>
                 </li>
                 <div class="footer-logo">
                     <h2>NEOVALA</h2><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.png') }}" alt="">
