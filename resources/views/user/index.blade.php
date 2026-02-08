@@ -107,7 +107,7 @@
                 :route="route('discoverBSC')"
             />
             <x-apartment-card 
-                image="https://placehold.co/600x400?text=Springlake+Summarecon"
+                image="{{ asset('images/images/discover-SPL/IMG_9338.jpg') }}"
                 name="SPRINGLAKE SUMMARECON"
                 :route="route('discoverSPL')"
             />

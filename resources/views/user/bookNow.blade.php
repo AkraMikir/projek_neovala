@@ -266,7 +266,7 @@
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Group 105 (2).png') }}" alt="WhatsApp Icon">
                     </div>
-                    <img src="https://placehold.co/600x400?text=Booking+SPL" alt="WhatsApp Booking" class="main-image">
+                    <img src="{{ asset('images/images/discover-SPL/IMG_9344.jpg') }}" alt="WhatsApp Booking" class="main-image">
                     <div class="booking-overlay">
                         <span class="booking-text">Book via WhatsApp</span>
                     </div>
@@ -275,7 +275,7 @@
                     <div class="small-image">
                         <img src="{{ asset('images/images/book now/Tiket.com_logo 2 (1).png') }}" alt="Tiket.com Icon">
                     </div>
-                    <img src="https://placehold.co/600x400?text=Booking+SPL" alt="Tiket.com Booking" class="main-image">
+                    <img src="{{ asset('images/images/discover-SPL/IMG_9470.jpg') }}" alt="Tiket.com Booking" class="main-image">
                     <div class="booking-overlay">
                         <span class="booking-text">Book via Tiket.com</span>
                     </div>

@@ -67,24 +67,30 @@
             </div>
 
             <div class="facilities-grid">
-                <!-- Placeholders for facilities -->
+                <!-- Facilities -->
                 <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+1" alt="Facility 1">
+                    <img src="{{ asset('images/images/discover-SPL/Barbeque Area.jpg') }}" alt="Barbeque Area">
+                    <div class="facility-overlay">BARBEQUE AREA</div>
                 </div>
                 <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+2" alt="Facility 2">
+                    <img src="{{ asset('images/images/discover-SPL/Food Court.jpg') }}" alt="Food Court">
+                    <div class="facility-overlay">FOOD COURT</div>
                 </div>
                 <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+3" alt="Facility 3">
+                    <img src="{{ asset('images/images/discover-SPL/Mall Summarecon.jpg') }}" alt="Mall Summarecon">
+                    <div class="facility-overlay">MALL SUMMARECON</div>
                 </div>
                 <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+4" alt="Facility 4">
+                    <img src="{{ asset('images/images/discover-SPL/Games Center.jpg') }}" alt="Games Center">
+                    <div class="facility-overlay">GAMES CENTER</div>
                 </div>
                  <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+5" alt="Facility 5">
+                    <img src="{{ asset('images/images/discover-SPL/Gym Outdoor.jpg') }}" alt="Gym Outdoor">
+                    <div class="facility-overlay">GYM OUTDOOR</div>
                 </div>
                  <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+6" alt="Facility 6">
+                    <img src="{{ asset('images/images/discover-SPL/Swimming Pool.jpg') }}" alt="Swimming Pool">
+                    <div class="facility-overlay">SWIMMING POOL</div>
                 </div>
             </div>
         </section>
@@ -179,7 +185,7 @@
             </div>
         </section>
 
-        <section class="booking-section booking-section-TPJ" id="booking-section">
+        <section class="booking-section booking-section-SPL" id="booking-section">
             <div class="booking-overlay"></div>
             <div class="booking-container">
                 <h2 class="booking-title">SEWA APARTEMEN<br>SPRINGLAKE SUMMARECON</h2>

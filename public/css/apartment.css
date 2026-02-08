@@ -1702,6 +1702,12 @@ body.menu-open {
     background-position: center;
 }
 
+.booking-section-SPL {
+    background-image: url('../../images/images/discover-SPL/IMG_9349.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .booking-section-PGV {
     background-image: url('../../images/images/discover-PGV/IMG_0361.jpg');
     background-size: cover;
