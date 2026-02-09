@@ -7,6 +7,7 @@
     <header class="header" id="home">
         <x-carousel 
             :images="[
+                asset('images/images/home pages/Copy of DJI_20260102114259_0581_D.JPG'),
                 asset('images/images/home pages/DJI_20250307171433_0096_D.JPG'),
                 asset('images/images/home pages/DJI_20250321175315_0129_D.JPG'),
                 asset('images/images/home pages/DJI_20250327155326_0216_D.JPG'),
@@ -104,6 +105,11 @@
                 image="{{ asset('images/images/discover-BSC/IMG_1882.png') }}"
                 name="BASSURA CITY"
                 :route="route('discoverBSC')"
+            />
+            <x-apartment-card 
+                image="https://placehold.co/600x400?text=Springlake+Summarecon"
+                name="SPRINGLAKE SUMMARECON"
+                :route="route('discoverSPL')"
             />
         </div>
     </section>

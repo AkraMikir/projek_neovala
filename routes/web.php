@@ -87,6 +87,12 @@ Route::get('/discover-bsc', [TampilanApartmentController::class, 'bsr'])->name('
 
 
 //=======================================
+//DISCOVER SPL
+//=======================================
+Route::get('/discover-spl', [TampilanApartmentController::class, 'spl'])->name('discoverSPL');
+
+
+//=======================================
 //DISCOVER OUR STORY
 //=======================================
 Route::get('/our-story', function () {
@@ -203,6 +209,12 @@ Route::post('/komentar-bsr', [KomentarBsrController::class, 'store'])->name('kom
 Route::patch('/komentar-bsr/{id}/accept', [KomentarBsrController::class, 'accept'])->name('komentar-bsr.accept');
 Route::patch('/komentar-bsr/{id}/unapply', [KomentarBsrController::class, 'unapply'])->name('komentar-bsr.unapply');
 Route::delete('/komentar-bsr/{id}/delete', [KomentarBsrController::class, 'delete'])->name('komentar-bsr.delete');
+
+// Route untuk komentar spl
+Route::post('/komentar-spl', [\App\Http\Controllers\KomentarSplController::class, 'store'])->name('komentar-spl.store');
+Route::patch('/komentar-spl/{id}/accept', [\App\Http\Controllers\KomentarSplController::class, 'accept'])->name('komentar-spl.accept');
+Route::patch('/komentar-spl/{id}/unapply', [\App\Http\Controllers\KomentarSplController::class, 'unapply'])->name('komentar-spl.unapply');
+Route::delete('/komentar-spl/{id}/delete', [\App\Http\Controllers\KomentarSplController::class, 'delete'])->name('komentar-spl.delete');
 
 // Route existing untuk accept/unapply/delete tetap bisa digunakan (bekerja untuk semua section)
 
