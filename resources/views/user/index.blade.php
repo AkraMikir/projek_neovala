@@ -7,15 +7,15 @@
     <header class="header" id="home">
         <x-carousel 
             :images="[
-                asset('images/images/home pages/Copy of DJI_20260102114259_0581_D.JPG'),
-                asset('images/images/home pages/DJI_20250307171433_0096_D.JPG'),
-                asset('images/images/home pages/DJI_20250321175315_0129_D.JPG'),
-                asset('images/images/home pages/DJI_20250327155326_0216_D.JPG'),
-                asset('images/images/home pages/DJI_20250403160456_0254_D.JPG'),
-                asset('images/images/home pages/DJI_20250404164436_0280_D.JPG'),
-                asset('images/images/home pages/DJI_20250405123913_0309_D.JPG'),
-                asset('images/images/home pages/DJI_20250827130441_0466_D.JPG'),
-                asset('images/images/home pages/DJI_20250905143026_0543_D.JPG')
+                asset('images/images/home pages/Copy of DJI_20260102114259_0581_D.webp'),
+                asset('images/images/home pages/DJI_20250307171433_0096_D.webp'),
+                asset('images/images/home pages/DJI_20250321175315_0129_D.webp'),
+                asset('images/images/home pages/DJI_20250327155326_0216_D.webp'),
+                asset('images/images/home pages/DJI_20250403160456_0254_D.webp'),
+                asset('images/images/home pages/DJI_20250404164436_0280_D.webp'),
+                asset('images/images/home pages/DJI_20250405123913_0309_D.webp'),
+                asset('images/images/home pages/DJI_20250827130441_0466_D.webp'),
+                asset('images/images/home pages/DJI_20250905143026_0543_D.webp')
             ]"
             overlay-text="Inovasi akomodasi modern dengan kenyamanan premium, layanan istimewa, dan desain elegan. Hadir untuk memberikan pengalaman menginap yang berkesan dan solusi hunian terbaik."
         />
@@ -25,27 +25,27 @@
     <main class="main-content">
         <div class="service-container">
             <div class="service-item">
-                <img src="{{ asset('images/logo/icon1 1.png') }}" alt="Layanan 1">
+                <img src="{{ asset('images/logo/icon1 1.webp') }}" alt="Layanan 1">
                 <p>BISA BAYAR DI TEMPAT</p>
             </div>
             <div class="service-item">
-                <img src="{{ asset('images/logo/icon2 1.png') }}" alt="Layanan 2">
+                <img src="{{ asset('images/logo/icon2 1.webp') }}" alt="Layanan 2">
                 <p>BANYAK PROMO MENARIK</p>
             </div>
             <div class="service-item">
-                <img src="{{ asset('images/logo/calendar 1.png') }}" alt="Layanan 3">
+                <img src="{{ asset('images/logo/calendar 1.webp') }}" alt="Layanan 3">
                 <p>PERUBAHAN JADWAL CHECK-IN MUDAH</p>
             </div>
             <div class="service-item">
-                <img src="{{ asset('images/logo/bed 1.png') }}" alt="Layanan 4">
+                <img src="{{ asset('images/logo/bed 1.webp') }}" alt="Layanan 4">
                 <p>KAMAR BERSIH DAN NYAMAN</p>
             </div>
             <div class="service-item">
-                <img src="{{ asset('images/logo/24-hour-service 1.png') }}" alt="Layanan 5">
+                <img src="{{ asset('images/logo/24-hour-service 1.webp') }}" alt="Layanan 5">
                 <p>BUKA 24 JAM</p>
             </div>
             <div class="service-item">
-                <img src="{{ asset('images/logo/hugeicons_shampoo.png') }}" alt="Layanan 6">
+                <img src="{{ asset('images/logo/hugeicons_shampoo.webp') }}" alt="Layanan 6">
                 <p>AMENITIS LENGKAP</p>
             </div>
         </div>
@@ -55,7 +55,7 @@
     <!-- Book Now Button -->
     <div class="book-now-container">
         <a href="{{ route('bookNow') }}" class="book-now-btn">
-            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.png') }}" alt=""></div>
+            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.webp') }}" alt=""></div>
             <span>BOOK NOW</span>
         </a>
     </div>
@@ -67,47 +67,47 @@
 
             <!-- Apartment Cards -->
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_0020 (Copy).jpg') }}"
+                image="{{ asset('images/images/home pages/IMG_0020 (Copy).webp') }}"
                 name="TRANSPARK JUANDA"
                 :route="route('discoverTPJ')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_9497.png') }}"
+                image="{{ asset('images/images/home pages/IMG_9497.webp') }}"
                 name="TRANSPARK CIBUBUR"
                 :route="route('discoverTPC')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_0117 (Copy).jpg') }}"
+                image="{{ asset('images/images/home pages/IMG_0117 (Copy).webp') }}"
                 name="GRAND KAMALA LAGOON"
                 :route="route('discoverGKL')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_1073.png') }}"
+                image="{{ asset('images/images/home pages/IMG_1073.webp') }}"
                 name="PATRALAND URBANO"
                 :route="route('discoverPLU')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_3976.png') }}"
+                image="{{ asset('images/images/home pages/IMG_3976.webp') }}"
                 name="GATEWAY CICADAS"
                 :route="route('discoverGWC')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_0362.png') }}"
+                image="{{ asset('images/images/home pages/IMG_0362.webp') }}"
                 name="PODOMORO GOLF VIEW"
                 :route="route('discoverPGV')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/discover-GPC/IMG_0646.png') }}"
+                image="{{ asset('images/images/discover-GPC/IMG_0646.webp') }}"
                 name="GREEN PRAMUKA CITY"
                 :route="route('discoverGPC')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/discover-BSC/IMG_1882.png') }}"
+                image="{{ asset('images/images/discover-BSC/IMG_1882.webp') }}"
                 name="BASSURA CITY"
                 :route="route('discoverBSC')"
             />
             <x-apartment-card 
-                image="https://placehold.co/600x400?text=Springlake+Summarecon"
+                image="{{ asset('images/images/discover-SPL/IMG_9338.webp') }}"
                 name="SPRINGLAKE SUMMARECON"
                 :route="route('discoverSPL')"
             />
@@ -137,7 +137,7 @@
     <!-- Titip Kunci Section -->
     <section class="titip-kunci-section" id="titip-kunci-section">
         <div class="titip-kunci-container">
-            <img src="{{ asset('images/images/home pages/IMG_5703.png') }}" alt="Background" class="titip-kunci-bg">
+            <img src="{{ asset('images/images/home pages/IMG_5703.webp') }}" alt="Background" class="titip-kunci-bg">
             <div class="titip-kunci-content">
                 <h2 class="titip-kunci-title">JASA TITIP KUNCI SEWA APARTEMEN</h2>
                 <div class="content-wrapper">
@@ -148,7 +148,7 @@
                         </p>
                         <a href="{{ route('titipKunci') }}" class="view-more-btn">VIEW MORE</a>
                     </div>
-                    <img src="{{ asset('images/logo/handshake-icon.png') }}" alt="Handshake Icon"
+                    <img src="{{ asset('images/logo/handshake-icon.webp') }}" alt="Handshake Icon"
                         class="handshake-icon">
                 </div>
             </div>
@@ -284,7 +284,7 @@
             </div>
             <div class="story-image-container">
                 <div class="story-image">
-                    <img src="{{ asset('images/logo/story.png') }}" alt="Neovala Building">
+                    <img src="{{ asset('images/logo/story.webp') }}" alt="Neovala Building">
                 </div>
                 <a href="{{ route('ourStory') }}" class="read-more-btn">READ MORE</a>
             </div>

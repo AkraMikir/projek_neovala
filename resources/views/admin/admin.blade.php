@@ -35,7 +35,7 @@
         href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Allura&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=National+Park:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.webp') }}">
     <title>Neovala Admin Panel</title>
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <!-- Font Awesome untuk ikon -->
@@ -46,7 +46,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo home-link" style="cursor: pointer;">
-            <img src="{{ asset('images/logo/NEOVALA-DARK.png') }}" alt="Neovala Admin">
+            <img src="{{ asset('images/logo/NEOVALA-DARK.webp') }}" alt="Neovala Admin">
             <h2>NEOVALA ADMIN</h2>
         </div>
         <nav>
@@ -115,64 +115,64 @@
 
             <div class="admin-cards">
                 <div class="admin-card"
-                    style="background-image: url('../../images/images/Admin-page/IMG_0030\ \(Copy\).jpg');">
+                    style="background-image: url('../../images/images/Admin-page/IMG_0030\ \(Copy\).webp');">
                     <div class="card-content">
                         <h2>TESTIMONI HOME ADMIN PANEL</h2>
                         <button class="komentar-link">Lihat Komentar</button>
                     </div>
                 </div>
                 <div class="admin-card"
-                    style="background-image: url('../../images/images/Admin-page/IMG_0115\ \(Copy\).jpg');">
+                    style="background-image: url('../../images/images/Admin-page/IMG_0115\ \(Copy\).webp');">
                     <div class="card-content">
                         <h2>PROMO ADMIN PANEL</h2>
                         <button class="promo-link">Lihat Promo</button>
                     </div>
                 </div>
                 <div class="admin-card"
-                    style="background-image: url('../../images/images/Admin-page/IMG_0115 (Copy) copy.jpg');">
+                    style="background-image: url('../../images/images/Admin-page/IMG_0115 (Copy) copy.webp');">
                     <div class="card-content">
                         <h2>JUANDA ROOM ADMIN PANEL</h2>
                         <button class="tpj-link">Click here to go to Admin Panel</button>
                     </div>
                 </div>
-                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_8672.jpg');">
+                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_8672.webp');">
                     <div class="card-content">
                         <h2>CIBUBUR ROOM ADMIN PANEL</h2>
                         <button class="tpc-link">Click here to go to Admin Panel</button>
                     </div>
                 </div>
                 <div class="admin-card"
-                    style="background-image: url('../../images/images/Admin-page/IMG_0117\ \(Copy\).jpg');">
+                    style="background-image: url('../../images/images/Admin-page/IMG_0117\ \(Copy\).webp');">
                     <div class="card-content">
                         <h2>LAGOON ROOM ADMIN PANEL</h2>
                         <button class="gkl-link">Click here to go to Admin Panel</button>
                     </div>
                 </div>
-                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_1073.png');">
+                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_1073.webp');">
                     <div class="card-content">
                         <h2>URBANO ROOM ADMIN PANEL</h2>
                         <button class="plu-link">Click here to go to Admin Panel</button>
                     </div>
                 </div>
-                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_3976.png');">
+                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_3976.webp');">
                     <div class="card-content">
                         <h2>GATEWAY CICADAS ROOM ADMIN PANEL</h2>
                         <button class="gtw-link">Click here to go to Admin Panel</button>
                     </div>
                 </div>
-                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.jpg');">
+                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.webp');">
                     <div class="card-content">
                         <h2>PODOMORO ROOM ADMIN PANEL</h2>
                         <button class="pgv-link">Click here to go to Admin Panel</button>
                     </div>
                 </div>
-                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.jpg');">
+                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.webp');">
                     <div class="card-content">
                         <h2>BASSURA ROOM ADMIN PANEL</h2>
                         <button class="bsr-link">Click here to go to Admin Panel</button>
                     </div>
                 </div>
-                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.jpg');">
+                <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.webp');">
                     <div class="card-content">
                         <h2>GREEN PRAMUKA CITY ROOM ADMIN PANEL</h2>
                         <button class="gpc-link">Click here to go to Admin Panel</button>
@@ -367,21 +367,21 @@
                 <div class="current-slide">
                     <div class="carousel-container">
                         <div class="carousel-slide">
-                            <img src="{{ $carouselImagesBySection['TPJ'][1] ?? asset('img/default-slide.png') }}"
+                            <img src="{{ $carouselImagesBySection['TPJ'][1] ?? asset('img/default-slide.webp') }}"
                                 alt="Slide 1 TPJ">
                         </div>
                         <div class="carousel-slide">
-                            <img src="{{ $carouselImagesBySection['TPJ'][2] ?? asset('img/default-slide.png') }}"
+                            <img src="{{ $carouselImagesBySection['TPJ'][2] ?? asset('img/default-slide.webp') }}"
                                 alt="Slide 2 TPJ">
 
                         </div>
                         <div class="carousel-slide">
-                            <img src="{{ $carouselImagesBySection['TPJ'][3] ?? asset('img/default-slide.png') }}"
+                            <img src="{{ $carouselImagesBySection['TPJ'][3] ?? asset('img/default-slide.webp') }}"
                                 alt="Slide 3 TPJ">
 
                         </div>
                         <div class="carousel-slide">
-                            <img src="{{ $carouselImagesBySection['TPJ'][4] ?? asset('img/default-slide.png') }}"
+                            <img src="{{ $carouselImagesBySection['TPJ'][4] ?? asset('img/default-slide.webp') }}"
                                 alt="Slide 4 TPJ">
 
                         </div>
@@ -416,7 +416,7 @@
                     <div class="room-card">
                         <div class="room-card-header">
                             <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                            <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                            <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                             <div class="right-text">TRANSPARK <span class="room-type">JUANDA</span></div>
                         </div>
                         <div class="room-card-image">
@@ -749,7 +749,7 @@
                 <div class="slide-grid">
                     <div class="slide-item" data-index="0">
                         <div class="slide-image">
-                            <img src="{{ $carouselImagesBySection['TPJ'][1] ?? asset('img/default-slide.png') }}"
+                            <img src="{{ $carouselImagesBySection['TPJ'][1] ?? asset('img/default-slide.webp') }}"
                                 alt="Slide 1 TPJ">
 
                             <div class="slide-overlay">
@@ -762,7 +762,7 @@
                     </div>
                     <div class="slide-item" data-index="1">
                         <div class="slide-image">
-                            <img src="{{ $carouselImagesBySection['TPJ'][2] ?? asset('img/default-slide.png') }}"
+                            <img src="{{ $carouselImagesBySection['TPJ'][2] ?? asset('img/default-slide.webp') }}"
                                 alt="Slide 2 TPJ">
                             <div class="slide-overlay">
                                 <input type="file" class="file-input" name="images[2]" accept="image/*" hidden>
@@ -774,7 +774,7 @@
                     </div>
                     <div class="slide-item" data-index="2">
                         <div class="slide-image">
-                            <img src="{{ $carouselImagesBySection['TPJ'][3] ?? asset('img/default-slide.png') }}"
+                            <img src="{{ $carouselImagesBySection['TPJ'][3] ?? asset('img/default-slide.webp') }}"
                                 alt="Slide 3 TPJ">
                             <div class="slide-overlay">
                                 <input type="file" class="file-input" name="images[3]" accept="image/*" hidden>
@@ -786,7 +786,7 @@
                     </div>
                     <div class="slide-item" data-index="3">
                         <div class="slide-image">
-                            <img src="{{ $carouselImagesBySection['TPJ'][4] ?? asset('img/default-slide.png') }}"
+                            <img src="{{ $carouselImagesBySection['TPJ'][4] ?? asset('img/default-slide.webp') }}"
                                 alt="Slide 4 TPJ">
                             <div class="slide-overlay">
                                 <input type="file" class="file-input" name="images[4]" accept="image/*" hidden>
@@ -940,19 +940,19 @@
             <div class="tpc-current-slide">
                 <div class="tpc-carousel-container">
                     <div class="tpc-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['TPC'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['TPC'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 TPC">
                     </div>
                     <div class="tpc-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['TPC'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['TPC'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 TPC">
                     </div>
                     <div class="tpc-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['TPC'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['TPC'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 TPC">
                     </div>
                     <div class="tpc-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['TPC'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['TPC'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 TPC">
                     </div>
                 </div>
@@ -988,7 +988,7 @@
                 <div class="room-card">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                         <div class="right-text">TRANSPARK <span class="room-type">CIBUBUR</span></div>
                     </div>
                     <div class="room-card-image">
@@ -1197,7 +1197,7 @@
             <div class="slide-grid">
                 <div class="slide-item" data-index="0">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['TPC'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['TPC'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 TPC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[1]" accept="image/*" hidden>
@@ -1209,7 +1209,7 @@
                 </div>
                 <div class="slide-item" data-index="1">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['TPC'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['TPC'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 TPC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[2]" accept="image/*" hidden>
@@ -1221,7 +1221,7 @@
                 </div>
                 <div class="slide-item" data-index="2">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['TPC'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['TPC'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 TPC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[3]" accept="image/*" hidden>
@@ -1233,7 +1233,7 @@
                 </div>
                 <div class="slide-item" data-index="3">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['TPC'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['TPC'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 TPC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[4]" accept="image/*" hidden>
@@ -1492,7 +1492,7 @@
                 <div class="room-card">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                         <div class="right-text">GRAND KAMALA <span class="room-type">LAGOON</span></div>
                     </div>
                     <div class="room-card-image">
@@ -1940,19 +1940,19 @@
             <div class="plu-current-slide">
                 <div class="plu-carousel-container">
                     <div class="plu-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['PLU'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PLU'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 PLU">
                     </div>
                     <div class="plu-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['PLU'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PLU'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 PLU">
                     </div>
                     <div class="plu-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['PLU'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PLU'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 PLU">
                     </div>
                     <div class="plu-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['PLU'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PLU'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 PLU">
                     </div>
                 </div>
@@ -1987,7 +1987,7 @@
                 <div class="room-card">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                         <div class="right-text">PATRALAND <span class="room-type">URBANO</span></div>
                     </div>
                     <div class="room-card-image">
@@ -2186,7 +2186,7 @@
             <div class="slide-grid">
                 <div class="slide-item" data-index="0">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['PLU'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PLU'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 PLU">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[1]" accept="image/*" hidden>
@@ -2198,7 +2198,7 @@
                 </div>
                 <div class="slide-item" data-index="1">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['PLU'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PLU'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 PLU">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[2]" accept="image/*" hidden>
@@ -2210,7 +2210,7 @@
                 </div>
                 <div class="slide-item" data-index="2">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['PLU'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PLU'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 PLU">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[3]" accept="image/*" hidden>
@@ -2222,7 +2222,7 @@
                 </div>
                 <div class="slide-item" data-index="3">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['PLU'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PLU'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 PLU">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[4]" accept="image/*" hidden>
@@ -2419,19 +2419,19 @@
             <div class="gtw-current-slide">
                 <div class="gtw-carousel-container">
                     <div class="gtw-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GWC'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GWC'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 GWC">
                     </div>
                     <div class="gtw-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GWC'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GWC'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 GWC">
                     </div>
                     <div class="gtw-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GWC'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GWC'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 GWC">
                     </div>
                     <div class="gtw-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GWC'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GWC'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 GWC">
                     </div>
                 </div>
@@ -2466,7 +2466,7 @@
                 <div class="room-card">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                         <div class="right-text">GATEWAY <span class="room-type">CICADAS</span></div>
                     </div>
                     <div class="room-card-image">
@@ -2663,7 +2663,7 @@
             <div class="slide-grid">
                 <div class="slide-item" data-index="0">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GWC'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GWC'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 GWC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[1]" accept="image/*" hidden>
@@ -2675,7 +2675,7 @@
                 </div>
                 <div class="slide-item" data-index="1">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GWC'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GWC'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 GWC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[2]" accept="image/*" hidden>
@@ -2687,7 +2687,7 @@
                 </div>
                 <div class="slide-item" data-index="2">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GWC'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GWC'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 GWC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[3]" accept="image/*" hidden>
@@ -2699,7 +2699,7 @@
                 </div>
                 <div class="slide-item" data-index="3">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GWC'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GWC'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 GWC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[4]" accept="image/*" hidden>
@@ -2896,19 +2896,19 @@
             <div class="pgv-current-slide">
                 <div class="pgv-carousel-container">
                     <div class="pgv-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['PGV'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PGV'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 PGV">
                     </div>
                     <div class="pgv-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['PGV'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PGV'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 PGV">
                     </div>
                     <div class="pgv-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['PGV'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PGV'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 PGV">
                     </div>
                     <div class="pgv-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['PGV'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PGV'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 PGV">
                     </div>
                 </div>
@@ -2943,7 +2943,7 @@
                 <div class="room-card">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                         <div class="right-text">PODOMORO<span class="room-type">GOLF VIEW</span></div>
                     </div>
                     <div class="room-card-image">
@@ -3141,7 +3141,7 @@
             <div class="slide-grid">
                 <div class="slide-item" data-index="0">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['PGV'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PGV'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 PGV">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[1]" accept="image/*" hidden>
@@ -3153,7 +3153,7 @@
                 </div>
                 <div class="slide-item" data-index="1">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['PGV'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PGV'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 PGV">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[2]" accept="image/*" hidden>
@@ -3165,7 +3165,7 @@
                 </div>
                 <div class="slide-item" data-index="2">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['PGV'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PGV'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 PGV">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[3]" accept="image/*" hidden>
@@ -3177,7 +3177,7 @@
                 </div>
                 <div class="slide-item" data-index="3">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['PGV'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['PGV'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 PGV">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[4]" accept="image/*" hidden>
@@ -3373,7 +3373,7 @@
             <div class="slide-grid">
                 <div class="slide-item" data-index="0">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['BSR'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['BSR'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 BSR">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[1]" accept="image/*" hidden>
@@ -3385,7 +3385,7 @@
                 </div>
                 <div class="slide-item" data-index="1">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['BSR'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['BSR'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 BSR">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[2]" accept="image/*" hidden>
@@ -3397,7 +3397,7 @@
                 </div>
                 <div class="slide-item" data-index="2">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['BSR'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['BSR'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 BSR">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[3]" accept="image/*" hidden>
@@ -3409,7 +3409,7 @@
                 </div>
                 <div class="slide-item" data-index="3">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['BSR'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['BSR'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 BSR">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[4]" accept="image/*" hidden>
@@ -3538,19 +3538,19 @@
             <div class="bsr-current-slide">
                 <div class="bsr-carousel-container">
                     <div class="bsr-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['BSR'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['BSR'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 BSR">
                     </div>
                     <div class="bsr-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['BSR'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['BSR'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 BSR">
                     </div>
                     <div class="bsr-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['BSR'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['BSR'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 BSR">
                     </div>
                     <div class="bsr-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['BSR'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['BSR'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 BSR">
                     </div>
                 </div>
@@ -3582,7 +3582,7 @@
                 <div class="room-card">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                         <div class="right-text">BASSURA <span class="room-type">APARTMENT</span></div>
                     </div>
                     <div class="room-card-image">
@@ -3819,7 +3819,7 @@
             <div class="slide-grid">
                 <div class="slide-item" data-index="0">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GPC'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GPC'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 GPC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[1]" accept="image/*" hidden>
@@ -3831,7 +3831,7 @@
                 </div>
                 <div class="slide-item" data-index="1">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GPC'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GPC'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 GPC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[2]" accept="image/*" hidden>
@@ -3843,7 +3843,7 @@
                 </div>
                 <div class="slide-item" data-index="2">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GPC'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GPC'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 GPC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[3]" accept="image/*" hidden>
@@ -3855,7 +3855,7 @@
                 </div>
                 <div class="slide-item" data-index="3">
                     <div class="slide-image">
-                        <img src="{{ $carouselImagesBySection['GPC'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GPC'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 GPC">
                         <div class="slide-overlay">
                             <input type="file" class="file-input" name="images[4]" accept="image/*" hidden>
@@ -3886,19 +3886,19 @@
             <div class="gpc-current-slide">
                 <div class="gpc-carousel-container">
                     <div class="gpc-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GPC'][1] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GPC'][1] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 1 GPC">
                     </div>
                     <div class="gpc-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GPC'][2] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GPC'][2] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 2 GPC">
                     </div>
                     <div class="gpc-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GPC'][3] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GPC'][3] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 3 GPC">
                     </div>
                     <div class="gpc-carousel-slide">
-                        <img src="{{ $carouselImagesBySection['GPC'][4] ?? asset('img/default-slide.png') }}"
+                        <img src="{{ $carouselImagesBySection['GPC'][4] ?? asset('img/default-slide.webp') }}"
                             alt="Slide 4 GPC">
                     </div>
                 </div>
@@ -3928,7 +3928,7 @@
                 <div class="room-card" data-room-id="{{ $room['id'] }}">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                         <div class="right-text">BASSURA <span class="room-type">APARTMENT</span></div>
                     </div>
                     <div class="room-card-image">

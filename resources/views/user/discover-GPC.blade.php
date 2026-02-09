@@ -34,7 +34,7 @@
     <!-- Book Now Button -->
     <div class="book-now-container visible">
         <a href="{{ route('bookNow') }}" class="book-now-btn">
-            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.png') }}" alt=""></div>
+            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.webp') }}" alt=""></div>
             <span>BOOK NOW</span>
         </a>
     </div>
@@ -68,22 +68,22 @@
 
             <div class="facilities-grid">
                 <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-GPC/atm.jpg') }}" alt="ATM Center">
+                    <img src="{{ asset('images/images/discover-GPC/atm.webp') }}" alt="ATM Center">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-GPC/gazebo.jpg') }}" alt="Gazebo">
+                    <img src="{{ asset('images/images/discover-GPC/gazebo.webp') }}" alt="Gazebo">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-GPC/jungle.jpg') }}" alt="Jungle Pond">
+                    <img src="{{ asset('images/images/discover-GPC/jungle.webp') }}" alt="Jungle Pond">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-GPC/kolam.jpg') }}" alt="Swimming Pool">
+                    <img src="{{ asset('images/images/discover-GPC/kolam.webp') }}" alt="Swimming Pool">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-GPC/mall.jpg') }}" alt="Mall Access">
+                    <img src="{{ asset('images/images/discover-GPC/mall.webp') }}" alt="Mall Access">
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-GPC/market.jpg') }}" alt="Mini Market">
+                    <img src="{{ asset('images/images/discover-GPC/market.webp') }}" alt="Mini Market">
                 </div>
             </div>
         </section>
@@ -96,7 +96,7 @@
                 <div class="room-card">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                         <div class="right-text">GREEN <span class="room-type">PRAMUKA</span></div>
                     </div>
                     <div class="room-card-image">
@@ -217,7 +217,7 @@
                                 <div class="star-rating">
                                     @for ($i = 1; $i <= 5; $i++)
                                         <img
-                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.png') }}"
+                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.webp') }}"
                                         alt="Star" class="star-icon">
                                         @endfor
                                 </div>
@@ -284,7 +284,7 @@
 
         <div class="footer-content-discover">
             <div class="footer-logo-discover">
-                <img src="{{ asset('images/logo/footer-logo.png') }}" alt="Neovala Logo">
+                <img src="{{ asset('images/logo/footer-logo.webp') }}" alt="Neovala Logo">
                 <h2>Neovala Rooms</h2>
             </div>
 
@@ -335,8 +335,8 @@
 @push('scripts')
     <script src="{{ asset('js/form-checkin.js') }}"></script>
     <script>
-    const starFilledPath = "{{ asset('images/logo/star-filled.png') }}";
-    const starEmptyPath = "{{ asset('images/logo/star-empty.png') }}";
+    const starFilledPath = "{{ asset('images/logo/star-filled.webp') }}";
+    const starEmptyPath = "{{ asset('images/logo/star-empty.webp') }}";
 
     document.addEventListener('DOMContentLoaded', function() {
         // Star Rating System

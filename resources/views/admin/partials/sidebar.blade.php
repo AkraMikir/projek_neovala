@@ -4,7 +4,7 @@
 
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-        <img src="{{ asset('images/logo/NEOVALA-DARK.png') }}" alt="Neovala" class="sidebar-logo">
+        <img src="{{ asset('images/logo/NEOVALA-DARK.webp') }}" alt="Neovala" class="sidebar-logo">
         <h2>NEOVALA</h2>
     </div>
 
@@ -67,6 +67,10 @@
             <a href="{{ route('admin.dashboard1.gpc') }}" class="nav-item {{ request()->routeIs('admin.dashboard1.gpc') ? 'active' : '' }}">
                 <i class="fas fa-door-open"></i>
                 <span>Pramuka</span>
+            </a>
+            <a href="{{ route('admin.dashboard1.spl') }}" class="nav-item {{ request()->routeIs('admin.dashboard1.spl') ? 'active' : '' }}">
+                <i class="fas fa-door-open"></i>
+                <span>Springlake</span>
             </a>
         </div>
 

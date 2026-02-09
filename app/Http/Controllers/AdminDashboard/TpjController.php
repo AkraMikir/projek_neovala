@@ -32,7 +32,7 @@ class TpjController extends Controller
             return [
                 'id' => $room->id,
                 'section' => $room->section,
-                'main_photo' => asset('storage/' . $room->main_photo),
+                'main_photo' => $room->main_photo ? asset('storage/' . $room->main_photo) : null,
                 'popup_photos' => [
                     $room->popup1 ? asset('storage/' . $room->popup1) : null,
                     $room->popup2 ? asset('storage/' . $room->popup2) : null,

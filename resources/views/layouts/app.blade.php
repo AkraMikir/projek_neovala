@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.webp') }}">
     
     <!-- Title -->
     <title>@yield('title', 'Neovala')</title>
@@ -75,9 +75,9 @@
             <button id="popup-close" class="popup-close" aria-label="Close popup">
                 <i class="bi bi-x-lg"></i>
             </button>
-            <img id="popup-image" src="{{ asset('images/logo/popup-dekstop.JPEG') }}" alt="Neovala Promo" class="popup-image popup-image-desktop">
-            <img src="{{ asset('images/logo/popup-tablet.JPEG') }}" alt="Neovala Promo" class="popup-image popup-image-tablet">
-            <img src="{{ asset('images/logo/popup-mobile.JPEG') }}" alt="Neovala Promo" class="popup-image popup-image-mobile">
+            <img id="popup-image" src="{{ asset('images/logo/popup-dekstop.webp') }}" alt="Neovala Promo" class="popup-image popup-image-desktop">
+            <img src="{{ asset('images/logo/popup-tablet.webp') }}" alt="Neovala Promo" class="popup-image popup-image-tablet">
+            <img src="{{ asset('images/logo/popup-mobile.webp') }}" alt="Neovala Promo" class="popup-image popup-image-mobile">
         </div>
     </div>
     

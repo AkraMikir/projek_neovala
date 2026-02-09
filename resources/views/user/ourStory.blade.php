@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.png') }}">    
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.webp') }}">    
     <title>Our Story Neovala</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/ourstory.css') }}">
@@ -38,8 +38,8 @@
                 </div>
             </div>
             <div class="logo-left">
-                <a href="{{ route('home') }}"><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.png') }}" alt="Logo Neovala Light" class="logo-light"></a>
-                <a href="{{ route('home') }}"><img src="{{ asset('images/logo/NEOVALA-DARK.png') }}" alt="Logo Neovala Dark" class="logo-dark"></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.webp') }}" alt="Logo Neovala Light" class="logo-light"></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('images/logo/NEOVALA-DARK.webp') }}" alt="Logo Neovala Dark" class="logo-dark"></a>
             </div>
             <ul class="nav-links">
                 <li><a href="{{ route('home') }}#apartment-section" onclick="window.location=this.href"><i class="bi bi-building"></i> Apartment</a></li>
@@ -63,16 +63,16 @@
             
             <div class="carousel-container" >
                 <div class="carousel-slide">
-                    <img src="{{ asset('images/images/our-story/IMG_3358.png') }}" alt="Slide 1">
+                    <img src="{{ asset('images/images/our-story/IMG_3358.webp') }}" alt="Slide 1">
                 </div>
                 <div class="carousel-slide">
-                    <img src="{{ asset('images/images/our-story/IMG_3125.png') }}" alt="Slide 2">
+                    <img src="{{ asset('images/images/our-story/IMG_3125.webp') }}" alt="Slide 2">
                 </div>
                 <div class="carousel-slide">
-                    <img src="{{ asset('images/images/our-story/IMG_0722.png') }}" alt="Slide 3">
+                    <img src="{{ asset('images/images/our-story/IMG_0722.webp') }}" alt="Slide 3">
                 </div>
                 <div class="carousel-slide">
-                    <img src="{{ asset('images/images/our-story/IMG_3120.png') }}" alt="Slide 4">
+                    <img src="{{ asset('images/images/our-story/IMG_3120.webp') }}" alt="Slide 4">
                 </div>
             </div>
 
@@ -90,7 +90,7 @@
         <!-- Vision -->
         <div class="story-item">
             <div class="story-story-image">
-                <img src="{{ asset('images/images/our-story/IMG_3358.png') }}" alt="Vision">
+                <img src="{{ asset('images/images/our-story/IMG_3358.webp') }}" alt="Vision">
                 <div class="image-overlay">
                     <i class="fas fa-eye"></i>
                 </div>
@@ -104,7 +104,7 @@
         <!-- Ethics -->
         <div class="story-item reverse">
             <div class="story-story-image">
-                <img src="{{ asset('images/images/our-story/IMG_0722.png') }}" alt="Ethics">
+                <img src="{{ asset('images/images/our-story/IMG_0722.webp') }}" alt="Ethics">
                 <div class="image-overlay">
                     <i class="fas fa-bullseye"></i>
                 </div>
@@ -122,7 +122,7 @@
         <div class="founder-section">
             <div class="founder-left">
                 <div class="founder-photo">
-                    <img src="{{ asset('images/images/our-story/Bang Farhan.png') }}" alt="Farhan Saadillah">
+                    <img src="{{ asset('images/images/our-story/Bang Farhan.webp') }}" alt="Farhan Saadillah">
                     <div class="founder-card overlap">
                         <span class="founder-name">Farhan Saadillah</span>
                         <span class="founder-role">Owner and Director of Neovala Rooms</span>
@@ -137,7 +137,7 @@
                 </div>
             </div>
             <div class="founder-bg">
-                <img src="{{ asset('images/images/our-story/DJI_20250325044612_0190_D.JPG') }}" alt="Tim Neovala">
+                <img src="{{ asset('images/images/our-story/DJI_20250325044612_0190_D.webp') }}" alt="Tim Neovala">
             </div>
         </div>
 
@@ -153,13 +153,13 @@
             </div>
             <div class="history-images">
                 <div class="history-logo">
-                    <img src="{{ asset('images/images/our-story/NEOVALA FIX.jpg') }}" alt="Neovala Rooms Logo">
+                    <img src="{{ asset('images/images/our-story/NEOVALA FIX.webp') }}" alt="Neovala Rooms Logo">
                 </div>
                 <div class="history-room">
-                    <img src="{{ asset('images/images/discover-TPJ/J3118 👒✅/1.jpeg') }}" alt="Kamar Neovala">
+                    <img src="{{ asset('images/images/discover-TPJ/J3118 👒✅/1.webp') }}" alt="Kamar Neovala">
                 </div>
                 <div class="history-building">
-                    <img src="{{ asset('images/images/home pages/home_utama.png') }}" alt="Gedung Neovala">
+                    <img src="{{ asset('images/images/home pages/home_utama.webp') }}" alt="Gedung Neovala">
                 </div>
             </div>
         </div>
@@ -168,13 +168,13 @@
         <section class="organization-section">
             <h2 class="organization-title">Organization Structure</h2>
             <div class="organization-img-wrapper">
-                <img src="{{ asset('images/images/our-story/organization fix.png') }}" alt="Organization Structure Neovala" class="organization-img">
+                <img src="{{ asset('images/images/our-story/organization fix.webp') }}" alt="Organization Structure Neovala" class="organization-img">
             </div>
         </section>
 
         <div class="book-now-container visible">
             <a href="{{ route('bookNow') }}" class="book-now-btn">
-                <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.png') }}" alt=""></div>
+                <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.webp') }}" alt=""></div>
                 <span>BOOK NOW</span>
             </a>
         </div>
@@ -222,7 +222,7 @@
                 <li><a class="footer-section-available" href="{{ route('discoverPGV') }}">PODOMORO GOLF VIEW</a></li>
                 <li><a class="footer-section-available" href="{{ route('discoverSPL') }}">SPRINGLAKE SUMMARECON</a></li>
                 <div class="footer-logo">
-                    <h2>NEOVALA</h2><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.png') }}" alt="">
+                    <h2>NEOVALA</h2><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.webp') }}" alt="">
                 </div>
             </ul>
         </div>

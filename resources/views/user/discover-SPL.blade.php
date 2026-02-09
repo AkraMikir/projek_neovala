@@ -34,7 +34,7 @@
     <!-- Book Now Button -->
     <div class="book-now-container visible">
         <a href="{{ route('bookNow') }}" class="book-now-btn">
-            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.png') }}" alt=""></div>
+            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.webp') }}" alt=""></div>
             <span>BOOK NOW</span>
         </a>
     </div>
@@ -67,24 +67,30 @@
             </div>
 
             <div class="facilities-grid">
-                <!-- Placeholders for facilities -->
+                <!-- Facilities -->
                 <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+1" alt="Facility 1">
+                    <img src="{{ asset('images/images/discover-SPL/Barbeque Area.webp') }}" alt="Barbeque Area">
+                    <div class="facility-overlay">BARBEQUE AREA</div>
                 </div>
                 <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+2" alt="Facility 2">
+                    <img src="{{ asset('images/images/discover-SPL/Food Court.webp') }}" alt="Food Court">
+                    <div class="facility-overlay">FOOD COURT</div>
                 </div>
                 <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+3" alt="Facility 3">
+                    <img src="{{ asset('images/images/discover-SPL/Mall Summarecon.webp') }}" alt="Mall Summarecon">
+                    <div class="facility-overlay">MALL SUMMARECON</div>
                 </div>
                 <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+4" alt="Facility 4">
+                    <img src="{{ asset('images/images/discover-SPL/Games Center.webp') }}" alt="Games Center">
+                    <div class="facility-overlay">GAMES CENTER</div>
                 </div>
                  <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+5" alt="Facility 5">
+                    <img src="{{ asset('images/images/discover-SPL/Gym Outdoor.webp') }}" alt="Gym Outdoor">
+                    <div class="facility-overlay">GYM OUTDOOR</div>
                 </div>
                  <div class="facility-item">
-                    <img src="https://placehold.co/600x400?text=Facility+6" alt="Facility 6">
+                    <img src="{{ asset('images/images/discover-SPL/Swimming Pool.webp') }}" alt="Swimming Pool">
+                    <div class="facility-overlay">SWIMMING POOL</div>
                 </div>
             </div>
         </section>
@@ -97,7 +103,7 @@
                 <div class="room-card">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                         <div class="right-text">SPRINGLAKE <span class="room-type">SPL</span></div>
                     </div>
                     <div class="room-card-image">
@@ -179,7 +185,7 @@
             </div>
         </section>
 
-        <section class="booking-section booking-section-TPJ" id="booking-section">
+        <section class="booking-section booking-section-SPL" id="booking-section">
             <div class="booking-overlay"></div>
             <div class="booking-container">
                 <h2 class="booking-title">SEWA APARTEMEN<br>SPRINGLAKE SUMMARECON</h2>
@@ -189,7 +195,7 @@
                         <i class="fab fa-whatsapp"></i>
                         <span class="whatsapp-text">WhatsApp</span>
                     </a>
-                    <a href="#" class="booking-btn tiket-btn">
+                    <a href="https://tiket.com/" class="booking-btn tiket-btn">
                         <span class="tiket-text">tiket</span>
                         <div class="tiket-element"></div><span class="tiket-text">com</span>
                     </a>
@@ -220,7 +226,7 @@
                                 <div class="star-rating">
                                     @for ($i = 1; $i <= 5; $i++)
                                         <img
-                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.png') }}"
+                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.webp') }}"
                                         alt="Star" class="star-icon">
                                         @endfor
                                 </div>
@@ -293,7 +299,7 @@
 
         <div class="footer-content-discover">
             <div class="footer-logo-discover">
-                <img src="{{ asset('images/logo/footer-logo.png') }}" alt="Neovala Logo">
+                <img src="{{ asset('images/logo/footer-logo.webp') }}" alt="Neovala Logo">
                 <h2>Neovala Rooms</h2>
             </div>
 
@@ -344,8 +350,8 @@
 @push('scripts')
     <script src="{{ asset('js/form-checkin.js') }}"></script>
     <script>
-    const starFilledPath = "{{ asset('images/logo/star-filled.png') }}";
-    const starEmptyPath = "{{ asset('images/logo/star-empty.png') }}";
+    const starFilledPath = "{{ asset('images/logo/star-filled.webp') }}";
+    const starEmptyPath = "{{ asset('images/logo/star-empty.webp') }}";
 
     document.addEventListener('DOMContentLoaded', function() {
         // Star Rating System

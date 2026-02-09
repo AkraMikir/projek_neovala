@@ -13,6 +13,7 @@ use App\Http\Controllers\AdminDashboard\{
     PgvController,
     BsrController,
     GpcController,
+    SplController,
     TrackingController
 };
 
@@ -150,6 +151,18 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::delete('/admin/dashboard1/gpc/comment/{id}', [GpcController::class, 'deleteComment'])->name('admin.dashboard1.gpc.deleteComment');
     Route::get('/admin/dashboard1/gpc/form/{id}', [GpcController::class, 'viewFormDetail'])->name('admin.dashboard1.gpc.viewFormDetail');
     Route::delete('/admin/dashboard1/gpc/form/{id}', [GpcController::class, 'deleteFormData'])->name('admin.dashboard1.gpc.deleteFormData');
+
+    // SPL (Springlake Summarecon)
+    Route::get('/admin/dashboard1/spl', [SplController::class, 'index'])->name('admin.dashboard1.spl');
+    Route::post('/admin/dashboard1/spl/carousel', [SplController::class, 'updateCarousel'])->name('admin.dashboard1.spl.updateCarousel');
+    Route::post('/admin/dashboard1/spl/room', [SplController::class, 'storeRoom'])->name('admin.dashboard1.spl.storeRoom');
+    Route::post('/admin/dashboard1/spl/room/{id}', [SplController::class, 'updateRoom'])->name('admin.dashboard1.spl.updateRoom');
+    Route::delete('/admin/dashboard1/spl/room/{id}', [SplController::class, 'deleteRoom'])->name('admin.dashboard1.spl.deleteRoom');
+    Route::patch('/admin/dashboard1/spl/comment/{id}/apply', [SplController::class, 'applyComment'])->name('admin.dashboard1.spl.applyComment');
+    Route::patch('/admin/dashboard1/spl/comment/{id}/unapply', [SplController::class, 'unapplyComment'])->name('admin.dashboard1.spl.unapplyComment');
+    Route::delete('/admin/dashboard1/spl/comment/{id}', [SplController::class, 'deleteComment'])->name('admin.dashboard1.spl.deleteComment');
+    Route::get('/admin/dashboard1/spl/form/{id}', [SplController::class, 'viewFormDetail'])->name('admin.dashboard1.spl.viewFormDetail');
+    Route::delete('/admin/dashboard1/spl/form/{id}', [SplController::class, 'deleteFormData'])->name('admin.dashboard1.spl.deleteFormData');
 
     // Tracking
     Route::get('/admin/dashboard1/tracking', [TrackingController::class, 'index'])

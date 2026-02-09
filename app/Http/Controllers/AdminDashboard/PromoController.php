@@ -22,7 +22,8 @@ class PromoController extends Controller
             'GATEWAY CICADAS',
             'PODOMORO GOLF VIEW',
             'BASSURA',
-            'GREEN PRAMUKA CITY'
+            'GREEN PRAMUKA CITY',
+            'SPRINGLAKE SUMMARECON'
         ];
         
         return view('admin.promo.index', compact('promos', 'apartments'));

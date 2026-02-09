@@ -19,7 +19,7 @@
     <!-- Hero Section -->
     <section class="guest-service-hero">
         <div class="guest-service-hero-background">
-            <img src="{{ asset('images/images/home pages/DJI_20250307171433_0096_D.JPG') }}" alt="Guest Service Hero" class="hero-bg-image">
+            <img src="{{ asset('images/images/home pages/DJI_20250307171433_0096_D.webp') }}" alt="Guest Service Hero" class="hero-bg-image">
             <div class="hero-overlay"></div>
         </div>
         <div class="guest-service-hero-content">
@@ -222,7 +222,7 @@
     <!-- Book Now Button -->
     <div class="book-now-container visible">
         <a href="{{ route('bookNow') }}" class="book-now-btn">
-            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.png') }}" alt=""></div>
+            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.webp') }}" alt=""></div>
             <span>BOOK NOW</span>
         </a>
     </div>

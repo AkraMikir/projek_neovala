@@ -10,11 +10,11 @@
         <div class="room-card">
             <div class="room-card-header">
                 <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                 <div class="right-text">TRANSPARK <span class="room-type">JUANDA</span></div>
             </div>
             <div class="room-card-image">
-                <img src="{{ $room['main_photo'] ?: asset('img/default-room.png') }}"
+                <img src="{{ $room['main_photo'] ?: asset('images/logo/room-title.webp') }}"
                      alt="Room {{ $room['room_name'] }}">
             </div>
             <div class="room-action-buttons">
@@ -48,7 +48,7 @@
                     <div class="room-popup-carousel-container">
                         <!-- Main Photo -->
                          <div class="room-popup-slide active">
-                            <img src="{{ $room['main_photo'] ?: asset('img/default-room.png') }}" 
+                            <img src="{{ $room['main_photo'] ?: asset('img/default-room.webp') }}" 
                                  alt="Room {{ $room['room_name'] }} Main">
                         </div>
                         <!-- Additional Photos -->

@@ -50,6 +50,16 @@
             <div class="alert-old error">{{ session('error') }}</div>
             @endif
 
+            @if ($errors->any())
+            <div class="alert-old error">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
             <!-- Content Sections -->
             <div id="carousel-section" class="tab-content active">
                 @include('admin.apartments.tpj.carousel')
