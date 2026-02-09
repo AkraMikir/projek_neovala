@@ -195,7 +195,7 @@
                         <i class="fab fa-whatsapp"></i>
                         <span class="whatsapp-text">WhatsApp</span>
                     </a>
-                    <a href="#" class="booking-btn tiket-btn">
+                    <a href="https://tiket.com/" class="booking-btn tiket-btn">
                         <span class="tiket-text">tiket</span>
                         <div class="tiket-element"></div><span class="tiket-text">com</span>
                     </a>
@@ -226,7 +226,7 @@
                                 <div class="star-rating">
                                     @for ($i = 1; $i <= 5; $i++)
                                         <img
-                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.webp") }}"
+                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.webp') }}"
                                         alt="Star" class="star-icon">
                                         @endfor
                                 </div>
