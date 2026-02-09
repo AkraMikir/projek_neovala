@@ -17,7 +17,7 @@
             @for($i = 1; $i <= 4; $i++)
             <div class="slide-item" data-index="{{ $i-1 }}">
                 <div class="slide-image">
-                    <img src="{{ $carouselImages[$i] ? asset('storage/' . $carouselImages[$i]) : asset('images/logo/room-title.png') }}"
+                    <img src="{{ $carouselImages[$i] ? asset('storage/' . $carouselImages[$i]) : asset('images/logo/room-title.webp') }}"
                         alt="Slide {{ $i }} SPL" id="previewSlide{{ $i }}">
 
                     <div class="slide-overlay">

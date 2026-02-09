@@ -2449,7 +2449,7 @@ function gpcLoadRooms() {
                             <div class="right-text">
                                 <div class="room-type">GPC</div>
                                 <div class="room-logo">
-                                    <img src="/images/logo/logo.png" alt="GPC Logo">
+                                    <img src="/images/logo/logo.webp" alt="GPC Logo">
                                 </div>
                             </div>
                         </div>

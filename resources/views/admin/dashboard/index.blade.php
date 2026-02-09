@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.png') }}">    
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.webp') }}">    
 </head>
 <body>
     @include('admin.partials.sidebar')
@@ -71,77 +71,77 @@
                 <!-- Quick Access Cards - Old Style -->
             <section class="quick-access">
                 <div class="admin-cards">
-                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0030 (Copy).jpg');">
+                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0030 (Copy).webp');">
                         <div class="card-content">
                             <h2>TESTIMONI HOME ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.komentar') }}" class="card-button">Lihat Komentar</a>
                         </div>
                     </div>
                     
-                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0115 (Copy).jpg');">
+                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0115 (Copy).webp');">
                         <div class="card-content">
                             <h2>PROMO ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.promo') }}" class="card-button">Lihat Promo</a>
                         </div>
                     </div>
                     
-                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0115 (Copy) copy.jpg');">
+                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0115 (Copy) copy.webp');">
                         <div class="card-content">
                             <h2>JUANDA ROOM ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.tpj') }}" class="card-button">Click here to go to Admin Panel</a>
                         </div>
                     </div>
                     
-                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_8672.jpg');">
+                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_8672.webp');">
                         <div class="card-content">
                             <h2>CIBUBUR ROOM ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.tpc') }}" class="card-button">Click here to go to Admin Panel</a>
                         </div>
                     </div>
                     
-                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0117 (Copy).jpg');">
+                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0117 (Copy).webp');">
                         <div class="card-content">
                             <h2>LAGOON ROOM ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.gkl') }}" class="card-button">Click here to go to Admin Panel</a>
                         </div>
                     </div>
                     
-                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_1073.png');">
+                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_1073.webp');">
                         <div class="card-content">
                             <h2>URBANO ROOM ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.plu') }}" class="card-button">Click here to go to Admin Panel</a>
                         </div>
                     </div>
                     
-                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_3976.png');">
+                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_3976.webp');">
                         <div class="card-content">
                             <h2>GATEWAY CICADAS ROOM ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.gwc') }}" class="card-button">Click here to go to Admin Panel</a>
                         </div>
                     </div>
                     
-                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.jpg');">
+                    <div class="admin-card" style="background-image: url('../../images/images/Admin-page/IMG_0333.webp');">
                         <div class="card-content">
                             <h2>PODOMORO ROOM ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.pgv') }}" class="card-button">Click here to go to Admin Panel</a>
                         </div>
                     </div>
                     
-                    <div class="admin-card" style="background-image: url('../../images/images/discover-BSC/img_1882.png');">
+                    <div class="admin-card" style="background-image: url('../../images/images/discover-BSC/img_1882.webp');">
                         <div class="card-content">
                             <h2>BASSURA ROOM ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.bsr') }}" class="card-button">Click here to go to Admin Panel</a>
                         </div>
                     </div>
                     
-                    <div class="admin-card" style="background-image: url('../../images/images/discover-GPC/IMG_0646.png');">
+                    <div class="admin-card" style="background-image: url('../../images/images/discover-GPC/IMG_0646.webp');">
                         <div class="card-content">
                             <h2>GREEN PRAMUKA CITY ROOM ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.gpc') }}" class="card-button">Click here to go to Admin Panel</a>
                         </div>
                     </div>
 
-                    <div class="admin-card" style="background-image: url('../../images/images/discover-SPL/IMG_9470.jpg');">
+                    <div class="admin-card" style="background-image: url('../../images/images/discover-SPL/IMG_9470.webp');">
                         <div class="card-content">
                             <h2>SPRINGLAKE SUMMARECON ROOM ADMIN PANEL</h2>
                             <a href="{{ route('admin.dashboard1.spl') }}" class="card-button">Click here to go to Admin Panel</a>

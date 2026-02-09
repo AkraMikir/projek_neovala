@@ -10,11 +10,11 @@
         </div>
         <div class="logo-left">
             <a href="{{ route('home') }}#home">
-                <img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.png') }}"
+                <img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.webp') }}"
                     alt="Logo Neovala Light" class="logo-light">
             </a>
             <a href="{{ route('home') }}#home">
-                <img src="{{ asset('images/logo/NEOVALA-DARK.png') }}"
+                <img src="{{ asset('images/logo/NEOVALA-DARK.webp') }}"
                     alt="Logo Neovala Dark" class="logo-dark">
             </a>
         </div>
@@ -31,7 +31,7 @@
                 <li><a href="#footer"><i class="bi bi-geo-alt"></i> Find Us</a></li>
             @endif
             <div class="sidebar-footer">
-                <p><img src="{{ asset('images/logo/NEOVALA-DARK.png') }}" alt="Logo Neovala Dark"
+                <p><img src="{{ asset('images/logo/NEOVALA-DARK.webp') }}" alt="Logo Neovala Dark"
                         class="logo-sidebar">NEOVALA</p>
             </div>
         </ul>

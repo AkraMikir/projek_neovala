@@ -36,7 +36,7 @@
     <!-- Book Now Button -->
     <div class="book-now-container visible">
         <a href="{{ route('bookNow') }}" class="book-now-btn">
-            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.png') }}" alt=""></div>
+            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.webp') }}" alt=""></div>
             <span>BOOK NOW</span>
         </a>
     </div>
@@ -63,7 +63,7 @@
                     <div class="room-card">
                         <div class="room-card-header">
                             <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                            <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                            <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                             <div class="right-text">{{ strtoupper(str_replace(' ', ' ', $apartmentName ?? 'APARTMENT')) }} <span class="room-type">ROOMS</span></div>
                         </div>
                         <div class="room-card-image">

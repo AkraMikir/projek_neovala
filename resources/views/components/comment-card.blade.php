@@ -13,7 +13,7 @@
         <span class="comment-user">{{ '@' . $komentar->instagram }}</span>
         <div class="star-rating">
             @for ($i = 0; $i < $komentar->bintang; $i++)
-                <img src="{{ asset('images/logo/star-filled.png') }}" alt="Star"
+                <img src="{{ asset('images/logo/star-filled.webp') }}" alt="Star"
                     class="star-icon star-filled">
             @endfor
         </div>

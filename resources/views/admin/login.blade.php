@@ -67,7 +67,7 @@
   <!-- Background miring -->
   <div class="absolute inset-0 flex">
     <div class="w-full md:w-[60%] clip-slant">
-      <img src="{{ asset('images/images/home pages/IMG_0362.png') }}" alt="Background Gedung" class="w-full h-full object-cover" />
+      <img src="{{ asset('images/images/home pages/IMG_0362.webp') }}" alt="Background Gedung" class="w-full h-full object-cover" />
     </div>
     <div class="hidden md:block w-[40%] bg-[#FFEDCC]"></div>
   </div>
@@ -77,7 +77,7 @@
 
     <!-- Gambar dalam Card -->
     <div class="relative w-full md:w-1/2">
-      <img src="{{ asset('images/images/home pages/IMG_0362.png') }}" alt="Gedung" class="rounded-2xl object-cover w-full h-64 md:h-full" />
+      <img src="{{ asset('images/images/home pages/IMG_0362.webp') }}" alt="Gedung" class="rounded-2xl object-cover w-full h-64 md:h-full" />
 
       <div class="absolute top-3 left-4 text-[#6A4D1F] font-semibold text-sm md:text-lg">Admin Panel</div>
       <button class="absolute top-3 right-4 border-2 border-[#6A4D1F] rounded-full px-3 py-1 text-xs md:text-sm text-white bg-transparent hover:bg-[#f8e9d0] hover:text-[#6A4D1F]">Login Admin</button>

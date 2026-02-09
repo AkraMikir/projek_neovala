@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.png') }}">    
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.webp') }}">    
     <title>Book now Neovala</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
@@ -41,8 +41,8 @@
                 </div>
             </div>
             <div class="logo-left">
-                <a href="{{ route('home') }}"><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.png') }}" alt="Logo Neovala Light" class="logo-light"></a>
-                <a href="{{ route('home') }}"><img src="{{ asset('images/logo/NEOVALA-DARK.png') }}" alt="Logo Neovala Dark" class="logo-dark"></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.webp') }}" alt="Logo Neovala Light" class="logo-light"></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('images/logo/NEOVALA-DARK.webp') }}" alt="Logo Neovala Dark" class="logo-dark"></a>
             </div>
                 <ul class="nav-links">
                 <a href="{{ route('home') }}#apartment-section" onclick="window.location=this.href"><i class="bi bi-building"></i> Apartment</a>
@@ -63,7 +63,7 @@
             <!-- Booking Transpark Juanda -->
             <div class="booking-card">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/home pages/home_utama.png') }}" alt="Transpark Juanda" class="card-image">
+                    <img src="{{ asset('images/images/home pages/home_utama.webp') }}" alt="Transpark Juanda" class="card-image">
                     <div class="card-overlay">
                         <h3>TRANSPARK JUANDA</h3>
                     </div>
@@ -86,7 +86,7 @@
             <!-- Booking Transpark Cibubur -->
             <div class="booking-card">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-TPC/IMG_9440.jpg') }}" alt="Transpark Cibubur" class="card-image">
+                    <img src="{{ asset('images/images/discover-TPC/IMG_9440.webp') }}" alt="Transpark Cibubur" class="card-image">
                     <div class="card-overlay">
                         <h3>TRANSPARK CIBUBUR</h3>
                     </div>
@@ -109,7 +109,7 @@
             <!-- Booking Grand Kamala Lagoon -->
             <div class="booking-card">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-GKL/IMG_3011.jpg') }}" alt="Grand Kamala Lagoon" class="card-image">
+                    <img src="{{ asset('images/images/discover-GKL/IMG_3011.webp') }}" alt="Grand Kamala Lagoon" class="card-image">
                     <div class="card-overlay">
                         <h3>GRAND KAMALA LAGOON</h3>
                     </div>
@@ -132,7 +132,7 @@
             <!-- Booking Patraland Urbano -->
             <div class="booking-card">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-PLU/IMG_8300.jpg') }}" alt="Patraland Urbano" class="card-image">
+                    <img src="{{ asset('images/images/discover-PLU/IMG_8300.webp') }}" alt="Patraland Urbano" class="card-image">
                     <div class="card-overlay">
                         <h3>PATRALAND URBANO</h3>
                     </div>
@@ -155,7 +155,7 @@
             <!-- Booking Gateway Cicadas -->
             <div class="booking-card">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-GWC/IMG_6088.jpg') }}" alt="Gateway Cicadas" class="card-image">
+                    <img src="{{ asset('images/images/discover-GWC/IMG_6088.webp') }}" alt="Gateway Cicadas" class="card-image">
                     <div class="card-overlay">
                         <h3>GATEWAY CICADAS</h3>
                     </div>
@@ -178,7 +178,7 @@
             <!-- Booking Podomoro Golf View -->
             <div class="booking-card">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-PGV/IMG_0416.jpg') }}" alt="Podomoro Golf View" class="card-image">
+                    <img src="{{ asset('images/images/discover-PGV/IMG_0416.webp') }}" alt="Podomoro Golf View" class="card-image">
                     <div class="card-overlay">
                         <h3>PODOMORO GOLF VIEW</h3>
                     </div>
@@ -201,7 +201,7 @@
             <!-- Booking Green Pramuka City -->
             <div class="booking-card">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-GPC/IMG_0646.png') }}" alt="Green Pramuka City" class="card-image">
+                    <img src="{{ asset('images/images/discover-GPC/IMG_0646.webp') }}" alt="Green Pramuka City" class="card-image">
                     <div class="card-overlay">
                         <h3>GREEN PRAMUKA CITY</h3>
                     </div>
@@ -224,7 +224,7 @@
             <!-- Booking Bassura City -->
             <div class="booking-card">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-BSC/IMG_1882.png') }}" alt="Bassura City" class="card-image">
+                    <img src="{{ asset('images/images/discover-BSC/IMG_1882.webp') }}" alt="Bassura City" class="card-image">
                     <div class="card-overlay">
                         <h3>BASSURA CITY</h3>
                     </div>
@@ -247,7 +247,7 @@
             <!-- Booking Springlake Summarecon -->
             <div class="booking-card">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-SPL/IMG_9344.jpg') }}" alt="Springlake Summarecon" class="card-image">
+                    <img src="{{ asset('images/images/discover-SPL/IMG_9344.webp') }}" alt="Springlake Summarecon" class="card-image">
                     <div class="card-overlay">
                         <h3>SPRINGLAKE SUMMARECON</h3>
                     </div>
@@ -314,7 +314,7 @@
                 <li><a class="footer-section-available" href="{{ route('discoverBSC') }}">BASSURA CITY</a></li>
                 <li><a class="footer-section-available" href="{{ route('discoverSPL') }}">SPRINGLAKE SUMMARECON</a></li>
                 <div class="footer-logo">
-                    <h2>NEOVALA</h2><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.png') }}" alt="">
+                    <h2>NEOVALA</h2><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.webp') }}" alt="">
                 </div>
             </ul>
         </div>

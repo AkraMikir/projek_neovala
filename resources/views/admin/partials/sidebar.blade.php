@@ -4,7 +4,7 @@
 
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-        <img src="{{ asset('images/logo/NEOVALA-DARK.png') }}" alt="Neovala" class="sidebar-logo">
+        <img src="{{ asset('images/logo/NEOVALA-DARK.webp') }}" alt="Neovala" class="sidebar-logo">
         <h2>NEOVALA</h2>
     </div>
 

@@ -34,7 +34,7 @@
     <!-- Book Now Button -->
     <div class="book-now-container visible">
         <a href="{{ route('bookNow') }}" class="book-now-btn">
-            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.png') }}" alt=""></div>
+            <div class="book-now-icon"><img src="{{ asset('images/logo/book-now.webp') }}" alt=""></div>
             <span>BOOK NOW</span>
         </a>
     </div>
@@ -69,27 +69,27 @@
             <div class="facilities-grid">
                 <!-- Facilities -->
                 <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-SPL/Barbeque Area.jpg') }}" alt="Barbeque Area">
+                    <img src="{{ asset('images/images/discover-SPL/Barbeque Area.webp') }}" alt="Barbeque Area">
                     <div class="facility-overlay">BARBEQUE AREA</div>
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-SPL/Food Court.jpg') }}" alt="Food Court">
+                    <img src="{{ asset('images/images/discover-SPL/Food Court.webp') }}" alt="Food Court">
                     <div class="facility-overlay">FOOD COURT</div>
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-SPL/Mall Summarecon.jpg') }}" alt="Mall Summarecon">
+                    <img src="{{ asset('images/images/discover-SPL/Mall Summarecon.webp') }}" alt="Mall Summarecon">
                     <div class="facility-overlay">MALL SUMMARECON</div>
                 </div>
                 <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-SPL/Games Center.jpg') }}" alt="Games Center">
+                    <img src="{{ asset('images/images/discover-SPL/Games Center.webp') }}" alt="Games Center">
                     <div class="facility-overlay">GAMES CENTER</div>
                 </div>
                  <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-SPL/Gym Outdoor.jpg') }}" alt="Gym Outdoor">
+                    <img src="{{ asset('images/images/discover-SPL/Gym Outdoor.webp') }}" alt="Gym Outdoor">
                     <div class="facility-overlay">GYM OUTDOOR</div>
                 </div>
                  <div class="facility-item">
-                    <img src="{{ asset('images/images/discover-SPL/Swimming Pool.jpg') }}" alt="Swimming Pool">
+                    <img src="{{ asset('images/images/discover-SPL/Swimming Pool.webp') }}" alt="Swimming Pool">
                     <div class="facility-overlay">SWIMMING POOL</div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                 <div class="room-card">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.png') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
                         <div class="right-text">SPRINGLAKE <span class="room-type">SPL</span></div>
                     </div>
                     <div class="room-card-image">
@@ -226,7 +226,7 @@
                                 <div class="star-rating">
                                     @for ($i = 1; $i <= 5; $i++)
                                         <img
-                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.png') }}"
+                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.webp") }}"
                                         alt="Star" class="star-icon">
                                         @endfor
                                 </div>
@@ -299,7 +299,7 @@
 
         <div class="footer-content-discover">
             <div class="footer-logo-discover">
-                <img src="{{ asset('images/logo/footer-logo.png') }}" alt="Neovala Logo">
+                <img src="{{ asset('images/logo/footer-logo.webp') }}" alt="Neovala Logo">
                 <h2>Neovala Rooms</h2>
             </div>
 
@@ -350,8 +350,8 @@
 @push('scripts')
     <script src="{{ asset('js/form-checkin.js') }}"></script>
     <script>
-    const starFilledPath = "{{ asset('images/logo/star-filled.png') }}";
-    const starEmptyPath = "{{ asset('images/logo/star-empty.png') }}";
+    const starFilledPath = "{{ asset('images/logo/star-filled.webp') }}";
+    const starEmptyPath = "{{ asset('images/logo/star-empty.webp') }}";
 
     document.addEventListener('DOMContentLoaded', function() {
         // Star Rating System
