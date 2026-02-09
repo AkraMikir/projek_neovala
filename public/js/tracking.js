@@ -70,6 +70,7 @@ const NeovalaAnalytics = {
         else if (path.includes('discover-pgv')) metadata.apartment_type = 'PGV';
         else if (path.includes('discover-bsr')) metadata.apartment_type = 'BSR';
         else if (path.includes('discover-gpc')) metadata.apartment_type = 'GPC';
+        else if (path.includes('discover-spl')) metadata.apartment_type = 'SPL';
 
         this.track('visit', metadata);
     },

@@ -129,6 +129,14 @@ Route::post('/logout', function () {
     return redirect('/admin/login')->with('message', 'Logged out due to inactivity.');
 })->name('logout');
 
+// ==============================
+// ERROR PAGE & UNAUTHENTICATED REDIRECT
+// ==============================
+// Route ini menangani redirect jika user belum login (menggantikan default route('login'))
+Route::get('/login-required', function () {
+    return view('errors.unauthorized');
+})->name('login');
+
 
 // ==============================
 // ROUTE ADMIN VIEWS SECTION

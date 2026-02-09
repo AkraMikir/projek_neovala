@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Timeout in milliseconds (e.g., 15 minutes = 900,000 ms)
     // 30 minutes = 1800000
-    const TIMEOUT_DURATION = 15 * 60 * 1000; // 15 Minutes
+    const TIMEOUT_DURATION = 10 * 60 * 1000; // 15 Minutes
     let idleTimer;
 
     const warningLog = () => console.log("Session timer reset due to activity.");
