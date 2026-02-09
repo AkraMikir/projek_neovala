@@ -217,7 +217,7 @@
                                 <div class="star-rating">
                                     @for ($i = 1; $i <= 5; $i++)
                                         <img
-                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.webp") }}"
+                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.webp') }}"
                                         alt="Star" class="star-icon">
                                         @endfor
                                 </div>
