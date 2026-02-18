@@ -191,7 +191,7 @@
                 <h2 class="booking-title">SEWA APARTEMEN<br>SPRINGLAKE SUMMARECON</h2>
                 <h3 class="booking-subtitle">DI NEOVALA ROOM</h3>
                 <div class="booking-buttons">
-                    <a href="https://wa.me/6281220391217" class="booking-btn whatsapp-btn">
+                    <a href="https://wa.me/628139553939" class="booking-btn whatsapp-btn">
                         <i class="fab fa-whatsapp"></i>
                         <span class="whatsapp-text">WhatsApp</span>
                     </a>
@@ -305,7 +305,7 @@
 
             <div class="footer-booking-discover">
                 <h3>WhatsApp Booking</h3>
-                <p>0878-7417-6270</p>
+                <p>0813-9553-939</p>
                 <h3>Tiket.com Booking</h3>
                 <p>Tiket.com</p>
             </div>

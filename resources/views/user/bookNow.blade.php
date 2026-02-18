@@ -253,9 +253,9 @@
                     </div>
                 </div>
                 <div class="card-content">
-                    <p class="wa-number"><i class="fab fa-whatsapp"></i> +62 812-2039-1217</p>
+                    <p class="wa-number"><i class="fab fa-whatsapp"></i> +62 813-9553-939</p>
                     <div class="booking-buttons">
-                        <a href="https://wa.me/6281220391217" target="_blank" class="booking-btn whatsapp-btn">
+                        <a href="https://wa.me/628139553939" target="_blank" class="booking-btn whatsapp-btn">
                             <i class="fab fa-whatsapp"></i>
                             <span class="whatsapp-text">WhatsApp</span>
                         </a>

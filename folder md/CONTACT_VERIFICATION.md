@@ -101,6 +101,7 @@ PLU menggunakan nomor WhatsApp yang salah (menggunakan nomor BSC).
 | BSC | 087852624656 | https://maps.app.goo.gl/6KWLcbRdxVhEhFov5 |
 | GPC | 085719035729 | https://maps.app.goo.gl/ccrDVnLWhJdgJfC2A |
 | GWC | 089630253533 | https://maps.app.goo.gl/ZyHRizNpSDWNsvmdA |
+| SPL | 08139553939 | https://maps.app.goo.gl/SpringlakeSummarecon |
 
 ---
 
