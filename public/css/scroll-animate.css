@@ -1,0 +1,30 @@
+/**
+ * Scroll-triggered entrance animations.
+ * Use data-scroll-animate="fade-up" | "fade-in" | "fade-left" | "fade-right"
+ * Optional: data-scroll-delay="100" (ms)
+ */
+[data-scroll-animate] {
+    opacity: 0;
+    transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+}
+
+[data-scroll-animate="fade-up"] {
+    transform: translateY(28px);
+}
+
+[data-scroll-animate="fade-in"] {
+    transform: none;
+}
+
+[data-scroll-animate="fade-left"] {
+    transform: translateX(-24px);
+}
+
+[data-scroll-animate="fade-right"] {
+    transform: translateX(24px);
+}
+
+[data-scroll-animate].scroll-visible {
+    opacity: 1;
+    transform: none;
+}

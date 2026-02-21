@@ -17,7 +17,7 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="guest-service-hero">
+    <section class="guest-service-hero" data-scroll-animate="fade-up">
         <div class="guest-service-hero-background">
             <img src="{{ asset('images/images/home pages/DJI_20250307171433_0096_D.webp') }}" alt="Guest Service Hero" class="hero-bg-image">
             <div class="hero-overlay"></div>
@@ -46,7 +46,7 @@
     </section>
 
     <!-- Guest Service Main Section -->
-    <section class="guest-service-main-section">
+    <section class="guest-service-main-section" data-scroll-animate="fade-up">
         <div class="guest-service-wrapper">
             <div class="guest-service-intro">
                 <h1 class="guest-service-main-title">GUEST SERVICE</h1>
@@ -57,7 +57,7 @@
 
             <!-- Service Features Grid -->
             <div class="service-features-grid">
-                <div class="service-feature-card">
+                <div class="service-feature-card" data-scroll-animate="fade-up">
                     <div class="feature-icon-wrapper">
                         <i class="bi bi-clock-history"></i>
                     </div>
@@ -67,7 +67,7 @@
                     </p>
                 </div>
 
-                <div class="service-feature-card">
+                <div class="service-feature-card" data-scroll-animate="fade-up">
                     <div class="feature-icon-wrapper">
                         <i class="bi bi-telephone-fill"></i>
                     </div>
@@ -77,7 +77,7 @@
                     </p>
                 </div>
 
-                <div class="service-feature-card">
+                <div class="service-feature-card" data-scroll-animate="fade-up">
                     <div class="feature-icon-wrapper">
                         <i class="bi bi-chat-dots-fill"></i>
                     </div>
@@ -87,7 +87,7 @@
                     </p>
                 </div>
 
-                <div class="service-feature-card">
+                <div class="service-feature-card" data-scroll-animate="fade-up">
                     <div class="feature-icon-wrapper">
                         <i class="bi bi-question-circle-fill"></i>
                     </div>
@@ -97,7 +97,7 @@
                     </p>
                 </div>
 
-                <div class="service-feature-card">
+                <div class="service-feature-card" data-scroll-animate="fade-up">
                     <div class="feature-icon-wrapper">
                         <i class="bi bi-calendar-check-fill"></i>
                     </div>
@@ -107,7 +107,7 @@
                     </p>
                 </div>
 
-                <div class="service-feature-card">
+                <div class="service-feature-card" data-scroll-animate="fade-up">
                     <div class="feature-icon-wrapper">
                         <i class="bi bi-star-fill"></i>
                     </div>
@@ -122,7 +122,7 @@
             <div class="contact-info-section">
                 <h2 class="contact-section-title">Hubungi Kami</h2>
                 <div class="contact-methods">
-                    <div class="contact-method-card">
+                    <div class="contact-method-card" data-scroll-animate="fade-up">
                         <div class="contact-icon">
                             <i class="bi bi-telephone-fill"></i>
                         </div>
@@ -131,7 +131,7 @@
                         <p class="contact-method-desc">Tersedia 24/7</p>
                     </div>
 
-                    <div class="contact-method-card">
+                    <div class="contact-method-card" data-scroll-animate="fade-up">
                         <div class="contact-icon whatsapp">
                             <i class="bi bi-whatsapp"></i>
                         </div>
@@ -142,7 +142,7 @@
                         <p class="contact-method-desc">Respon cepat</p>
                     </div>
 
-                    <div class="contact-method-card">
+                    <div class="contact-method-card" data-scroll-animate="fade-up">
                         <div class="contact-icon email">
                             <i class="bi bi-envelope-fill"></i>
                         </div>
@@ -155,7 +155,7 @@
 
             <!-- Service Hours Section -->
             <div class="service-hours-section">
-                <div class="service-hours-card">
+                <div class="service-hours-card" data-scroll-animate="fade-up">
                     <h2 class="service-hours-title">
                         <i class="bi bi-clock-fill"></i> Jam Layanan
                     </h2>
@@ -172,7 +172,7 @@
             </div>
 
             <!-- FAQ Section -->
-            <div class="faq-section">
+            <div class="faq-section" data-scroll-animate="fade-up">
                 <h2 class="faq-section-title">Pertanyaan Umum</h2>
                 <div class="faq-container">
                     <div class="faq-item">

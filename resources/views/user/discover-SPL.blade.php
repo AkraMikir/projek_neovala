@@ -42,7 +42,7 @@
     <!-- Main Content -->
     <main class="main-content">
         <!-- Facilities Section -->
-        <section class="facilities-section" id="facilities-section">
+        <section class="facilities-section" id="facilities-section" data-scroll-animate="fade-up">
             <h2 class="facilities-title">OUR FACILITIES</h2>
 
             <div class="service-container-apart">
@@ -68,39 +68,39 @@
 
             <div class="facilities-grid">
                 <!-- Facilities -->
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-SPL/Barbeque Area.webp') }}" alt="Barbeque Area">
                     <div class="facility-overlay">BARBEQUE AREA</div>
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-SPL/Food Court.webp') }}" alt="Food Court">
                     <div class="facility-overlay">FOOD COURT</div>
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-SPL/Mall Summarecon.webp') }}" alt="Mall Summarecon">
                     <div class="facility-overlay">MALL SUMMARECON</div>
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-SPL/Games Center.webp') }}" alt="Games Center">
                     <div class="facility-overlay">GAMES CENTER</div>
                 </div>
-                 <div class="facility-item">
+                 <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-SPL/Gym Outdoor.webp') }}" alt="Gym Outdoor">
                     <div class="facility-overlay">GYM OUTDOOR</div>
                 </div>
-                 <div class="facility-item">
+                 <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-SPL/Swimming Pool.webp') }}" alt="Swimming Pool">
                     <div class="facility-overlay">SWIMMING POOL</div>
                 </div>
             </div>
         </section>
 
-        <section class="room-section" id="room-section">
+        <section class="room-section" id="room-section" data-scroll-animate="fade-up">
             <h2 class="room-title">ROOM SPRINGLAKE SUMMARECON</h2>
 
             <div class="room-slider-container">
                 @foreach ($roomsFormatted as $room)
-                <div class="room-card">
+                <div class="room-card" data-scroll-animate="fade-up">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
                         <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
@@ -143,7 +143,7 @@
 
         <x-form-checkin apartment="Springlake Summarecon by Neovala" />
 
-        <section class="location-section" id="location-section">
+        <section class="location-section" id="location-section" data-scroll-animate="fade-up">
             <h2 class="location-title">LOCATION</h2>
             <h3 class="location-subtitle">Segera kunjungi apartemen kami!</h3>
             <div class="location-container">
@@ -185,7 +185,7 @@
             </div>
         </section>
 
-        <section class="booking-section booking-section-SPL" id="booking-section">
+        <section class="booking-section booking-section-SPL" id="booking-section" data-scroll-animate="fade-up">
             <div class="booking-overlay"></div>
             <div class="booking-container">
                 <h2 class="booking-title">SEWA APARTEMEN<br>SPRINGLAKE SUMMARECON</h2>
@@ -194,6 +194,10 @@
                     <a href="https://wa.me/628139553939" class="booking-btn whatsapp-btn">
                         <i class="fab fa-whatsapp"></i>
                         <span class="whatsapp-text">WhatsApp</span>
+                    </a>
+                    <a href="https://be.dip.id/booking/cekrooms?keyid=eff54e59745a24240872b623a49a1dc1" target="_blank" rel="noopener noreferrer" class="booking-btn order-online-btn">
+                        <i class="bi bi-fire"></i>
+                        <span>Order Online</span>
                     </a>
                     <a href="https://tiket.com/" class="booking-btn tiket-btn">
                         <span class="tiket-text">tiket</span>
@@ -204,7 +208,7 @@
         </section>
 
         <!-- Testimoni Section -->
-        <section class="testimoni-section" id="testimoni-section">
+        <section class="testimoni-section" id="testimoni-section" data-scroll-animate="fade-up">
             <div class="testimoni-comments">
                 <h2 class="testimoni-title">WHAT THEY SAY?</h2>
                 <div class="testimoni-slider-container">

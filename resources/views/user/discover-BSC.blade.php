@@ -42,7 +42,7 @@
     <!-- Main Content -->
     <main class="main-content">
         <!-- Facilities Section -->
-        <section class="facilities-section" id="facilities-section">
+        <section class="facilities-section" id="facilities-section" data-scroll-animate="fade-up">
             <h2 class="facilities-title">OUR FACILITIES</h2>
 
             <div class="service-container-apart">
@@ -67,33 +67,33 @@
             </div>
 
             <div class="facilities-grid">
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-BSC/gazebo.webp') }}" alt="Gazebo">
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-BSC/gym.webp') }}" alt="Gym Center">
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-BSC/jogging.webp') }}" alt="Jogging Track">
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-BSC/kolam.webp') }}" alt="Swimming Pool">
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-BSC/mall.webp') }}" alt="Mall Bassura">
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-BSC/playground.webp') }}" alt="Mini Playground">
                 </div>
             </div>
         </section>
 
-        <section class="room-section" id="room-section">
+        <section class="room-section" id="room-section" data-scroll-animate="fade-up">
             <h2 class="room-title">ROOM BASSURA CITY</h2>
 
             <div class="room-slider-container">
                 @foreach ($roomsFormatted as $room)
-                <div class="room-card">
+                <div class="room-card" data-scroll-animate="fade-up">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
                         <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
@@ -136,7 +136,7 @@
 
         <x-form-checkin apartment="Bassura City by Neovala" />
 
-        <section class="location-section" id="location-section">
+        <section class="location-section" id="location-section" data-scroll-animate="fade-up">
             <h2 class="location-title">LOCATION</h2>
             <h3 class="location-subtitle">Segera kunjungi apartemen kami!</h3>
             <div class="location-container">
@@ -179,7 +179,7 @@
             </div>
         </section>
 
-        <section class="booking-section booking-section-BSC" id="booking-section">
+        <section class="booking-section booking-section-BSC" id="booking-section" data-scroll-animate="fade-up">
             <div class="booking-overlay"></div>
             <div class="booking-container">
                 <h2 class="booking-title">SEWA APARTEMEN<br>BASSURA CITY</h2>
@@ -188,6 +188,10 @@
                     <a href="https://wa.me/6287852624656" class="booking-btn whatsapp-btn">
                         <i class="fab fa-whatsapp"></i>
                         <span class="whatsapp-text">WhatsApp</span>
+                    </a>
+                    <a href="https://be.dip.id/booking/cekrooms?keyid=f438f8f13b7899819d135e13e2adb645" target="_blank" rel="noopener noreferrer" class="booking-btn order-online-btn">
+                        <i class="bi bi-fire"></i>
+                        <span>Order Online</span>
                     </a>
                     <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-bassura-city"
                         class="booking-btn tiket-btn">
@@ -199,7 +203,7 @@
         </section>
 
         <!-- Testimoni Section -->
-        <section class="testimoni-section" id="testimoni-section">
+        <section class="testimoni-section" id="testimoni-section" data-scroll-animate="fade-up">
             <div class="testimoni-comments">
                 <h2 class="testimoni-title">WHAT THEY SAY?</h2>
                 <div class="testimoni-slider-container">

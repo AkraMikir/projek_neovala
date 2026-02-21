@@ -23,6 +23,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.webp') }}">    
     <title>Titip Kunci Neovala</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/scroll-animate.css') }}">
     <style>
         html {
             scroll-behavior: smooth;
@@ -93,7 +94,7 @@
     </header>
 
     <!-- Tambahkan section ini di file ourStory.html -->
-<section class="titip-kunci">   
+<section class="titip-kunci" data-scroll-animate="fade-up">   
     <div class="info-box">
         <h2>APA ITU TITIP KUNCI?</h2>
         <p>
@@ -105,7 +106,7 @@
     </div>
 
     <!-- Section Fitur Utama Titip Kunci by Neovala -->
-    <section class="fitur-titipkunci-section">
+    <section class="fitur-titipkunci-section" data-scroll-animate="fade-up">
         <div class="fitur-titipkunci-box">
             <h2 class="fitur-title"> Fitur Utama Titip Kunci by Neovala</h2>
             <ol class="fitur-list">
@@ -178,7 +179,7 @@
     </div>
 </section>
 
-<section class="form-section">
+<section class="form-section" data-scroll-animate="fade-up">
     <div class="form-container">
         <h2>Form Titip Kunci Apartemen by Neovala</h2>
         <form id="titipKunciForm">
@@ -275,7 +276,7 @@
 </section>
 
 <!-- Section Penutup Titip Kunci by Neovala -->
-<section class="closing-titipkunci-section">
+<section class="closing-titipkunci-section" data-scroll-animate="fade-up">
     <div class="closing-titipkunci-box">
         <h2 class="closing-title"><i class="fa fa-check-circle"></i> Keuntungan Bergabung dengan Titip Kunci by Neovala</h2>
         <ul class="closing-benefit-list">
@@ -353,4 +354,5 @@
 </body>
 <script src="{{ asset('js/script.js') }}"></script>
 <script src="{{ asset('js/tracking.js') }}"></script>
+<script src="{{ asset('js/scroll-animate.js') }}"></script>
 </html>

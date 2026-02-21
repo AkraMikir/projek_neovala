@@ -47,20 +47,20 @@
         @hasSection('facilities')
             @yield('facilities')
         @else
-            <section class="facilities-section" id="facilities-section">
+            <section class="facilities-section" id="facilities-section" data-scroll-animate="fade-up">
                 <h2 class="facilities-title">OUR FACILITIES</h2>
                 <!-- Facilities content akan di-override di view spesifik jika perlu -->
             </section>
         @endif
 
         <!-- Room Section -->
-        <section class="room-section" id="room-section">
+        <section class="room-section" id="room-section" data-scroll-animate="fade-up">
             <h2 class="room-title">ROOM {{ $apartmentName ?? 'APARTMENT' }}</h2>
 
             <div class="room-slider-container">
                 @if(isset($roomsFormatted) && count($roomsFormatted) > 0)
                     @foreach ($roomsFormatted as $room)
-                    <div class="room-card">
+                    <div class="room-card" data-scroll-animate="fade-up">
                         <div class="room-card-header">
                             <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
                             <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
@@ -124,7 +124,7 @@
         @hasSection('testimoni')
             @yield('testimoni')
         @else
-            <section class="testimoni-section" id="testimoni-section">
+            <section class="testimoni-section" id="testimoni-section" data-scroll-animate="fade-up">
                 <h2 class="testimoni-title">WHAT THEY SAY?</h2>
                 @if(isset($komentars) && count($komentars) > 0)
                     <div class="comment-container">

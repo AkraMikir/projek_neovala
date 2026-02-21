@@ -42,7 +42,7 @@
     <!-- Main Content -->
     <main class="main-content">
         <!-- Facilities Section -->
-        <section class="facilities-section" id="facilities-section">
+        <section class="facilities-section" id="facilities-section" data-scroll-animate="fade-up">
             <h2 class="facilities-title">OUR FACILITIES</h2>
 
             <div class="service-container-apart">
@@ -67,34 +67,34 @@
             </div>
 
             <div class="facilities-grid">
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-GWC/Basketball Court.webp') }}" alt="Siteplan">
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-GWC/Childrens Swimming Pool.webp') }}"
                         alt="Swimming Pool">
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-GWC/Indomaret Fresh.webp') }}" alt="Lobby Area">
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-GWC/Lobby Area (1).webp') }}" alt="Playground">
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-GWC/Masjid.webp') }}" alt="Lobby Area">
                 </div>
-                <div class="facility-item">
+                <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-GWC/Rooftop.webp') }}" alt="Garden">
                 </div>
             </div>
         </section>
 
-        <section class="room-section" id="room-section">
+        <section class="room-section" id="room-section" data-scroll-animate="fade-up">
             <h2 class="room-title">ROOM GATEWAY CICADAS</h2>
 
             <div class="room-slider-container">
                 @foreach ($roomsFormatted as $room)
-                <div class="room-card">
+                <div class="room-card" data-scroll-animate="fade-up">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
                         <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
@@ -137,7 +137,7 @@
 
         <x-form-checkin apartment="Gateway Cicadas by Neovala" />
 
-        <section class="location-section" id="location-section">
+        <section class="location-section" id="location-section" data-scroll-animate="fade-up">
             <h2 class="location-title">LOCATION</h2>
             <h3 class="location-subtitle">Segera kunjungi apartemen kami!</h3>
             <div class="location-container">
@@ -180,7 +180,7 @@
             </div>
         </section>
 
-        <section class="booking-section booking-section-GWC" id="booking-section">
+        <section class="booking-section booking-section-GWC" id="booking-section" data-scroll-animate="fade-up">
             <div class="booking-overlay"></div>
             <div class="booking-container">
                 <h2 class="booking-title">SEWA APARTEMEN<br>GATEWAY CICADAS</h2>
@@ -200,7 +200,7 @@
         </section>
 
         <!-- Testimoni Section -->
-        <section class="testimoni-section" id="testimoni-section">
+        <section class="testimoni-section" id="testimoni-section" data-scroll-animate="fade-up">
             <div class="testimoni-comments">
                 <h2 class="testimoni-title">WHAT THEY SAY?</h2>
                 <div class="testimoni-slider-container">

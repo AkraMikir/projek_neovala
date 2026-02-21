@@ -23,7 +23,7 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="service-container">
+        <div class="service-container" data-scroll-animate="fade-up">
             <div class="service-item">
                 <img src="{{ asset('images/logo/icon1 1.webp') }}" alt="Layanan 1">
                 <p>BISA BAYAR DI TEMPAT</p>
@@ -61,7 +61,7 @@
     </div>
 
     <!-- Apartment Section -->
-    <section class="apartment-section" id="apartment-section">
+    <section class="apartment-section" id="apartment-section" data-scroll-animate="fade-up">
         <h2 class="apartment-title">WE ARE AVAILABLE AT</h2>
         <div class="apartment-container">
 
@@ -114,30 +114,67 @@
         </div>
     </section>
 
-    <!-- Guest Service Section -->
-    <section class="guest-service-section" id="guest-service-section">
-        <div class="guest-service-container">
-            <div class="guest-service-content">
-                <div class="guest-service-left">
-                    <div class="guest-service-icon-wrapper">
-                        <i class="bi bi-headset"></i>
-                    </div>
-                    <a href="{{ route('guestService') }}" class="guest-service-btn">LEARN MORE</a>
+    <!-- NEOVRIENDS + Guest Service Cards (compact, modern) -->
+    <section class="cta-cards-wrapper" data-scroll-animate="fade-up">
+        <!-- NEOVRIENDS / Booking CTA Card - hot deal -->
+        <div class="neovriends-cta-section" data-scroll-animate="fade-up">
+            <div class="neovriends-cta-card">
+                <div class="neovriends-cta-corner-fire" aria-hidden="true">
+                    <i class="bi bi-fire"></i>
                 </div>
-                <div class="guest-service-right">
-                    <h2 class="guest-service-title">GUEST SERVICE</h2>
-                    <p class="guest-service-text">
-                        Layanan pelanggan 24/7 untuk membantu kebutuhan Anda. Tim kami siap membantu dengan profesional dan ramah.
+                <div class="neovriends-cta-gradient"></div>
+                <div class="neovriends-cta-fire-glow" aria-hidden="true"></div>
+                <div class="neovriends-cta-content">
+                    <div class="neovriends-cta-badge">
+                        <i class="bi bi-fire"></i>
+                        <span>Hot Deal</span>
+                    </div>
+                    <p class="neovriends-cta-text">
+                        Booking sekarang! Daftar jadi member <strong>NEOVRIENDS</strong>, dan segera dapatkan potongan harga dan cashback
+                        <span class="fire-emoji" aria-label="hot">🔥</span><br>
+                        Sewa apartemen murah, nyaman, dan privacy hanya di NEOVALA.
                     </p>
+                    <a href="{{ route('bookNow') }}" class="neovriends-cta-btn">
+                        <span>BOOKING SEKARANG</span>
+                        <i class="bi bi-arrow-right-circle-fill neovriends-cta-btn-icon"></i>
+                    </a>
                 </div>
             </div>
         </div>
+
+        <!-- Guest Service Card -->
+        <section class="guest-service-section" id="guest-service-section" data-scroll-animate="fade-up">
+            <div class="guest-service-container">
+                <div class="guest-service-gradient" aria-hidden="true"></div>
+                <div class="guest-service-content">
+                    <div class="guest-service-left">
+                        <div class="guest-service-icon-wrapper">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <a href="{{ route('guestService') }}" class="guest-service-btn">
+                            <i class="bi bi-arrow-right-short"></i>
+                            <span>LEARN MORE</span>
+                        </a>
+                    </div>
+                    <div class="guest-service-right">
+                        <h2 class="guest-service-title">
+                            <i class="bi bi-telephone-outbound"></i>
+                            GUEST SERVICE
+                        </h2>
+                        <p class="guest-service-text">
+                            Layanan pelanggan 24/7 untuk membantu kebutuhan Anda. Tim kami siap membantu dengan profesional dan ramah.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
 
     <!-- Titip Kunci Section -->
-    <section class="titip-kunci-section" id="titip-kunci-section">
+    <section class="titip-kunci-section" id="titip-kunci-section" data-scroll-animate="fade-up">
         <div class="titip-kunci-container">
             <img src="{{ asset('images/images/home pages/IMG_5703.webp') }}" alt="Background" class="titip-kunci-bg">
+            <div class="titip-kunci-gradient" aria-hidden="true"></div>
             <div class="titip-kunci-content">
                 <h2 class="titip-kunci-title">JASA TITIP KUNCI SEWA APARTEMEN</h2>
                 <div class="content-wrapper">
@@ -146,7 +183,10 @@
                             Unit Apartemen Tidak Ditinggali? Ubah Jadi Penghasilan! Solusi Praktis Untuk Pemilik Unit
                             Apartemen yang Tidak Tinggal di Tempat dan ingin jadi lebih bermanfaat.
                         </p>
-                        <a href="{{ route('titipKunci') }}" class="view-more-btn">VIEW MORE</a>
+                        <a href="{{ route('titipKunci') }}" class="view-more-btn">
+                            <i class="bi bi-arrow-right-short"></i>
+                            <span>VIEW MORE</span>
+                        </a>
                     </div>
                     <img src="{{ asset('images/logo/handshake-icon.webp') }}" alt="Handshake Icon"
                         class="handshake-icon">
@@ -155,21 +195,26 @@
         </div>
     </section>
 
-    <section class="promo-section" id="promo-section">
+    <section class="promo-section" id="promo-section" data-scroll-animate="fade-up">
         <h2 class="promo-title">PROMO CHECK-IN NEOVALA</h2>
 
         <div class="slider-container">
             @forelse($promos as $promo)
-            <div class="card">
+            <div class="card" data-scroll-animate="fade-up">
                 <h3 class="card-title">{{ $promo->title }}</h3>
                 <div class="card-image-wrapper">
                     <img src="{{ asset('storage/' . $promo->image) }}" alt="{{ $promo->title }}" class="card-image">
                 </div>
                 @if($promo->download_link)
-                <a href="{{ asset('storage/' . $promo->download_link) }}" class="download-btn" target="_blank">DOWNLOAD
-                    PROMO</a>
+                <a href="{{ asset('storage/' . $promo->download_link) }}" class="download-btn" target="_blank">
+                    <i class="bi bi-download"></i>
+                    <span>DOWNLOAD PROMO</span>
+                </a>
                 @else
-                <a href="#" class="download-btn" onclick="return false;">Download Promo</a>
+                <a href="#" class="download-btn" onclick="return false;">
+                    <i class="bi bi-download"></i>
+                    <span>Download Promo</span>
+                </a>
                 @endif
             </div>
             @empty
@@ -186,7 +231,10 @@
             diinginkan.
         </p>
         <div style="text-align:center; margin-top: 30px;">
-            <a href="#" class="view-more-btn-promo">Selengkapnya</a>
+            <a href="#" class="view-more-btn-promo">
+                <span>Selengkapnya</span>
+                <i class="bi bi-arrow-right-circle-fill"></i>
+            </a>
         </div>
     </section>
 
@@ -239,8 +287,9 @@
     </div>
 
     <!-- Our Story Section -->
-    <section class="our-story-section" id="our-story-section">
+    <section class="our-story-section" id="our-story-section" data-scroll-animate="fade-up">
         <div class="story-container">
+            <div class="story-container-gradient" aria-hidden="true"></div>
             <div class="story-content">
                 <h2 class="story-title">OUR STORY</h2>
                 <p class="story-text">
@@ -286,13 +335,16 @@
                 <div class="story-image">
                     <img src="{{ asset('images/logo/story.webp') }}" alt="Neovala Building">
                 </div>
-                <a href="{{ route('ourStory') }}" class="read-more-btn">READ MORE</a>
+                <a href="{{ route('ourStory') }}" class="read-more-btn">
+                    <span>READ MORE</span>
+                    <i class="bi bi-arrow-right-short"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Comment Section -->
-    <section class="comment-section" id="comment-section">
+    <section class="comment-section" id="comment-section" data-scroll-animate="fade-up">
         <h2 class="comment-title">WHAT THEY SAY?</h2>
         <div class="comment-container">
             @foreach ($komentars as $komentar)

@@ -23,6 +23,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/title-web.webp') }}">    
     <title>Book now Neovala</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/scroll-animate.css') }}">
     <style>
         html {
             scroll-behavior: smooth;
@@ -61,7 +62,7 @@
         <h1 class="page-title">CHOOSE YOUR APARTMENT</h1>
         <div class="booking-grid">
             <!-- Booking Transpark Juanda -->
-            <div class="booking-card">
+            <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
                     <img src="{{ asset('images/images/home pages/home_utama.webp') }}" alt="Transpark Juanda" class="card-image">
                     <div class="card-overlay">
@@ -84,7 +85,7 @@
             </div>
 
             <!-- Booking Transpark Cibubur -->
-            <div class="booking-card">
+            <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
                     <img src="{{ asset('images/images/discover-TPC/IMG_9440.webp') }}" alt="Transpark Cibubur" class="card-image">
                     <div class="card-overlay">
@@ -107,7 +108,7 @@
             </div>
 
             <!-- Booking Grand Kamala Lagoon -->
-            <div class="booking-card">
+            <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
                     <img src="{{ asset('images/images/discover-GKL/IMG_3011.webp') }}" alt="Grand Kamala Lagoon" class="card-image">
                     <div class="card-overlay">
@@ -130,7 +131,7 @@
             </div>
 
             <!-- Booking Patraland Urbano -->
-            <div class="booking-card">
+            <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
                     <img src="{{ asset('images/images/discover-PLU/IMG_8300.webp') }}" alt="Patraland Urbano" class="card-image">
                     <div class="card-overlay">
@@ -153,7 +154,7 @@
             </div>
 
             <!-- Booking Gateway Cicadas -->
-            <div class="booking-card">
+            <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
                     <img src="{{ asset('images/images/discover-GWC/IMG_6088.webp') }}" alt="Gateway Cicadas" class="card-image">
                     <div class="card-overlay">
@@ -176,7 +177,7 @@
             </div>
 
             <!-- Booking Podomoro Golf View -->
-            <div class="booking-card">
+            <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
                     <img src="{{ asset('images/images/discover-PGV/IMG_0416.webp') }}" alt="Podomoro Golf View" class="card-image">
                     <div class="card-overlay">
@@ -199,7 +200,7 @@
             </div>
 
             <!-- Booking Green Pramuka City -->
-            <div class="booking-card">
+            <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
                     <img src="{{ asset('images/images/discover-GPC/IMG_0646.webp') }}" alt="Green Pramuka City" class="card-image">
                     <div class="card-overlay">
@@ -222,7 +223,7 @@
             </div>
 
             <!-- Booking Bassura City -->
-            <div class="booking-card">
+            <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
                     <img src="{{ asset('images/images/discover-BSC/IMG_1882.webp') }}" alt="Bassura City" class="card-image">
                     <div class="card-overlay">
@@ -245,7 +246,7 @@
             </div>
 
             <!-- Booking Springlake Summarecon -->
-            <div class="booking-card">
+            <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
                     <img src="{{ asset('images/images/discover-SPL/IMG_9344.webp') }}" alt="Springlake Summarecon" class="card-image">
                     <div class="card-overlay">
@@ -327,4 +328,5 @@
 </body>
 <script src="{{ asset('js/script.js') }}"></script>
 <script src="{{ asset('js/tracking.js') }}"></script>
+<script src="{{ asset('js/scroll-animate.js') }}"></script>
 </html>
