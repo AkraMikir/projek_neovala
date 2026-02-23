@@ -113,6 +113,13 @@ Route::get('/guest-service', function () {
     return view('user.guestService');
 })->name('guestService');
 
+//=======================================
+//ORDER ONLINE
+//=======================================
+Route::get('/order-online', function () {
+    return view('user.orderOnline');
+})->name('orderOnline');
+
 
 // ==============================
 // ROUTE UNTUK ADMIN & LOGIN

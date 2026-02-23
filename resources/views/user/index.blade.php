@@ -130,12 +130,12 @@
                         <span>Hot Deal</span>
                     </div>
                     <p class="neovriends-cta-text">
-                        Booking sekarang! Daftar jadi member <strong>NEOVRIENDS</strong>, dan segera dapatkan potongan harga dan cashback
+                        ORDER SEKARANG! Daftar jadi member <strong>NEOVRIENDS</strong>, dan segera dapatkan potongan harga dan cashback
                         <span class="fire-emoji" aria-label="hot">🔥</span><br>
                         Sewa apartemen murah, nyaman, dan privacy hanya di NEOVALA.
                     </p>
-                    <a href="{{ route('bookNow') }}" class="neovriends-cta-btn">
-                        <span>BOOKING SEKARANG</span>
+                    <a href="{{ route('orderOnline') }}" target="_blank" rel="noopener noreferrer" class="neovriends-cta-btn">
+                        <span>ORDER SEKARANG</span>
                         <i class="bi bi-arrow-right-circle-fill neovriends-cta-btn-icon"></i>
                     </a>
                 </div>

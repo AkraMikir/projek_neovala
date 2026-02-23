@@ -72,16 +72,25 @@
     
     <!-- Popup -->
     <div id="popup-overlay" class="popup-overlay">
-        <div class="popup-container">
-            <button id="popup-close" class="popup-close" aria-label="Close popup">
-                <i class="bi bi-x-lg"></i>
-            </button>
-            <img id="popup-image" src="{{ asset('images/logo/popup-dekstop.webp') }}" alt="Neovala Promo" class="popup-image popup-image-desktop">
-            <img src="{{ asset('images/logo/popup-tablet.webp') }}" alt="Neovala Promo" class="popup-image popup-image-tablet">
-            <img src="{{ asset('images/logo/popup-mobile.webp') }}" alt="Neovala Promo" class="popup-image popup-image-mobile">
+        <div class="popup-wrapper">
+            <!-- Popup Content -->
+            <div class="popup-container">
+                <button id="popup-close" class="popup-close" aria-label="Close popup">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+                <img id="popup-image" src="{{ asset('images/logo/new-popup-dekstop.jpeg') }}" alt="Neovala Promo" class="popup-image popup-image-desktop">
+                <img src="{{ asset('images/logo/new-popup-tablet.jpeg') }}" alt="Neovala Promo" class="popup-image popup-image-tablet">
+                <img src="{{ asset('images/logo/new-popup-mobile.jpeg') }}" alt="Neovala Promo" class="popup-image popup-image-mobile">
+            </div>
+            <!-- Order Online Button (di bawah popup, sedikit naik) -->
+            <a href="{{ route('orderOnline') }}" target="_blank" rel="noopener noreferrer" class="popup-order-online-btn">
+                <i class="bi bi-calendar2-check"></i>
+                <span>Order Online</span>
+                <i class="bi bi-arrow-right-circle-fill popup-order-arrow"></i>
+            </a>
         </div>
     </div>
-    
+
     <!-- JavaScript -->
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/tracking.js') }}"></script>
