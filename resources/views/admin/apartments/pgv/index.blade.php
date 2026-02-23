@@ -27,14 +27,14 @@
 
             <!-- Navigation Tabs -->
             <div class="admin-tabs">
+                <button class="tab-btn" onclick="switchTab('comments')">
+                    <i class="fas fa-comments"></i> Comments
+                </button>
                 <button class="tab-btn active" onclick="switchTab('carousel')">
                     <i class="fas fa-images"></i> Slide Show
                 </button>
                 <button class="tab-btn" onclick="switchTab('rooms')">
                     <i class="fas fa-door-open"></i> Rooms
-                </button>
-                <button class="tab-btn" onclick="switchTab('comments')">
-                    <i class="fas fa-comments"></i> Comments
                 </button>
                 <button class="tab-btn" onclick="switchTab('form-data')">
                     <i class="fas fa-file-alt"></i> Form Data
@@ -53,14 +53,14 @@
             <!-- Content Sections -->
             <div id="carousel-section" class="tab-content active">
                 @include('admin.apartments.pgv.carousel')
+            <div id="comments-section" class="tab-content">
+                @include('admin.apartments.pgv.comments')
+            </div>
+
             </div>
 
             <div id="rooms-section" class="tab-content">
                 @include('admin.apartments.pgv.rooms')
-            </div>
-
-            <div id="comments-section" class="tab-content">
-                @include('admin.apartments.pgv.comments')
             </div>
 
             <div id="form-data-section" class="tab-content">

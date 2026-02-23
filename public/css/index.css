@@ -1405,7 +1405,6 @@ body.menu-open {
 
 .comment-header {
     display: flex;
-    align-items: center;
     position: relative;
 }
 

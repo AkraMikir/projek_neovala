@@ -412,6 +412,7 @@
 
 .ranking-fill {
     height: 100%;
+    width: calc(var(--ranking-width, 0) * 1%);
     background: var(--primary-gold);
     border-radius: 3px;
 }

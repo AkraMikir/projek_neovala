@@ -6,9 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Carousel;
 use App\Models\Room;
+use App\Models\Review;
 
 class TampilanApartmentController extends Controller
 {
+    private function getReviewDataForLocation(string $location): array
+    {
+        $reviews = Review::accepted()->forLocation($location)->with(['media', 'replies.admin'])->latest()->paginate(12);
+        $avg = Review::accepted()->forLocation($location)->avg('rating');
+        $count = Review::accepted()->forLocation($location)->count();
+        $reviewAggregate = ['avg' => round((float) $avg, 1), 'count' => $count];
+        return compact('reviews', 'reviewAggregate');
+    }
+
     public function tpj()
 {
     $section = 'TPJ';
@@ -55,7 +65,8 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-    return view('user.discover-TPJ', compact('carouselImagesBySection', 'roomsFormatted'));
+    $reviewData = $this->getReviewDataForLocation('tpj');
+    return view('user.discover-TPJ', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
 }
 
     public function tpc()
@@ -153,7 +164,8 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-        return view('user.discover-GKL', compact('carouselImagesBySection', 'roomsFormatted'));
+        $reviewData = $this->getReviewDataForLocation('gkl');
+        return view('user.discover-GKL', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
     public function plu()
     {
@@ -249,7 +261,8 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-        return view('user.discover-GWC', compact('carouselImagesBySection', 'roomsFormatted'));
+        $reviewData = $this->getReviewDataForLocation('gwc');
+        return view('user.discover-GWC', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
 
     public function PGV()
@@ -345,7 +358,8 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-        return view('user.discover-BSC', compact('carouselImagesBySection', 'roomsFormatted'));
+        $reviewData = $this->getReviewDataForLocation('bsr');
+        return view('user.discover-BSC', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
 
     public function gpc()
@@ -439,6 +453,7 @@ class TampilanApartmentController extends Controller
             ];
         });
 
-        return view('user.discover-SPL', compact('carouselImagesBySection', 'roomsFormatted'));
+        $reviewData = $this->getReviewDataForLocation('spl');
+        return view('user.discover-SPL', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
 }

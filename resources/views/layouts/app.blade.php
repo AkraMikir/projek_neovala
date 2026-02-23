@@ -43,6 +43,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Additional CSS -->
     @stack('styles')
@@ -56,9 +57,11 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    @include('components.navbar')
-    
+    <!-- Navbar (hidden on review detail pages) -->
+    @if(empty($hideNavbar))
+        @include('components.navbar')
+    @endif
+
     <!-- Main Content -->
     @yield('content')
     

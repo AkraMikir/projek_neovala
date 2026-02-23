@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
         ]);
         
         $this->call([
+            AdminSeeder::class,
             UserActivitySeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }

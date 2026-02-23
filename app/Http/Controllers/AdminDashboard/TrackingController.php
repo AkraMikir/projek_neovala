@@ -44,23 +44,45 @@ class TrackingController extends Controller
             ->groupBy('activity_type')
             ->get();
 
-        // 5. POPULAR APARTMENTS (Based on stored metadata)
-        $popularApartments = UserActivity::whereNotNull('apartment_type')
+        // Daftar lengkap apartment (termasuk SPL) agar konsisten di semua branch
+        $knownApartments = ['GPC', 'TPC', 'TPJ', 'PLU', 'GKL', 'GWC', 'PGV', 'BSR', 'SPL'];
+        $discoverPaths = array_map(fn ($code) => '/discover-' . strtolower($code), $knownApartments);
+
+        // 5. POPULAR APARTMENTS (gabung data DB + daftar tetap, agar SPL dll selalu muncul)
+        $apartmentCounts = UserActivity::whereNotNull('apartment_type')
             ->dateRange($start, $end)
             ->select('apartment_type', DB::raw('count(*) as count'))
             ->groupBy('apartment_type')
-            ->orderBy('count', 'desc')
-            ->limit(5)
-            ->get();
+            ->get()
+            ->keyBy('apartment_type');
 
-        // 6. POPULAR PAGES (Top visited URLs)
-        $popularPages = UserActivity::visits()
+        $popularApartments = collect($knownApartments)
+            ->map(fn ($apt) => (object) [
+                'apartment_type' => $apt,
+                'count' => $apartmentCounts->get($apt)?->count ?? 0,
+            ])
+            ->sortByDesc('count')
+            ->values()
+            ->take(10);
+
+        // 6. POPULAR PAGES (gabung top visits + semua path discover-* agar /discover-spl dll selalu masuk)
+        $pageCounts = UserActivity::visits()
             ->dateRange($start, $end)
             ->select('page_path', DB::raw('count(*) as visits'))
             ->groupBy('page_path')
-            ->orderBy('visits', 'desc')
-            ->limit(10)
-            ->get();
+            ->get()
+            ->keyBy('page_path');
+
+        foreach ($discoverPaths as $path) {
+            if (!$pageCounts->has($path)) {
+                $pageCounts->put($path, (object) ['page_path' => $path, 'visits' => 0]);
+            }
+        }
+
+        $popularPages = $pageCounts
+            ->sortByDesc('visits')
+            ->values()
+            ->take(10);
 
         // 7. DEVICE BREAKDOWN (Mobile vs Desktop)
         // Simple logic: check 'Mobile' in user_agent string
