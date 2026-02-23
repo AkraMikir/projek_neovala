@@ -198,7 +198,7 @@
             </div>
         </section>
 
-        @include('user.partials.reviews-section', ['location' => 'tpc'])
+        @include('user.partials.reviews-section', ['location' => 'tpc', 'carouselImages' => $carouselImages ?? []])
     </main>
 
     <!-- Footer Discover -->

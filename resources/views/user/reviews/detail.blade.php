@@ -61,24 +61,20 @@
                     </div>
                     <p class="text-stone-800 text-sm leading-relaxed whitespace-pre-wrap">{{ $review->content }}</p>
                     @if($review->media->count() > 0)
-                        <div class="mt-4">
-                            @php
-                                $images = $review->media->where('type', 'image');
-                                $video = $review->media->where('type', 'video')->first();
-                            @endphp
-                            @if($images->count() > 0)
-                                <div class="flex flex-wrap gap-2 mb-2">
-                                    @foreach($images as $m)
-                                        @php $url = asset('storage/' . $m->file_path); @endphp
-                                        <button type="button" class="review-media-preview block w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-[#674c1d]/30 overflow-hidden flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="{{ $url }}" data-type="image" aria-label="Perbesar gambar">
-                                            <img src="{{ $url }}" alt="" class="w-full h-full object-cover">
-                                        </button>
-                                    @endforeach
-                                </div>
-                            @endif
+                        @php
+                            $images = $review->media->where('type', 'image');
+                            $video = $review->media->where('type', 'video')->first();
+                        @endphp
+                        <div class="mt-4 flex flex-wrap gap-2 items-start">
+                            @foreach($images as $m)
+                                @php $url = asset('storage/' . $m->file_path); @endphp
+                                <button type="button" class="review-media-preview block w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-[#674c1d]/30 overflow-hidden flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="{{ $url }}" data-type="image" aria-label="Perbesar gambar">
+                                    <img src="{{ $url }}" alt="" class="w-full h-full object-cover">
+                                </button>
+                            @endforeach
                             @if($video)
                                 @php $videoUrl = asset('storage/' . $video->file_path); @endphp
-                                <button type="button" class="review-media-preview relative block w-32 h-24 sm:w-40 sm:h-28 rounded-lg border border-[#674c1d]/30 overflow-hidden bg-stone-100 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="{{ $videoUrl }}" data-type="video" aria-label="Putar video">
+                                <button type="button" class="review-media-preview relative block w-32 h-24 sm:w-40 sm:h-28 rounded-lg border border-[#674c1d]/30 overflow-hidden bg-stone-100 flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="{{ $videoUrl }}" data-type="video" aria-label="Putar video">
                                     <video src="{{ $videoUrl }}" class="w-full h-full object-cover pointer-events-none" preload="metadata" muted></video>
                                     <span class="absolute inset-0 flex items-center justify-center bg-black/20"><i class="fas fa-play text-white text-2xl"></i></span>
                                 </button>
@@ -201,15 +197,15 @@ document.addEventListener('DOMContentLoaded', function() {
             var imgs = r.media.filter(function(m) { return typeof m === 'object' ? m.type === 'image' : true; });
             var vid = r.media.filter(function(m) { return typeof m === 'object' && m.type === 'video'; })[0];
             var imgUrls = imgs.map(function(m) { return typeof m === 'object' ? (m.url || (m.file_path ? ('/storage/' + m.file_path) : '')) : m; });
-            if (imgUrls.length) {
-                mediaHtml += '<div class="flex flex-wrap gap-2 mb-2">' + imgUrls.map(function(url) {
-                    return '<button type="button" class="review-media-preview block w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-[#674c1d]/30 overflow-hidden flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="' + url + '" data-type="image" aria-label="Perbesar gambar"><img src="' + url + '" alt="" class="w-full h-full object-cover"></button>';
-                }).join('') + '</div>';
-            }
+            var parts = [];
+            imgUrls.forEach(function(url) {
+                parts.push('<button type="button" class="review-media-preview block w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-[#674c1d]/30 overflow-hidden flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="' + url + '" data-type="image" aria-label="Perbesar gambar"><img src="' + url + '" alt="" class="w-full h-full object-cover"></button>');
+            });
             if (vid && (vid.url || vid.file_path)) {
                 var videoSrc = vid.url || (vid.file_path ? ('/storage/' + vid.file_path) : '');
-                if (videoSrc) mediaHtml += '<button type="button" class="review-media-preview relative block w-32 h-24 sm:w-40 sm:h-28 rounded-lg border border-[#674c1d]/30 overflow-hidden bg-stone-100 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="' + videoSrc + '" data-type="video" aria-label="Putar video"><video src="' + videoSrc + '" class="w-full h-full object-cover pointer-events-none" preload="metadata" muted></video><span class="absolute inset-0 flex items-center justify-center bg-black/20"><i class="fas fa-play text-white text-2xl"></i></span></button>';
+                if (videoSrc) parts.push('<button type="button" class="review-media-preview relative block w-32 h-24 sm:w-40 sm:h-28 rounded-lg border border-[#674c1d]/30 overflow-hidden bg-stone-100 flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="' + videoSrc + '" data-type="video" aria-label="Putar video"><video src="' + videoSrc + '" class="w-full h-full object-cover pointer-events-none" preload="metadata" muted></video><span class="absolute inset-0 flex items-center justify-center bg-black/20"><i class="fas fa-play text-white text-2xl"></i></span></button>');
             }
+            if (parts.length) mediaHtml = '<div class="mt-4 flex flex-wrap gap-2 items-start">' + parts.join('') + '</div>';
         }
         var repliesHtml = '';
         if (r.replies && r.replies.length) {
@@ -224,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
             '<span class="text-stone-500 text-sm">' + identity + '</span>' +
             '<span class="text-stone-400 text-xs">' + (r.created_at || '') + '</span></div>' +
             '<p class="text-stone-800 text-sm leading-relaxed whitespace-pre-wrap">' + (r.content || '') + '</p>' +
-            (mediaHtml ? '<div class="mt-4">' + mediaHtml + '</div>' : '') + repliesHtml + '</article>';
+            mediaHtml + repliesHtml + '</article>';
     }
 
     function fetchReviews() {

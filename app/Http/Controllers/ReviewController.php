@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use App\Models\ReviewMedia;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -201,7 +202,10 @@ class ReviewController extends Controller
             'content' => 'required|string|max:2000',
             'rating' => 'required|integer|min:1|max:5',
             'hide_identity' => 'nullable|in:on,1',
-        ]);
+            'images' => 'nullable|array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:20480',
+            'video' => 'nullable|file|mimes:mp4,mov,avi,webm|max:20480',
+        ], ['video.max' => 'File video maksimal 20 MB.', 'images.*.max' => 'Gambar maksimal 20 MB (akan dikompres otomatis).']);
 
         $images = $request->file('images') ?? [];
         $video = $request->file('video');
@@ -224,14 +228,23 @@ class ReviewController extends Controller
             'is_featured' => true,
         ]);
 
-        $saved = 0;
-        foreach (is_array($images) ? $images : [] as $file) {
-            if ($saved >= 5) break;
-            if ($file && $file->isValid()) {
-                $path = $file->store('reviews', 'public');
-                ReviewMedia::create(['review_id' => $review->id, 'type' => 'image', 'file_path' => $path]);
-                $saved++;
+        try {
+            $saved = 0;
+            foreach (is_array($images) ? $images : [] as $file) {
+                if ($saved >= 5) break;
+                if ($file && $file->isValid()) {
+                    $filename = ImageService::upload($file, 'reviews', 1200, 80);
+                    $path = 'reviews/' . $filename;
+                    ReviewMedia::create(['review_id' => $review->id, 'type' => 'image', 'file_path' => $path]);
+                    $saved++;
+                }
             }
+        } catch (\Throwable $e) {
+            foreach ($review->media as $media) {
+                Storage::disk('public')->delete($media->file_path);
+            }
+            $review->delete();
+            return $this->failResponse('Gambar tidak valid atau gagal diproses.');
         }
 
         if ($video && $video->isValid()) {

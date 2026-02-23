@@ -203,7 +203,7 @@
             </div>
         </section>
 
-        @include('user.partials.reviews-section', ['location' => 'gkl'])
+        @include('user.partials.reviews-section', ['location' => 'gkl', 'carouselImages' => $carouselImages ?? []])
     </main>
 
     <!-- Footer Discover -->
