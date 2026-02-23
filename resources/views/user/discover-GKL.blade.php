@@ -139,6 +139,17 @@
         <!-- Form Checkin -->
         <x-form-checkin apartment="Grand Kamala Lagoon by Neovala" />
 
+        <section class="order-online-card-section" id="order-online-section" data-scroll-animate="fade-up">
+            <div class="order-online-card">
+                <h3 class="order-online-card-title">Order Online room Grand Kamala Lagoon</h3>
+                <p class="order-online-card-cta">Booking sekarang! Daftar NEOVRIENDS dapat potongan & cashback. Sewa murah, nyaman, privasi—hanya di NEOVALA.</p>
+                <a href="https://be.dip.id/booking/cekrooms?keyid=7e73df926be03c53f0f02fda4eb8730a" target="_blank" rel="noopener noreferrer" class="booking-btn order-online-btn">
+                    <i class="bi bi-fire"></i>
+                    <span>Order Online</span>
+                </a>
+            </div>
+        </section>
+
         <!-- Location Section -->
         <section class="location-section" id="location-section" data-scroll-animate="fade-up">
             <h2 class="location-title">LOCATION</h2>

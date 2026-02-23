@@ -136,6 +136,17 @@
 
         <x-form-checkin apartment="Green Pramuka City by Neovala" />
 
+        <section class="order-online-card-section" id="order-online-section" data-scroll-animate="fade-up">
+            <div class="order-online-card">
+                <h3 class="order-online-card-title">Order Online room Green Pramuka City</h3>
+                <p class="order-online-card-cta">Booking sekarang! Daftar NEOVRIENDS dapat potongan & cashback. Sewa murah, nyaman, privasi—hanya di NEOVALA.</p>
+                <a href="https://be.dip.id/booking/cekrooms?keyid=beaf6f26422ed69cd8e4d7a0398d6da1" target="_blank" rel="noopener noreferrer" class="booking-btn order-online-btn">
+                    <i class="bi bi-fire"></i>
+                    <span>Order Online</span>
+                </a>
+            </div>
+        </section>
+
         <section class="location-section" id="location-section" data-scroll-animate="fade-up">
             <h2 class="location-title">LOCATION</h2>
             <h3 class="location-subtitle">Segera kunjungi apartemen kami!</h3>

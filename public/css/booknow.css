@@ -269,6 +269,36 @@
     /* Tiket.com yellow dot */
 }
 
+/* Order Online Button */
+.orderonline-btn {
+    background-color: #E74C3C;
+    color: #FFFFFF;
+    border: 2px solid #E74C3C;
+}
+
+.orderonline-btn:hover {
+    background-color: #C0392B;
+    border-color: #C0392B;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+    color: white;
+}
+
+/* Order Online - disabled (Gateway Cicadas, belum tersedia) */
+.orderonline-btn--disabled {
+    background-color: #95a5a6;
+    border: 2px solid #95a5a6;
+    color: #ecf0f1;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.orderonline-btn--disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .page-title {

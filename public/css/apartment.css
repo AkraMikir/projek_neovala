@@ -1896,6 +1896,86 @@ body.menu-open {
     color: inherit;
 }
 
+/* Order Online card section (discover pages) */
+.order-online-card-section {
+    padding: 50px 20px 60px;
+    background-color: #f8f6f3;
+}
+
+.order-online-card {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 56px;
+    border-radius: 32px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 12px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+.order-online-card-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3d2c29;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+.order-online-card-cta {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: #5c4a47;
+    margin-bottom: 28px;
+    font-family: "Poppins", sans-serif;
+}
+
+.order-online-card .booking-btn {
+    display: inline-flex;
+    max-width: none;
+}
+
+/* Tombol Order Online di dalam card — gaya cokelat gelap seperti referensi */
+.order-online-card .order-online-btn {
+    background-color: #5c4033;
+    color: #ffffff;
+    border: 2px solid #5c4033;
+    border-radius: 50px;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.order-online-card .order-online-btn:hover {
+    background-color: #4a3429;
+    border-color: #4a3429;
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(92, 64, 51, 0.35);
+}
+
+.order-online-card .order-online-btn .bi-fire {
+    color: inherit;
+}
+
+.order-online-btn--disabled {
+    background-color: #95a5a6 !important;
+    border: 2px solid #95a5a6 !important;
+    color: #ecf0f1 !important;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.order-online-btn--disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.order-online-card .order-online-btn--disabled {
+    background-color: #95a5a6 !important;
+    border-color: #95a5a6 !important;
+    color: #ecf0f1 !important;
+}
+
 .tiket-text {
     position: relative;
     z-index: 1;
@@ -1960,6 +2040,23 @@ body.menu-open {
         width: 15px;
         height: 15px;
     }
+
+    .order-online-card-section {
+        padding: 40px 15px 50px;
+    }
+
+    .order-online-card {
+        padding: 36px 28px;
+    }
+
+    .order-online-card-title {
+        font-size: 1.65rem;
+    }
+
+    .order-online-card-cta {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -1990,6 +2087,22 @@ body.menu-open {
     .tiket-element {
         width: 12px;
         height: 12px;
+    }
+
+    .order-online-card-section {
+        padding: 30px 12px 40px;
+    }
+
+    .order-online-card {
+        padding: 28px 20px;
+    }
+
+    .order-online-card-title {
+        font-size: 1.4rem;
+    }
+
+    .order-online-card-cta {
+        font-size: 0.9rem;
     }
 }
 

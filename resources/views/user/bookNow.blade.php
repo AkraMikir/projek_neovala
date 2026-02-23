@@ -80,6 +80,10 @@
                             <span class="tiket-text">tiket</span>
                             <div class="tiket-element"></div><span class="tiket-text">com</span>
                         </a>
+                        <a href="https://be.dip.id/booking/cekrooms?keyid=0c852d588be29c4fa736fae16c877bd5" target="_blank" class="booking-btn orderonline-btn">
+                            <i class="fas fa-fire"></i>
+                            <span>Order Online</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -102,6 +106,10 @@
                         <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-transpark-cibubur" target="_blank" class="booking-btn tiket-btn">
                             <span class="tiket-text">tiket</span>
                             <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
+                        <a href="https://be.dip.id/booking/cekrooms?keyid=b78ffaf7036db64ce2437ec13dfebd44" target="_blank" class="booking-btn orderonline-btn">
+                            <i class="fas fa-fire"></i>
+                            <span>Order Online</span>
                         </a>
                     </div>
                 </div>
@@ -126,6 +134,10 @@
                             <span class="tiket-text">tiket</span>
                             <div class="tiket-element"></div><span class="tiket-text">com</span>
                         </a>
+                        <a href="https://be.dip.id/booking/cekrooms?keyid=7e73df926be03c53f0f02fda4eb8730a" target="_blank" class="booking-btn orderonline-btn">
+                            <i class="fas fa-fire"></i>
+                            <span>Order Online</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -148,6 +160,10 @@
                         <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartment-patraland-urbano" target="_blank" class="booking-btn tiket-btn">
                             <span class="tiket-text">tiket</span>
                             <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
+                        <a href="https://be.dip.id/booking/cekrooms?keyid=e57d71fa4ee77bf374f103f2eecabbe6" target="_blank" class="booking-btn orderonline-btn">
+                            <i class="fas fa-fire"></i>
+                            <span>Order Online</span>
                         </a>
                     </div>
                 </div>
@@ -172,6 +188,10 @@
                             <span class="tiket-text">tiket</span>
                             <div class="tiket-element"></div><span class="tiket-text">com</span>
                         </a>
+                        <span class="booking-btn orderonline-btn orderonline-btn--disabled" aria-disabled="true" title="Segera hadir">
+                            <i class="fas fa-fire"></i>
+                            <span>Order Online</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -194,6 +214,10 @@
                         <a href="https://www.tiket.com/homes/indonesia/neovala-at-apartemen-podomoro-golf-view" target="_blank" class="booking-btn tiket-btn">
                             <span class="tiket-text">tiket</span>
                             <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
+                        <a href="https://be.dip.id/booking/cekrooms?keyid=02206fd5278c6653c3f27463a166eed7" target="_blank" class="booking-btn orderonline-btn">
+                            <i class="fas fa-fire"></i>
+                            <span>Order Online</span>
                         </a>
                     </div>
                 </div>
@@ -218,6 +242,10 @@
                             <span class="tiket-text">tiket</span>
                             <div class="tiket-element"></div><span class="tiket-text">com</span>
                         </a>
+                        <a href="https://be.dip.id/booking/cekrooms?keyid=beaf6f26422ed69cd8e4d7a0398d6da1" target="_blank" class="booking-btn orderonline-btn">
+                            <i class="fas fa-fire"></i>
+                            <span>Order Online</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -241,6 +269,10 @@
                             <span class="tiket-text">tiket</span>
                             <div class="tiket-element"></div><span class="tiket-text">com</span>
                         </a>
+                        <a href="https://be.dip.id/booking/cekrooms?keyid=f438f8f13b7899819d135e13e2adb645" target="_blank" class="booking-btn orderonline-btn">
+                            <i class="fas fa-fire"></i>
+                            <span>Order Online</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -263,6 +295,10 @@
                         <a href="#" target="_blank" class="booking-btn tiket-btn">
                             <span class="tiket-text">tiket</span>
                             <div class="tiket-element"></div><span class="tiket-text">com</span>
+                        </a>
+                        <a href="https://be.dip.id/booking/cekrooms?keyid=eff54e59745a24240872b623a49a1dc1" target="_blank" class="booking-btn orderonline-btn">
+                            <i class="fas fa-fire"></i>
+                            <span>Order Online</span>
                         </a>
                     </div>
                 </div>
