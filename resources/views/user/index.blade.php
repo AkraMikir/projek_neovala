@@ -132,7 +132,6 @@
                     <p class="neovriends-cta-text">
                         ORDER SEKARANG! Daftar jadi member <strong>NEOVRIENDS</strong>, dan segera dapatkan potongan harga dan cashback
                         <span class="fire-emoji" aria-label="hot">🔥</span><br>
-                        Sewa apartemen murah, nyaman, dan privacy hanya di NEOVALA.
                     </p>
                     <a href="{{ route('orderOnline') }}" target="_blank" rel="noopener noreferrer" class="neovriends-cta-btn">
                         <span>ORDER SEKARANG</span>

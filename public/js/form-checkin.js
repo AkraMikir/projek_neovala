@@ -83,15 +83,15 @@ Pesan Tambahan : ${formData.pesan}`;
                     const encodedMsg = encodeURIComponent(msg);
 
                     const nomorTujuanMap = {
-                        "Transpark Juanda by Neovala": "6287874176270",
-                        "Transpark Cibubur by Neovala": "6281805191817",
-                        "Podomoro Golf View by Neovala": "6281220391217",
-                        "Springlake Summarecon by Neovala": "628139553939",
-                        "Patraland Urbano by Neovala": "6287768545010",
-                        "Grand Kamala Lagoon by Neovala": "6285161518151",
-                        "Gateway Cicadas by Neovala": "6289630253533",
-                        "Bassura City by Neovala": "6287852624656",
-                        "Green Pramuka City by Neovala": "6285719035729",
+                        "Transpark Juanda Via WhatsApp": "6287874176270",
+                        "Transpark Cibubur Via WhatsApp": "6281805191817",
+                        "Podomoro Golf View Via WhatsApp": "6281220391217",
+                        "Springlake Summarecon Via WhatsApp": "628139553939",
+                        "Patraland Urbano Via WhatsApp": "6287768545010",
+                        "Grand Kamala Lagoon Via WhatsApp": "6285161518151",
+                        "Gateway Cicadas Via WhatsApp": "6289630253533",
+                        "Bassura City Via WhatsApp": "6287852624656",
+                        "Green Pramuka City Via WhatsApp": "6285719035729",
                     };
 
                     const nomorTujuan =

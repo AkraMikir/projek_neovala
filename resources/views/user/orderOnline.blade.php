@@ -75,7 +75,7 @@
                     <div class="oo-card" data-index="0">
                         <img
                             class="oo-card-img"
-                            src="{{ asset('images/images/discover-TPJ/Lobby Area.webp') }}"
+                            src="{{ asset('images/images/home pages/DJI_20250404164436_0280_D.webp') }}"
                             alt="Transpark Juanda"
                             loading="lazy"
                         >
@@ -100,7 +100,7 @@
                     <div class="oo-card" data-index="1">
                         <img
                             class="oo-card-img"
-                            src="{{ asset('images/images/discover-TPC/Gym Area.webp') }}"
+                            src="{{ asset('images\images\home pages\DJI_20250405123913_0309_D.webp') }}"
                             alt="Transpark Cibubur"
                             loading="lazy"
                         >
@@ -316,20 +316,10 @@
 
             function getCardWidth() {
                 if (cards[0]) {
-                    const style = window.getComputedStyle(track);
-                    const gap = parseInt(style.gap) || 20;
-                    return cards[0].getBoundingClientRect().width + gap;
+                    const gap = parseFloat(window.getComputedStyle(track).gap) || 20;
+                    return cards[0].offsetWidth + gap;
                 }
                 return 280;
-            }
-
-            function getVisibleCount() {
-                const w = window.innerWidth;
-                if (w >= 1200) return 5;
-                if (w >= 1024) return 4;
-                if (w >= 768) return 3;
-                if (w >= 480) return 2;
-                return 1;
             }
 
             function updateCarousel(index, smooth = true) {
@@ -353,17 +343,34 @@
                 // Update counter
                 if (counterEl) counterEl.textContent = current + 1;
 
-                // Calculate translate
-                const cardW = getCardWidth();
-                const visibleCount = getVisibleCount();
-                const trackWrapper = document.querySelector('.oo-carousel-track-wrapper');
-                const wrapperWidth = trackWrapper ? trackWrapper.getBoundingClientRect().width : window.innerWidth;
+                // --- Centering calculation ---
+                // Referensi: clip container (area visible user)
+                const clipEl = document.querySelector('.oo-carousel-clip');
+                const wrapperEl = document.querySelector('.oo-carousel-track-wrapper');
 
-                // Center the active card
-                const centerOffset = (wrapperWidth - cards[current].getBoundingClientRect().width) / 2;
-                const translateX = -(current * cardW) + centerOffset;
+                const clipRect = clipEl
+                    ? clipEl.getBoundingClientRect()
+                    : { left: 0, width: window.innerWidth };
+                const wrapperRect = wrapperEl
+                    ? wrapperEl.getBoundingClientRect()
+                    : { left: 0 };
 
-                track.style.transition = smooth ? 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+                const paddingLeft = parseFloat(window.getComputedStyle(wrapperEl).paddingLeft) || 0;
+                const cardW      = getCardWidth();
+                const cardWidth  = cards[current].offsetWidth;
+
+                // Titik tengah area clip
+                const clipCenter = clipRect.left + clipRect.width / 2;
+
+                // Posisi natural (tanpa transform) titik tengah card[current]
+                const cardNaturalCenter = wrapperRect.left + paddingLeft + current * cardW + cardWidth / 2;
+
+                // translateX yang dibutuhkan agar card[current] tepat di tengah clip
+                const translateX = clipCenter - cardNaturalCenter;
+
+                track.style.transition = smooth
+                    ? 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    : 'none';
                 track.style.transform = `translateX(${translateX}px)`;
 
                 // Update button states

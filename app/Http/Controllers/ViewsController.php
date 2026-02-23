@@ -76,14 +76,14 @@ class ViewsController extends Controller
         }
 
         $apartmentSections = [
-    'Transpark Juanda by Neovala',
-    'Transpark Cibubur by Neovala',
-    'Podomoro Golf View by Neovala',
-    'Patraland Urbano by Neovala',
-    'Grand Kamala Lagoon by Neovala',
-    'Gateway Cicadas by Neovala',
-    'Basura by Neovala',
-    'Green Pramuka City by Neovala',
+    'Transpark Juanda Via WhatsApp',
+    'Transpark Cibubur Via WhatsApp',
+    'Podomoro Golf View Via WhatsApp',
+    'Patraland Urbano Via WhatsApp',
+    'Grand Kamala Lagoon Via WhatsApp',
+    'Gateway Cicadas Via WhatsApp',
+    'Bassura City Via WhatsApp',
+    'Green Pramuka City Via WhatsApp',
 ];
 
 $apartmentForms = [];

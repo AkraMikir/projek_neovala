@@ -1896,64 +1896,129 @@ body.menu-open {
     color: inherit;
 }
 
-/* Order Online card section (discover pages) */
+/* =============================================
+   Order Online card section (discover pages)
+   ============================================= */
 .order-online-card-section {
-    padding: 50px 20px 60px;
+    padding: 60px 24px 70px;
     background-color: #f8f6f3;
 }
 
 .order-online-card {
-    max-width: 920px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 48px 56px;
-    border-radius: 32px;
+    padding: 0;
+    border-radius: 28px;
     background-color: #ffffff;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 12px rgba(0, 0, 0, 0.04);
-    text-align: center;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08), 0 2px 12px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+}
+
+/* Konten kiri */
+.order-online-card-content {
+    flex: 1 1 0;
+    padding: 56px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.order-online-card-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: linear-gradient(135deg, #674C1D22, #B8860B22);
+    border: 1px solid #B8860B55;
+    color: #674C1D;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    width: fit-content;
+    font-family: "Poppins", sans-serif;
 }
 
 .order-online-card-title {
     font-family: "Montserrat", sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.85rem;
+    font-weight: 800;
     color: #3d2c29;
-    margin-bottom: 20px;
-    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+    line-height: 1.25;
 }
 
 .order-online-card-cta {
-    font-size: 1.15rem;
-    line-height: 1.65;
-    color: #5c4a47;
-    margin-bottom: 28px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #6b5450;
+    margin-bottom: 32px;
     font-family: "Poppins", sans-serif;
 }
 
 .order-online-card .booking-btn {
     display: inline-flex;
     max-width: none;
+    width: fit-content;
 }
 
-/* Tombol Order Online di dalam card — gaya cokelat gelap seperti referensi */
 .order-online-card .order-online-btn {
-    background-color: #5c4033;
+    background: linear-gradient(135deg, #674C1D, #8B6320);
     color: #ffffff;
-    border: 2px solid #5c4033;
+    border: none;
     border-radius: 50px;
-    padding: 18px 40px;
-    font-size: 1.2rem;
+    padding: 16px 36px;
+    font-size: 1.25rem;
+    font-weight: 600;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(103, 76, 29, 0.35);
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .order-online-card .order-online-btn:hover {
-    background-color: #4a3429;
-    border-color: #4a3429;
-    color: #ffffff;
-    box-shadow: 0 6px 20px rgba(92, 64, 51, 0.35);
+    background: linear-gradient(135deg, #B8860B, #D4A017);
+    color: #1a1a1a;
+    box-shadow: 0 8px 24px rgba(184, 134, 11, 0.45);
+    transform: translateY(-2px);
 }
 
 .order-online-card .order-online-btn .bi-fire {
     color: inherit;
+}
+
+/* Gambar kanan */
+.order-online-card-image {
+    flex: 0 0 42%;
+    position: relative;
+    overflow: hidden;
+    min-height: 360px;
+}
+
+.order-online-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.order-online-card:hover .order-online-card-image img {
+    transform: scale(1.04);
+}
+
+.order-online-card-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(103, 76, 29, 0.18) 0%, transparent 60%);
+    pointer-events: none;
 }
 
 .order-online-btn--disabled {
@@ -2046,16 +2111,32 @@ body.menu-open {
     }
 
     .order-online-card {
-        padding: 36px 28px;
+        flex-direction: column;
+        border-radius: 22px;
+    }
+
+    .order-online-card-content {
+        padding: 40px 32px 32px;
+    }
+
+    .order-online-card-image {
+        flex: 0 0 auto;
+        min-height: 260px;
+        border-radius: 0;
     }
 
     .order-online-card-title {
-        font-size: 1.65rem;
+        font-size: 1.55rem;
     }
 
     .order-online-card-cta {
         font-size: 0.95rem;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
+    }
+
+    .order-online-card .order-online-btn {
+        width: auto;
+        align-self: flex-start;
     }
 }
 
@@ -2093,16 +2174,20 @@ body.menu-open {
         padding: 30px 12px 40px;
     }
 
-    .order-online-card {
-        padding: 28px 20px;
+    .order-online-card-content {
+        padding: 32px 24px 28px;
+    }
+
+    .order-online-card-image {
+        min-height: 220px;
     }
 
     .order-online-card-title {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     .order-online-card-cta {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
     }
 }
 

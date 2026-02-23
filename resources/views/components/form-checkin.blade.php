@@ -1,7 +1,7 @@
 @props(['apartment'])
 
 <section class="checkin-section" id="checkin-section">
-    <h2 class="checkin-title">Form Checkin Apartemen<br>{{ $apartment }}</h2>
+    <h2 class="checkin-title">Form Checkin Manual Apartemen<br>{{ $apartment }}</h2>
 
     <div class="checkin-form-container">
         <form id="checkinForm" data-apartment="{{ $apartment }}">

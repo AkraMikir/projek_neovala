@@ -134,16 +134,25 @@
         </div>
         @endforeach
 
-        <x-form-checkin apartment="Transpark Cibubur by Neovala" />
+        <x-form-checkin apartment="Transpark Cibubur Via WhatsApp" />
 
         <section class="order-online-card-section" id="order-online-section" data-scroll-animate="fade-up">
             <div class="order-online-card">
-                <h3 class="order-online-card-title">Order Online room Transpark Cibubur</h3>
-                <p class="order-online-card-cta">Booking sekarang! Daftar NEOVRIENDS dapat potongan & cashback. Sewa murah, nyaman, privasi—hanya di NEOVALA.</p>
-                <a href="https://be.dip.id/booking/cekrooms?keyid=b78ffaf7036db64ce2437ec13dfebd44" target="_blank" rel="noopener noreferrer" class="booking-btn order-online-btn">
-                    <i class="bi bi-fire"></i>
-                    <span>Order Online</span>
-                </a>
+                <div class="order-online-card-content">
+                    <div class="order-online-card-label">
+                        <i class="bi bi-fire"></i> Order Online
+                    </div>
+                    <h3 class="order-online-card-title">Order Online Kamar Di Transpark Cibubur</h3>
+                    <p class="order-online-card-cta">Booking sekarang! Daftar NEOVRIENDS dapat potongan & cashback. Sewa murah, nyaman, privasi—hanya di NEOVALA.</p>
+                    <a href="https://be.dip.id/booking/cekrooms?keyid=b78ffaf7036db64ce2437ec13dfebd44" target="_blank" rel="noopener noreferrer" class="booking-btn order-online-btn">
+                        <i class="bi bi-fire"></i>
+                        <span>Order Online Transpark Cibubur</span>
+                    </a>
+                </div>
+                <div class="order-online-card-image">
+                    <img src="{{ asset('images/images/discover-TPC/Swimming Pool.webp') }}" alt="Swimming Pool Transpark Cibubur" loading="lazy">
+                    <div class="order-online-card-image-overlay"></div>
+                </div>
             </div>
         </section>
 
