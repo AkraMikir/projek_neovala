@@ -25,6 +25,10 @@
                 <i class="fas fa-comments"></i>
                 <span>Testimonials</span>
             </a>
+            <a href="{{ route('admin.dashboard1.reviews.index') }}" class="nav-item {{ request()->routeIs('admin.dashboard1.reviews.*') ? 'active' : '' }}">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
             <a href="{{ route('admin.dashboard1.promo') }}" class="nav-item {{ request()->routeIs('admin.dashboard1.promo') ? 'active' : '' }}">
                 <i class="fas fa-percentage"></i>
                 <span>Promotions</span>

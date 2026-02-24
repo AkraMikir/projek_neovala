@@ -59,10 +59,6 @@
                 @include('admin.apartments.spl.rooms')
             </div>
 
-            <div id="comments-section" class="tab-content">
-                @include('admin.apartments.spl.comments')
-            </div>
-
             <div id="form-data-section" class="tab-content">
                 @include('admin.apartments.spl.form_data')
             </div>

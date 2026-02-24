@@ -2572,6 +2572,12 @@ body.menu-open {
     transform: translateY(-5px);
 }
 
+.testimoni-card .comment-header {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
 .testimoni-card .quote-icon {
     font-size: 40px;
     color: #674C1D;

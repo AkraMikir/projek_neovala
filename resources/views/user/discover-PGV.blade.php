@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', 'Discover Podomoro Golf View')
 
@@ -228,90 +228,7 @@
             </div>
         </section>
 
-        <!-- Testimoni Section -->
-        <section class="testimoni-section" id="testimoni-section" data-scroll-animate="fade-up">
-            <div class="testimoni-comments">
-                <h2 class="testimoni-title">WHAT THEY SAY?</h2>
-                <div class="testimoni-slider-container">
-                    <button class="slider-nav-btn prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slider-nav-btn next">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <div class="testimoni-slider">
-                        @foreach (\App\Models\KomentarPgv::where('status', 'accepted')->where('section', 'pgv')->latest()->get() as $komen)
-                        <div class="testimoni-card">
-                            <span class="quote-icon">"</span>
-                            <p class="comment-text">{{ $komen->message }}</p>
-                            <div class="comment-footer">
-                                <span class="comment-user">
-                                    {{ $komen->hide_identity ? '@*******' : '@' . $komen->instagram }}
-                                </span>
-                                <div class="star-rating">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <img
-                                        src="{{ asset('images/logo/' . ($i <= $komen->rating ? 'star-filled' : 'star-empty') . '.webp') }}"
-                                        alt="Star" class="star-icon">
-                                        @endfor
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                    <div class="slider-indicator">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="feedback-section">
-                <h2 class="feedback-title">GIVE US FEEDBACK</h2>
-                <form class="feedback-form" id="feedbackForm" method="POST" action="{{ route('komentar-pgv.store') }}">
-                    @csrf
-
-                    <!-- Rating Stars -->
-                    <div class="rating-input">
-                        <input type="hidden" name="rating" id="ratingInput" value="0">
-                        <div class="star-rating-select">
-                            <i class="far fa-star" data-rating="1"></i>
-                            <i class="far fa-star" data-rating="2"></i>
-                            <i class="far fa-star" data-rating="3"></i>
-                            <i class="far fa-star" data-rating="4"></i>
-                            <i class="far fa-star" data-rating="5"></i>
-                        </div>
-                    </div>
-
-                    <!-- Instagram Input -->
-                    <div class="form-group">
-                        <label for="instagramHandle">Instagram:</label>
-                        <div class="instagram-input-wrapper">
-                            <span class="instagram-text">@</span>
-                            <input type="text" id="instagramHandle" name="instagram" placeholder="your instagram"
-                                maxlength="18" required>
-                        </div>
-                    </div>
-
-                    <!-- Hide Identity Checkbox -->
-                    <div class="form-group-hide-identity">
-                        <div class="hide-identity-container">
-                            <label for="hideIdentity" class="hide-identity-label">hide</label>
-                            <input type="checkbox" id="hideIdentity" class="hide-identity-toggle" name="hideIdentity">
-                        </div>
-                    </div>
-
-                    <!-- Message Input -->
-                    <div class="form-group">
-                        <label for="feedbackMessage">Pesan:</label>
-                        <textarea id="feedbackMessage" name="message" placeholder="Silakan tulis pesanmu di sini..."
-                            required maxlength="72"></textarea>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="submit-feedback-btn">Kirim</button>
-                </form>
-            </div>
-        </section>
+        @include('user.partials.reviews-section', ['locationName' => 'Podomoro Golf View', 'locationSlug' => 'pgv', 'carouselImages' => $carouselImages ?? []])
     </main>
 
     <!-- Footer Discover -->

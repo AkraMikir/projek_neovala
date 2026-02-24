@@ -163,13 +163,17 @@
                     <div class="analytics-body">
                         @if($popularApartments->count() > 0)
                             @foreach($popularApartments as $apt)
+                            @php
+                                $maxCount = $popularApartments->first()->count;
+                                $widthPct = $maxCount > 0 ? round(($apt->count / $maxCount) * 100) : 0;
+                            @endphp
                             <div class="ranking-item">
                                 <div class="ranking-info">
                                     <span class="ranking-name">{{ $apt->apartment_type ?: 'Unknown' }}</span>
                                     <span class="ranking-count">{{ $apt->count }} events</span>
                                 </div>
                                 <div class="ranking-bar">
-                                    <div class="ranking-fill" style="width: {{ ($apt->count / $popularApartments->first()->count) * 100 }}%"></div>
+                                    <div class="ranking-fill" style="--ranking-width: {{ $widthPct }}"></div>
                                 </div>
                             </div>
                             @endforeach
@@ -274,15 +278,17 @@
         </div>
     </div>
 
+    <!-- Data for charts (must be defined before tracking.js runs) -->
+    <script>
+        window.visitTrendsData = @json($visitTrends);
+        window.actionTrendsData = @json($actionTrends);
+    </script>
+
     <!-- Scripts -->
     <script src="{{ asset('js/admin/dashboard.js') }}"></script>
     <script src="{{ asset('js/admin/tracking.js') }}"></script>
-    
-    <!-- Pass Data to JS -->
+
     <script>
-        const visitTrendsData = @json($visitTrends);
-        const actionTrendsData = @json($actionTrends); // { activity_type: 'x', count: 10 }
-        
         // Helper untuk Export
         document.getElementById('exportBtn').addEventListener('click', function() {
             const start = document.getElementById('start_date').value;

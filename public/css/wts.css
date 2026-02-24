@@ -1,0 +1,181 @@
+/**
+ * WHAT THEY SAY? - Section ulasan home
+ * Class/ID baru semua (wts-*) supaya tidak nabrak dengan style lain.
+ */
+
+#wts-section {
+    padding: 60px 0 80px;
+    background: #f8fafc;
+}
+
+#wts-wrap {
+    margin: 0 auto;
+    max-width: 1400px;
+    width: calc(100% - 48px);
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(103, 76, 29, 0.08);
+    border: 1px solid rgba(103, 76, 29, 0.08);
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#wts-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid rgba(103, 76, 29, 0.1);
+    flex-shrink: 0;
+}
+
+.wts-title {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #674C1D;
+    font-family: "Montserrat", sans-serif;
+}
+
+.wts-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.25rem;
+    border: 2px solid #674c1d;
+    border-radius: 8px;
+    background: transparent;
+    color: #674c1d;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.wts-btn:hover {
+    background: #674c1d;
+    color: #fff;
+}
+
+#wts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 28px;
+    padding: 24px 28px 28px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1 1 0;
+    min-height: 0;
+}
+
+.wts-card {
+    background: rgba(249, 249, 249, 0.9765);
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+    min-height: 0;
+    box-sizing: border-box;
+}
+
+.wts-card-head {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.wts-quote {
+    font-size: 1.75rem;
+    line-height: 1;
+    color: #674C1D;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.wts-location {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #674C1D;
+    line-height: 1.3;
+    font-family: "Montserrat", sans-serif;
+}
+
+.wts-body {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #674C1D;
+    margin: 0 0 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.5em;
+}
+
+.wts-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(103, 76, 29, 0.1);
+}
+
+.wts-user {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #674C1D;
+}
+
+.wts-stars {
+    display: flex;
+    gap: 2px;
+}
+
+.wts-stars img {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.wts-stars .wts-star-empty {
+    opacity: 0.4;
+}
+
+.wts-date {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+#wts-empty {
+    padding: 2rem 28px;
+    text-align: center;
+    color: #64748b;
+}
+
+@media (max-width: 992px) {
+    #wts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    #wts-wrap {
+        width: calc(100% - 32px);
+    }
+    #wts-grid {
+        grid-template-columns: 1fr;
+        padding: 20px 20px 24px;
+    }
+    #wts-header {
+        padding: 20px 20px 16px;
+    }
+}

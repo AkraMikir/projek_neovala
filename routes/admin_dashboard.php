@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminDashboard\DashboardController;
 use App\Http\Controllers\AdminDashboard\KomentarController;
+use App\Http\Controllers\AdminDashboard\ReviewController as AdminReviewController;
 use App\Http\Controllers\AdminDashboard\{
     PromoController,
     TpjController,
@@ -170,4 +171,27 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/dashboard1/tracking/export', [TrackingController::class, 'exportData'])
         ->name('admin.dashboard1.tracking.export');
 
+    // Reviews (unified)
+    Route::get('/admin/dashboard1/reviews', [AdminReviewController::class, 'index'])
+        ->name('admin.dashboard1.reviews.index');
+    Route::get('/admin/dashboard1/reviews/data', [AdminReviewController::class, 'data'])
+        ->name('admin.dashboard1.reviews.data');
+    Route::get('/admin/dashboard1/reviews/create', [AdminReviewController::class, 'create'])
+        ->name('admin.dashboard1.reviews.create');
+    Route::post('/admin/dashboard1/reviews', [AdminReviewController::class, 'store'])
+        ->name('admin.dashboard1.reviews.store');
+    Route::get('/admin/dashboard1/reviews/{review}/edit', [AdminReviewController::class, 'edit'])
+        ->name('admin.dashboard1.reviews.edit');
+    Route::patch('/admin/dashboard1/reviews/{review}', [AdminReviewController::class, 'update'])
+        ->name('admin.dashboard1.reviews.update');
+    Route::delete('/admin/dashboard1/reviews/{review}', [AdminReviewController::class, 'destroy'])
+        ->name('admin.dashboard1.reviews.destroy');
+    Route::post('/admin/dashboard1/reviews/{review}/replies', [AdminReviewController::class, 'storeReply'])
+        ->name('admin.dashboard1.reviews.replies.store');
+    Route::patch('/admin/dashboard1/reviews/{review}/replies/{reply}', [AdminReviewController::class, 'updateReply'])
+        ->name('admin.dashboard1.reviews.replies.update');
+    Route::delete('/admin/dashboard1/reviews/{review}/replies/{reply}', [AdminReviewController::class, 'destroyReply'])
+        ->name('admin.dashboard1.reviews.replies.destroy');
+    Route::delete('/admin/dashboard1/reviews/{review}/media/{medium}', [AdminReviewController::class, 'deleteMedia'])
+        ->name('admin.dashboard1.reviews.media.destroy');
 });
