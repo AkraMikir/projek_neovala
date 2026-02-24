@@ -17,7 +17,22 @@
                 asset('images/images/home pages/DJI_20250827130441_0466_D.webp'),
                 asset('images/images/home pages/DJI_20250905143026_0543_D.webp')
             ]"
-            overlay-text="Inovasi akomodasi modern dengan kenyamanan premium, layanan istimewa, dan desain elegan. Hadir untuk memberikan pengalaman menginap yang berkesan dan solusi hunian terbaik."
+            :mobile-images="[
+                asset('images/images/drone_photo/SPL/DJI_20260102114312_0582_D.webp'),
+                asset('images/images/drone_photo/PGV/DJI_20250307171441_0098_D.webp'),
+                asset('images/images/drone_photo/PLU/DJI_20250321180704_0146_D.webp'),
+                asset('images/images/drone_photo/GKL/DJI_20250327155321_0214_D.webp'),
+                asset('images/images/drone_photo/GWC/gwc mobile.webp'),
+                asset('images/images/drone_photo/TPJ/DJI_20250404164446_0282_D.webp'),
+                asset('images/images/drone_photo/TPC/DJI_20250405123929_0314_D.webp'),
+                asset('images/images/drone_photo/BSC/DJI_20250827131627_0494_D.webp'),
+                asset('images/images/drone_photo/GPC/DJI_20250905143045_0548_D.webp')
+            ]"
+            hero-badge="Neovala — Premium Apartment Rental"
+            hero-title="Hunian Premium,<br><em>Pengalaman Istimewa</em>"
+            hero-subtitle="Inovasi akomodasi modern dengan kenyamanan premium, layanan istimewa, dan desain elegan. Hadir di 9 lokasi strategis terbaik."
+            hero-cta-text="Lihat Apartemen"
+            hero-cta-url="#apartment-section"
         />
     </header>
 
@@ -67,47 +82,47 @@
 
             <!-- Apartment Cards -->
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_0020 (Copy).webp') }}"
+                image="{{ asset('images/images/drone_photo/TPJ/DJI_20250404164408_0277_D.webp') }}"
                 name="TRANSPARK JUANDA"
                 :route="route('discoverTPJ')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_9497.webp') }}"
+                image="{{ asset('images/images/drone_photo/TPC/DJI_20250405123918_0311_D.webp') }}"
                 name="TRANSPARK CIBUBUR"
                 :route="route('discoverTPC')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_0117 (Copy).webp') }}"
+                image="{{ asset('images/images/drone_photo/GKL/DJI_20250327153843_0201_D.webp') }}"
                 name="GRAND KAMALA LAGOON"
                 :route="route('discoverGKL')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_1073.webp') }}"
+                image="{{ asset('images/images/drone_photo/PLU/DJI_20250321180632_0140_D.webp') }}"
                 name="PATRALAND URBANO"
                 :route="route('discoverPLU')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_3976.webp') }}"
+                image="{{ asset('images/images/drone_photo/GWC/gwc desktop.webp') }}"
                 name="GATEWAY CICADAS"
                 :route="route('discoverGWC')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/home pages/IMG_0362.webp') }}"
+                image="{{ asset('images/images/drone_photo/PGV/DJI_20250307171436_0097_D.webp') }}"
                 name="PODOMORO GOLF VIEW"
                 :route="route('discoverPGV')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/discover-GPC/IMG_0646.webp') }}"
+                image="{{ asset('images/images/drone_photo/GPC/DJI_20250905143026_0543_D.webp') }}"
                 name="GREEN PRAMUKA CITY"
                 :route="route('discoverGPC')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/discover-BSC/IMG_1882.webp') }}"
+                image="{{ asset('images/images/drone_photo/BSC/DJI_20250827131520_0491_D.webp') }}"
                 name="BASSURA CITY"
                 :route="route('discoverBSC')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/discover-SPL/IMG_9338.webp') }}"
+                image="{{ asset('images/images/drone_photo/SPL/DJI_20260102114257_0580_D.webp') }}"
                 name="SPRINGLAKE SUMMARECON"
                 :route="route('discoverSPL')"
             />

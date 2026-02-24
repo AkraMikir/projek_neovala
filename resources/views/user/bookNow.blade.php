@@ -64,7 +64,7 @@
             <!-- Booking Transpark Juanda -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/home pages/home_utama.webp') }}" alt="Transpark Juanda" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/TPJ/DJI_20250404164408_0277_D.webp') }}" alt="Transpark Juanda" class="card-image">
                     <div class="card-overlay">
                         <h3>TRANSPARK JUANDA</h3>
                     </div>
@@ -91,7 +91,7 @@
             <!-- Booking Transpark Cibubur -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-TPC/IMG_9440.webp') }}" alt="Transpark Cibubur" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/TPC/DJI_20250405123918_0311_D.webp') }}" alt="Transpark Cibubur" class="card-image">
                     <div class="card-overlay">
                         <h3>TRANSPARK CIBUBUR</h3>
                     </div>
@@ -118,7 +118,7 @@
             <!-- Booking Grand Kamala Lagoon -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-GKL/IMG_3011.webp') }}" alt="Grand Kamala Lagoon" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/GKL/DJI_20250327153843_0201_D.webp') }}" alt="Grand Kamala Lagoon" class="card-image">
                     <div class="card-overlay">
                         <h3>GRAND KAMALA LAGOON</h3>
                     </div>
@@ -145,7 +145,7 @@
             <!-- Booking Patraland Urbano -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-PLU/IMG_8300.webp') }}" alt="Patraland Urbano" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/PLU/DJI_20250321180632_0140_D.webp') }}" alt="Patraland Urbano" class="card-image">
                     <div class="card-overlay">
                         <h3>PATRALAND URBANO</h3>
                     </div>
@@ -172,7 +172,7 @@
             <!-- Booking Gateway Cicadas -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-GWC/IMG_6088.webp') }}" alt="Gateway Cicadas" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/GWC/gwc desktop.webp') }}" alt="Gateway Cicadas" class="card-image">
                     <div class="card-overlay">
                         <h3>GATEWAY CICADAS</h3>
                     </div>
@@ -199,7 +199,7 @@
             <!-- Booking Podomoro Golf View -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-PGV/IMG_0416.webp') }}" alt="Podomoro Golf View" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/PGV/DJI_20250307171436_0097_D.webp') }}" alt="Podomoro Golf View" class="card-image">
                     <div class="card-overlay">
                         <h3>PODOMORO GOLF VIEW</h3>
                     </div>
@@ -226,7 +226,7 @@
             <!-- Booking Green Pramuka City -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-GPC/IMG_0646.webp') }}" alt="Green Pramuka City" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/GPC/DJI_20250905143026_0543_D.webp') }}" alt="Green Pramuka City" class="card-image">
                     <div class="card-overlay">
                         <h3>GREEN PRAMUKA CITY</h3>
                     </div>
@@ -253,7 +253,7 @@
             <!-- Booking Bassura City -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-BSC/IMG_1882.webp') }}" alt="Bassura City" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/BSC/DJI_20250827131520_0491_D.webp') }}" alt="Bassura City" class="card-image">
                     <div class="card-overlay">
                         <h3>BASSURA CITY</h3>
                     </div>
@@ -280,7 +280,7 @@
             <!-- Booking Springlake Summarecon -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/discover-SPL/IMG_9344.webp') }}" alt="Springlake Summarecon" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/SPL/DJI_20260102114257_0580_D.webp') }}" alt="Springlake Summarecon" class="card-image">
                     <div class="card-overlay">
                         <h3>SPRINGLAKE SUMMARECON</h3>
                     </div>

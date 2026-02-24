@@ -201,10 +201,10 @@ function initializeCarousel() {
         }
     });
 
-    // Auto slide setiap 5 detik
+    // Auto slide setiap 7 detik
     setInterval(() => {
         showSlide(currentSlide + 1);
-    }, 2000);
+    }, 5000);
 
     // Tampilkan slide pertama
     showSlide(0);
