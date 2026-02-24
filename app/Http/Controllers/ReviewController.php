@@ -76,7 +76,9 @@ class ReviewController extends Controller
         }
 
         $sort = $request->get('sort', 'latest');
-        if ($sort === 'longest') {
+        if ($sort === 'popular') {
+            $query->orderByDesc('likes')->orderByDesc('created_at');
+        } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
             $query->latest();
@@ -124,7 +126,9 @@ class ReviewController extends Controller
         }
 
         $sort = $request->get('sort', 'latest');
-        if ($sort === 'longest') {
+        if ($sort === 'popular') {
+            $query->orderByDesc('likes')->orderByDesc('created_at');
+        } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
             $query->latest();
@@ -198,7 +202,9 @@ class ReviewController extends Controller
         }
 
         $sort = $request->get('sort', 'latest');
-        if ($sort === 'longest') {
+        if ($sort === 'popular') {
+            $query->orderByDesc('likes')->orderByDesc('created_at');
+        } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
             $query->latest();
@@ -263,6 +269,7 @@ class ReviewController extends Controller
                 'hide_identity' => $review->hide_identity,
                 'instagram' => $review->instagram,
                 'created_at' => $review->created_at->format('d M Y'),
+                'likes' => (int) ($review->likes ?? 0),
                 'media' => $media,
                 'replies' => $review->replies->map(fn ($r) => [
                     'admin_name' => $r->admin->name ?? 'Admin',
@@ -414,6 +421,68 @@ class ReviewController extends Controller
         }
 
         return redirect()->back()->with('success', 'Terima kasih atas ulasan Anda!');
+    }
+
+    /**
+     * POST /api/reviews/{id}/like — increment likes counter.
+     */
+    public function like(int $id)
+    {
+        $review = Review::find($id);
+        if (!$review) {
+            return response()->json(['success' => false, 'message' => 'Not found'], 404);
+        }
+        $review->timestamps = false;
+        $review->increment('likes');
+        return response()->json(['success' => true, 'likes' => (int) $review->fresh()->likes]);
+    }
+
+    /**
+     * Standalone /ulasan page — form + reviews widget (featured only).
+     */
+    public function reviewsPage(Request $request)
+    {
+        $query = Review::accepted()->featured()->with(['media', 'replies.admin']);
+
+        $locationValues = self::locationFilterValues($request->get('location'));
+        if (!empty($locationValues)) {
+            $query->whereIn('location', $locationValues);
+        }
+
+        if ($request->filled('rating') && ($r = (int) $request->rating) >= 1 && $r <= 5) {
+            $query->where('rating', $r);
+        }
+
+        $sort = $request->get('sort', 'latest');
+        if ($sort === 'popular') {
+            $query->orderByDesc('likes')->orderByDesc('created_at');
+        } elseif ($sort === 'longest') {
+            $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
+        } else {
+            $query->latest();
+        }
+
+        $reviews = $query->paginate(12)->withQueryString();
+
+        $baseQuery = Review::accepted()->featured();
+        if (!empty($locationValues)) {
+            $baseQuery->whereIn('location', $locationValues);
+        }
+        $reviewAggregate = [
+            'avg' => round((float) $baseQuery->avg('rating'), 1),
+            'count' => $baseQuery->count(),
+            'count_has_media' => (clone $baseQuery)->whereHas('media')->count(),
+        ];
+
+        $locations = self::STORE_LOCATIONS;
+
+        return view('user.reviews.page', [
+            'reviews' => $reviews,
+            'reviewAggregate' => $reviewAggregate,
+            'locations' => $locations,
+            'hideNavbar' => true,
+            'backUrl' => route('home'),
+        ]);
     }
 
     private function failResponse(string $message)

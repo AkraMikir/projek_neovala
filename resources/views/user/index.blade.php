@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Neovala - Premium Apartment Rental')
 
@@ -523,6 +523,7 @@
                 @endphp
                 <button type="button" class="reviews-widget-filter-btn px-3 py-1.5 rounded-lg text-sm {{ $isSemuaActive ? 'bg-amber-800 text-white reviews-widget-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="" data-filter-type="all">Semua</button>
                 <button type="button" class="reviews-widget-filter-btn px-3 py-1.5 rounded-lg text-sm {{ $isTerbaruActive ? 'bg-amber-800 text-white reviews-widget-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="">Terbaru</button>
+                <button type="button" class="reviews-widget-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('sort') === 'popular' ? 'bg-amber-800 text-white reviews-widget-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="popular" data-rating=""><i class="fas fa-thumbs-up text-xs mr-1"></i>Terpopuler</button>
                 <button type="button" class="reviews-widget-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('sort') === 'longest' ? 'bg-amber-800 text-white reviews-widget-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="longest" data-rating="">Waktu terlama</button>
                 @for ($r = 5; $r >= 1; $r--)
                 <button type="button" class="reviews-widget-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('rating') == $r ? 'bg-amber-800 text-white reviews-widget-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="{{ $r }}">{{ $r }} Bintang</button>
@@ -567,9 +568,18 @@
                                         </i>
                                         @endfor
                                 </div>
-                                <p class="text-stone-500 text-[11px] truncate">
-                                    {{ $review->hide_identity ? 'Anonymous' : '@' . ($review->instagram ?? '') }} Â·
-                                    {{ $review->created_at->format('d M Y') }}</p>
+                                <div class="flex items-center justify-between mt-0.5">
+                                    <p class="text-stone-500 text-[11px] truncate">
+                                        {{ $review->hide_identity ? 'Anonymous' : '@' . ($review->instagram ?? '') }} ·
+                                        {{ $review->created_at->format('d M Y') }}</p>
+                                    <button type="button"
+                                        class="review-like-btn flex items-center gap-1 text-[10px] text-stone-400 hover:text-[#674c1d] transition-colors focus:outline-none flex-shrink-0 ml-1"
+                                        data-review-id="{{ $review->id }}"
+                                        title="Suka">
+                                        <i class="fas fa-thumbs-up"></i>
+                                        <span class="review-like-count">{{ $review->likes ?? 0 }}</span>
+                                    </button>
+                                </div>
                                 @if($review->replies->count() > 0)
                                 <div class="mt-2 relative">
                                     <button type="button"

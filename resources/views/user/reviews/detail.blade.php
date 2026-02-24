@@ -50,6 +50,7 @@
                 <select id="reviews-detail-filter-dropdown" class="reviews-detail-filter-dropdown w-full rounded-lg border border-[#674c1d]/40 px-3 py-2.5 text-sm text-[#674c1d] bg-white focus:ring-2 focus:ring-[#674c1d]/30 focus:border-[#674c1d]" aria-label="Filter ulasan">
                     <option value="all">Semua</option>
                     <option value="sort:latest">Terbaru</option>
+                    <option value="sort:popular">Terpopuler</option>
                     <option value="sort:longest">Waktu terlama</option>
                     <option value="rating:5">5 Bintang</option>
                     <option value="rating:4">4 Bintang</option>
@@ -71,6 +72,7 @@
                 @endphp
                 <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ $isSemuaActive ? 'bg-[#674c1d] text-white reviews-detail-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="" data-filter-type="all">Semua</button>
                 <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ $isTerbaruActive ? 'bg-[#674c1d] text-white reviews-detail-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="">Terbaru</button>
+                <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('sort') === 'popular' ? 'bg-[#674c1d] text-white reviews-detail-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="popular" data-rating=""><i class="fas fa-thumbs-up text-xs mr-1"></i>Terpopuler</button>
                 <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('sort') === 'longest' ? 'bg-[#674c1d] text-white reviews-detail-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="longest" data-rating="">Waktu terlama</button>
                 @for ($r = 5; $r >= 1; $r--)
                     <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('rating') == $r ? 'bg-[#674c1d] text-white reviews-detail-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="{{ $r }}">{{ $r }} Bintang</button>
@@ -131,6 +133,15 @@
                             <p class="text-xs text-stone-500 mt-1">{{ $reply->created_at->format('d M Y H:i') }}</p>
                         </div>
                     @endforeach
+                    <div class="flex items-center justify-end mt-3 pt-3 border-t border-stone-100">
+                        <button type="button"
+                            class="review-like-btn flex items-center gap-1.5 text-xs text-stone-400 hover:text-[#674c1d] transition-colors focus:outline-none"
+                            data-review-id="{{ $review->id }}"
+                            title="Suka ulasan ini">
+                            <i class="fas fa-thumbs-up text-sm"></i>
+                            <span class="review-like-count">{{ $review->likes ?? 0 }}</span>
+                        </button>
+                    </div>
                 </article>
             @empty
                 <p class="text-center text-stone-500 py-12">Belum ada ulasan.</p>
@@ -319,6 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var activeFilter = filterContainer.querySelector('.reviews-detail-filter-btn.reviews-detail-active:not(.reviews-detail-has-media):not(.reviews-detail-keyword-btn)');
         if (!activeFilter) return 'all';
         if (activeFilter.getAttribute('data-filter-type') === 'all') return 'all';
+        if (activeFilter.getAttribute('data-sort') === 'popular') return 'sort:popular';
         if (activeFilter.getAttribute('data-sort') === 'longest') return 'sort:longest';
         var rating = activeFilter.getAttribute('data-rating');
         if (rating) return 'rating:' + rating;
@@ -343,6 +355,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (value === 'sort:latest') {
             var terbaru = filterContainer.querySelector('.reviews-detail-filter-btn[data-sort="latest"][data-rating=""]:not([data-filter-type="all"])');
             if (terbaru) { terbaru.click(); return; }
+        }
+        if (value === 'sort:popular') {
+            var popular = filterContainer.querySelector('.reviews-detail-filter-btn[data-sort="popular"]');
+            if (popular) { popular.click(); return; }
         }
         if (value === 'sort:longest') {
             var longest = filterContainer.querySelector('.reviews-detail-filter-btn[data-sort="longest"]');
@@ -392,6 +408,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 return '<div class="mt-4 pl-4 py-2 border-l-2 border-[#674c1d]/40 bg-stone-100 rounded-r-lg"><p class="text-xs font-semibold text-[#674c1d]">' + (rep.admin_name || 'Admin') + '</p><p class="text-sm text-stone-700 mt-0.5">' + (rep.content || '') + '</p><p class="text-xs text-stone-500 mt-1">' + (rep.created_at || '') + '</p></div>';
             }).join('');
         }
+        var likeHtml = '<div class="flex items-center justify-end mt-3 pt-3 border-t border-stone-100">' +
+            '<button type="button" class="review-like-btn flex items-center gap-1.5 text-xs text-stone-400 hover:text-[#674c1d] transition-colors focus:outline-none" data-review-id="' + r.id + '" title="Suka ulasan ini">' +
+            '<i class="fas fa-thumbs-up text-sm"></i>' +
+            '<span class="review-like-count">' + (r.likes || 0) + '</span></button></div>';
         return '<article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">' +
             '<div class="flex flex-wrap items-center gap-2 mb-2">' +
             '<span class="text-xs font-semibold text-[#674c1d] uppercase tracking-wide">' + (r.location || '').toUpperCase() + '</span>' +
@@ -399,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function() {
             '<span class="text-stone-500 text-sm">' + identity + '</span>' +
             '<span class="text-stone-400 text-xs">' + (r.created_at || '') + '</span></div>' +
             '<p class="text-stone-800 text-sm leading-relaxed whitespace-pre-wrap">' + (r.content || '') + '</p>' +
-            mediaHtml + repliesHtml + '</article>';
+            mediaHtml + repliesHtml + likeHtml + '</article>';
     }
 
     function fetchReviews() {

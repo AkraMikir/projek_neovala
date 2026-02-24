@@ -46,6 +46,11 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="review_date">Tanggal Ulasan</label>
+                            <input type="date" name="review_date" id="review_date" value="{{ date('Y-m-d') }}" max="{{ date('Y-m-d') }}">
+                            <small style="color:#888;font-size:0.82em;">Tanggal ulasan ditampilkan. Jam diambil otomatis saat simpan.</small>
+                        </div>
+                        <div class="form-group">
                             <label for="instagram">Instagram (opsional)</label>
                             <input type="text" name="instagram" id="instagram" maxlength="50">
                         </div>

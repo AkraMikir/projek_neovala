@@ -158,6 +158,7 @@ class ReviewController extends Controller
     {
         $validated = $request->validate([
             'location' => 'required|string|in:keseluruhan,Transpark Juanda,Transpark Cibubur,Grand Kamala Lagoon,Patraland Urbano,Gateway Cicadas,Podomoro Golf View,Bassura City,Green Pramuka City,Spring Lake Summarecon',
+            'review_date' => 'nullable|date_format:Y-m-d',
             'instagram' => 'nullable|string|max:50',
             'content' => 'required|string|max:2000',
             'rating' => 'required|integer|min:1|max:5',
@@ -206,6 +207,15 @@ class ReviewController extends Controller
         if ($video && $video->isValid()) {
             $path = $video->store('reviews', 'public');
             ReviewMedia::create(['review_id' => $review->id, 'type' => 'video', 'file_path' => $path]);
+        }
+
+        if (!empty($validated['review_date'])) {
+            $now = now();
+            $customDate = \Carbon\Carbon::createFromFormat('Y-m-d', $validated['review_date'])
+                ->setTime($now->hour, $now->minute, $now->second);
+            $review->timestamps = false;
+            $review->created_at = $customDate;
+            $review->save();
         }
 
         return redirect()->route('admin.dashboard1.reviews.index')->with('success', 'Review berhasil ditambahkan.');

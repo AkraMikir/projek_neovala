@@ -18,12 +18,14 @@ class Review extends Model
         'hide_identity',
         'status',
         'is_featured',
+        'likes',
     ];
 
     protected $casts = [
         'hide_identity' => 'boolean',
         'is_featured' => 'boolean',
         'rating' => 'integer',
+        'likes' => 'integer',
     ];
 
     public function media()

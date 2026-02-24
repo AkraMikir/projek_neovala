@@ -25,8 +25,10 @@ use App\Http\Controllers\ReviewController;
 Route::post('/review', [ReviewController::class, 'store'])->name('review.store');
 Route::get('/api/reviews', [ReviewController::class, 'listApi'])->name('api.reviews');
 Route::get('/api/reviews/keywords', [ReviewController::class, 'keywordsApi'])->name('api.reviews.keywords');
+Route::post('/api/reviews/{id}/like', [ReviewController::class, 'like'])->name('api.reviews.like');
 Route::get('/reviews', [ReviewController::class, 'detailIndex'])->name('reviews.detail');
 Route::get('/reviews/{location}', [ReviewController::class, 'detailDiscover'])->name('reviews.detail.discover')->where('location', 'tpj|tpc|gkl|plu|gwc|pgv|gpc|bsr|spl');
+Route::get('/ulasan', [ReviewController::class, 'reviewsPage'])->name('reviews.page');
 
 Route::get('/storage-link', function() {
     Artisan::call('storage:link');
