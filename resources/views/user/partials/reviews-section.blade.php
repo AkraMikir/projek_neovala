@@ -791,9 +791,22 @@ document.addEventListener('DOMContentLoaded', function() {
             if (btn) {
                 e.preventDefault();
                 e.stopPropagation();
-                var src = btn.getAttribute('data-src');
-                var type = btn.getAttribute('data-type') || 'image';
-                if (src) openWidgetMedia(src, type);
+                var container = btn.closest('.reviews-card') || btn.closest('[data-review-id]') || btn.parentElement;
+                var allBtns = container ? container.querySelectorAll('.review-widget-media-preview') : [btn];
+                var items = [], clickedIdx = 0;
+                allBtns.forEach(function(b) {
+                    var src = b.getAttribute('data-src');
+                    var type = b.getAttribute('data-type') || 'image';
+                    if (src) {
+                        if (b === btn) clickedIdx = items.length;
+                        items.push({ src: src, type: type });
+                    }
+                });
+                if (items.length && typeof window.openMediaGallery === 'function') {
+                    window.openMediaGallery(items, clickedIdx);
+                } else if (items.length) {
+                    openWidgetMedia(items[clickedIdx].src, items[clickedIdx].type);
+                }
                 return;
             }
             var replyToggle = e.target.closest('.review-reply-toggle');

@@ -687,13 +687,24 @@ document.addEventListener('DOMContentLoaded', function () {
         var btn = e.target.closest('.review-page-media-preview');
         if (!btn) return;
         e.preventDefault();
-        var src = btn.getAttribute('data-src');
-        var type = btn.getAttribute('data-type') || 'image';
-        if (src) openMedia(src, type);
+        e.stopPropagation();
+        var container = btn.closest('article') || btn.parentElement;
+        var allBtns = container ? container.querySelectorAll('.review-page-media-preview') : [btn];
+        var items = [], clickedIdx = 0;
+        allBtns.forEach(function (b) {
+            var src = b.getAttribute('data-src');
+            var type = b.getAttribute('data-type') || 'image';
+            if (src) {
+                if (b === btn) clickedIdx = items.length;
+                items.push({ src: src, type: type });
+            }
+        });
+        if (items.length && typeof window.openMediaGallery === 'function') {
+            window.openMediaGallery(items, clickedIdx);
+        } else if (items.length) {
+            openMedia(items[clickedIdx].src, items[clickedIdx].type);
+        }
     });
-    if (overlay) overlay.addEventListener('click', function (e) { if (e.target === overlay) closeMedia(); });
-    if (closeMediaBtn) closeMediaBtn.addEventListener('click', closeMedia);
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMedia(); });
 });
 </script>
 @endpush
