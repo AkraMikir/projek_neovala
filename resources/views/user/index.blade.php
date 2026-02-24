@@ -629,6 +629,20 @@
         </div>
     </div>
 </section>
+
+{{-- Media overlay for review widget cards (home page) --}}
+<div id="review-widget-media-overlay"
+    class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true">
+    <div class="relative max-w-4xl max-h-[90vh] w-full flex items-center justify-center" onclick="event.stopPropagation()">
+        <button type="button" id="review-widget-media-close"
+            class="absolute -top-10 right-0 w-10 h-10 flex items-center justify-center rounded-full bg-white border-2 border-[#674c1d] text-[#674c1d] hover:bg-[#674c1d] hover:text-white transition-colors z-10" aria-label="Tutup">
+            <i class="fas fa-times text-lg"></i>
+        </button>
+        <div id="review-widget-media-content"
+            class="bg-white rounded-xl overflow-hidden shadow-xl border-2 border-[#674c1d]/30 max-w-full max-h-[85vh]"></div>
+    </div>
+</div>
+
 @endsection
 
 @push('scripts')
@@ -702,11 +716,452 @@
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1); // get the section id
-            document.getElementById(targetId).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetId = this.getAttribute('href').substring(1);
+            document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
         });
+    });
+
+    // ============================================================
+    // GIVE US FEEDBACK FORM (Home page — IDs use 'Home' suffix)
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('reviewFormHome');
+        var starSelect = document.getElementById('starSelectHome');
+        var ratingInput = document.getElementById('ratingInputHome');
+        var addPhotoBtn = document.getElementById('addPhotoBtnHome');
+        var photoSlots = document.getElementById('photoSlotsHome');
+        var photoCount = document.getElementById('photoCountHome');
+        var videoInput = document.getElementById('videoInputHome');
+        var addVideoBtn = document.getElementById('addVideoBtnHome');
+        var videoLabel = document.getElementById('videoLabelHome');
+        var submitBtn = document.getElementById('reviewSubmitBtnHome');
+        var submitBtnDisabled = document.getElementById('reviewSubmitBtnDisabledHome');
+        var contentTextarea = document.getElementById('contentTextareaHome');
+        var loadingOverlay = document.getElementById('reviewLoadingOverlayHome');
+
+        function checkFormComplete() {
+            var ratingOk = parseInt(ratingInput && ratingInput.value ? ratingInput.value : 0, 10) >= 1;
+            var contentOk = contentTextarea && (contentTextarea.value || '').trim().length > 0;
+            var complete = ratingOk && contentOk;
+            if (submitBtn && submitBtnDisabled) {
+                if (complete) {
+                    submitBtn.classList.remove('hidden');
+                    submitBtn.style.display = '';
+                    submitBtnDisabled.style.display = 'none';
+                } else {
+                    submitBtn.style.display = 'none';
+                    submitBtn.classList.add('hidden');
+                    submitBtnDisabled.style.display = '';
+                }
+            }
+        }
+
+        if (starSelect && ratingInput) {
+            function applyStars(upToRating) {
+                var r = parseInt(upToRating, 10) || 0;
+                starSelect.querySelectorAll('[data-rating]').forEach(function(s) {
+                    var idx = parseInt(s.getAttribute('data-rating'), 10);
+                    s.classList.toggle('fas', idx <= r);
+                    s.classList.toggle('far', idx > r);
+                });
+            }
+            starSelect.querySelectorAll('[data-rating]').forEach(function(star) {
+                star.addEventListener('click', function() {
+                    var r = parseInt(this.getAttribute('data-rating'), 10);
+                    ratingInput.value = r;
+                    applyStars(r);
+                    checkFormComplete();
+                });
+                star.addEventListener('mouseenter', function() {
+                    applyStars(parseInt(this.getAttribute('data-rating'), 10));
+                });
+            });
+            starSelect.addEventListener('mouseleave', function() { applyStars(ratingInput.value); });
+        }
+        if (contentTextarea) {
+            contentTextarea.addEventListener('input', checkFormComplete);
+            contentTextarea.addEventListener('keyup', checkFormComplete);
+        }
+        checkFormComplete();
+
+        // Photo slots
+        var imageInputs = [];
+        function getSelectedImageCount() {
+            return imageInputs.filter(function(x) { return x.input.files && x.input.files.length > 0; }).length;
+        }
+        function updatePhotoUi() {
+            if (!photoCount || !addPhotoBtn) return;
+            var sel = getSelectedImageCount();
+            photoCount.textContent = sel + '/5 foto';
+            addPhotoBtn.style.display = sel >= 5 ? 'none' : 'flex';
+        }
+        function addImageSlot() {
+            if (!photoSlots || getSelectedImageCount() >= 5) return;
+            var input = document.createElement('input');
+            input.type = 'file'; input.name = 'images[]'; input.accept = 'image/*'; input.className = 'hidden';
+            var slot = document.createElement('div');
+            slot.className = 'relative w-12 h-12 rounded-xl overflow-hidden border-2 border-dashed border-[#674c1d]/45 bg-stone-50 flex items-center justify-center';
+            slot.innerHTML = '<i class="fas fa-image text-[#674c1d]/70"></i>';
+            var rm = document.createElement('button');
+            rm.type = 'button';
+            rm.className = 'absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-600 text-white text-xs flex items-center justify-center shadow';
+            rm.textContent = '×';
+            function removeSlot() {
+                var idx = imageInputs.findIndex(function(x) { return x.input === input; });
+                if (idx >= 0) imageInputs.splice(idx, 1);
+                input.remove(); slot.remove(); updatePhotoUi();
+            }
+            rm.addEventListener('click', removeSlot);
+            input.addEventListener('change', function() {
+                var file = input.files && input.files[0];
+                if (!file) { removeSlot(); return; }
+                slot.innerHTML = '';
+                var img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.className = 'w-full h-full object-cover';
+                img.onload = function() { URL.revokeObjectURL(img.src); };
+                slot.appendChild(img); slot.appendChild(rm);
+                updatePhotoUi();
+            });
+            imageInputs.push({ input: input, slot: slot });
+            photoSlots.appendChild(input); photoSlots.appendChild(slot); slot.appendChild(rm);
+            input.click(); updatePhotoUi();
+        }
+        if (addPhotoBtn) { addPhotoBtn.addEventListener('click', addImageSlot); updatePhotoUi(); }
+
+        // Video
+        if (addVideoBtn && videoInput) {
+            addVideoBtn.addEventListener('click', function() { videoInput.click(); });
+            var MAX_VIDEO_BYTES = 20 * 1024 * 1024;
+            function showVideoSizeAlert() {
+                var wrap = document.createElement('div');
+                wrap.className = 'review-video-toast'; wrap.setAttribute('role', 'alert');
+                wrap.innerHTML = '<span class="review-video-toast-icon"><i class="fas fa-exclamation-circle"></i></span>' +
+                    '<div class="review-video-toast-body"><strong>File terlalu besar</strong><p>File video maksimal 20 MB. Pilih file yang lebih kecil.</p></div>' +
+                    '<button type="button" class="review-video-toast-close" aria-label="Tutup"><i class="fas fa-times"></i></button>';
+                document.body.appendChild(wrap);
+                setTimeout(function() { wrap.classList.add('review-video-toast-visible'); }, 10);
+                function remove() { wrap.classList.remove('review-video-toast-visible'); setTimeout(function() { wrap.remove(); }, 300); }
+                wrap.querySelector('.review-video-toast-close').addEventListener('click', remove);
+                setTimeout(remove, 5000);
+            }
+            videoInput.addEventListener('change', function() {
+                if (!this.files || !this.files.length) return;
+                var file = this.files[0];
+                if (file.size > MAX_VIDEO_BYTES) { showVideoSizeAlert(); this.value = ''; if (videoLabel) videoLabel.textContent = 'Tambah video'; return; }
+                if (videoLabel) videoLabel.textContent = file.name || '1 video dipilih';
+            });
+        }
+
+        // Form AJAX submit
+        if (form) {
+            function showLoading() { if (loadingOverlay) { loadingOverlay.classList.remove('hidden'); loadingOverlay.setAttribute('aria-hidden', 'false'); } }
+            function hideLoading() { if (loadingOverlay) { loadingOverlay.classList.add('hidden'); loadingOverlay.setAttribute('aria-hidden', 'true'); } }
+            form.addEventListener('submit', function(e) {
+                if (parseInt(ratingInput ? ratingInput.value || 0 : 0, 10) < 1) { e.preventDefault(); alert('Pilih rating 1-5 bintang.'); return; }
+                e.preventDefault(); showLoading();
+                var formData = new FormData(form);
+                fetch(form.getAttribute('action'), { method: 'POST', body: formData, headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' } })
+                .then(function(res) { return res.json().then(function(d) { return { ok: res.ok, status: res.status, data: d }; }).catch(function() { return { ok: res.ok, status: res.status, data: null }; }); })
+                .then(function(result) {
+                    hideLoading();
+                    if (result.ok && result.data && result.data.success) {
+                        alert(result.data.message || 'Terima kasih atas ulasan Anda!');
+                        form.reset();
+                        if (ratingInput) ratingInput.value = '0';
+                        if (starSelect) starSelect.querySelectorAll('[data-rating]').forEach(function(s) { s.classList.add('far'); s.classList.remove('fas'); });
+                        imageInputs.length = 0;
+                        if (photoSlots) photoSlots.innerHTML = '';
+                        if (videoLabel) videoLabel.textContent = 'Tambah video';
+                        checkFormComplete(); updatePhotoUi();
+                        if (typeof fetchReviewsHome === 'function') fetchReviewsHome();
+                    } else {
+                        var msg = (result.data && result.data.message) ? result.data.message : 'Gagal mengirim ulasan.';
+                        alert(msg);
+                    }
+                })
+                .catch(function() { hideLoading(); alert('Gagal mengirim ulasan. Periksa koneksi dan coba lagi.'); });
+            });
+        }
+
+        // ============================================================
+        // WHAT THEY SAY — Filter, Fetch, Slider, Reply, Media Modal
+        // ============================================================
+        var filterContainer = document.querySelector('#comment-section .reviews-widget-filter-container');
+        var listEl = document.getElementById('reviews-list');
+        var aggEl = document.getElementById('reviews-aggregate');
+        var locationSelect = document.getElementById('reviews-widget-location');
+        var searchInputEl = document.getElementById('reviews-widget-search');
+        var keywordsEl = document.getElementById('reviews-widget-keywords');
+
+        if (filterContainer && listEl && aggEl) {
+            function getParams() {
+                var sort = 'latest', rating = '', hasMedia = '', keyword = '';
+                var activeFilter = filterContainer.querySelector('.reviews-widget-filter-btn.reviews-widget-active:not(.reviews-widget-has-media):not(.reviews-widget-keyword-btn)');
+                if (activeFilter) { sort = activeFilter.getAttribute('data-sort') || sort; rating = activeFilter.getAttribute('data-rating') || ''; }
+                if (filterContainer.querySelector('.reviews-widget-has-media.reviews-widget-active')) hasMedia = '1';
+                var activeKw = filterContainer.querySelector('.reviews-widget-keyword-btn.reviews-widget-active');
+                if (activeKw) keyword = activeKw.getAttribute('data-keyword') || '';
+                var loc = locationSelect ? locationSelect.value : '';
+                var q = searchInputEl ? searchInputEl.value.trim() : '';
+                return { location: loc, sort: sort, rating: rating, has_media: hasMedia, keyword: keyword, q: q };
+            }
+            function setActiveFilterBtn(btn) {
+                filterContainer.querySelectorAll('.reviews-widget-filter-btn:not(.reviews-widget-has-media):not(.reviews-widget-keyword-btn)').forEach(function(b) {
+                    b.classList.remove('bg-amber-800', 'text-white', 'reviews-widget-active');
+                    b.classList.add('bg-stone-200', 'text-stone-700');
+                });
+                if (btn) { btn.classList.remove('bg-stone-200', 'text-stone-700'); btn.classList.add('bg-amber-800', 'text-white', 'reviews-widget-active'); }
+            }
+            function setActiveKeywordBtn(btn) {
+                if (!keywordsEl) return;
+                keywordsEl.querySelectorAll('.reviews-widget-keyword-btn').forEach(function(b) {
+                    b.classList.remove('bg-amber-800', 'text-white', 'reviews-widget-active');
+                    b.classList.add('bg-stone-200', 'text-stone-700');
+                });
+                if (btn) { btn.classList.remove('bg-stone-200', 'text-stone-700'); btn.classList.add('bg-amber-800', 'text-white', 'reviews-widget-active'); }
+            }
+            function setHasMediaActive(active) {
+                var btn = filterContainer.querySelector('.reviews-widget-has-media');
+                if (!btn) return;
+                if (active) { btn.classList.remove('bg-stone-200', 'text-stone-700'); btn.classList.add('bg-amber-800', 'text-white', 'reviews-widget-active'); }
+                else { btn.classList.remove('bg-amber-800', 'text-white', 'reviews-widget-active'); btn.classList.add('bg-stone-200', 'text-stone-700'); }
+            }
+            function clearHasMediaAndKeyword() { setHasMediaActive(false); setActiveKeywordBtn(null); }
+
+            function loadKeywords() {
+                var loc = locationSelect ? locationSelect.value : '';
+                var params = new URLSearchParams();
+                if (loc) params.set('location', loc);
+                fetch('/api/reviews/keywords?' + params.toString())
+                    .then(function(res) { return res.json(); })
+                    .then(function(data) {
+                        if (!keywordsEl || !data.keywords || data.keywords.length === 0) { if (keywordsEl) keywordsEl.innerHTML = ''; return; }
+                        keywordsEl.innerHTML = '';
+                        data.keywords.forEach(function(kw) {
+                            var btn = document.createElement('button');
+                            btn.type = 'button';
+                            btn.className = 'reviews-widget-filter-btn reviews-widget-keyword-btn px-3 py-1.5 rounded-lg text-sm bg-stone-200 text-stone-700 hover:bg-stone-300';
+                            btn.setAttribute('data-keyword', kw.word);
+                            btn.textContent = kw.word + ' (' + kw.count + ')';
+                            btn.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                var isActive = btn.classList.contains('reviews-widget-active');
+                                setActiveKeywordBtn(isActive ? null : btn);
+                                fetchReviewsHome();
+                            });
+                            keywordsEl.appendChild(btn);
+                        });
+                    });
+            }
+
+            function mediaPreviewHtml(media) {
+                if (!media || media.length === 0) return '';
+                var parts = [];
+                media.forEach(function(m) {
+                    var url = typeof m === 'object' ? (m.url || (m.file_path ? ('/storage/' + m.file_path) : '')) : m;
+                    var type = typeof m === 'object' && m.type === 'video' ? 'video' : 'image';
+                    if (!url) return;
+                    if (type === 'video') {
+                        parts.push('<button type="button" class="review-widget-media-preview relative w-9 h-9 rounded border border-[#674c1d]/30 overflow-hidden flex-shrink-0 bg-stone-100 focus:outline-none" data-src="' + url + '" data-type="video"><video src="' + url + '" class="w-full h-full object-cover pointer-events-none" preload="metadata" muted></video><span class="absolute inset-0 flex items-center justify-center bg-black/30"><i class="fas fa-play text-white text-xs"></i></span></button>');
+                    } else {
+                        parts.push('<button type="button" class="review-widget-media-preview w-9 h-9 rounded border border-[#674c1d]/30 overflow-hidden flex-shrink-0 focus:outline-none" data-src="' + url + '" data-type="image"><img src="' + url + '" alt="" class="w-full h-full object-cover"></button>');
+                    }
+                });
+                return parts.length ? '<div class="reviews-card-media mt-2 flex flex-wrap gap-1">' + parts.join('') + '</div>' : '';
+            }
+
+            function renderCard(r) {
+                var identity = r.hide_identity ? 'Anonymous' : ('@' + (r.instagram || ''));
+                var stars = '';
+                for (var i = 1; i <= 5; i++) { stars += '<i class="fas fa-star ' + (i <= r.rating ? 'text-[#674c1d]' : 'text-stone-200') + ' text-xs"></i>'; }
+                var repliesHtml = '';
+                if (r.replies && r.replies.length) {
+                    var replyBlocks = r.replies.map(function(rep) {
+                        return '<p class="text-[11px] text-[#674c1d] font-medium">' + (rep.admin_name || 'Admin') + '</p><p class="text-[11px] text-stone-600 leading-tight">' + (rep.content || '') + '</p>';
+                    }).join('');
+                    repliesHtml = '<div class="mt-2 relative"><button type="button" class="review-reply-toggle w-full text-left text-[11px] text-[#674c1d] font-medium flex items-center gap-1 hover:underline focus:outline-none" aria-expanded="false"><i class="fas fa-chevron-down review-reply-chevron text-[10px] transition-transform duration-200"></i> Balasan admin (' + r.replies.length + ')</button><div class="review-reply-dropdown hidden absolute left-0 right-0 top-full mt-1 z-[50] pl-3 border-l-2 border-stone-400 bg-stone-100 rounded-r py-2 pr-2 shadow-lg min-w-[200px]">' + replyBlocks + '</div></div>';
+                }
+                var mediaHtml = mediaPreviewHtml(r.media);
+                var likeHtml = '<button type="button" class="review-like-btn flex items-center gap-1 text-[10px] text-stone-400 hover:text-[#674c1d] transition-colors focus:outline-none flex-shrink-0 ml-1" data-review-id="' + (r.id || '') + '" title="Suka"><i class="fas fa-thumbs-up"></i><span class="review-like-count">' + (r.likes || 0) + '</span></button>';
+                var metaHtml = '<div class="flex items-center justify-between mt-0.5"><p class="text-stone-500 text-[11px] truncate">' + identity + ' · ' + (r.created_at || '') + '</p>' + likeHtml + '</div>';
+                var detailUrl = '/reviews?pin=' + (r.id || '');
+                return '<div class="reviews-card reviews-card-clickable relative flex-shrink-0 w-64 max-w-[85vw] snap-start bg-white rounded-lg shadow-sm pt-1 px-3 pb-3 border border-stone-100 flex flex-col justify-center min-h-[140px]" data-review-id="' + (r.id || '') + '">' +
+                    '<a href="' + detailUrl + '" class="reviews-card-link block h-full min-h-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#674c1d]/40 focus:ring-offset-1">' +
+                    '<div class="reviews-card-inner h-[100%]">' +
+                    '<p class="text-amber-900 font-semibold uppercase text-xs mb-0.5 text-center min-h-[2rem] flex items-center justify-center leading-tight">' + (r.location ? r.location.toUpperCase() : '') + '</p>' +
+                    '<p class="text-stone-800 text-xs leading-snug line-clamp-4 mb-1.5">' + (r.content || '') + '</p>' +
+                    '<div class="flex items-center gap-1 mb-0.5">' + stars + '</div>' +
+                    metaHtml + repliesHtml + mediaHtml + '</div>' +
+                    '<span class="reviews-card-more absolute right-2 bottom-2 text-[10px] font-medium bg-gradient-to-r from-amber-600 to-[#674c1d] bg-clip-text text-transparent lg:hidden">Lihat selengkapnya &gt;</span>' +
+                    '</a></div>';
+            }
+
+            function fetchReviewsHome() {
+                var p = getParams();
+                var params = new URLSearchParams();
+                if (p.location) params.set('location', p.location);
+                params.set('sort', p.sort);
+                if (p.rating) params.set('rating', p.rating);
+                if (p.has_media) params.set('has_media', p.has_media);
+                if (p.keyword) params.set('keyword', p.keyword);
+                if (p.q) params.set('q', p.q);
+                params.set('per_page', '50');
+                if (window.closeReviewsReplyDropdownHome) window.closeReviewsReplyDropdownHome();
+                listEl.innerHTML = '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Memuat...</p>';
+                fetch('/api/reviews?' + params.toString())
+                    .then(function(res) { return res.json(); })
+                    .then(function(data) {
+                        aggEl.querySelector('.text-3xl').textContent = Number(data.aggregate.avg).toFixed(1);
+                        aggEl.querySelector('.text-2xl').textContent = data.aggregate.count;
+                        var hasMediaBtn = filterContainer.querySelector('.reviews-widget-has-media');
+                        if (hasMediaBtn) hasMediaBtn.textContent = 'Foto/Video (' + (data.aggregate.count_has_media ?? 0) + ')';
+                        if (!data.reviews || data.reviews.length === 0) {
+                            listEl.innerHTML = '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Belum ada ulasan.</p>';
+                        } else {
+                            listEl.innerHTML = data.reviews.map(renderCard).join('');
+                        }
+                        if (typeof updateSliderButtonsHome === 'function') updateSliderButtonsHome();
+                    })
+                    .catch(function() { listEl.innerHTML = '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Gagal memuat ulasan.</p>'; });
+            }
+            window.fetchReviewsHome = fetchReviewsHome;
+
+            var searchDebounceTimer;
+            if (searchInputEl) {
+                searchInputEl.addEventListener('input', function() { clearTimeout(searchDebounceTimer); searchDebounceTimer = setTimeout(fetchReviewsHome, 350); });
+            }
+            filterContainer.querySelectorAll('.reviews-widget-filter-btn:not(.reviews-widget-has-media):not(.reviews-widget-keyword-btn)').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (btn.getAttribute('data-filter-type') === 'all') clearHasMediaAndKeyword();
+                    setActiveFilterBtn(this); fetchReviewsHome();
+                });
+            });
+            var hasMediaBtnEl = filterContainer.querySelector('.reviews-widget-has-media');
+            if (hasMediaBtnEl) {
+                hasMediaBtnEl.addEventListener('click', function(e) {
+                    e.preventDefault(); var isActive = this.classList.contains('reviews-widget-active'); setHasMediaActive(!isActive); fetchReviewsHome();
+                });
+            }
+            if (locationSelect) {
+                locationSelect.addEventListener('change', function() { loadKeywords(); fetchReviewsHome(); });
+            }
+            loadKeywords();
+
+            // Media modal
+            var widgetOverlay = document.getElementById('review-widget-media-overlay');
+            var widgetContent = document.getElementById('review-widget-media-content');
+            var widgetClose = document.getElementById('review-widget-media-close');
+            function openWidgetMedia(src, type) {
+                if (!widgetContent || !widgetOverlay) return;
+                widgetContent.innerHTML = '';
+                if (type === 'video') {
+                    var v = document.createElement('video'); v.src = src; v.controls = true; v.className = 'max-w-full max-h-[85vh]'; v.preload = 'metadata';
+                    widgetContent.appendChild(v);
+                    widgetOverlay.classList.remove('opacity-0', 'pointer-events-none'); widgetOverlay.classList.add('opacity-100', 'pointer-events-auto'); widgetOverlay.setAttribute('aria-hidden', 'false');
+                    v.play();
+                } else {
+                    var img = document.createElement('img'); img.src = src; img.alt = ''; img.className = 'max-w-full max-h-[85vh] object-contain';
+                    widgetContent.appendChild(img);
+                    widgetOverlay.classList.remove('opacity-0', 'pointer-events-none'); widgetOverlay.classList.add('opacity-100', 'pointer-events-auto'); widgetOverlay.setAttribute('aria-hidden', 'false');
+                }
+            }
+            function closeWidgetMedia() {
+                if (!widgetOverlay || !widgetContent) return;
+                widgetOverlay.classList.add('opacity-0', 'pointer-events-none'); widgetOverlay.classList.remove('opacity-100', 'pointer-events-auto'); widgetOverlay.setAttribute('aria-hidden', 'true');
+                var v = widgetContent.querySelector('video'); if (v) v.pause();
+                setTimeout(function() { widgetContent.innerHTML = ''; }, 300);
+            }
+            listEl.addEventListener('click', function(e) {
+                var btn = e.target.closest('.review-widget-media-preview');
+                if (btn) { e.preventDefault(); e.stopPropagation(); var src = btn.getAttribute('data-src'); var type = btn.getAttribute('data-type') || 'image'; if (src) openWidgetMedia(src, type); return; }
+                var replyToggle = e.target.closest('.review-reply-toggle');
+                if (replyToggle) e.stopPropagation();
+            });
+            if (widgetOverlay) widgetOverlay.addEventListener('click', function(e) { if (e.target === widgetOverlay) closeWidgetMedia(); });
+            if (widgetClose) widgetClose.addEventListener('click', closeWidgetMedia);
+            document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeWidgetMedia(); });
+        }
+
+        // ============================================================
+        // SLIDER NAVIGATION (reviews-list carousel)
+        // ============================================================
+        var sliderTrack = document.getElementById('reviews-list');
+        var sliderPrev = document.querySelector('#comment-section .reviews-slider-prev');
+        var sliderNext = document.querySelector('#comment-section .reviews-slider-next');
+        var updateSliderButtonsHome;
+        if (sliderTrack && sliderPrev && sliderNext) {
+            var CARD_GAP = 16;
+            function getCardWidth() {
+                var card = sliderTrack.querySelector('.reviews-card');
+                return card ? card.offsetWidth + CARD_GAP : 304;
+            }
+            updateSliderButtonsHome = function() {
+                var hasCards = sliderTrack.querySelectorAll('.reviews-card').length > 0;
+                if (!hasCards) { sliderPrev.style.display = 'none'; sliderNext.style.display = 'none'; return; }
+                var tw = sliderTrack.scrollWidth, cw = sliderTrack.clientWidth, sl = sliderTrack.scrollLeft;
+                var step = getCardWidth();
+                if (tw <= cw + 2) {
+                    sliderPrev.style.display = 'none'; sliderNext.style.display = 'none';
+                    sliderPrev.disabled = true; sliderNext.disabled = true;
+                } else {
+                    sliderPrev.style.display = sl >= 2 * step ? 'flex' : 'none'; sliderPrev.disabled = sl < 2 * step;
+                    sliderNext.style.display = (sl + cw >= tw - 2) ? 'none' : 'flex'; sliderNext.disabled = sl + cw >= tw - 2;
+                }
+            };
+            sliderTrack.addEventListener('scroll', updateSliderButtonsHome);
+            sliderPrev.addEventListener('click', function() { sliderTrack.scrollBy({ left: -getCardWidth(), behavior: 'smooth' }); });
+            sliderNext.addEventListener('click', function() { sliderTrack.scrollBy({ left: getCardWidth(), behavior: 'smooth' }); });
+            updateSliderButtonsHome();
+            setTimeout(updateSliderButtonsHome, 100);
+            window.addEventListener('resize', updateSliderButtonsHome);
+        }
+
+        // ============================================================
+        // REPLY DROPDOWN (overflow-safe, absolute positioned)
+        // ============================================================
+        var replyListEl = document.getElementById('reviews-list');
+        var replySliderOuter = document.querySelector('#comment-section .reviews-slider-outer');
+        var openReplyDropdown = null, openReplyBtn = null;
+        window.closeReviewsReplyDropdownHome = function() { closeReplyDropdownHome(); };
+        function closeReplyDropdownHome() {
+            if (openReplyDropdown) {
+                var parent = openReplyDropdown._originalParent;
+                if (parent && document.body.contains(parent)) { parent.appendChild(openReplyDropdown); } else if (openReplyDropdown.parentNode) { openReplyDropdown.parentNode.removeChild(openReplyDropdown); }
+                openReplyDropdown.classList.add('hidden'); openReplyDropdown.style.cssText = '';
+                if (openReplyBtn && document.body.contains(openReplyBtn)) {
+                    openReplyBtn.setAttribute('aria-expanded', 'false');
+                    var ch = openReplyBtn.querySelector('.review-reply-chevron'); if (ch) ch.style.transform = 'rotate(0deg)';
+                }
+                openReplyDropdown = null; openReplyBtn = null;
+            }
+            document.removeEventListener('click', closeReplyOnClickOutsideHome);
+        }
+        function closeReplyOnClickOutsideHome(ev) {
+            if (openReplyDropdown && openReplyBtn && !openReplyDropdown.contains(ev.target) && !openReplyBtn.contains(ev.target)) closeReplyDropdownHome();
+        }
+        if (replyListEl && replySliderOuter) {
+            replyListEl.addEventListener('click', function(e) {
+                var btn = e.target.closest('.review-reply-toggle');
+                if (!btn) return;
+                e.preventDefault();
+                if (openReplyBtn === btn) { closeReplyDropdownHome(); return; }
+                var card = btn.closest('.reviews-card');
+                var dropdown = card ? card.querySelector('.review-reply-dropdown') : null;
+                if (!dropdown) return;
+                closeReplyDropdownHome();
+                var btnRect = btn.getBoundingClientRect(), outerRect = replySliderOuter.getBoundingClientRect();
+                dropdown._originalParent = dropdown.parentNode;
+                replySliderOuter.appendChild(dropdown);
+                dropdown.classList.remove('hidden');
+                dropdown.style.cssText = 'position:absolute;left:' + (btnRect.left - outerRect.left) + 'px;top:' + (btnRect.bottom - outerRect.top + 4) + 'px;width:' + Math.max(btnRect.width, 200) + 'px;min-width:200px;z-index:9999;';
+                btn.setAttribute('aria-expanded', 'true');
+                var chevron = btn.querySelector('.review-reply-chevron'); if (chevron) chevron.style.transform = 'rotate(180deg)';
+                openReplyDropdown = dropdown; openReplyBtn = btn;
+                setTimeout(function() { document.addEventListener('click', closeReplyOnClickOutsideHome); }, 0);
+            });
+        }
     });
     </script>
 @endpush
