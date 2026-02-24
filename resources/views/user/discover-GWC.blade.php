@@ -199,7 +199,7 @@
             </div>
         </section>
 
-        @include('user.partials.reviews-section', ['location' => 'gwc', 'carouselImages' => $carouselImages ?? []])
+        @include('user.partials.reviews-section', ['locationName' => 'Gateway Cicadas', 'locationSlug' => 'gwc', 'carouselImages' => $carouselImages ?? []])
     </main>
 
     <!-- Footer Discover -->

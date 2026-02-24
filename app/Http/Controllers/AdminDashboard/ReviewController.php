@@ -12,12 +12,37 @@ use Illuminate\Support\Facades\Storage;
 
 class ReviewController extends Controller
 {
+    /** Untuk filter: nilai yang bisa tersimpan di DB (nama lengkap + slug lama) agar data lama & baru ikut. */
+    private static function locationFilterValues(string $location): array
+    {
+        $slugToName = [
+            'tpj' => 'Transpark Juanda', 'tpc' => 'Transpark Cibubur', 'gkl' => 'Grand Kamala Lagoon',
+            'plu' => 'Patraland Urbano', 'gwc' => 'Gateway Cicadas', 'pgv' => 'Podomoro Golf View',
+            'gpc' => 'Green Pramuka City', 'bsr' => 'Bassura City', 'spl' => 'Spring Lake Summarecon',
+        ];
+        if (isset($slugToName[$location])) {
+            return [$location, $slugToName[$location]];
+        }
+        $nameToSlug = [
+            'Transpark Juanda' => 'tpj', 'Transpark Cibubur' => 'tpc', 'Grand Kamala Lagoon' => 'gkl',
+            'Patraland Urbano' => 'plu', 'Gateway Cicadas' => 'gwc', 'Podomoro Golf View' => 'pgv',
+            'Bassura City' => 'bsr', 'Green Pramuka City' => 'gpc', 'Spring Lake Summarecon' => 'spl',
+        ];
+        if (isset($nameToSlug[$location])) {
+            return [$location, $nameToSlug[$location]];
+        }
+        if (in_array($location, ['keseluruhan', 'Keseluruhan'], true)) {
+            return ['keseluruhan', 'utama'];
+        }
+        return [$location];
+    }
+
     public function index(Request $request)
     {
         $query = Review::with(['media', 'replies.admin']);
 
         if ($request->filled('location')) {
-            $query->where('location', $request->location);
+            $query->whereIn('location', self::locationFilterValues($request->location));
         }
         if ($request->filled('status')) {
             $query->where('status', $request->status);
@@ -28,7 +53,7 @@ class ReviewController extends Controller
 
         $baseQuery = Review::query();
         if ($request->filled('location')) {
-            $baseQuery->where('location', $request->location);
+            $baseQuery->whereIn('location', self::locationFilterValues($request->location));
         }
         if ($request->filled('status')) {
             $baseQuery->where('status', $request->status);
@@ -42,7 +67,7 @@ class ReviewController extends Controller
         ];
 
         $reviews = $query->latest()->paginate(15)->withQueryString();
-        $locations = ['utama', 'tpj', 'tpc', 'gkl', 'plu', 'gwc', 'pgv', 'gpc', 'bsr', 'spl'];
+        $locations = ['keseluruhan', 'Transpark Juanda', 'Transpark Cibubur', 'Grand Kamala Lagoon', 'Patraland Urbano', 'Gateway Cicadas', 'Podomoro Golf View', 'Bassura City', 'Green Pramuka City', 'Spring Lake Summarecon'];
 
         return view('admin.reviews.index', compact('reviews', 'locations', 'aggregate'));
     }
@@ -55,7 +80,7 @@ class ReviewController extends Controller
         $query = Review::with(['media', 'replies.admin']);
 
         if ($request->filled('location')) {
-            $query->where('location', $request->location);
+            $query->whereIn('location', self::locationFilterValues($request->location));
         }
         if ($request->filled('status')) {
             $query->where('status', $request->status);
@@ -66,7 +91,7 @@ class ReviewController extends Controller
 
         $baseQuery = Review::query();
         if ($request->filled('location')) {
-            $baseQuery->where('location', $request->location);
+            $baseQuery->whereIn('location', self::locationFilterValues($request->location));
         }
         if ($request->filled('status')) {
             $baseQuery->where('status', $request->status);
@@ -94,7 +119,7 @@ class ReviewController extends Controller
             ])->values()->all();
             return [
                 'id' => $review->id,
-                'location' => $review->location,
+                'location' => \App\Models\Review::locationDisplay($review->location),
                 'user_source' => $review->user_source,
                 'is_featured' => $review->is_featured,
                 'content' => $review->content,
@@ -125,14 +150,14 @@ class ReviewController extends Controller
 
     public function create()
     {
-        $locations = ['utama', 'tpj', 'tpc', 'gkl', 'plu', 'gwc', 'pgv', 'gpc', 'bsr', 'spl'];
+        $locations = ['keseluruhan', 'Transpark Juanda', 'Transpark Cibubur', 'Grand Kamala Lagoon', 'Patraland Urbano', 'Gateway Cicadas', 'Podomoro Golf View', 'Bassura City', 'Green Pramuka City', 'Spring Lake Summarecon'];
         return view('admin.reviews.create', compact('locations'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'location' => 'required|string|in:utama,tpj,tpc,gkl,plu,gwc,pgv,gpc,bsr,spl',
+            'location' => 'required|string|in:keseluruhan,Transpark Juanda,Transpark Cibubur,Grand Kamala Lagoon,Patraland Urbano,Gateway Cicadas,Podomoro Golf View,Bassura City,Green Pramuka City,Spring Lake Summarecon',
             'instagram' => 'nullable|string|max:50',
             'content' => 'required|string|max:2000',
             'rating' => 'required|integer|min:1|max:5',
@@ -189,7 +214,7 @@ class ReviewController extends Controller
     public function edit(Review $review)
     {
         $review->load(['media', 'replies.admin']);
-        $locations = ['utama', 'tpj', 'tpc', 'gkl', 'plu', 'gwc', 'pgv', 'gpc', 'bsr', 'spl'];
+        $locations = ['keseluruhan', 'Transpark Juanda', 'Transpark Cibubur', 'Grand Kamala Lagoon', 'Patraland Urbano', 'Gateway Cicadas', 'Podomoro Golf View', 'Bassura City', 'Green Pramuka City', 'Spring Lake Summarecon'];
         return view('admin.reviews.edit', compact('review', 'locations'));
     }
 

@@ -40,7 +40,7 @@
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
-                            <p class="form-help">Lokasi: <strong>{{ strtoupper($review->location) }}</strong> (tidak bisa diubah)</p>
+                            <p class="form-help">Lokasi: <strong>{{ strtoupper(\App\Models\Review::locationDisplay($review->location)) }}</strong> (tidak bisa diubah)</p>
                         </div>
                         <div class="form-group">
                             <label for="content">Konten</label>

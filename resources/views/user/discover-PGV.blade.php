@@ -204,7 +204,7 @@
             </div>
         </section>
 
-        @include('user.partials.reviews-section', ['location' => 'pgv', 'carouselImages' => $carouselImages ?? []])
+        @include('user.partials.reviews-section', ['locationName' => 'Podomoro Golf View', 'locationSlug' => 'pgv', 'carouselImages' => $carouselImages ?? []])
     </main>
 
     <!-- Footer Discover -->

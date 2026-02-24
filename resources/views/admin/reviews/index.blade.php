@@ -79,7 +79,7 @@
                     <div class="bg-white rounded-lg shadow border border-stone-200 p-4">
                         <div class="flex justify-between items-start">
                             <div class="flex-1">
-                                <span class="text-xs font-semibold text-amber-800 uppercase">{{ $review->location }}</span>
+                                <span class="text-xs font-semibold text-amber-800 uppercase">{{ strtoupper(\App\Models\Review::locationDisplay($review->location)) }}</span>
                                 <span class="text-xs text-stone-500 ml-2">{{ $review->user_source }}</span>
                                 @if($review->is_featured)
                                     <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded ml-2">Featured</span>
@@ -177,7 +177,7 @@
             return '<div class="bg-white rounded-lg shadow border border-stone-200 p-4">' +
                 '<div class="flex justify-between items-start">' +
                 '<div class="flex-1">' +
-                '<span class="text-xs font-semibold text-amber-800 uppercase">' + (r.location || '') + '</span>' +
+                '<span class="text-xs font-semibold text-amber-800 uppercase">' + (r.location ? r.location.toUpperCase() : '') + '</span>' +
                 '<span class="text-xs text-stone-500 ml-2">' + (r.user_source || '') + '</span>' + featuredBadge +
                 '<p class="mt-1 text-stone-800">' + (r.content ? r.content.substring(0, 150) + (r.content.length > 150 ? '...' : '') : '') + '</p>' +
                 '<div class="flex items-center gap-2 mt-2">' + stars +

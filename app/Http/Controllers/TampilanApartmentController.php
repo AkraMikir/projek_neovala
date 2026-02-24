@@ -13,9 +13,11 @@ class TampilanApartmentController extends Controller
     private function getReviewDataForLocation(string $location): array
     {
         $reviews = Review::accepted()->forLocation($location)->with(['media', 'replies.admin'])->latest()->paginate(12);
-        $avg = Review::accepted()->forLocation($location)->avg('rating');
-        $count = Review::accepted()->forLocation($location)->count();
-        $reviewAggregate = ['avg' => round((float) $avg, 1), 'count' => $count];
+        $baseQuery = Review::accepted()->forLocation($location);
+        $avg = (clone $baseQuery)->avg('rating');
+        $count = (clone $baseQuery)->count();
+        $countHasMedia = (clone $baseQuery)->whereHas('media')->count();
+        $reviewAggregate = ['avg' => round((float) $avg, 1), 'count' => $count, 'count_has_media' => $countHasMedia];
         return compact('reviews', 'reviewAggregate');
     }
 

@@ -10,7 +10,54 @@ use Illuminate\Support\Facades\Storage;
 
 class ReviewController extends Controller
 {
-    private const DETAIL_LOCATIONS = ['tpj', 'tpc', 'gkl', 'plu', 'gwc', 'pgv', 'gpc', 'bsr', 'spl'];
+    private const DETAIL_LOCATIONS = ['Transpark Juanda', 'Transpark Cibubur', 'Grand Kamala Lagoon', 'Patraland Urbano', 'Gateway Cicadas', 'Podomoro Golf View', 'Bassura City', 'Green Pramuka City', 'Spring Lake Summarecon'];
+
+    /** Slug (URL) → nama lengkap untuk query & tampilan */
+    private const LOCATION_SLUG_TO_NAME = [
+        'tpj' => 'Transpark Juanda',
+        'tpc' => 'Transpark Cibubur',
+        'gkl' => 'Grand Kamala Lagoon',
+        'plu' => 'Patraland Urbano',
+        'gwc' => 'Gateway Cicadas',
+        'pgv' => 'Podomoro Golf View',
+        'gpc' => 'Green Pramuka City',
+        'bsr' => 'Bassura City',
+        'spl' => 'Spring Lake Summarecon',
+    ];
+
+    /** Nilai location yang boleh disimpan (nama lengkap + keseluruhan) */
+    private const STORE_LOCATIONS = ['keseluruhan', 'Transpark Juanda', 'Transpark Cibubur', 'Grand Kamala Lagoon', 'Patraland Urbano', 'Gateway Cicadas', 'Podomoro Golf View', 'Bassura City', 'Green Pramuka City', 'Spring Lake Summarecon'];
+
+    private static function locationToName(?string $value): ?string
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+        if (isset(self::LOCATION_SLUG_TO_NAME[$value])) {
+            return self::LOCATION_SLUG_TO_NAME[$value];
+        }
+        if (in_array($value, self::DETAIL_LOCATIONS, true)) {
+            return $value;
+        }
+        return null;
+    }
+
+    /** Nilai location yang mungkin di DB (nama lengkap + slug lama) agar filter/detail tampil untuk data lama & baru. */
+    private static function locationFilterValues(?string $value): array
+    {
+        if ($value === null || $value === '') {
+            return [];
+        }
+        if (isset(self::LOCATION_SLUG_TO_NAME[$value])) {
+            return [$value, self::LOCATION_SLUG_TO_NAME[$value]];
+        }
+        foreach (self::LOCATION_SLUG_TO_NAME as $slug => $name) {
+            if ($name === $value) {
+                return [$value, $slug];
+            }
+        }
+        return [$value];
+    }
 
     /**
      * Detail page: utama – all featured reviews, filter by location + rating + sort.
@@ -19,8 +66,9 @@ class ReviewController extends Controller
     {
         $query = Review::accepted()->featured()->with(['media', 'replies.admin']);
 
-        if ($request->filled('location') && in_array($request->location, self::DETAIL_LOCATIONS, true)) {
-            $query->where('location', $request->location);
+        $locationValues = self::locationFilterValues($request->get('location'));
+        if (!empty($locationValues)) {
+            $query->whereIn('location', $locationValues);
         }
 
         if ($request->filled('rating') && ($r = (int) $request->rating) >= 1 && $r <= 5) {
@@ -37,12 +85,13 @@ class ReviewController extends Controller
         $reviews = $query->paginate(12)->withQueryString();
 
         $baseQuery = Review::accepted()->featured();
-        if ($request->filled('location') && in_array($request->location, self::DETAIL_LOCATIONS, true)) {
-            $baseQuery->where('location', $request->location);
+        if (!empty($locationValues)) {
+            $baseQuery->whereIn('location', $locationValues);
         }
         $aggregate = [
             'avg' => round((float) $baseQuery->avg('rating'), 1),
             'count' => $baseQuery->count(),
+            'count_has_media' => (clone $baseQuery)->whereHas('media')->count(),
         ];
 
         return view('user.reviews.detail', [
@@ -57,14 +106,18 @@ class ReviewController extends Controller
 
     /**
      * Detail page: discover – reviews for one location, filter by rating + sort.
+     * URL memakai slug (tpj, tpc, ...); query & tampilan memakai nama lengkap.
      */
-    public function detailDiscover(Request $request, string $location)
+    public function detailDiscover(Request $request, string $locationSlug)
     {
-        if (!in_array($location, self::DETAIL_LOCATIONS, true)) {
+        $locationName = self::locationToName($locationSlug);
+        if ($locationName === null) {
             abort(404);
         }
 
-        $query = Review::accepted()->forLocation($location)->with(['media', 'replies.admin']);
+        $locationValues = [$locationName, $locationSlug];
+
+        $query = Review::accepted()->whereIn('location', $locationValues)->with(['media', 'replies.admin']);
 
         if ($request->filled('rating') && ($r = (int) $request->rating) >= 1 && $r <= 5) {
             $query->where('rating', $r);
@@ -79,10 +132,11 @@ class ReviewController extends Controller
 
         $reviews = $query->paginate(12)->withQueryString();
 
-        $baseQuery = Review::accepted()->forLocation($location);
+        $baseQuery = Review::accepted()->whereIn('location', $locationValues);
         $aggregate = [
             'avg' => round((float) $baseQuery->avg('rating'), 1),
             'count' => $baseQuery->count(),
+            'count_has_media' => (clone $baseQuery)->whereHas('media')->count(),
         ];
 
         $discoverRoutes = [
@@ -95,14 +149,22 @@ class ReviewController extends Controller
             'reviews' => $reviews,
             'aggregate' => $aggregate,
             'locations' => null,
-            'currentLocation' => $location,
+            'currentLocation' => $locationName,
             'hideNavbar' => true,
-            'backUrl' => route($discoverRoutes[$location] ?? 'home'),
+            'backUrl' => route($discoverRoutes[$locationSlug] ?? 'home'),
         ]);
     }
 
     /**
-     * API: filtered reviews (no page refresh). GET ?location=&rating=&sort=latest|longest
+     * Escape string for LIKE: % and _ so no wildcard injection.
+     */
+    private static function escapeLike(string $value): string
+    {
+        return str_replace(['\\', '%', '_'], ['\\\\', '\\%', '\\_'], $value);
+    }
+
+    /**
+     * API: filtered reviews (no page refresh). GET ?location=&rating=&sort=&has_media=&keyword=&q=
      * Home (utama): no location → only accepted + is_featured=1.
      * Discover: location set → only accepted (tampil di discover).
      */
@@ -110,14 +172,29 @@ class ReviewController extends Controller
     {
         $query = Review::accepted()->with(['media', 'replies.admin']);
 
-        if ($request->filled('location')) {
-            $query->where('location', $request->location);
+        $locationValues = self::locationFilterValues($request->get('location'));
+        if (!empty($locationValues)) {
+            $query->whereIn('location', $locationValues);
         } else {
             $query->featured();
         }
 
         if ($request->filled('rating') && ($r = (int) $request->rating) >= 1 && $r <= 5) {
             $query->where('rating', $r);
+        }
+
+        if ($request->filled('has_media') && (int) $request->get('has_media') === 1) {
+            $query->whereHas('media');
+        }
+
+        $keyword = $request->get('keyword');
+        if (is_string($keyword) && ($keyword = trim($keyword)) !== '' && strlen($keyword) <= 100) {
+            $query->where('content', 'like', '%' . self::escapeLike($keyword) . '%');
+        }
+
+        $search = $request->get('q');
+        if (is_string($search) && ($search = trim($search)) !== '' && strlen($search) <= 100) {
+            $query->where('content', 'like', '%' . self::escapeLike($search) . '%');
         }
 
         $sort = $request->get('sort', 'latest');
@@ -140,15 +217,30 @@ class ReviewController extends Controller
         }
 
         $baseQuery = Review::accepted();
-        if ($request->filled('location')) {
-            $baseQuery->where('location', $request->location);
+        if (!empty($locationValues)) {
+            $baseQuery->whereIn('location', $locationValues);
         } else {
             $baseQuery->featured();
+        }
+        if ($request->filled('rating') && ($r = (int) $request->rating) >= 1 && $r <= 5) {
+            $baseQuery->where('rating', $r);
+        }
+        if ($request->filled('has_media') && (int) $request->get('has_media') === 1) {
+            $baseQuery->whereHas('media');
+        }
+        $kw = is_string($request->get('keyword')) ? trim($request->get('keyword')) : '';
+        if ($kw !== '' && strlen($kw) <= 100) {
+            $baseQuery->where('content', 'like', '%' . self::escapeLike($kw) . '%');
+        }
+        $q = is_string($request->get('q')) ? trim($request->get('q')) : '';
+        if ($q !== '' && strlen($q) <= 100) {
+            $baseQuery->where('content', 'like', '%' . self::escapeLike($q) . '%');
         }
 
         $aggregate = [
             'avg' => round((float) $baseQuery->avg('rating'), 1),
             'count' => $baseQuery->count(),
+            'count_has_media' => (clone $baseQuery)->whereHas('media')->count(),
         ];
 
         $fullMedia = $usePagination;
@@ -164,7 +256,8 @@ class ReviewController extends Controller
                 $media = $review->media->where('type', 'image')->take(3)->map(fn ($m) => asset('storage/' . $m->file_path))->values()->all();
             }
             return [
-                'location' => $review->location,
+                'id' => $review->id,
+                'location' => Review::locationDisplay($review->location),
                 'content' => $review->content,
                 'rating' => $review->rating,
                 'hide_identity' => $review->hide_identity,
@@ -194,10 +287,62 @@ class ReviewController extends Controller
         return response()->json($response);
     }
 
+    /** Stopwords bahasa Indonesia (singkat) untuk word cloud. */
+    private static function stopwords(): array
+    {
+        return [
+            'dan', 'di', 'ke', 'yang', 'dengan', 'untuk', 'ini', 'itu', 'dari', 'ada', 'adalah', 'bisa', 'sudah', 'akan',
+            'juga', 'atau', 'tapi', 'saya', 'kami', 'mereka', 'dia', 'kita', 'oleh', 'pada', 'tak', 'tidak', 'jika', 'kalau',
+            'sangat', 'sekali', 'sudah', 'masih', 'sudah', 'per', 'oleh', 'agar', 'supaya', 'karena', 'sebagai', 'dalam',
+        ];
+    }
+
+    /**
+     * API: top keywords (word cloud) from review content. GET ?location=
+     * Returns [{ "word": "nyaman", "count": 12 }, ...] max 5.
+     */
+    public function keywordsApi(Request $request)
+    {
+        $query = Review::accepted()->select('content');
+
+        $locationValues = self::locationFilterValues($request->get('location'));
+        if (!empty($locationValues)) {
+            $query->whereIn('location', $locationValues);
+        } else {
+            $query->featured();
+        }
+
+        $contents = $query->pluck('content')->filter()->map(function ($text) {
+            $text = (string) $text;
+            $text = preg_replace('/[^\p{L}\p{N}\s]/u', ' ', $text);
+            $text = mb_strtolower($text);
+            return preg_split('/\s+/', $text, -1, PREG_SPLIT_NO_EMPTY);
+        })->flatten();
+
+        $stopwords = array_fill_keys(self::stopwords(), true);
+        $minLength = 3;
+        $counts = [];
+        foreach ($contents as $word) {
+            $w = trim($word);
+            if ($w === '' || mb_strlen($w) < $minLength || isset($stopwords[$w])) {
+                continue;
+            }
+            $counts[$w] = ($counts[$w] ?? 0) + 1;
+        }
+        arsort($counts, SORT_NUMERIC);
+        $top = array_slice(array_keys($counts), 0, 5, true);
+        $result = [];
+        foreach ($top as $word) {
+            $result[] = ['word' => $word, 'count' => $counts[$word]];
+        }
+
+        return response()->json(['keywords' => $result]);
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'location' => 'required|string|in:utama,tpj,tpc,gkl,plu,gwc,pgv,gpc,bsr,spl',
+            'location' => 'required|string|in:keseluruhan,Transpark Juanda,Transpark Cibubur,Grand Kamala Lagoon,Patraland Urbano,Gateway Cicadas,Podomoro Golf View,Bassura City,Green Pramuka City,Spring Lake Summarecon',
             'instagram' => 'nullable|string|max:50',
             'content' => 'required|string|max:2000',
             'rating' => 'required|integer|min:1|max:5',
@@ -258,6 +403,7 @@ class ReviewController extends Controller
                 'message' => 'Terima kasih! Ulasan Anda telah ditampilkan.',
                 'review' => [
                     'id' => $review->id,
+                    'location' => $review->location,
                     'content' => $review->content,
                     'rating' => $review->rating,
                     'instagram' => $review->instagram,

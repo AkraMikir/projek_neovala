@@ -1,85 +1,114 @@
-{{-- Tailwind reviews section for discover pages. Expects: $reviews, $reviewAggregate, $location (e.g. spl), optional $carouselImages (array) --}}
+{{-- Section ulasan discover. Butuh: $reviews, $reviewAggregate, lalu salah satu: ($locationName + $locationSlug) atau $location (slug). $locationName = nilai yang dikirim ke form & API (nama lengkap). $locationSlug = untuk URL "Lihat semua" (tpj, tpc, ...). --}}
+@php
+$locationForForm = $locationName ?? $location ?? '';
+$locationForFilter = $locationName ?? $location ?? '';
+$locationForLink = $locationSlug ?? $location ?? '';
+@endphp
 <section id="testimoni-section" class="py-12 px-4 bg-stone-50">
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-4 w-full gap-6 md:gap-9 max-w-6xl mx-auto items-stretch">
             {{-- Card form: 3/4 lebar (hanya geser sedikit ke kiri, form tetap besar) --}}
             <div class="col-span-4 md:col-span-3 flex flex-col min-w-0">
-                <div class="flex flex-col p-6 md:p-9 bg-white rounded-tr-[64px] rounded-es-[64px] shadow-lg border border-[#674c1d]/10 min-h-0">
-                <h2 class="text-xl font-semibold text-[#674c1d] mb-1" style="font-family: 'Georgia', serif;">GIVE US FEEDBACK</h2>
-                <p class="text-[12px] text-[#674c1d]/70 mb-6">Bagikan cerita dan pendapatmu agar kami bisa berkembang.</p>
-                <form action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data" id="reviewForm">
-                    @csrf
-                    <input type="hidden" name="location" value="{{ $location }}">
+                <div
+                    class="flex flex-col p-6 md:p-9 bg-white rounded-tr-[64px] rounded-es-[64px] shadow-lg border border-[#674c1d]/10 min-h-0">
+                    <h2 class="text-xl font-semibold text-[#674c1d] mb-1" style="font-family: 'Georgia', serif;">GIVE US
+                        FEEDBACK</h2>
+                    <p class="text-[12px] text-[#674c1d]/70 mb-6">Bagikan cerita dan pendapatmu agar kami bisa
+                        berkembang.</p>
+                    <form action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data"
+                        id="reviewForm">
+                        @csrf
+                        <input type="hidden" name="location" value="{{ $locationForForm }}">
 
-                    <div class="flex flex-col md:flex-row md:space-x-6 md:gap-6">
-                        {{-- Kolom kiri: Instagram, Samarkan, Gambar, Video --}}
-                        <div class="flex flex-col w-full md:w-1/2 space-y-4">
-                            <div class="space-y-2">
-                                <div class="flex flex-row justify-between items-center">
-                                    <label class="text-[12px] font-semibold text-[#674c1d]">Instagram</label>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-[12px] text-[#CFC3B7]">Samarkan</span>
-                                        <label class="relative inline-flex items-center cursor-pointer select-none">
-                                            <input id="hideIdentityToggle" type="checkbox" name="hide_identity" value="on" class="sr-only peer">
-                                            <div class="w-6 h-3.5 bg-gray-200 rounded-full peer-checked:bg-[#674c1d] transition-colors"></div>
-                                            <span class="absolute left-0.5 top-[1.5px] w-2.5 h-2.5 bg-white rounded-full border border-gray-300 transition-transform peer-checked:translate-x-[11px] pointer-events-none" style="margin-left: 0;"></span>
-                                        </label>
+                        <div class="flex flex-col md:flex-row md:space-x-6 md:gap-6">
+                            {{-- Kolom kiri: Instagram, Samarkan, Gambar, Video --}}
+                            <div class="flex flex-col w-full md:w-1/2 space-y-4">
+                                <div class="space-y-2">
+                                    <div class="flex flex-row justify-between items-center">
+                                        <label class="text-[12px] font-semibold text-[#674c1d]">Instagram</label>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-[12px] text-[#CFC3B7]">Samarkan</span>
+                                            <label class="relative inline-flex items-center cursor-pointer select-none">
+                                                <input id="hideIdentityToggle" type="checkbox" name="hide_identity"
+                                                    value="on" class="sr-only peer">
+                                                <div
+                                                    class="w-6 h-3.5 bg-gray-200 rounded-full peer-checked:bg-[#674c1d] transition-colors">
+                                                </div>
+                                                <span
+                                                    class="absolute left-0.5 top-[1.5px] w-2.5 h-2.5 bg-white rounded-full border border-gray-300 transition-transform peer-checked:translate-x-[11px] pointer-events-none"
+                                                    style="margin-left: 0;"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="flex rounded-[8px] border border-[#674c1d]/35 overflow-hidden">
+                                        <span class="inline-flex items-center pl-3 text-[#674c1d]/80 text-sm">@</span>
+                                        <input type="text" name="instagram"
+                                            class="flex-1 min-w-0 py-2 pr-3 pl-1 text-sm text-[#674c1d] placeholder-[#CFC3B7] border-0 bg-transparent focus:outline-none focus:ring-0"
+                                            placeholder="Username instagram Anda" maxlength="50">
                                     </div>
                                 </div>
-                                <div class="flex rounded-[8px] border border-[#674c1d]/35 overflow-hidden">
-                                    <span class="inline-flex items-center pl-3 text-[#674c1d]/80 text-sm">@</span>
-                                    <input type="text" name="instagram" class="flex-1 min-w-0 py-2 pr-3 pl-1 text-sm text-[#674c1d] placeholder-[#CFC3B7] border-0 bg-transparent focus:outline-none focus:ring-0" placeholder="Username instagram Anda" maxlength="50">
+                                <div class="space-y-2">
+                                    <label class="text-[12px] font-semibold text-[#674c1d]">Gambar (max 5)</label>
+                                    <div class="flex flex-wrap gap-3 items-center">
+                                        <button type="button" id="addPhotoBtn"
+                                            class="flex items-center justify-center w-12 h-12 rounded-[8px] border-2 border-dashed border-[#674c1d]/45 text-[#674c1d] hover:bg-stone-50 hover:border-[#674c1d]/65 transition-colors"
+                                            title="Tambah foto">
+                                            <i class="fas fa-plus text-lg"></i>
+                                        </button>
+                                        <span id="photoCount" class="text-[12px] text-[#674c1d]/60">0/5 foto</span>
+                                    </div>
+                                    <div id="photoSlots" class="flex flex-wrap gap-2"></div>
                                 </div>
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-[12px] font-semibold text-[#674c1d]">Gambar (max 5)</label>
-                                <div class="flex flex-wrap gap-3 items-center">
-                                    <button type="button" id="addPhotoBtn" class="flex items-center justify-center w-12 h-12 rounded-[8px] border-2 border-dashed border-[#674c1d]/45 text-[#674c1d] hover:bg-stone-50 hover:border-[#674c1d]/65 transition-colors" title="Tambah foto">
-                                        <i class="fas fa-plus text-lg"></i>
+                                <div class="space-y-2">
+                                    <label class="text-[12px] font-semibold text-[#674c1d]">Video (max 1)</label>
+                                    <input type="file" name="video" id="videoInput" accept="video/*" class="hidden">
+                                    <button type="button" id="addVideoBtn"
+                                        class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-[8px] border-2 border-dashed border-[#674c1d]/45 text-[#674c1d] hover:bg-stone-50 hover:border-[#674c1d]/65 transition-colors text-sm">
+                                        <i class="fas fa-video"></i>
+                                        <span id="videoLabel">Tambah video</span>
                                     </button>
-                                    <span id="photoCount" class="text-[12px] text-[#674c1d]/60">0/5 foto</span>
-                                </div>
-                                <div id="photoSlots" class="flex flex-wrap gap-2"></div>
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-[12px] font-semibold text-[#674c1d]">Video (max 1)</label>
-                                <input type="file" name="video" id="videoInput" accept="video/*" class="hidden">
-                                <button type="button" id="addVideoBtn" class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-[8px] border-2 border-dashed border-[#674c1d]/45 text-[#674c1d] hover:bg-stone-50 hover:border-[#674c1d]/65 transition-colors text-sm">
-                                    <i class="fas fa-video"></i>
-                                    <span id="videoLabel">Tambah video</span>
-                                </button>
-                            </div>
-                        </div>
-                        {{-- Kolom kanan: Rating, Pesan --}}
-                        <div class="flex flex-col w-full md:w-1/2 space-y-4">
-                            <div class="space-y-2">
-                                <label class="text-[12px] font-semibold text-[#674c1d]">Rating *</label>
-                                <input type="hidden" name="rating" id="ratingInput" value="0" required>
-                                <div class="flex gap-1.5" id="starSelect">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                    <i class="far fa-star text-2xl cursor-pointer transition-colors text-[#674c1d] hover:text-[#5a4218]" data-rating="{{ $i }}"></i>
-                                    @endfor
                                 </div>
                             </div>
-                            <div class="space-y-2 flex-1 flex flex-col">
-                                <label class="text-[12px] font-semibold text-[#674c1d]">Bagaimana pengalaman anda? *</label>
-                                <textarea name="content" id="contentTextarea" rows="6" class="w-full rounded-[8px] border border-[#674c1d]/35 p-2 text-sm text-[#674c1d] placeholder-[#CFC3B7] focus:outline-none focus:ring-1 focus:ring-[#674c1d]/30 resize-y min-h-[120px]" placeholder="Bagikan pengalaman Anda dengan kami" required maxlength="2000"></textarea>
+                            {{-- Kolom kanan: Rating, Pesan --}}
+                            <div class="flex flex-col w-full md:w-1/2 space-y-4">
+                                <div class="space-y-2">
+                                    <label class="text-[12px] font-semibold text-[#674c1d]">Rating *</label>
+                                    <input type="hidden" name="rating" id="ratingInput" value="0" required>
+                                    <div class="flex gap-1.5" id="starSelect">
+                                        @for ($i = 1; $i <= 5; $i++) <i
+                                            class="far fa-star text-2xl cursor-pointer transition-colors text-[#674c1d] hover:text-[#5a4218]"
+                                            data-rating="{{ $i }}"></i>
+                                            @endfor
+                                    </div>
+                                </div>
+                                <div class="space-y-2 flex-1 flex flex-col">
+                                    <label class="text-[12px] font-semibold text-[#674c1d]">Bagaimana pengalaman anda?
+                                        *</label>
+                                    <textarea name="content" id="contentTextarea" rows="6"
+                                        class="w-full rounded-[8px] border border-[#674c1d]/35 p-2 text-sm text-[#674c1d] placeholder-[#CFC3B7] focus:outline-none focus:ring-1 focus:ring-[#674c1d]/30 resize-y min-h-[120px]"
+                                        placeholder="Bagikan pengalaman Anda dengan kami" required
+                                        maxlength="2000"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex justify-end mt-6">
-                        <button type="submit" id="reviewSubmitBtn" class="hidden py-3 px-6 rounded-[8px] bg-[#674c1d] text-white font-medium hover:bg-[#5a4218] transition-colors border border-[#674c1d]">Kirim</button>
-                        <button type="button" id="reviewSubmitBtnDisabled" disabled class="py-3 px-6 rounded-[8px] bg-[#F6EFE9] text-[#CFC3B7] font-medium cursor-not-allowed border border-[#CFC3B7]/50">Kirim</button>
-                    </div>
-                </form>
+                        <div class="flex justify-end mt-6">
+                            <button type="submit" id="reviewSubmitBtn"
+                                class="hidden py-3 px-6 rounded-[8px] bg-[#674c1d] text-white font-medium hover:bg-[#5a4218] transition-colors border border-[#674c1d]">Kirim</button>
+                            <button type="button" id="reviewSubmitBtnDisabled" disabled
+                                class="py-3 px-6 rounded-[8px] bg-[#F6EFE9] text-[#CFC3B7] font-medium cursor-not-allowed border border-[#CFC3B7]/50">Kirim</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             {{-- Foto carousel (kanan): 1/4 lebar, proporsi seperti referensi, rounded-tl/rounded-ee --}}
             @if(!empty($carouselImages) && is_array($carouselImages))
-            <div id="feedbackCarouselOuter" class="col-span-1 hidden md:block min-h-[280px] md:min-h-0 h-full overflow-hidden rounded-tl-[96px] rounded-br-[96px] border border-[#674c1d]/10 shadow-lg bg-stone-100 relative">
-                <div class="feedback-carousel-track flex h-full min-h-[280px] md:min-h-full transition-transform duration-500 ease-out" style="width: {{ count($carouselImages) * 100 }}%;">
+            <div id="feedbackCarouselOuter"
+                class="col-span-1 hidden md:block min-h-[280px] md:min-h-0 h-full overflow-hidden rounded-tl-[96px] rounded-br-[96px] border border-[#674c1d]/10 shadow-lg bg-stone-100 relative">
+                <div class="feedback-carousel-track flex h-full min-h-[280px] md:min-h-full transition-transform duration-500 ease-out"
+                    style="width: {{ count($carouselImages) * 100 }}%;">
                     @foreach($carouselImages as $imgUrl)
-                    <div class="feedback-carousel-slide flex-shrink-0 h-full min-h-[280px] md:min-h-full" style="width: {{ 100 / count($carouselImages) }}%;">
+                    <div class="feedback-carousel-slide flex-shrink-0 h-full min-h-[280px] md:min-h-full"
+                        style="width: {{ 100 / count($carouselImages) }}%;">
                         <img src="{{ $imgUrl }}" alt="" class="h-full w-full object-cover">
                     </div>
                     @endforeach
@@ -104,20 +133,31 @@
             </div>
         </div>
 
-        <div class="reviews-filter-bar flex flex-wrap gap-2 justify-center mb-6" data-location="{{ $location ?? '' }}">
-            <span class="text-stone-600 text-sm">Filter:</span>
-            <button type="button" class="reviews-filter-btn px-3 py-1 rounded bg-amber-800 text-white"
-                data-sort="latest" data-rating="">Terbaru</button>
-            <button type="button" class="reviews-filter-btn px-3 py-1 rounded bg-stone-200 text-stone-700"
-                data-sort="longest" data-rating="">Waktu terlama</button>
-            @for ($r = 5; $r >= 1; $r--)
-            <button type="button" class="reviews-filter-btn px-3 py-1 rounded bg-stone-200 text-stone-700"
-                data-sort="latest" data-rating="{{ $r }}">{{ $r }} Bintang</button>
-            @endfor
+        <div class="reviews-widget-filter-container bg-white rounded-xl border border-stone-200 shadow-sm p-4 md:p-5 mb-6" data-current-location="{{ $locationForFilter }}" data-detail-url="{{ route('reviews.detail.discover', $locationForLink) }}">
+            <div class="reviews-widget-filter-row flex flex-wrap gap-3 items-center">
+                <div class="flex-1 min-w-[180px]">
+                    <input type="text" id="reviews-widget-search" class="w-full rounded-lg border border-[#674c1d]/40 px-3 py-2 text-sm text-[#674c1d] placeholder-stone-400 bg-white focus:ring-2 focus:ring-[#674c1d]/30 focus:border-[#674c1d]" placeholder="Cari dalam ulasan..." value="{{ request('q', '') }}" autocomplete="off">
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-stone-200 flex flex-wrap gap-3 justify-center md:justify-start items-center">
+                <span class="text-stone-600 text-sm font-medium shrink-0">Filter:</span>
+                @php
+                    $isSemuaActive = !request('rating') && !request('has_media') && !request('keyword');
+                    $isTerbaruActive = !$isSemuaActive && request('sort', 'latest') === 'latest' && !request('rating');
+                @endphp
+                <button type="button" class="reviews-widget-filter-btn px-3 py-1.5 rounded-lg text-sm {{ $isSemuaActive ? 'bg-amber-800 text-white reviews-widget-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="" data-filter-type="all">Semua</button>
+                <button type="button" class="reviews-widget-filter-btn px-3 py-1.5 rounded-lg text-sm {{ $isTerbaruActive ? 'bg-amber-800 text-white reviews-widget-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="">Terbaru</button>
+                <button type="button" class="reviews-widget-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('sort') === 'longest' ? 'bg-amber-800 text-white reviews-widget-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="longest" data-rating="">Waktu terlama</button>
+                @for ($r = 5; $r >= 1; $r--)
+                <button type="button" class="reviews-widget-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('rating') == $r ? 'bg-amber-800 text-white reviews-widget-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="{{ $r }}">{{ $r }} Bintang</button>
+                @endfor
+                <button type="button" class="reviews-widget-filter-btn reviews-widget-has-media px-3 py-1.5 rounded-lg text-sm {{ request('has_media') ? 'bg-amber-800 text-white reviews-widget-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-has-media="1">Foto/Video ({{ $reviewAggregate['count_has_media'] ?? 0 }})</button>
+                <div id="reviews-widget-keywords" class="flex flex-wrap gap-2 items-center"></div>
+            </div>
         </div>
 
         <div class="text-center mb-4">
-            <a href="{{ route('reviews.detail.discover', $location) }}"
+            <a href="{{ route('reviews.detail.discover', $locationForLink) }}"
                 class="text-[#674c1d] font-medium hover:underline">Lihat semua ulasan</a>
         </div>
 
@@ -134,49 +174,85 @@
                     <i class="fas fa-chevron-right"></i>
                 </button>
                 <div id="reviews-list"
-                    class="reviews-slider-track flex gap-3 overflow-x-auto overflow-y-hidden py-2 px-1 scroll-smooth snap-x snap-mandatory"
+                    class="reviews-slider-track flex gap-3 overflow-x-auto overflow-y-hidden py-2 pl-3 pr-2 scroll-smooth snap-x snap-mandatory"
                     style="scrollbar-width: thin;">
                     @forelse($reviews as $review)
-                    <div
-                        class="reviews-card relative flex-shrink-0 w-64 max-w-[85vw] snap-start bg-white rounded-lg shadow-sm p-3 border border-stone-100 flex flex-col justify-center min-h-[140px]">
-                        <div class="reviews-card-inner">
-                            <p class="text-stone-800 text-xs leading-snug line-clamp-4 mb-1.5">{{ $review->content }}
-                            </p>
-                            <div class="flex items-center gap-1 mb-0.5">
-                                @for ($i = 1; $i <= 5; $i++) <i
-                                    class="fas fa-star {{ $i <= $review->rating ? 'text-[#674c1d]' : 'text-stone-200' }} text-xs">
-                                    </i>
-                                    @endfor
-                            </div>
-                            <p class="text-stone-500 text-[11px] truncate">
-                                {{ $review->hide_identity ? 'Anonymous' : '@' . ($review->instagram ?? '') }} ·
-                                {{ $review->created_at->format('d M Y') }}</p>
-                            @if($review->replies->count() > 0)
-                            <div class="mt-2 relative">
-                                <button type="button"
-                                    class="review-reply-toggle w-full text-left text-[11px] text-[#674c1d] font-medium flex items-center gap-1 hover:underline focus:outline-none"
-                                    aria-expanded="false">
-                                    <i
-                                        class="fas fa-chevron-down review-reply-chevron text-[10px] transition-transform duration-200"></i>
-                                    Balasan admin ({{ $review->replies->count() }})
-                                </button>
-                                <div
-                                    class="review-reply-dropdown hidden absolute left-0 right-0 top-full mt-1 z-[50] pl-3 border-l-2 border-stone-400 bg-stone-100 rounded-r py-2 pr-2 shadow-lg min-w-[200px]">
-                                    @foreach($review->replies as $reply)
-                                    <p class="text-[11px] text-[#674c1d] font-medium">
-                                        {{ $reply->admin->name ?? 'Admin' }}</p>
-                                    <p class="text-[11px] text-stone-600 leading-tight">{{ $reply->content }}</p>
-                                    @endforeach
+                    <div class="reviews-card reviews-card-clickable relative flex-shrink-0 w-64 max-w-[85vw] snap-start bg-white rounded-lg shadow-sm pt-1 px-3 pb-3 border border-stone-100 flex flex-col justify-center min-h-[140px]" data-review-id="{{ $review->id }}">
+                        <a href="{{ route('reviews.detail.discover', $locationForLink) }}?pin={{ $review->id }}" class="reviews-card-link block h-full min-h-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#674c1d]/40 focus:ring-offset-1">
+                            <div class="reviews-card-inner h-[100%]">
+                                <p
+                                    class="text-amber-900 font-semibold uppercase text-[11px] mb-0.5 text-center min-h-[2rem] flex items-center justify-center leading-tight">
+                                    {{ \App\Models\Review::locationDisplay($review->location) }}</p>
+                                <p class="text-stone-800 text-xs leading-snug line-clamp-4 mb-1.5">{{ $review->content }}
+                                </p>
+                                <div class="flex items-center gap-1 mb-0.5">
+                                    @for ($i = 1; $i <= 5; $i++) <i
+                                        class="fas fa-star {{ $i <= $review->rating ? 'text-[#674c1d]' : 'text-stone-200' }} text-xs">
+                                        </i>
+                                        @endfor
                                 </div>
+                                <p class="text-stone-500 text-[11px] truncate">
+                                    {{ $review->hide_identity ? 'Anonymous' : '@' . ($review->instagram ?? '') }} ·
+                                    {{ $review->created_at->format('d M Y') }}</p>
+                                @if($review->replies->count() > 0)
+                                <div class="mt-2 relative">
+                                    <button type="button"
+                                        class="review-reply-toggle w-full text-left text-[11px] text-[#674c1d] font-medium flex items-center gap-1 hover:underline focus:outline-none"
+                                        aria-expanded="false">
+                                        <i
+                                            class="fas fa-chevron-down review-reply-chevron text-[10px] transition-transform duration-200"></i>
+                                        Balasan admin ({{ $review->replies->count() }})
+                                    </button>
+                                    <div
+                                        class="review-reply-dropdown hidden absolute left-0 right-0 top-full mt-1 z-[50] pl-3 border-l-2 border-stone-400 bg-stone-100 rounded-r py-2 pr-2 shadow-lg min-w-[200px]">
+                                        @foreach($review->replies as $reply)
+                                        <p class="text-[11px] text-[#674c1d] font-medium">
+                                            {{ $reply->admin->name ?? 'Admin' }}</p>
+                                        <p class="text-[11px] text-stone-600 leading-tight">{{ $reply->content }}</p>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                @endif
+                                @if($review->media->count() > 0)
+                                <div class="reviews-card-media mt-2 flex flex-wrap gap-1">
+                                    @foreach($review->media->where('type', 'image') as $m)
+                                    @php $url = asset('storage/' . $m->file_path); @endphp
+                                    <button type="button" class="review-widget-media-preview w-9 h-9 rounded border border-[#674c1d]/30 overflow-hidden flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="{{ $url }}" data-type="image" aria-label="Perbesar gambar">
+                                        <img src="{{ $url }}" alt="" class="w-full h-full object-cover">
+                                    </button>
+                                    @endforeach
+                                    @php $video = $review->media->where('type', 'video')->first(); @endphp
+                                    @if($video)
+                                    @php $videoUrl = asset('storage/' . $video->file_path); @endphp
+                                    <button type="button" class="review-widget-media-preview relative w-9 h-9 rounded border border-[#674c1d]/30 overflow-hidden flex-shrink-0 bg-stone-100 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="{{ $videoUrl }}" data-type="video" aria-label="Putar video">
+                                        <video src="{{ $videoUrl }}" class="w-full h-full object-cover pointer-events-none" preload="metadata" muted></video>
+                                        <span class="absolute inset-0 flex items-center justify-center bg-black/30"><i class="fas fa-play text-white text-xs"></i></span>
+                                    </button>
+                                    @endif
+                                </div>
+                                @endif
                             </div>
-                            @endif
-                        </div>
+                            <span class="reviews-card-more absolute right-2 bottom-2 text-[10px] font-medium bg-gradient-to-r from-amber-600 to-[#674c1d] bg-clip-text text-transparent lg:hidden">Lihat selengkapnya &gt;</span>
+                        </a>
                     </div>
                     @empty
                     <p class="flex-shrink-0 text-center text-stone-500 py-4 w-full text-sm">Belum ada ulasan.</p>
                     @endforelse
                 </div>
             </div>
+        </div>
+    </div>
+
+    {{-- Modal perbesar foto/video dari card ulasan (WHAT THEY SAY) --}}
+    <div id="review-widget-media-overlay"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true">
+        <div class="relative max-w-4xl max-h-[90vh] w-full flex items-center justify-center" onclick="event.stopPropagation()">
+            <button type="button" id="review-widget-media-close"
+                class="absolute -top-10 right-0 w-10 h-10 flex items-center justify-center rounded-full bg-white border-2 border-[#674c1d] text-[#674c1d] hover:bg-[#674c1d] hover:text-white transition-colors z-10" aria-label="Tutup">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+            <div id="review-widget-media-content"
+                class="bg-white rounded-xl overflow-hidden shadow-xl border-2 border-[#674c1d]/30 max-w-full max-h-[85vh]"></div>
         </div>
     </div>
 
@@ -454,11 +530,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (addPhotoBtn) addPhotoBtn.style.display = 'flex';
                         if (videoInput) videoInput.value = '';
                         if (videoLabel) videoLabel.textContent = 'Tambah video';
-                        if (bar) {
-                            var terbaruBtn = bar.querySelector(
-                                '.reviews-filter-btn[data-sort="latest"][data-rating=""]');
-                            if (terbaruBtn) terbaruBtn.click();
-                        }
+                        if (typeof window.refreshReviewsList === 'function') window.refreshReviewsList();
                         checkFormComplete();
                     } else {
                         var msg = (result.data && result.data.message) ? result.data.message : (
@@ -474,11 +546,160 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Reviews filter (no refresh) on discover pages
-    var bar = document.querySelector('#testimoni-section .reviews-filter-bar');
+    // Reviews filter (no refresh) on discover pages — filter seperti detail (Semua, Foto/Video, Keyword, Search)
+    var filterContainer = document.querySelector('#testimoni-section .reviews-widget-filter-container');
     var listEl = document.getElementById('reviews-list');
     var aggEl = document.getElementById('reviews-aggregate');
-    if (bar && listEl && aggEl) {
+    var searchInput = document.getElementById('reviews-widget-search');
+    var keywordsEl = document.getElementById('reviews-widget-keywords');
+    if (filterContainer && listEl && aggEl) {
+        var currentLocation = (filterContainer.getAttribute('data-current-location') || '').trim();
+        function getParams() {
+            var sort = 'latest', rating = '', hasMedia = '', keyword = '';
+            var activeFilter = filterContainer.querySelector('.reviews-widget-filter-btn.reviews-widget-active:not(.reviews-widget-has-media):not(.reviews-widget-keyword-btn)');
+            if (activeFilter) {
+                sort = activeFilter.getAttribute('data-sort') || sort;
+                rating = activeFilter.getAttribute('data-rating') || '';
+            }
+            if (filterContainer.querySelector('.reviews-widget-has-media.reviews-widget-active')) hasMedia = '1';
+            var activeKw = filterContainer.querySelector('.reviews-widget-keyword-btn.reviews-widget-active');
+            if (activeKw) keyword = activeKw.getAttribute('data-keyword') || '';
+            var q = (searchInput && searchInput.value) ? searchInput.value.trim() : '';
+            return { location: currentLocation, sort: sort, rating: rating, has_media: hasMedia, keyword: keyword, q: q };
+        }
+        function setActiveFilterBtn(btn) {
+            filterContainer.querySelectorAll('.reviews-widget-filter-btn:not(.reviews-widget-has-media):not(.reviews-widget-keyword-btn)').forEach(function(b) {
+                b.classList.remove('bg-amber-800', 'text-white', 'reviews-widget-active');
+                b.classList.add('bg-stone-200', 'text-stone-700');
+            });
+            if (btn) {
+                btn.classList.remove('bg-stone-200', 'text-stone-700');
+                btn.classList.add('bg-amber-800', 'text-white', 'reviews-widget-active');
+            }
+        }
+        function setActiveKeywordBtn(btn) {
+            if (!keywordsEl) return;
+            keywordsEl.querySelectorAll('.reviews-widget-keyword-btn').forEach(function(b) {
+                b.classList.remove('bg-amber-800', 'text-white', 'reviews-widget-active');
+                b.classList.add('bg-stone-200', 'text-stone-700');
+            });
+            if (btn) {
+                btn.classList.remove('bg-stone-200', 'text-stone-700');
+                btn.classList.add('bg-amber-800', 'text-white', 'reviews-widget-active');
+            }
+        }
+        function setHasMediaActive(active) {
+            var hasMediaBtn = filterContainer.querySelector('.reviews-widget-has-media');
+            if (!hasMediaBtn) return;
+            if (active) {
+                hasMediaBtn.classList.remove('bg-stone-200', 'text-stone-700');
+                hasMediaBtn.classList.add('bg-amber-800', 'text-white', 'reviews-widget-active');
+            } else {
+                hasMediaBtn.classList.remove('bg-amber-800', 'text-white', 'reviews-widget-active');
+                hasMediaBtn.classList.add('bg-stone-200', 'text-stone-700');
+            }
+        }
+        function clearHasMediaAndKeyword() {
+            setHasMediaActive(false);
+            setActiveKeywordBtn(null);
+        }
+        function loadKeywords() {
+            var params = new URLSearchParams();
+            if (currentLocation) params.set('location', currentLocation);
+            fetch('/api/reviews/keywords?' + params.toString())
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    if (!keywordsEl || !data.keywords || data.keywords.length === 0) return;
+                    keywordsEl.innerHTML = '';
+                    data.keywords.forEach(function(kw) {
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'reviews-widget-filter-btn reviews-widget-keyword-btn px-3 py-1.5 rounded-lg text-sm bg-stone-200 text-stone-700 hover:bg-stone-300';
+                        btn.setAttribute('data-keyword', kw.word);
+                        btn.textContent = kw.word + ' (' + kw.count + ')';
+                        btn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            var isActive = btn.classList.contains('reviews-widget-active');
+                            setActiveKeywordBtn(isActive ? null : btn);
+                            fetchReviews();
+                        });
+                        keywordsEl.appendChild(btn);
+                    });
+                });
+        }
+        function fetchReviews() {
+            var p = getParams();
+            var params = new URLSearchParams();
+            if (p.location) params.set('location', p.location);
+            params.set('sort', p.sort);
+            if (p.rating) params.set('rating', p.rating);
+            if (p.has_media) params.set('has_media', p.has_media);
+            if (p.keyword) params.set('keyword', p.keyword);
+            if (p.q) params.set('q', p.q);
+            params.set('per_page', '50');
+            if (window.closeReviewsReplyDropdown) window.closeReviewsReplyDropdown();
+            listEl.innerHTML = '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Memuat...</p>';
+            fetch('/api/reviews?' + params.toString())
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    aggEl.querySelector('.text-2xl').textContent = Number(data.aggregate.avg).toFixed(1);
+                    aggEl.querySelector('.text-xl').textContent = data.aggregate.count;
+                    var hasMediaBtn = filterContainer.querySelector('.reviews-widget-has-media');
+                    if (hasMediaBtn) hasMediaBtn.textContent = 'Foto/Video (' + (data.aggregate.count_has_media ?? 0) + ')';
+                    if (!data.reviews || data.reviews.length === 0) {
+                        listEl.innerHTML = '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Belum ada ulasan.</p>';
+                    } else {
+                        listEl.innerHTML = data.reviews.map(renderCard).join('');
+                    }
+                    if (typeof updateReviewsSliderButtons === 'function') updateReviewsSliderButtons();
+                })
+                .catch(function() {
+                    listEl.innerHTML = '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Gagal memuat ulasan.</p>';
+                    if (typeof updateReviewsSliderButtons === 'function') updateReviewsSliderButtons();
+                });
+        }
+        var searchDebounceTimer;
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchDebounceTimer);
+                searchDebounceTimer = setTimeout(fetchReviews, 350);
+            });
+        }
+        filterContainer.querySelectorAll('.reviews-widget-filter-btn:not(.reviews-widget-has-media):not(.reviews-widget-keyword-btn)').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (btn.getAttribute('data-filter-type') === 'all') clearHasMediaAndKeyword();
+                setActiveFilterBtn(this);
+                fetchReviews();
+            });
+        });
+        var hasMediaBtn = filterContainer.querySelector('.reviews-widget-has-media');
+        if (hasMediaBtn) {
+            hasMediaBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                var isActive = this.classList.contains('reviews-widget-active');
+                setHasMediaActive(!isActive);
+                fetchReviews();
+            });
+        }
+        loadKeywords();
+        window.refreshReviewsList = fetchReviews;
+
+        function mediaPreviewHtml(media) {
+            if (!media || media.length === 0) return '';
+            var parts = [];
+            media.forEach(function(m) {
+                var url = typeof m === 'object' ? (m.url || (m.file_path ? ('/storage/' + m.file_path) : '')) : m;
+                var type = typeof m === 'object' && m.type === 'video' ? 'video' : 'image';
+                if (!url) return;
+                if (type === 'video') {
+                    parts.push('<button type="button" class="review-widget-media-preview relative w-9 h-9 rounded border border-[#674c1d]/30 overflow-hidden flex-shrink-0 bg-stone-100 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="' + url + '" data-type="video" aria-label="Putar video"><video src="' + url + '" class="w-full h-full object-cover pointer-events-none" preload="metadata" muted></video><span class="absolute inset-0 flex items-center justify-center bg-black/30"><i class="fas fa-play text-white text-xs"></i></span></button>');
+                } else {
+                    parts.push('<button type="button" class="review-widget-media-preview w-9 h-9 rounded border border-[#674c1d]/30 overflow-hidden flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#674c1d]/50" data-src="' + url + '" data-type="image" aria-label="Perbesar gambar"><img src="' + url + '" alt="" class="w-full h-full object-cover"></button>');
+                }
+            });
+            return parts.length ? '<div class="reviews-card-media mt-2 flex flex-wrap gap-1">' + parts.join('') + '</div>' : '';
+        }
         function renderCard(r) {
             var identity = r.hide_identity ? 'Anonymous' : ('@' + (r.instagram || ''));
             var stars = '';
@@ -500,62 +721,75 @@ document.addEventListener('DOMContentLoaded', function() {
                     '<div class="review-reply-dropdown hidden absolute left-0 right-0 top-full mt-1 z-[50] pl-3 border-l-2 border-stone-400 bg-stone-100 rounded-r py-2 pr-2 shadow-lg min-w-[200px]">' +
                     replyBlocks + '</div></div>';
             }
-            return '<div class="reviews-card relative flex-shrink-0 w-64 max-w-[85vw] snap-start bg-white rounded-lg shadow-sm p-3 border border-stone-100 flex flex-col justify-center min-h-[140px]">' +
-                '<div class="reviews-card-inner">' +
+            var mediaHtml = mediaPreviewHtml(r.media);
+            var baseUrl = (filterContainer && filterContainer.getAttribute('data-detail-url')) || '/reviews';
+            var detailUrl = baseUrl + (baseUrl.indexOf('?') >= 0 ? '&' : '?') + 'pin=' + (r.id || '');
+            return '<div class="reviews-card reviews-card-clickable relative flex-shrink-0 w-64 max-w-[85vw] snap-start bg-white rounded-lg shadow-sm pt-1 px-3 pb-3 border border-stone-100 flex flex-col justify-center min-h-[140px]" data-review-id="' + (r.id || '') + '">' +
+                '<a href="' + detailUrl + '" class="reviews-card-link block h-full min-h-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#674c1d]/40 focus:ring-offset-1">' +
+                '<div class="reviews-card-inner h-[100%]">' +
+                '<p class="text-amber-900 font-semibold uppercase text-[11px] mb-0.5 text-center min-h-[2rem] flex items-center justify-center leading-tight">' +
+                (r.location ? r.location.toUpperCase() : '') + '</p>' +
                 '<p class="text-stone-800 text-xs leading-snug line-clamp-4 mb-1.5">' + (r.content || '') +
                 '</p>' +
                 '<div class="flex items-center gap-1 mb-0.5">' + stars + '</div>' +
                 '<p class="text-stone-500 text-[11px] truncate">' + identity + ' · ' + (r.created_at || '') +
-                '</p>' + repliesHtml + '</div></div>';
+                '</p>' + repliesHtml + mediaHtml + '</div>' +
+                '<span class="reviews-card-more absolute right-2 bottom-2 text-[10px] font-medium bg-gradient-to-r from-amber-600 to-[#674c1d] bg-clip-text text-transparent lg:hidden">Lihat selengkapnya &gt;</span>' +
+                '</a></div>';
         }
 
-        function setActiveBtn(activeBtn) {
-            bar.querySelectorAll('.reviews-filter-btn').forEach(function(btn) {
-                btn.classList.remove('bg-amber-800', 'text-white');
-                btn.classList.add('bg-stone-200', 'text-stone-700');
-            });
-            activeBtn.classList.remove('bg-stone-200', 'text-stone-700');
-            activeBtn.classList.add('bg-amber-800', 'text-white');
+        var widgetOverlay = document.getElementById('review-widget-media-overlay');
+        var widgetContent = document.getElementById('review-widget-media-content');
+        var widgetClose = document.getElementById('review-widget-media-close');
+        function openWidgetMedia(src, type) {
+            if (!widgetContent || !widgetOverlay) return;
+            widgetContent.innerHTML = '';
+            if (type === 'video') {
+                var v = document.createElement('video');
+                v.src = src;
+                v.controls = true;
+                v.className = 'max-w-full max-h-[85vh]';
+                v.preload = 'metadata';
+                widgetContent.appendChild(v);
+                widgetOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                widgetOverlay.classList.add('opacity-100', 'pointer-events-auto');
+                widgetOverlay.setAttribute('aria-hidden', 'false');
+                v.play();
+            } else {
+                var img = document.createElement('img');
+                img.src = src;
+                img.alt = '';
+                img.className = 'max-w-full max-h-[85vh] object-contain';
+                widgetContent.appendChild(img);
+                widgetOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                widgetOverlay.classList.add('opacity-100', 'pointer-events-auto');
+                widgetOverlay.setAttribute('aria-hidden', 'false');
+            }
         }
-        bar.querySelectorAll('.reviews-filter-btn').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
+        function closeWidgetMedia() {
+            if (!widgetOverlay || !widgetContent) return;
+            widgetOverlay.classList.add('opacity-0', 'pointer-events-none');
+            widgetOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+            widgetOverlay.setAttribute('aria-hidden', 'true');
+            var v = widgetContent.querySelector('video');
+            if (v) v.pause();
+            setTimeout(function() { widgetContent.innerHTML = ''; }, 300);
+        }
+        listEl.addEventListener('click', function(e) {
+            var btn = e.target.closest('.review-widget-media-preview');
+            if (btn) {
                 e.preventDefault();
-                setActiveBtn(this);
-                var location = (bar.getAttribute('data-location') || '').trim();
-                var sort = this.getAttribute('data-sort') || 'latest';
-                var rating = (this.getAttribute('data-rating') || '').trim();
-                var params = new URLSearchParams();
-                if (location) params.set('location', location);
-                params.set('sort', sort);
-                if (rating) params.set('rating', rating);
-                if (window.closeReviewsReplyDropdown) window.closeReviewsReplyDropdown();
-                listEl.innerHTML =
-                    '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Memuat...</p>';
-                fetch('/api/reviews?' + params.toString())
-                    .then(function(res) {
-                        return res.json();
-                    })
-                    .then(function(data) {
-                        aggEl.querySelector('.text-2xl').textContent = Number(data.aggregate
-                            .avg).toFixed(1);
-                        aggEl.querySelector('.text-xl').textContent = data.aggregate.count;
-                        if (!data.reviews || data.reviews.length === 0) {
-                            listEl.innerHTML =
-                                '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Belum ada ulasan.</p>';
-                        } else {
-                            listEl.innerHTML = data.reviews.map(renderCard).join('');
-                        }
-                        if (typeof updateReviewsSliderButtons === 'function')
-                            updateReviewsSliderButtons();
-                    })
-                    .catch(function() {
-                        listEl.innerHTML =
-                            '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Gagal memuat ulasan.</p>';
-                        if (typeof updateReviewsSliderButtons === 'function')
-                            updateReviewsSliderButtons();
-                    });
-            });
+                e.stopPropagation();
+                var src = btn.getAttribute('data-src');
+                var type = btn.getAttribute('data-type') || 'image';
+                if (src) openWidgetMedia(src, type);
+                return;
+            }
+            var replyToggle = e.target.closest('.review-reply-toggle');
+            if (replyToggle) e.stopPropagation();
         });
+        if (widgetOverlay) widgetOverlay.addEventListener('click', function(e) { if (e.target === widgetOverlay) closeWidgetMedia(); });
+        if (widgetClose) widgetClose.addEventListener('click', closeWidgetMedia);
     }
 
     // Reviews slider: satu baris, tombol kiri hilang saat di awal (biar komentar keliatan)
@@ -577,15 +811,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             var tw = sliderTrack.scrollWidth;
             var cw = sliderTrack.clientWidth;
-            var sl = Math.round(sliderTrack.scrollLeft);
+            var sl = sliderTrack.scrollLeft;
+            var step = getCardWidth();
+            var minScrollForLeft = 2 * step;
             if (tw <= cw + 2) {
                 sliderPrev.style.setProperty('display', 'none');
                 sliderNext.style.setProperty('display', 'none');
                 sliderPrev.disabled = true;
                 sliderNext.disabled = true;
             } else {
-                sliderPrev.style.setProperty('display', sl <= 2 ? 'none' : 'flex');
-                sliderPrev.disabled = sl <= 2;
+                sliderPrev.style.setProperty('display', sl >= minScrollForLeft ? 'flex' : 'none');
+                sliderPrev.disabled = sl < minScrollForLeft;
                 sliderNext.style.setProperty('display', (sl + cw >= tw - 2) ? 'none' : 'flex');
                 sliderNext.disabled = sl + cw >= tw - 2;
             }
@@ -685,6 +921,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var totalSlides = slides.length;
         if (totalSlides > 1) {
             var feedbackIndex = 0;
+
             function updateFeedbackCarousel() {
                 feedbackTrack.style.transform = 'translateX(-' + (feedbackIndex * (100 / totalSlides)) + '%)';
             }
@@ -769,6 +1006,28 @@ document.addEventListener('DOMContentLoaded', function() {
         left: 1rem;
         right: 1rem;
         max-width: none;
+    }
+}
+
+/* WHAT THEY SAY card: hover (desktop only) + Lihat selengkapnya (tablet/mobile) */
+.reviews-card-clickable .reviews-card-link {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+@media (min-width: 1024px) {
+    .reviews-card-clickable:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(180, 140, 45, 0.2), 0 0 0 1px rgba(212, 168, 83, 0.4);
+    }
+    .reviews-card-clickable:hover .reviews-card-link {
+        box-shadow: none;
+    }
+}
+.reviews-card-more {
+    display: none;
+}
+@media (max-width: 1023px) {
+    .reviews-card-more {
+        display: block;
     }
 }
 </style>

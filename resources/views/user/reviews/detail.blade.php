@@ -26,31 +26,67 @@
             </div>
         </div>
 
-        <div class="reviews-detail-filter flex flex-wrap gap-3 justify-center items-center mb-8" data-current-location="{{ $currentLocation ?? '' }}">
-            @if($locations !== null)
-                <div class="flex items-center gap-2">
-                    <label class="text-stone-600 text-sm font-medium">Lokasi:</label>
-                    <select id="reviews-detail-location" class="rounded-lg border border-[#674c1d]/40 px-3 py-2 text-sm text-[#674c1d] bg-white focus:ring-2 focus:ring-[#674c1d]/30 focus:border-[#674c1d]">
-                        <option value="">Semua</option>
-                        @foreach($locations as $loc)
-                            <option value="{{ $loc }}" {{ request('location') === $loc ? 'selected' : '' }}>{{ strtoupper($loc) }}</option>
-                        @endforeach
-                    </select>
+        <div class="reviews-detail-filter-container bg-white rounded-xl border border-stone-200 shadow-sm p-4 md:p-5 mb-8" data-current-location="{{ $currentLocation ?? '' }}">
+            <div class="reviews-detail-filter flex flex-wrap gap-3 items-center" id="reviews-detail-filter-bar">
+                {{-- Baris 1: Lokasi + Search --}}
+                @if($locations !== null)
+                    <div class="flex items-center gap-2 w-full md:w-auto">
+                        <label class="text-stone-600 text-sm font-medium shrink-0">Lokasi:</label>
+                        <select id="reviews-detail-location" class="rounded-lg border border-[#674c1d]/40 px-3 py-2 text-sm text-[#674c1d] bg-white focus:ring-2 focus:ring-[#674c1d]/30 focus:border-[#674c1d]">
+                            <option value="">Semua</option>
+                            @foreach($locations as $loc)
+                                <option value="{{ $loc }}" {{ request('location') === $loc ? 'selected' : '' }}>{{ strtoupper($loc) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                @endif
+                <div class="flex-1 min-w-[180px]">
+                    <input type="text" id="reviews-detail-search" class="w-full rounded-lg border border-[#674c1d]/40 px-3 py-2 text-sm text-[#674c1d] placeholder-stone-400 bg-white focus:ring-2 focus:ring-[#674c1d]/30 focus:border-[#674c1d]" placeholder="Cari dalam ulasan..." value="{{ request('q', '') }}" autocomplete="off">
                 </div>
-            @endif
-            <span class="text-stone-600 text-sm">Filter:</span>
-            <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('sort', 'latest') === 'latest' && !request('rating') ? 'bg-[#674c1d] text-white' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="">Terbaru</button>
-            <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('sort') === 'longest' ? 'bg-[#674c1d] text-white' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="longest" data-rating="">Waktu terlama</button>
-            @for ($r = 5; $r >= 1; $r--)
-                <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('rating') == $r ? 'bg-[#674c1d] text-white' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="{{ $r }}">{{ $r }} Bintang</button>
-            @endfor
+            </div>
+            {{-- Mobile: satu dropdown filter (md:hidden) --}}
+            <div class="mt-4 pt-4 border-t border-stone-200 md:hidden">
+                <label for="reviews-detail-filter-dropdown" class="block text-stone-600 text-sm font-medium mb-2">Filter ulasan</label>
+                <select id="reviews-detail-filter-dropdown" class="reviews-detail-filter-dropdown w-full rounded-lg border border-[#674c1d]/40 px-3 py-2.5 text-sm text-[#674c1d] bg-white focus:ring-2 focus:ring-[#674c1d]/30 focus:border-[#674c1d]" aria-label="Filter ulasan">
+                    <option value="all">Semua</option>
+                    <option value="sort:latest">Terbaru</option>
+                    <option value="sort:longest">Waktu terlama</option>
+                    <option value="rating:5">5 Bintang</option>
+                    <option value="rating:4">4 Bintang</option>
+                    <option value="rating:3">3 Bintang</option>
+                    <option value="rating:2">2 Bintang</option>
+                    <option value="rating:1">1 Bintang</option>
+                    <option value="has_media">Foto/Video ({{ $aggregate['count_has_media'] ?? 0 }})</option>
+                    <optgroup label="Kata kunci" id="reviews-detail-filter-dropdown-keywords">
+                        {{-- Option keyword diisi JS dari loadKeywords --}}
+                    </optgroup>
+                </select>
+            </div>
+            {{-- Desktop: baris tombol (hidden di mobile) --}}
+            <div class="reviews-detail-filter-buttons mt-4 pt-4 border-t border-stone-200 hidden md:flex flex-wrap gap-3 justify-center md:justify-start items-center">
+                <span class="text-stone-600 text-sm font-medium shrink-0">Filter:</span>
+                @php
+                    $isSemuaActive = !request('rating') && !request('has_media') && !request('keyword');
+                    $isTerbaruActive = !$isSemuaActive && request('sort', 'latest') === 'latest' && !request('rating');
+                @endphp
+                <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ $isSemuaActive ? 'bg-[#674c1d] text-white reviews-detail-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="" data-filter-type="all">Semua</button>
+                <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ $isTerbaruActive ? 'bg-[#674c1d] text-white reviews-detail-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="">Terbaru</button>
+                <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('sort') === 'longest' ? 'bg-[#674c1d] text-white reviews-detail-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="longest" data-rating="">Waktu terlama</button>
+                @for ($r = 5; $r >= 1; $r--)
+                    <button type="button" class="reviews-detail-filter-btn px-3 py-1.5 rounded-lg text-sm {{ request('rating') == $r ? 'bg-[#674c1d] text-white reviews-detail-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-sort="latest" data-rating="{{ $r }}">{{ $r }} Bintang</button>
+                @endfor
+                <button type="button" class="reviews-detail-filter-btn reviews-detail-has-media px-3 py-1.5 rounded-lg text-sm {{ request('has_media') ? 'bg-[#674c1d] text-white reviews-detail-active' : 'bg-stone-200 text-stone-700 hover:bg-stone-300' }}" data-has-media="1">Foto/Video ({{ $aggregate['count_has_media'] ?? 0 }})</button>
+                <div id="reviews-detail-keywords" class="flex flex-wrap gap-2 items-center">
+                    {{-- Keyword buttons diisi oleh JS dari API --}}
+                </div>
+            </div>
         </div>
 
         <div id="reviews-detail-list" class="space-y-6">
             @forelse($reviews as $review)
                 <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">
                     <div class="flex flex-wrap items-center gap-2 mb-2">
-                        <span class="text-xs font-semibold text-[#674c1d] uppercase tracking-wide">{{ $review->location }}</span>
+                        <span class="text-xs font-semibold text-[#674c1d] uppercase tracking-wide">{{ \App\Models\Review::locationDisplay($review->location) }}</span>
                         <div class="flex items-center gap-1">
                             @for ($i = 1; $i <= 5; $i++)
                                 <i class="fas fa-star text-sm {{ $i <= $review->rating ? 'text-[#674c1d]' : 'text-stone-200' }}"></i>
@@ -59,7 +95,14 @@
                         <span class="text-stone-500 text-sm">{{ $review->hide_identity ? 'Anonymous' : '@' . ($review->instagram ?? '-') }}</span>
                         <span class="text-stone-400 text-xs">{{ $review->created_at->format('d M Y') }}</span>
                     </div>
-                    <p class="text-stone-800 text-sm leading-relaxed whitespace-pre-wrap">{{ $review->content }}</p>
+                    @php
+                        $contentSafe = e($review->content);
+                        if (request('keyword') && strlen(request('keyword')) <= 100) {
+                            $kw = preg_quote(request('keyword'), '/');
+                            $contentSafe = preg_replace('/(' . $kw . ')/iu', '<mark class="bg-amber-200/90 text-stone-900 font-semibold rounded px-0.5">$1</mark>', $contentSafe);
+                        }
+                    @endphp
+                    <p class="text-stone-800 text-sm leading-relaxed whitespace-pre-wrap">{!! $contentSafe !!}</p>
                     @if($review->media->count() > 0)
                         @php
                             $images = $review->media->where('type', 'image');
@@ -154,35 +197,171 @@ document.addEventListener('DOMContentLoaded', function() {
     var listEl = document.getElementById('reviews-detail-list');
     var aggEl = document.getElementById('reviews-detail-aggregate');
     var paginationEl = document.getElementById('reviews-detail-pagination');
-    var filterBar = document.querySelector('.reviews-detail-filter');
+    var filterContainer = document.querySelector('.reviews-detail-filter-container');
     var locationSelect = document.getElementById('reviews-detail-location');
-    if (!listEl || !aggEl || !filterBar) return;
+    var searchInput = document.getElementById('reviews-detail-search');
+    var keywordsEl = document.getElementById('reviews-detail-keywords');
+    if (!listEl || !aggEl || !filterContainer) return;
 
-    var currentLocation = (filterBar.getAttribute('data-current-location') || '').trim();
+    var currentLocation = (filterContainer.getAttribute('data-current-location') || '').trim();
     var isDiscover = currentLocation.length > 0;
+    var currentPage = 1;
+
+    var hadPinOnLoad = false;
+    (function initPinFromUrl() {
+        var params = new URLSearchParams(window.location.search);
+        var pinId = params.get('pin');
+        if (pinId) {
+            hadPinOnLoad = true;
+            try { sessionStorage.setItem('review_pin_id', pinId); } catch (e) {}
+        } else {
+            try { sessionStorage.removeItem('review_pin_id'); } catch (e) {}
+        }
+    })();
+    window.addEventListener('pagehide', function() {
+        try { sessionStorage.removeItem('review_pin_id'); } catch (e) {}
+    });
+    window.addEventListener('beforeunload', function() {
+        try { sessionStorage.removeItem('review_pin_id'); } catch (e) {}
+    });
 
     function getParams() {
         var location = isDiscover ? currentLocation : (locationSelect ? locationSelect.value : '');
         var sort = 'latest';
         var rating = '';
-        var page = 1;
-        filterBar.querySelectorAll('.reviews-detail-filter-btn').forEach(function(btn) {
-            if (btn.classList.contains('bg-[#674c1d]')) {
-                sort = btn.getAttribute('data-sort') || sort;
-                rating = btn.getAttribute('data-rating') || '';
-            }
-        });
-        return { location: location, sort: sort, rating: rating, page: page };
+        var hasMedia = '';
+        var keyword = '';
+        var activeFilter = filterContainer.querySelector('.reviews-detail-filter-btn.reviews-detail-active:not(.reviews-detail-has-media):not(.reviews-detail-keyword-btn)');
+        if (activeFilter) {
+            sort = activeFilter.getAttribute('data-sort') || sort;
+            rating = activeFilter.getAttribute('data-rating') || '';
+        }
+        if (filterContainer.querySelector('.reviews-detail-has-media.reviews-detail-active')) hasMedia = '1';
+        var activeKw = filterContainer.querySelector('.reviews-detail-keyword-btn.reviews-detail-active');
+        if (activeKw) keyword = activeKw.getAttribute('data-keyword') || '';
+        var q = (searchInput && searchInput.value) ? searchInput.value.trim() : '';
+        return { location: location, sort: sort, rating: rating, has_media: hasMedia, keyword: keyword, q: q, page: currentPage };
     }
 
-    function setActiveBtn(btn) {
-        filterBar.querySelectorAll('.reviews-detail-filter-btn').forEach(function(b) {
-            b.classList.remove('bg-[#674c1d]', 'text-white');
+    function renderPaginationHtml(pag) {
+        if (!pag || pag.last_page <= 1) return '';
+        var first = (pag.current_page - 1) * pag.per_page + 1;
+        var last = Math.min(pag.current_page * pag.per_page, pag.total);
+        var html = '<div class="reviews-detail-pagination-simple">';
+        html += '<p class="text-sm text-stone-500 mb-3 text-center">Menampilkan <span class="font-medium text-[#674c1d]">' + first + '</span>&ndash;<span class="font-medium text-[#674c1d]">' + last + '</span> dari <span class="font-medium text-[#674c1d]">' + pag.total + '</span> ulasan</p>';
+        html += '<nav class="flex flex-wrap justify-center items-center gap-2" aria-label="Navigasi halaman">';
+        if (pag.current_page <= 1) {
+            html += '<span class="reviews-detail-page-btn reviews-detail-page-btn--disabled" aria-disabled="true">&lsaquo;</span>';
+        } else {
+            html += '<button type="button" class="reviews-detail-page-btn" data-page="' + (pag.current_page - 1) + '" aria-label="Sebelumnya">&lsaquo;</button>';
+        }
+        var start = Math.max(1, pag.current_page - 2);
+        var end = Math.min(pag.last_page, pag.current_page + 2);
+        for (var i = start; i <= end; i++) {
+            if (i === pag.current_page) {
+                html += '<span class="reviews-detail-page-btn reviews-detail-page-btn--active" aria-current="page">' + i + '</span>';
+            } else {
+                html += '<button type="button" class="reviews-detail-page-btn" data-page="' + i + '" aria-label="Halaman ' + i + '">' + i + '</button>';
+            }
+        }
+        if (pag.current_page >= pag.last_page) {
+            html += '<span class="reviews-detail-page-btn reviews-detail-page-btn--disabled" aria-disabled="true">&rsaquo;</span>';
+        } else {
+            html += '<button type="button" class="reviews-detail-page-btn" data-page="' + (pag.current_page + 1) + '" aria-label="Selanjutnya">&rsaquo;</button>';
+        }
+        html += '</nav></div>';
+        return html;
+    }
+
+    function setActiveFilterBtn(btn) {
+        filterContainer.querySelectorAll('.reviews-detail-filter-btn:not(.reviews-detail-has-media):not(.reviews-detail-keyword-btn)').forEach(function(b) {
+            b.classList.remove('bg-[#674c1d]', 'text-white', 'reviews-detail-active');
             b.classList.add('bg-stone-200', 'text-stone-700');
         });
         if (btn) {
             btn.classList.remove('bg-stone-200', 'text-stone-700');
-            btn.classList.add('bg-[#674c1d]', 'text-white');
+            btn.classList.add('bg-[#674c1d]', 'text-white', 'reviews-detail-active');
+        }
+    }
+    function setActiveKeywordBtn(btn) {
+        if (!keywordsEl) return;
+        keywordsEl.querySelectorAll('.reviews-detail-keyword-btn').forEach(function(b) {
+            b.classList.remove('bg-[#674c1d]', 'text-white', 'reviews-detail-active');
+            b.classList.add('bg-stone-200', 'text-stone-700');
+        });
+        if (btn) {
+            btn.classList.remove('bg-stone-200', 'text-stone-700');
+            btn.classList.add('bg-[#674c1d]', 'text-white', 'reviews-detail-active');
+        }
+    }
+    function setHasMediaActive(active) {
+        var hasMediaBtn = filterContainer.querySelector('.reviews-detail-has-media');
+        if (!hasMediaBtn) return;
+        if (active) {
+            hasMediaBtn.classList.remove('bg-stone-200', 'text-stone-700');
+            hasMediaBtn.classList.add('bg-[#674c1d]', 'text-white', 'reviews-detail-active');
+        } else {
+            hasMediaBtn.classList.remove('bg-[#674c1d]', 'text-white', 'reviews-detail-active');
+            hasMediaBtn.classList.add('bg-stone-200', 'text-stone-700');
+        }
+    }
+    function clearHasMediaAndKeyword() {
+        setHasMediaActive(false);
+        setActiveKeywordBtn(null);
+    }
+
+    var filterDropdown = document.getElementById('reviews-detail-filter-dropdown');
+    var filterDropdownKeywords = document.getElementById('reviews-detail-filter-dropdown-keywords');
+    function getCurrentDropdownValue() {
+        if (filterContainer.querySelector('.reviews-detail-has-media.reviews-detail-active')) return 'has_media';
+        var activeKw = filterContainer.querySelector('.reviews-detail-keyword-btn.reviews-detail-active');
+        if (activeKw) return 'kw:' + (activeKw.getAttribute('data-keyword') || '');
+        var activeFilter = filterContainer.querySelector('.reviews-detail-filter-btn.reviews-detail-active:not(.reviews-detail-has-media):not(.reviews-detail-keyword-btn)');
+        if (!activeFilter) return 'all';
+        if (activeFilter.getAttribute('data-filter-type') === 'all') return 'all';
+        if (activeFilter.getAttribute('data-sort') === 'longest') return 'sort:longest';
+        var rating = activeFilter.getAttribute('data-rating');
+        if (rating) return 'rating:' + rating;
+        return 'sort:latest';
+    }
+    function syncDropdownFromButtons() {
+        if (!filterDropdown) return;
+        var v = getCurrentDropdownValue();
+        for (var i = 0; i < filterDropdown.options.length; i++) {
+            if (filterDropdown.options[i].value === v) { filterDropdown.value = v; return; }
+        }
+    }
+    function applyDropdownSelection(value) {
+        if (!value) return;
+        currentPage = 1;
+        if (value === 'all') {
+            clearHasMediaAndKeyword();
+            var btn = filterContainer.querySelector('.reviews-detail-filter-btn[data-filter-type="all"]');
+            if (btn) { setActiveFilterBtn(btn); fetchReviews(); }
+            return;
+        }
+        if (value === 'sort:latest') {
+            var terbaru = filterContainer.querySelector('.reviews-detail-filter-btn[data-sort="latest"][data-rating=""]:not([data-filter-type="all"])');
+            if (terbaru) { terbaru.click(); return; }
+        }
+        if (value === 'sort:longest') {
+            var longest = filterContainer.querySelector('.reviews-detail-filter-btn[data-sort="longest"]');
+            if (longest) { longest.click(); return; }
+        }
+        if (value.indexOf('rating:') === 0) {
+            var r = value.slice(7);
+            var ratingBtn = filterContainer.querySelector('.reviews-detail-filter-btn[data-rating="' + r + '"]');
+            if (ratingBtn) { ratingBtn.click(); return; }
+        }
+        if (value === 'has_media') {
+            setHasMediaActive(true);
+            fetchReviews();
+            return;
+        }
+        if (value.indexOf('kw:') === 0) {
+            var word = value.slice(3);
+            var kwBtn = filterContainer.querySelector('.reviews-detail-keyword-btn[data-keyword="' + word.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"]');
+            if (kwBtn) { setActiveKeywordBtn(kwBtn); fetchReviews(); }
         }
     }
 
@@ -229,6 +408,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (p.location) params.set('location', p.location);
         params.set('sort', p.sort);
         if (p.rating) params.set('rating', p.rating);
+        if (p.has_media) params.set('has_media', p.has_media);
+        if (p.keyword) params.set('keyword', p.keyword);
+        if (p.q) params.set('q', p.q);
         params.set('page', p.page);
         params.set('per_page', '12');
 
@@ -240,13 +422,28 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(function(data) {
                 aggEl.querySelector('.text-3xl').textContent = Number(data.aggregate.avg).toFixed(1);
                 aggEl.querySelector('.text-2xl').textContent = data.aggregate.count;
+                var hasMediaBtn = filterContainer.querySelector('.reviews-detail-has-media');
+                var mediaCount = data.aggregate.count_has_media ?? 0;
+                if (hasMediaBtn) hasMediaBtn.textContent = 'Foto/Video (' + mediaCount + ')';
+                var hasMediaOpt = filterDropdown && filterDropdown.querySelector('option[value="has_media"]');
+                if (hasMediaOpt) hasMediaOpt.textContent = 'Foto/Video (' + mediaCount + ')';
                 if (!data.reviews || data.reviews.length === 0) {
                     listEl.innerHTML = '<p class="text-center text-stone-500 py-12">Belum ada ulasan.</p>';
                 } else {
-                    listEl.innerHTML = data.reviews.map(renderCard).join('');
+                    var reviewsToRender = data.reviews;
+                    var isFilterSemua = !p.rating && !p.has_media && !p.keyword;
+                    var pinId = null;
+                    try { pinId = sessionStorage.getItem('review_pin_id'); } catch (e) {}
+                    if (isFilterSemua && pinId) {
+                        var pinItem = data.reviews.filter(function(r) { return String(r.id) === String(pinId); })[0];
+                        if (pinItem) {
+                            reviewsToRender = [pinItem].concat(data.reviews.filter(function(r) { return String(r.id) !== String(pinId); }));
+                        }
+                    }
+                    listEl.innerHTML = reviewsToRender.map(function(r) { return renderCard(r, p.keyword); }).join('');
                 }
                 if (data.pagination && paginationEl) {
-                    // Optional: render pagination from data.pagination
+                    paginationEl.innerHTML = renderPaginationHtml(data.pagination);
                 }
             })
             .catch(function() {
@@ -254,15 +451,89 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    filterBar.querySelectorAll('.reviews-detail-filter-btn').forEach(function(btn) {
+    function loadKeywords() {
+        var location = isDiscover ? currentLocation : (locationSelect ? locationSelect.value : '');
+        var params = new URLSearchParams();
+        if (location) params.set('location', location);
+        fetch('/api/reviews/keywords?' + params.toString())
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (!keywordsEl || !data.keywords || data.keywords.length === 0) {
+                    if (filterDropdownKeywords) filterDropdownKeywords.innerHTML = '';
+                    return;
+                }
+                keywordsEl.innerHTML = '';
+                if (filterDropdownKeywords) {
+                    filterDropdownKeywords.innerHTML = '';
+                    data.keywords.forEach(function(kw) {
+                        var opt = document.createElement('option');
+                        opt.value = 'kw:' + kw.word;
+                        opt.textContent = kw.word + ' (' + kw.count + ')';
+                        filterDropdownKeywords.appendChild(opt);
+                    });
+                }
+                data.keywords.forEach(function(kw) {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'reviews-detail-filter-btn reviews-detail-keyword-btn px-3 py-1.5 rounded-lg text-sm bg-stone-200 text-stone-700 hover:bg-stone-300';
+                    btn.setAttribute('data-keyword', kw.word);
+                    btn.textContent = kw.word + ' (' + kw.count + ')';
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        currentPage = 1;
+                        var isActive = btn.classList.contains('reviews-detail-active');
+                        setActiveKeywordBtn(isActive ? null : btn);
+                        fetchReviews();
+                    });
+                    keywordsEl.appendChild(btn);
+                });
+                syncDropdownFromButtons();
+            });
+    }
+
+    var searchDebounceTimer;
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(fetchReviews, 350);
+        });
+    }
+
+    filterContainer.querySelectorAll('.reviews-detail-filter-btn:not(.reviews-detail-has-media):not(.reviews-detail-keyword-btn)').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
-            setActiveBtn(this);
+            if (btn.getAttribute('data-filter-type') === 'all') {
+                clearHasMediaAndKeyword();
+            }
+            setActiveFilterBtn(this);
             fetchReviews();
         });
     });
+    var hasMediaBtn = filterContainer.querySelector('.reviews-detail-has-media');
+    if (hasMediaBtn) {
+        hasMediaBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var isActive = this.classList.contains('reviews-detail-active');
+            setHasMediaActive(!isActive);
+            fetchReviews();
+        });
+    }
     if (locationSelect) {
-        locationSelect.addEventListener('change', fetchReviews);
+        locationSelect.addEventListener('change', function() { loadKeywords(); fetchReviews(); });
+    }
+
+    if (filterDropdown) {
+        syncDropdownFromButtons();
+        filterDropdown.addEventListener('change', function() {
+            applyDropdownSelection(filterDropdown.value);
+        });
+    }
+
+    loadKeywords();
+
+    // Utama dengan ?pin=: fetch sekali agar list + pin di atas. Apartment (discover): fetch sekali agar list + pagination dari API tampil konsisten.
+    if (hadPinOnLoad || isDiscover) {
+        fetchReviews();
     }
 
     // Media popup (fade in/out)

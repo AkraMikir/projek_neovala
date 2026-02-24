@@ -194,7 +194,7 @@
             </div>
         </section>
 
-        @include('user.partials.reviews-section', ['location' => 'gpc', 'carouselImages' => $carouselImages ?? []])
+        @include('user.partials.reviews-section', ['locationName' => 'Green Pramuka City', 'locationSlug' => 'gpc', 'carouselImages' => $carouselImages ?? []])
     </main>
 
     <!-- Footer Discover -->

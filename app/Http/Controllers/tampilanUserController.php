@@ -33,11 +33,14 @@ class tampilanUserController extends Controller
         $reviewAggregate = [
             'avg' => round((float) $baseQuery->avg('rating'), 1),
             'count' => $baseQuery->count(),
+            'count_has_media' => (clone $baseQuery)->whereHas('media')->count(),
             'breakdown' => $baseQuery->selectRaw('rating, count(*) as count')->groupBy('rating')->orderByDesc('rating')->pluck('count', 'rating')->toArray(),
         ];
 
         $promos = Promo::latest()->get();
 
-        return view('user.index', compact('reviews', 'reviewAggregate', 'promos'));
+        $locations = ['keseluruhan', 'Transpark Juanda', 'Transpark Cibubur', 'Grand Kamala Lagoon', 'Patraland Urbano', 'Gateway Cicadas', 'Podomoro Golf View', 'Bassura City', 'Green Pramuka City', 'Spring Lake Summarecon'];
+
+        return view('user.index', compact('reviews', 'reviewAggregate', 'promos', 'locations'));
     }
 }

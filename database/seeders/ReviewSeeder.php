@@ -15,7 +15,7 @@ class ReviewSeeder extends Seeder
      */
     public function run(): void
     {
-        $locations = ['tpj', 'tpc', 'gkl', 'plu', 'gwc', 'pgv', 'gpc', 'bsr', 'spl'];
+        $locations = ['keseluruhan', 'Transpark Juanda', 'Transpark Cibubur', 'Grand Kamala Lagoon', 'Patraland Urbano', 'Gateway Cicadas', 'Podomoro Golf View', 'Bassura City', 'Green Pramuka City', 'Spring Lake Summarecon'];
         $contentsShort = [
             'Bagus banget, recommended!',
             'Nyaman dan bersih.',
