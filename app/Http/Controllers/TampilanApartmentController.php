@@ -10,14 +10,37 @@ use App\Models\Review;
 
 class TampilanApartmentController extends Controller
 {
-    private function getReviewDataForLocation(string $location): array
+    private static $SLUG_TO_NAME = [
+        'tpj' => 'Transpark Juanda',
+        'tpc' => 'Transpark Cibubur',
+        'gkl' => 'Grand Kamala Lagoon',
+        'plu' => 'Patraland Urbano',
+        'gwc' => 'Gateway Cicadas',
+        'pgv' => 'Podomoro Golf View',
+        'gpc' => 'Green Pramuka City',
+        'bsr' => 'Bassura City',
+        'spl' => 'Spring Lake Summarecon',
+    ];
+
+    private function getReviewDataForLocation(string $locationSlug): array
     {
-        $reviews = Review::accepted()->forLocation($location)->with(['media', 'replies.admin'])->latest()->paginate(12);
-        $baseQuery = Review::accepted()->forLocation($location);
-        $avg = (clone $baseQuery)->avg('rating');
-        $count = (clone $baseQuery)->count();
-        $countHasMedia = (clone $baseQuery)->whereHas('media')->count();
-        $reviewAggregate = ['avg' => round((float) $avg, 1), 'count' => $count, 'count_has_media' => $countHasMedia];
+        $locationName = self::$SLUG_TO_NAME[$locationSlug] ?? null;
+        $locationValues = $locationName ? [$locationSlug, $locationName] : [$locationSlug];
+
+        $reviews = Review::accepted()
+            ->whereIn('location', $locationValues)
+            ->with(['media', 'replies.admin'])
+            ->latest()
+            ->limit(50)
+            ->get();
+
+        $baseQuery = Review::accepted()->whereIn('location', $locationValues);
+        $reviewAggregate = [
+            'avg'            => round((float) (clone $baseQuery)->avg('rating'), 1),
+            'count'          => (clone $baseQuery)->count(),
+            'count_has_media'=> (clone $baseQuery)->whereHas('media')->count(),
+        ];
+
         return compact('reviews', 'reviewAggregate');
     }
 
@@ -117,7 +140,8 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-    return view('user.discover-TPC', compact('carouselImagesBySection', 'roomsFormatted'));
+    $reviewData = $this->getReviewDataForLocation('tpc');
+    return view('user.discover-TPC', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
 }
 
     public function gkl()
@@ -215,7 +239,8 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-        return view('user.discover-PLU', compact('carouselImagesBySection', 'roomsFormatted'));
+        $reviewData = $this->getReviewDataForLocation('plu');
+        return view('user.discover-PLU', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
     public function gwc()
     {
@@ -312,7 +337,8 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-        return view('user.discover-PGV', compact('carouselImagesBySection', 'roomsFormatted'));
+        $reviewData = $this->getReviewDataForLocation('pgv');
+        return view('user.discover-PGV', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
 
     public function BSR()
@@ -410,7 +436,8 @@ class TampilanApartmentController extends Controller
             ];
         });
 
-        return view('user.discover-GPC', compact('carouselImagesBySection', 'roomsFormatted'));
+        $reviewData = $this->getReviewDataForLocation('gpc');
+        return view('user.discover-GPC', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
 
     public function spl()

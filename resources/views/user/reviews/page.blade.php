@@ -651,7 +651,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     loadKeywords();
-    fetchReviews();
 
     // Media modal
     var overlay = document.getElementById('review-page-media-overlay');
