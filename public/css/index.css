@@ -1,6 +1,6 @@
 /* ============================================================
    CAROUSEL GRADIENT OVERLAY
-   — Tidak menyentuh area paling bawah agar white fade (header::after)
+   â€” Tidak menyentuh area paling bawah agar white fade (header::after)
      tetap bekerja mulus. Dark zone dimulai dari ~18% dari bawah.
    ============================================================ */
 .carousel-gradient-overlay {
@@ -72,7 +72,7 @@
     font-style: normal;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    /* Shimmer sweep — cahaya putih menyapu dari kiri ke kanan */
+    /* Shimmer sweep â€” cahaya putih menyapu dari kiri ke kanan */
     background: linear-gradient(
         100deg,
         #ffc619 0%,
@@ -393,7 +393,149 @@ body.menu-open {
     z-index: 3;
 }
 
-/* Service section pakai Tailwind di index.blade.php (grid 2→3→6, ikon tengah) */
+/* Service section */
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 55px 0px;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.service-container .service-item:nth-child(1)::after,
+.service-container .service-item:nth-child(2)::after,
+.service-container .service-item:nth-child(3)::after,
+.service-container .service-item:nth-child(4)::after,
+.service-container .service-item:nth-child(5)::after,
+.service-container .service-item:nth-child(6)::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 0.5px;
+    background-color: #674C1D;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+}
+
+.service-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.service-item p {
+    font-size: 12px;
+    font-family: "EB Garamond", serif;
+    color: #674C1D;
+    margin: 0;
+}
+
+@media (max-width: 1480px) {
+    .service-container {
+        grid-template-columns: repeat(3, 1fr);
+        position: relative;
+        gap: 55px 0;
+    }
+
+    .service-container .service-item:nth-child(4)::after,
+    .service-container .service-item:nth-child(5)::after,
+    .service-container .service-item:nth-child(6)::after {
+        display: none;
+    }
+
+    .service-container .service-item:nth-child(1)::after,
+    .service-container .service-item:nth-child(2)::after,
+    .service-container .service-item:nth-child(3)::after {
+        content: '';
+        position: absolute;
+        bottom: -27.5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 220px;
+        height: 0.5px;
+        background-color: #674C1D;
+    }
+
+    .service-container .service-item:nth-child(2)::before,
+    .service-container .service-item:nth-child(3)::before,
+    .service-container .service-item:nth-child(5)::before,
+    .service-container .service-item:nth-child(6)::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 160px;
+        width: 0.5px;
+        background-color: #674C1D;
+    }
+}
+
+@media (max-width: 1024px) {
+    .service-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-container .service-item:nth-child(4)::after,
+    .service-container .service-item:nth-child(5)::after,
+    .service-container .service-item:nth-child(6)::after {
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: -27.5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 220px;
+        height: 0.5px;
+        background-color: #674C1D;
+    }
+
+    .service-container .service-item:nth-child(3)::before,
+    .service-container .service-item:nth-child(5)::before {
+        display: none;
+    }
+
+    .service-container .service-item:nth-child(4)::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 160px;
+        width: 0.5px;
+        background-color: #674C1D;
+    }
+}
+
+@media (max-width: 550px) {
+    .service-container {
+        grid-template-columns: 1fr;
+    }
+
+    .service-container .service-item:nth-child(1)::before,
+    .service-container .service-item:nth-child(2)::before,
+    .service-container .service-item:nth-child(4)::before,
+    .service-container .service-item:nth-child(6)::before {
+        display: none;
+    }
+}
 
 /* Responsive Design - main-content & book-now saja */
 @media (max-width: 1480px) {
@@ -420,6 +562,10 @@ body.menu-open {
 @media (max-width: 513px) {
     .main-content {
         margin: -10px auto 0px;
+    }
+
+    .service-item p {
+        font-size: 10px;
     }
 }
 
