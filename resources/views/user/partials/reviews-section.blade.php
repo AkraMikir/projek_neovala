@@ -734,6 +734,8 @@ document.addEventListener('DOMContentLoaded', function() {
             var mediaHtml = mediaPreviewHtml(r.media);
             var baseUrl = (filterContainer && filterContainer.getAttribute('data-detail-url')) || '/reviews';
             var detailUrl = baseUrl + (baseUrl.indexOf('?') >= 0 ? '&' : '?') + 'pin=' + (r.id || '');
+            var likeHtml = '<button type="button" class="review-like-btn flex items-center gap-1 text-[10px] text-stone-400 hover:text-[#674c1d] transition-colors focus:outline-none flex-shrink-0 ml-1" data-review-id="' + (r.id || '') + '" title="Suka"><i class="fas fa-thumbs-up"></i><span class="review-like-count">' + (r.likes || 0) + '</span></button>';
+            var metaHtml = '<div class="flex items-center justify-between mt-0.5"><p class="text-stone-500 text-[11px] truncate">' + identity + ' · ' + (r.created_at || '') + '</p>' + likeHtml + '</div>';
             return '<div class="reviews-card reviews-card-clickable relative flex-shrink-0 w-64 max-w-[85vw] snap-start bg-white rounded-lg shadow-sm pt-1 px-3 pb-3 border border-stone-100 flex flex-col justify-center min-h-[140px]" data-review-id="' + (r.id || '') + '">' +
                 '<a href="' + detailUrl + '" class="reviews-card-link block h-full min-h-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#674c1d]/40 focus:ring-offset-1">' +
                 '<div class="reviews-card-inner h-[100%]">' +
@@ -742,8 +744,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<p class="text-stone-800 text-xs leading-snug line-clamp-4 mb-1.5">' + (r.content || '') +
                 '</p>' +
                 '<div class="flex items-center gap-1 mb-0.5">' + stars + '</div>' +
-                '<p class="text-stone-500 text-[11px] truncate">' + identity + ' · ' + (r.created_at || '') +
-                '</p>' + repliesHtml + mediaHtml + '</div>' +
+                metaHtml + repliesHtml + mediaHtml + '</div>' +
                 '<span class="reviews-card-more absolute right-2 bottom-2 text-[10px] font-medium bg-gradient-to-r from-amber-600 to-[#674c1d] bg-clip-text text-transparent lg:hidden">Lihat selengkapnya &gt;</span>' +
                 '</a></div>';
         }
