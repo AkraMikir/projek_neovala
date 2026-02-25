@@ -556,37 +556,63 @@ document.addEventListener("DOMContentLoaded", function () {
         _ov.setAttribute('aria-hidden', 'true');
         _ov.style.cssText = [
             'position:fixed;inset:0;z-index:999999;',
-            'display:flex;align-items:center;justify-content:center;padding:1rem;',
-            'background:rgba(0,0,0,0.88);backdrop-filter:blur(4px);',
+            'display:flex;align-items:center;justify-content:center;',
+            'padding:3rem 1rem 1.5rem;',
+            'background:rgba(0,0,0,0.92);backdrop-filter:blur(5px);',
             'opacity:0;pointer-events:none;transition:opacity .22s ease;',
         ].join('');
 
-        // Inner container
-        var inner = document.createElement('div');
-        inner.style.cssText = 'position:relative;display:flex;flex-direction:column;align-items:center;width:100%;max-width:min(90vw,860px);gap:10px;';
-
-        // Top bar: counter + close
-        var topBar = document.createElement('div');
-        topBar.style.cssText = 'display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 2px;';
-
-        _counter = document.createElement('span');
-        _counter.style.cssText = 'color:rgba(255,255,255,0.82);font-size:0.78rem;font-weight:600;letter-spacing:0.08em;font-family:sans-serif;';
-
+        // Close button — fixed at top-right of the OVERLAY (always reachable)
         _closeBtn = document.createElement('button');
         _closeBtn.type = 'button';
         _closeBtn.setAttribute('aria-label', 'Tutup');
-        _closeBtn.style.cssText = 'width:2.1rem;height:2.1rem;border-radius:50%;border:2px solid rgba(255,255,255,0.6);background:rgba(255,255,255,0.1);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s,border-color .15s;flex-shrink:0;font-size:0.9rem;';
+        _closeBtn.style.cssText = [
+            'position:absolute;top:0.75rem;right:0.75rem;',
+            'width:2.4rem;height:2.4rem;border-radius:50%;',
+            'border:2px solid rgba(255,255,255,0.7);',
+            'background:rgba(255,255,255,0.12);',
+            'color:#fff;font-size:1rem;cursor:pointer;',
+            'display:flex;align-items:center;justify-content:center;',
+            'transition:background .15s,border-color .15s;',
+            'z-index:10;flex-shrink:0;',
+        ].join('');
         _closeBtn.innerHTML = '<i class="fas fa-times"></i>';
-        _closeBtn.addEventListener('mouseenter', function () { _closeBtn.style.background = 'rgba(255,255,255,0.25)'; _closeBtn.style.borderColor = '#fff'; });
-        _closeBtn.addEventListener('mouseleave', function () { _closeBtn.style.background = 'rgba(255,255,255,0.1)'; _closeBtn.style.borderColor = 'rgba(255,255,255,0.6)'; });
-        _closeBtn.addEventListener('click', _close);
+        _closeBtn.addEventListener('mouseenter', function () {
+            _closeBtn.style.background = 'rgba(255,255,255,0.28)';
+            _closeBtn.style.borderColor = '#fff';
+        });
+        _closeBtn.addEventListener('mouseleave', function () {
+            _closeBtn.style.background = 'rgba(255,255,255,0.12)';
+            _closeBtn.style.borderColor = 'rgba(255,255,255,0.7)';
+        });
+        _closeBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            _close();
+        });
 
-        topBar.appendChild(_counter);
-        topBar.appendChild(_closeBtn);
+        // Counter — fixed at top-left of the overlay
+        _counter = document.createElement('span');
+        _counter.style.cssText = [
+            'position:absolute;top:1.1rem;left:1rem;',
+            'color:rgba(255,255,255,0.85);',
+            'font-size:0.82rem;font-weight:600;letter-spacing:0.08em;font-family:sans-serif;',
+        ].join('');
+
+        // Inner container (only holds media + dots)
+        var inner = document.createElement('div');
+        inner.style.cssText = [
+            'position:relative;display:flex;flex-direction:column;align-items:center;',
+            'width:100%;max-width:min(92vw,860px);gap:10px;',
+        ].join('');
 
         // Media wrap
         _mediaWrap = document.createElement('div');
-        _mediaWrap.style.cssText = 'position:relative;width:100%;display:flex;align-items:center;justify-content:center;background:#0d0d0d;border-radius:12px;overflow:hidden;min-height:100px;max-height:75vh;';
+        _mediaWrap.style.cssText = [
+            'position:relative;width:100%;',
+            'display:flex;align-items:center;justify-content:center;',
+            'background:#111;border-radius:12px;overflow:hidden;',
+            'min-height:80px;max-height:80vh;',
+        ].join('');
 
         function _navBtnStyle(side) {
             return 'position:absolute;' + side + ':10px;top:50%;transform:translateY(-50%);z-index:10;' +
@@ -601,7 +627,7 @@ document.addEventListener("DOMContentLoaded", function () {
         _prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
         _prevBtn.addEventListener('mouseenter', function () { _prevBtn.style.background = 'rgba(103,76,29,0.75)'; _prevBtn.style.borderColor = '#c49a5a'; });
         _prevBtn.addEventListener('mouseleave', function () { _prevBtn.style.background = 'rgba(0,0,0,0.45)'; _prevBtn.style.borderColor = 'rgba(255,255,255,0.55)'; });
-        _prevBtn.addEventListener('click', function () { _navigate(-1); });
+        _prevBtn.addEventListener('click', function (e) { e.stopPropagation(); _navigate(-1); });
 
         _nextBtn = document.createElement('button');
         _nextBtn.type = 'button'; _nextBtn.setAttribute('aria-label', 'Berikutnya');
@@ -609,7 +635,7 @@ document.addEventListener("DOMContentLoaded", function () {
         _nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
         _nextBtn.addEventListener('mouseenter', function () { _nextBtn.style.background = 'rgba(103,76,29,0.75)'; _nextBtn.style.borderColor = '#c49a5a'; });
         _nextBtn.addEventListener('mouseleave', function () { _nextBtn.style.background = 'rgba(0,0,0,0.45)'; _nextBtn.style.borderColor = 'rgba(255,255,255,0.55)'; });
-        _nextBtn.addEventListener('click', function () { _navigate(1); });
+        _nextBtn.addEventListener('click', function (e) { e.stopPropagation(); _navigate(1); });
 
         _mediaWrap.appendChild(_prevBtn);
         _mediaWrap.appendChild(_nextBtn);
@@ -625,12 +651,16 @@ document.addEventListener("DOMContentLoaded", function () {
         _dotsWrap = document.createElement('div');
         _dotsWrap.style.cssText = 'display:none;gap:7px;justify-content:center;align-items:center;flex-wrap:wrap;min-height:14px;';
 
-        inner.appendChild(topBar);
         inner.appendChild(_mediaWrap);
         inner.appendChild(_dotsWrap);
+        _ov.appendChild(_counter);
+        _ov.appendChild(_closeBtn);
         _ov.appendChild(inner);
 
-        _ov.addEventListener('click', function (e) { if (e.target === _ov) _close(); });
+        // Click on dark overlay background closes gallery
+        _ov.addEventListener('click', function (e) {
+            if (e.target === _ov || e.target === inner) _close();
+        });
 
         document.addEventListener('keydown', function (e) {
             if (!_ov || _ov.style.opacity === '0') return;
