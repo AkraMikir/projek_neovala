@@ -187,7 +187,7 @@
     <!-- Titip Kunci Section -->
     <section class="titip-kunci-section" id="titip-kunci-section" data-scroll-animate="fade-up">
         <div class="titip-kunci-container">
-            <img src="{{ asset('images/images/home pages/IMG_5703.webp') }}" alt="Background" class="titip-kunci-bg">
+                <img src="{{ asset('images/images/home pages/IMG_5703.webp') }}" alt="Background" class="titip-kunci-bg" loading="lazy">
             <div class="titip-kunci-gradient" aria-hidden="true"></div>
             <div class="titip-kunci-content">
                 <h2 class="titip-kunci-title">JASA TITIP KUNCI SEWA APARTEMEN</h2>
@@ -203,7 +203,7 @@
                         </a>
                     </div>
                     <img src="{{ asset('images/logo/handshake-icon.webp') }}" alt="Handshake Icon"
-                        class="handshake-icon">
+                        class="handshake-icon" loading="lazy">
                 </div>
             </div>
         </div>
@@ -217,7 +217,7 @@
             <div class="card" data-scroll-animate="fade-up">
                 <h3 class="card-title">{{ $promo->title }}</h3>
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('storage/' . $promo->image) }}" alt="{{ $promo->title }}" class="card-image">
+                    <img src="{{ asset('storage/' . $promo->image) }}" alt="{{ $promo->title }}" class="card-image" loading="lazy">
                 </div>
                 @if($promo->download_link)
                 <a href="{{ asset('storage/' . $promo->download_link) }}" class="download-btn" target="_blank">
@@ -347,7 +347,7 @@
             </div>
             <div class="story-image-container">
                 <div class="story-image">
-                    <img src="{{ asset('images/logo/story.webp') }}" alt="Neovala Building">
+                    <img src="{{ asset('images/logo/story.webp') }}" alt="Neovala Building" loading="lazy">
                 </div>
                 <a href="{{ route('ourStory') }}" class="read-more-btn">
                     <span>READ MORE</span>
@@ -465,7 +465,7 @@
                 class="col-span-1 hidden md:block min-h-[280px] md:min-h-0 h-full overflow-hidden rounded-tl-[96px] rounded-br-[96px] border border-[#674c1d]/10 shadow-lg bg-stone-100 relative">
                 <div class="flex h-full min-h-[280px] md:min-h-full">
                     <img src="{{ asset('images/images/home pages/DJI_20250307171433_0096_D.webp') }}" alt=""
-                        class="h-full w-full object-cover">
+                        class="h-full w-full object-cover" loading="lazy">
                 </div>
             </div>
         </div>

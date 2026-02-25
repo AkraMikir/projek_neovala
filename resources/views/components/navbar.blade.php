@@ -11,11 +11,11 @@
         <div class="logo-left">
             <a href="{{ route('home') }}#home">
                 <img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.webp') }}"
-                    alt="Logo Neovala Light" class="logo-light">
+                    alt="Logo Neovala Light" class="logo-light" fetchpriority="high">
             </a>
             <a href="{{ route('home') }}#home">
                 <img src="{{ asset('images/logo/NEOVALA-DARK.webp') }}"
-                    alt="Logo Neovala Dark" class="logo-dark">
+                    alt="Logo Neovala Dark" class="logo-dark" fetchpriority="high">
             </a>
         </div>
         <ul class="nav-links">

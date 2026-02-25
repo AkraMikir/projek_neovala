@@ -176,7 +176,7 @@ Route::delete('/admin/delete/{tipe}/{id}', [DeleteController::class, 'destroy'])
 // ROUTE ADMIN Edit Data
 // ==============================
 Route::patch('/admin/komentar/{id}', [EditController::class, 'KomentarUpdate'])->name('komentar.update');
-Route::put('/admin/komentar/{id}', [EditController::class, 'KomentarUpdate'])->name('komentar.update');
+Route::put('/admin/komentar/{id}', [EditController::class, 'KomentarUpdate'])->name('komentar.update.put');
 
 
 

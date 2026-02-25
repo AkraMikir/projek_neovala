@@ -19,7 +19,7 @@
     <!-- Hero Section -->
     <section class="guest-service-hero" data-scroll-animate="fade-up">
         <div class="guest-service-hero-background">
-            <img src="{{ asset('images/images/home pages/DJI_20250307171433_0096_D.webp') }}" alt="Guest Service Hero" class="hero-bg-image">
+            <img src="{{ asset('images/images/home pages/DJI_20250307171433_0096_D.webp') }}" alt="Guest Service Hero" class="hero-bg-image" fetchpriority="high">
             <div class="hero-overlay"></div>
         </div>
         <div class="guest-service-hero-content">

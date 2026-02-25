@@ -3,20 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Preconnect for external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- Fonts (single consolidated request) -->
     <link href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -64,7 +56,7 @@
             <!-- Booking Transpark Juanda -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/drone_photo/TPJ/DJI_20250404164408_0277_D.webp') }}" alt="Transpark Juanda" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/TPJ/DJI_20250404164408_0277_D.webp') }}" alt="Transpark Juanda" class="card-image" loading="lazy">
                     <div class="card-overlay">
                         <h3>TRANSPARK JUANDA</h3>
                     </div>
@@ -91,7 +83,7 @@
             <!-- Booking Transpark Cibubur -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/drone_photo/TPC/DJI_20250405123918_0311_D.webp') }}" alt="Transpark Cibubur" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/TPC/DJI_20250405123918_0311_D.webp') }}" alt="Transpark Cibubur" class="card-image" loading="lazy">
                     <div class="card-overlay">
                         <h3>TRANSPARK CIBUBUR</h3>
                     </div>
@@ -118,7 +110,7 @@
             <!-- Booking Grand Kamala Lagoon -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/drone_photo/GKL/DJI_20250327153843_0201_D.webp') }}" alt="Grand Kamala Lagoon" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/GKL/DJI_20250327153843_0201_D.webp') }}" alt="Grand Kamala Lagoon" class="card-image" loading="lazy">
                     <div class="card-overlay">
                         <h3>GRAND KAMALA LAGOON</h3>
                     </div>
@@ -145,7 +137,7 @@
             <!-- Booking Patraland Urbano -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/drone_photo/PLU/DJI_20250321180632_0140_D.webp') }}" alt="Patraland Urbano" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/PLU/DJI_20250321180632_0140_D.webp') }}" alt="Patraland Urbano" class="card-image" loading="lazy">
                     <div class="card-overlay">
                         <h3>PATRALAND URBANO</h3>
                     </div>
@@ -172,7 +164,7 @@
             <!-- Booking Gateway Cicadas -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/drone_photo/GWC/gwc desktop.webp') }}" alt="Gateway Cicadas" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/GWC/gwc desktop.webp') }}" alt="Gateway Cicadas" class="card-image" loading="lazy">
                     <div class="card-overlay">
                         <h3>GATEWAY CICADAS</h3>
                     </div>
@@ -199,7 +191,7 @@
             <!-- Booking Podomoro Golf View -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/drone_photo/PGV/DJI_20250307171436_0097_D.webp') }}" alt="Podomoro Golf View" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/PGV/DJI_20250307171436_0097_D.webp') }}" alt="Podomoro Golf View" class="card-image" loading="lazy">
                     <div class="card-overlay">
                         <h3>PODOMORO GOLF VIEW</h3>
                     </div>
@@ -226,7 +218,7 @@
             <!-- Booking Green Pramuka City -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/drone_photo/GPC/DJI_20250905143026_0543_D.webp') }}" alt="Green Pramuka City" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/GPC/DJI_20250905143026_0543_D.webp') }}" alt="Green Pramuka City" class="card-image" loading="lazy">
                     <div class="card-overlay">
                         <h3>GREEN PRAMUKA CITY</h3>
                     </div>
@@ -253,7 +245,7 @@
             <!-- Booking Bassura City -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/drone_photo/BSC/DJI_20250827131520_0491_D.webp') }}" alt="Bassura City" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/BSC/DJI_20250827131520_0491_D.webp') }}" alt="Bassura City" class="card-image" loading="lazy">
                     <div class="card-overlay">
                         <h3>BASSURA CITY</h3>
                     </div>
@@ -280,7 +272,7 @@
             <!-- Booking Springlake Summarecon -->
             <div class="booking-card" data-scroll-animate="fade-up">
                 <div class="card-image-wrapper">
-                    <img src="{{ asset('images/images/drone_photo/SPL/DJI_20260102114257_0580_D.webp') }}" alt="Springlake Summarecon" class="card-image">
+                    <img src="{{ asset('images/images/drone_photo/SPL/DJI_20260102114257_0580_D.webp') }}" alt="Springlake Summarecon" class="card-image" loading="lazy">
                     <div class="card-overlay">
                         <h3>SPRINGLAKE SUMMARECON</h3>
                     </div>

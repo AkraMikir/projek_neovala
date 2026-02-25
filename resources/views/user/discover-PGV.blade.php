@@ -102,11 +102,11 @@
                 <div class="room-card" data-scroll-animate="fade-up">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo" loading="lazy">
                         <div class="right-text">PODOMORO <span class="room-type">GOLF VIEW</span></div>
                     </div>
                     <div class="room-card-image">
-                        <img src="{{ $room['main_photo'] }}" alt="Room {{ $room['room_name'] }}">
+                        <img src="{{ $room['main_photo'] }}" alt="Room {{ $room['room_name'] }}" loading="lazy">
                     </div>
                     <button class="more-btn" data-room-id="{{ $room['id'] }}">MORE</button>
                 </div>
@@ -123,7 +123,7 @@
                     <div class="popup-carousel-container">
                         @foreach ($room['popup_photos'] as $photo)
                         <div class="popup-carousel-slide">
-                            <img src="{{ $photo }}" alt="Room {{ $room['room_name'] }} View">
+                            <img src="{{ $photo }}" alt="Room {{ $room['room_name'] }} View" loading="lazy">
                         </div>
                         @endforeach
                     </div>
@@ -720,3 +720,4 @@
     });
     </script>
 @endpush
+

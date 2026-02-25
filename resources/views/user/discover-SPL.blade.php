@@ -69,27 +69,27 @@
             <div class="facilities-grid">
                 <!-- Facilities -->
                 <div class="facility-item" data-scroll-animate="fade-up">
-                    <img src="{{ asset('images/images/discover-SPL/Barbeque Area.webp') }}" alt="Barbeque Area">
+                    <img src="{{ asset('images/images/discover-SPL/Barbeque Area.webp') }}" alt="Barbeque Area" loading="lazy">
                     <div class="facility-overlay">BARBEQUE AREA</div>
                 </div>
                 <div class="facility-item" data-scroll-animate="fade-up">
-                    <img src="{{ asset('images/images/discover-SPL/Food Court.webp') }}" alt="Food Court">
+                    <img src="{{ asset('images/images/discover-SPL/Food Court.webp') }}" alt="Food Court" loading="lazy">
                     <div class="facility-overlay">FOOD COURT</div>
                 </div>
                 <div class="facility-item" data-scroll-animate="fade-up">
-                    <img src="{{ asset('images/images/discover-SPL/Mall Summarecon.webp') }}" alt="Mall Summarecon">
+                    <img src="{{ asset('images/images/discover-SPL/Mall Summarecon.webp') }}" alt="Mall Summarecon" loading="lazy">
                     <div class="facility-overlay">MALL SUMMARECON</div>
                 </div>
                 <div class="facility-item" data-scroll-animate="fade-up">
-                    <img src="{{ asset('images/images/discover-SPL/Games Center.webp') }}" alt="Games Center">
+                    <img src="{{ asset('images/images/discover-SPL/Games Center.webp') }}" alt="Games Center" loading="lazy">
                     <div class="facility-overlay">GAMES CENTER</div>
                 </div>
                  <div class="facility-item" data-scroll-animate="fade-up">
-                    <img src="{{ asset('images/images/discover-SPL/Gym Outdoor.webp') }}" alt="Gym Outdoor">
+                    <img src="{{ asset('images/images/discover-SPL/Gym Outdoor.webp') }}" alt="Gym Outdoor" loading="lazy">
                     <div class="facility-overlay">GYM OUTDOOR</div>
                 </div>
                  <div class="facility-item" data-scroll-animate="fade-up">
-                    <img src="{{ asset('images/images/discover-SPL/Swimming Pool.webp') }}" alt="Swimming Pool">
+                    <img src="{{ asset('images/images/discover-SPL/Swimming Pool.webp') }}" alt="Swimming Pool" loading="lazy">
                     <div class="facility-overlay">SWIMMING POOL</div>
                 </div>
             </div>
@@ -103,11 +103,11 @@
                 <div class="room-card" data-scroll-animate="fade-up">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo" loading="lazy">
                         <div class="right-text">SPRINGLAKE <span class="room-type">SPL</span></div>
                     </div>
                     <div class="room-card-image">
-                        <img src="{{ $room['main_photo'] }}" alt="Room {{ $room['room_name'] }}">
+                        <img src="{{ $room['main_photo'] }}" alt="Room {{ $room['room_name'] }}" loading="lazy">
                     </div>
                     <button class="more-btn" data-room-id="{{ $room['id'] }}">MORE</button>
                 </div>
@@ -124,7 +124,7 @@
                     <div class="popup-carousel-container">
                         @foreach ($room['popup_photos'] as $photo)
                         <div class="popup-carousel-slide">
-                            <img src="{{ $photo }}" alt="Room {{ $room['room_name'] }} View">
+                            <img src="{{ $photo }}" alt="Room {{ $room['room_name'] }} View" loading="lazy">
                         </div>
                         @endforeach
                     </div>
@@ -675,3 +675,4 @@
     });
     </script>
 @endpush
+

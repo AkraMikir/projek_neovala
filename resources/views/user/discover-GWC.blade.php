@@ -68,23 +68,23 @@
 
             <div class="facilities-grid">
                 <div class="facility-item" data-scroll-animate="fade-up">
-                    <img src="{{ asset('images/images/discover-GWC/Basketball Court.webp') }}" alt="Siteplan">
+                    <img src="{{ asset('images/images/discover-GWC/Basketball Court.webp') }}" alt="Siteplan" loading="lazy">
                 </div>
                 <div class="facility-item" data-scroll-animate="fade-up">
                     <img src="{{ asset('images/images/discover-GWC/Childrens Swimming Pool.webp') }}"
                         alt="Swimming Pool">
                 </div>
                 <div class="facility-item" data-scroll-animate="fade-up">
-                    <img src="{{ asset('images/images/discover-GWC/Indomaret Fresh.webp') }}" alt="Lobby Area">
+                    <img src="{{ asset('images/images/discover-GWC/Indomaret Fresh.webp') }}" alt="Lobby Area" loading="lazy">
                 </div>
                 <div class="facility-item" data-scroll-animate="fade-up">
-                    <img src="{{ asset('images/images/discover-GWC/Lobby Area (1).webp') }}" alt="Playground">
+                    <img src="{{ asset('images/images/discover-GWC/Lobby Area (1).webp') }}" alt="Playground" loading="lazy">
                 </div>
                 <div class="facility-item" data-scroll-animate="fade-up">
-                    <img src="{{ asset('images/images/discover-GWC/Masjid.webp') }}" alt="Lobby Area">
+                    <img src="{{ asset('images/images/discover-GWC/Masjid.webp') }}" alt="Lobby Area" loading="lazy">
                 </div>
                 <div class="facility-item" data-scroll-animate="fade-up">
-                    <img src="{{ asset('images/images/discover-GWC/Rooftop.webp') }}" alt="Garden">
+                    <img src="{{ asset('images/images/discover-GWC/Rooftop.webp') }}" alt="Garden" loading="lazy">
                 </div>
             </div>
         </section>
@@ -97,11 +97,11 @@
                 <div class="room-card" data-scroll-animate="fade-up">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
-                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo">
+                        <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo" loading="lazy">
                         <div class="right-text">GATEWAY <span class="room-type">CICADAS</span></div>
                     </div>
                     <div class="room-card-image">
-                        <img src="{{ $room['main_photo'] }}" alt="Room {{ $room['room_name'] }}">
+                        <img src="{{ $room['main_photo'] }}" alt="Room {{ $room['room_name'] }}" loading="lazy">
                     </div>
                     <button class="more-btn" data-room-id="{{ $room['id'] }}">MORE</button>
                 </div>
@@ -118,7 +118,7 @@
                     <div class="popup-carousel-container">
                         @foreach ($room['popup_photos'] as $photo)
                         <div class="popup-carousel-slide">
-                            <img src="{{ $photo }}" alt="Room {{ $room['room_name'] }} View">
+                            <img src="{{ $photo }}" alt="Room {{ $room['room_name'] }} View" loading="lazy">
                         </div>
                         @endforeach
                     </div>
@@ -711,3 +711,4 @@
     });
     </script>
 @endpush
+

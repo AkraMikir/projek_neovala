@@ -61,10 +61,10 @@
                 @if(is_array($mobileImages) && count($mobileImages) > 0 && isset($mobileImages[$index]))
                     <picture>
                         <source media="(max-width: 767px)" srcset="{{ $mobileImages[$index] }}">
-                        <img src="{{ $image }}" alt="Neovala Apartemen Slide {{ $index + 1 }}" loading="{{ $index === 0 ? 'eager' : 'lazy' }}">
+                        <img src="{{ $image }}" alt="Neovala Apartemen Slide {{ $index + 1 }}" loading="{{ $index === 0 ? 'eager' : 'lazy' }}" @if($index === 0) fetchpriority="high" @endif>
                     </picture>
                 @else
-                    <img src="{{ $image }}" alt="Neovala Apartemen Slide {{ $index + 1 }}" loading="{{ $index === 0 ? 'eager' : 'lazy' }}">
+                    <img src="{{ $image }}" alt="Neovala Apartemen Slide {{ $index + 1 }}" loading="{{ $index === 0 ? 'eager' : 'lazy' }}" @if($index === 0) fetchpriority="high" @endif>
                 @endif
             </div>
             @endforeach

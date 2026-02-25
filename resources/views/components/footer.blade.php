@@ -51,7 +51,7 @@
                 <li><a class="footer-section-available" href="{{ route('discoverSPL') }}">SPRINGLAKE SUMMARECON</a>
                 </li>
                 <div class="footer-logo">
-                    <h2>NEOVALA</h2><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.webp') }}" alt="">
+                    <h2>NEOVALA</h2><img src="{{ asset('images/logo/NEOVALA TRANSPARENT 1.webp') }}" alt="" loading="lazy">
                 </div>
             </ul>
         </div>
