@@ -194,7 +194,7 @@ $locationForLink = $locationSlug ?? $location ?? '';
                                 </div>
                                 <div class="flex items-center justify-between mt-0.5">
                                     <p class="text-stone-500 text-[11px] truncate">
-                                        {{ $review->hide_identity ? 'Anonymous' : '@' . ($review->instagram ?? '') }} ·
+                                        {{ ($review->hide_identity || empty($review->instagram)) ? 'Anonymous' : 'IG: @' . $review->instagram }} ·
                                         {{ $review->created_at->format('d M Y') }}</p>
                                     <button type="button"
                                         class="review-like-btn flex items-center gap-1 text-[10px] text-stone-400 hover:text-[#674c1d] transition-colors focus:outline-none flex-shrink-0 ml-1"
@@ -711,7 +711,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return parts.length ? '<div class="reviews-card-media mt-2 flex flex-wrap gap-1">' + parts.join('') + '</div>' : '';
         }
         function renderCard(r) {
-            var identity = r.hide_identity ? 'Anonymous' : ('@' + (r.instagram || ''));
+            var identity = (r.hide_identity || !r.instagram) ? 'Anonymous' : ('IG: @' + r.instagram);
             var stars = '';
             for (var i = 1; i <= 5; i++) {
                 stars += '<i class="fas fa-star ' + (i <= r.rating ? 'text-[#674c1d]' : 'text-stone-200') +

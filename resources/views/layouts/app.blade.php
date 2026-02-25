@@ -28,7 +28,6 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/scroll-animate.css') }}">
     <script src="https://cdn.tailwindcss.com" defer></script>
     
     <!-- Additional CSS -->
@@ -83,7 +82,6 @@
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/tracking.js') }}"></script>
     <script src="{{ asset('js/popup.js') }}"></script>
-    <script src="{{ asset('js/scroll-animate.js') }}"></script>
     
     <!-- Additional JavaScript -->
     @stack('scripts')

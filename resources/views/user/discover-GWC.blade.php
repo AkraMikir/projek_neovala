@@ -42,7 +42,7 @@
     <!-- Main Content -->
     <main class="main-content">
         <!-- Facilities Section -->
-        <section class="facilities-section" id="facilities-section" data-scroll-animate="fade-up">
+        <section class="facilities-section" id="facilities-section">
             <h2 class="facilities-title">OUR FACILITIES</h2>
 
             <div class="service-container-apart">
@@ -67,34 +67,34 @@
             </div>
 
             <div class="facilities-grid">
-                <div class="facility-item" data-scroll-animate="fade-up">
+                <div class="facility-item">
                     <img src="{{ asset('images/images/discover-GWC/Basketball Court.webp') }}" alt="Siteplan" loading="lazy">
                 </div>
-                <div class="facility-item" data-scroll-animate="fade-up">
+                <div class="facility-item">
                     <img src="{{ asset('images/images/discover-GWC/Childrens Swimming Pool.webp') }}"
                         alt="Swimming Pool">
                 </div>
-                <div class="facility-item" data-scroll-animate="fade-up">
+                <div class="facility-item">
                     <img src="{{ asset('images/images/discover-GWC/Indomaret Fresh.webp') }}" alt="Lobby Area" loading="lazy">
                 </div>
-                <div class="facility-item" data-scroll-animate="fade-up">
+                <div class="facility-item">
                     <img src="{{ asset('images/images/discover-GWC/Lobby Area (1).webp') }}" alt="Playground" loading="lazy">
                 </div>
-                <div class="facility-item" data-scroll-animate="fade-up">
+                <div class="facility-item">
                     <img src="{{ asset('images/images/discover-GWC/Masjid.webp') }}" alt="Lobby Area" loading="lazy">
                 </div>
-                <div class="facility-item" data-scroll-animate="fade-up">
+                <div class="facility-item">
                     <img src="{{ asset('images/images/discover-GWC/Rooftop.webp') }}" alt="Garden" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <section class="room-section" id="room-section" data-scroll-animate="fade-up">
+        <section class="room-section" id="room-section">
             <h2 class="room-title">ROOM GATEWAY CICADAS</h2>
 
             <div class="room-slider-container">
                 @foreach ($roomsFormatted as $room)
-                <div class="room-card" data-scroll-animate="fade-up">
+                <div class="room-card">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
                         <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo" loading="lazy">
@@ -137,7 +137,7 @@
 
         <x-form-checkin apartment="Gateway Cicadas Via WhatsApp" />
 
-        <section class="order-online-card-section" id="order-online-section" data-scroll-animate="fade-up">
+        <section class="order-online-card-section" id="order-online-section">
             <div class="order-online-card">
                 <div class="order-online-card-content">
                     <div class="order-online-card-label">
@@ -157,7 +157,7 @@
             </div>
         </section>
 
-        <section class="location-section" id="location-section" data-scroll-animate="fade-up">
+        <section class="location-section" id="location-section">
             <h2 class="location-title">LOCATION</h2>
             <h3 class="location-subtitle">Segera kunjungi apartemen kami!</h3>
             <div class="location-container">
@@ -200,7 +200,7 @@
             </div>
         </section>
 
-        <section class="booking-section booking-section-GWC" id="booking-section" data-scroll-animate="fade-up">
+        <section class="booking-section booking-section-GWC" id="booking-section">
             <div class="booking-overlay"></div>
             <div class="booking-container">
                 <h2 class="booking-title">SEWA APARTEMEN<br>GATEWAY CICADAS</h2>
@@ -634,9 +634,9 @@
                                 const newCard = document.createElement('div');
                                 newCard.className = 'testimoni-card';
                                 
-                                const instagramDisplay = data.komentar.hide_identity 
-                                    ? '@*******' 
-                                    : '@' + data.komentar.instagram;
+                                const instagramDisplay = (data.komentar.hide_identity || !data.komentar.instagram)
+                                    ? 'Anonymous'
+                                    : 'IG: @' + data.komentar.instagram;
 
                                 let starsHtml = '';
                                 for (let i = 1; i <= 5; i++) {
@@ -711,4 +711,6 @@
     });
     </script>
 @endpush
+
+
 

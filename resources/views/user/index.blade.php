@@ -38,7 +38,7 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="service-container" data-scroll-animate="fade-up">
+        <div class="service-container">
             <div class="service-item">
                 <img src="{{ asset('images/logo/icon1 1.webp') }}" alt="Layanan 1">
                 <p>BISA BAYAR DI TEMPAT</p>
@@ -76,7 +76,7 @@
     </div>
 
     <!-- Apartment Section -->
-    <section class="apartment-section" id="apartment-section" data-scroll-animate="fade-up">
+    <section class="apartment-section" id="apartment-section">
         <h2 class="apartment-title">WE ARE AVAILABLE AT</h2>
         <div class="apartment-container">
 
@@ -130,9 +130,9 @@
     </section>
 
     <!-- NEOVRIENDS + Guest Service Cards (compact, modern) -->
-    <section class="cta-cards-wrapper" data-scroll-animate="fade-up">
+    <section class="cta-cards-wrapper">
         <!-- NEOVRIENDS / Booking CTA Card - hot deal -->
-        <div class="neovriends-cta-section" data-scroll-animate="fade-up">
+        <div class="neovriends-cta-section">
             <div class="neovriends-cta-card">
                 <div class="neovriends-cta-corner-fire" aria-hidden="true">
                     <i class="bi bi-fire"></i>
@@ -157,7 +157,7 @@
         </div>
 
         <!-- Guest Service Card -->
-        <section class="guest-service-section" id="guest-service-section" data-scroll-animate="fade-up">
+        <section class="guest-service-section" id="guest-service-section">
             <div class="guest-service-container">
                 <div class="guest-service-gradient" aria-hidden="true"></div>
                 <div class="guest-service-content">
@@ -185,7 +185,7 @@
     </section>
 
     <!-- Titip Kunci Section -->
-    <section class="titip-kunci-section" id="titip-kunci-section" data-scroll-animate="fade-up">
+    <section class="titip-kunci-section" id="titip-kunci-section">
         <div class="titip-kunci-container">
                 <img src="{{ asset('images/images/home pages/IMG_5703.webp') }}" alt="Background" class="titip-kunci-bg" loading="lazy">
             <div class="titip-kunci-gradient" aria-hidden="true"></div>
@@ -209,12 +209,12 @@
         </div>
     </section>
 
-    <section class="promo-section" id="promo-section" data-scroll-animate="fade-up">
+    <section class="promo-section" id="promo-section">
         <h2 class="promo-title">PROMO CHECK-IN NEOVALA</h2>
 
         <div class="slider-container">
             @forelse($promos as $promo)
-            <div class="card" data-scroll-animate="fade-up">
+            <div class="card">
                 <h3 class="card-title">{{ $promo->title }}</h3>
                 <div class="card-image-wrapper">
                     <img src="{{ asset('storage/' . $promo->image) }}" alt="{{ $promo->title }}" class="card-image" loading="lazy">
@@ -301,7 +301,7 @@
     </div>
 
     <!-- Our Story Section -->
-    <section class="our-story-section" id="our-story-section" data-scroll-animate="fade-up">
+    <section class="our-story-section" id="our-story-section">
         <div class="story-container">
             <div class="story-container-gradient" aria-hidden="true"></div>
             <div class="story-content">
@@ -378,8 +378,9 @@
                             <select name="location" id="locationHome" required
                                 class="w-full rounded-[8px] border border-[#674c1d]/35 py-2 px-3 text-sm text-[#674c1d] bg-white focus:outline-none focus:ring-1 focus:ring-[#674c1d]/30">
                                 @foreach($locations ?? [] as $loc)
-                                <option value="{{ $loc }}">
-                                    {{ $loc === 'keseluruhan' ? 'Keseluruhan' : strtoupper($loc) }}</option>
+                                @if($loc !== 'keseluruhan')
+                                <option value="{{ $loc }}">{{ strtoupper($loc) }}</option>
+                                @endif
                                 @endforeach
                             </select>
                         </div>
@@ -570,7 +571,7 @@
                                 </div>
                                 <div class="flex items-center justify-between mt-0.5">
                                     <p class="text-stone-500 text-[11px] truncate">
-                                        {{ $review->hide_identity ? 'Anonymous' : '@' . ($review->instagram ?? '') }} ·
+                                        {{ ($review->hide_identity || empty($review->instagram)) ? 'Anonymous' : 'IG: @' . $review->instagram }} ·
                                         {{ $review->created_at->format('d M Y') }}</p>
                                     <button type="button"
                                         class="review-like-btn flex items-center gap-1 text-[10px] text-stone-400 hover:text-[#674c1d] transition-colors focus:outline-none flex-shrink-0 ml-1"
@@ -972,7 +973,7 @@
             }
 
             function renderCard(r) {
-                var identity = r.hide_identity ? 'Anonymous' : ('@' + (r.instagram || ''));
+                var identity = (r.hide_identity || !r.instagram) ? 'Anonymous' : ('IG: @' + r.instagram);
                 var stars = '';
                 for (var i = 1; i <= 5; i++) { stars += '<i class="fas fa-star ' + (i <= r.rating ? 'text-[#674c1d]' : 'text-stone-200') + ' text-xs"></i>'; }
                 var repliesHtml = '';
@@ -1178,3 +1179,4 @@
     });
     </script>
 @endpush
+

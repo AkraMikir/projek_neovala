@@ -1,7 +1,7 @@
 @props(['image', 'name', 'route'])
 
 <!-- Apartment Card Component -->
-<div class="apartment-card" data-scroll-animate="fade-up">
+<div class="apartment-card">
     <div class="apartment-image">
         <img src="{{ $image }}" alt="{{ $name }}" loading="lazy">
         <div class="apartment-content">

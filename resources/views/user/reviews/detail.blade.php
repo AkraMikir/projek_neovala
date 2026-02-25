@@ -94,7 +94,7 @@
                                 <i class="fas fa-star text-sm {{ $i <= $review->rating ? 'text-[#674c1d]' : 'text-stone-200' }}"></i>
                             @endfor
                         </div>
-                        <span class="text-stone-500 text-sm">{{ $review->hide_identity ? 'Anonymous' : '@' . ($review->instagram ?? '-') }}</span>
+                        <span class="text-stone-500 text-sm">{{ ($review->hide_identity || empty($review->instagram)) ? 'Anonymous' : 'IG: @' . $review->instagram }}</span>
                         <span class="text-stone-400 text-xs">{{ $review->created_at->format('d M Y') }}</span>
                     </div>
                     @php
@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function renderCard(r) {
-        var identity = r.hide_identity ? 'Anonymous' : ('@' + (r.instagram || '-'));
+        var identity = (r.hide_identity || !r.instagram) ? 'Anonymous' : ('IG: @' + r.instagram);
         var stars = '';
         for (var i = 1; i <= 5; i++) {
             stars += '<i class="fas fa-star text-sm ' + (i <= r.rating ? 'text-[#674c1d]' : 'text-stone-200') + '"></i>';

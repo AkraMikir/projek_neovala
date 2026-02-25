@@ -10,7 +10,7 @@
         {{ $komentar->isi }}
     </p>
     <div class="comment-footer">
-        <span class="comment-user">{{ '@' . $komentar->instagram }}</span>
+        <span class="comment-user">{{ empty($komentar->instagram) ? 'Anonymous' : 'IG: @' . $komentar->instagram }}</span>
         <div class="star-rating">
             @for ($i = 0; $i < $komentar->bintang; $i++)
                 <img src="{{ asset('images/logo/star-filled.webp') }}" alt="Star"

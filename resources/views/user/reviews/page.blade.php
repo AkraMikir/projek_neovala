@@ -30,7 +30,9 @@
                         <select name="location" id="locationPage" required
                             class="w-full rounded-[8px] border border-[#674c1d]/35 py-2 px-3 text-sm text-[#674c1d] bg-white focus:outline-none focus:ring-1 focus:ring-[#674c1d]/30">
                             @foreach($locations ?? [] as $loc)
-                                <option value="{{ $loc }}">{{ $loc === 'keseluruhan' ? 'Keseluruhan' : strtoupper($loc) }}</option>
+                                @if($loc !== 'keseluruhan')
+                                <option value="{{ $loc }}">{{ strtoupper($loc) }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -195,7 +197,7 @@
                                 <i class="fas fa-star text-sm {{ $i <= $review->rating ? 'text-[#674c1d]' : 'text-stone-200' }}"></i>
                             @endfor
                         </div>
-                        <span class="text-stone-500 text-sm">{{ $review->hide_identity ? 'Anonymous' : '@' . ($review->instagram ?? '-') }}</span>
+                        <span class="text-stone-500 text-sm">{{ ($review->hide_identity || empty($review->instagram)) ? 'Anonymous' : 'IG: @' . $review->instagram }}</span>
                         <span class="text-stone-400 text-xs">{{ $review->created_at->format('d M Y') }}</span>
                     </div>
                     <p class="text-stone-800 text-sm leading-relaxed whitespace-pre-wrap">{{ $review->content }}</p>
@@ -472,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function renderCard(r) {
-        var identity = r.hide_identity ? 'Anonymous' : ('@' + (r.instagram || '-'));
+        var identity = (r.hide_identity || !r.instagram) ? 'Anonymous' : ('IG: @' + r.instagram);
         var stars = '';
         for (var i = 1; i <= 5; i++) { stars += '<i class="fas fa-star text-sm ' + (i <= r.rating ? 'text-[#674c1d]' : 'text-stone-200') + '"></i>'; }
         var mediaHtml = '';

@@ -42,7 +42,7 @@
     <!-- Main Content -->
     <main class="main-content">
         <!-- Facilities Section -->
-        <section class="facilities-section" id="facilities-section" data-scroll-animate="fade-up">
+        <section class="facilities-section" id="facilities-section">
             <h2 class="facilities-title">OUR FACILITIES</h2>
 
             <div class="service-container-apart">
@@ -68,39 +68,39 @@
 
             <div class="facilities-grid">
                 <!-- Facilities -->
-                <div class="facility-item" data-scroll-animate="fade-up">
+                <div class="facility-item">
                     <img src="{{ asset('images/images/discover-SPL/Barbeque Area.webp') }}" alt="Barbeque Area" loading="lazy">
                     <div class="facility-overlay">BARBEQUE AREA</div>
                 </div>
-                <div class="facility-item" data-scroll-animate="fade-up">
+                <div class="facility-item">
                     <img src="{{ asset('images/images/discover-SPL/Food Court.webp') }}" alt="Food Court" loading="lazy">
                     <div class="facility-overlay">FOOD COURT</div>
                 </div>
-                <div class="facility-item" data-scroll-animate="fade-up">
+                <div class="facility-item">
                     <img src="{{ asset('images/images/discover-SPL/Mall Summarecon.webp') }}" alt="Mall Summarecon" loading="lazy">
                     <div class="facility-overlay">MALL SUMMARECON</div>
                 </div>
-                <div class="facility-item" data-scroll-animate="fade-up">
+                <div class="facility-item">
                     <img src="{{ asset('images/images/discover-SPL/Games Center.webp') }}" alt="Games Center" loading="lazy">
                     <div class="facility-overlay">GAMES CENTER</div>
                 </div>
-                 <div class="facility-item" data-scroll-animate="fade-up">
+                 <div class="facility-item">
                     <img src="{{ asset('images/images/discover-SPL/Gym Outdoor.webp') }}" alt="Gym Outdoor" loading="lazy">
                     <div class="facility-overlay">GYM OUTDOOR</div>
                 </div>
-                 <div class="facility-item" data-scroll-animate="fade-up">
+                 <div class="facility-item">
                     <img src="{{ asset('images/images/discover-SPL/Swimming Pool.webp') }}" alt="Swimming Pool" loading="lazy">
                     <div class="facility-overlay">SWIMMING POOL</div>
                 </div>
             </div>
         </section>
 
-        <section class="room-section" id="room-section" data-scroll-animate="fade-up">
+        <section class="room-section" id="room-section">
             <h2 class="room-title">ROOM SPRINGLAKE SUMMARECON</h2>
 
             <div class="room-slider-container">
                 @foreach ($roomsFormatted as $room)
-                <div class="room-card" data-scroll-animate="fade-up">
+                <div class="room-card">
                     <div class="room-card-header">
                         <div class="left-text">NEOVALA <span class="room-type">ROOMS</span></div>
                         <img src="{{ asset('images/logo/room-title.webp') }}" alt="Neovala Logo" class="room-logo" loading="lazy">
@@ -143,7 +143,7 @@
 
         <x-form-checkin apartment="Springlake Summarecon Via WhatsApp" />
 
-        <section class="order-online-card-section" id="order-online-section" data-scroll-animate="fade-up">
+        <section class="order-online-card-section" id="order-online-section">
             <div class="order-online-card">
                 <div class="order-online-card-content">
                     <div class="order-online-card-label">
@@ -163,7 +163,7 @@
             </div>
         </section>
 
-        <section class="location-section" id="location-section" data-scroll-animate="fade-up">
+        <section class="location-section" id="location-section">
             <h2 class="location-title">LOCATION</h2>
             <h3 class="location-subtitle">Segera kunjungi apartemen kami!</h3>
             <div class="location-container">
@@ -205,7 +205,7 @@
             </div>
         </section>
 
-        <section class="booking-section booking-section-SPL" id="booking-section" data-scroll-animate="fade-up">
+        <section class="booking-section booking-section-SPL" id="booking-section">
             <div class="booking-overlay"></div>
             <div class="booking-container">
                 <h2 class="booking-title">SEWA APARTEMEN<br>SPRINGLAKE SUMMARECON</h2>
@@ -675,4 +675,5 @@
     });
     </script>
 @endpush
+
 

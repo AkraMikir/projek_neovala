@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/ourstory.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/scroll-animate.css') }}">
 </head>
 <body>
     <!-- Navbar -->
@@ -86,10 +85,10 @@
         </div>
     </header>
 
-    <section class="our-story" data-scroll-animate="fade-up">
+    <section class="our-story">
         <h2 class="apartment-title">OUR STORY</h2>
         <!-- Vision -->
-        <div class="story-item" data-scroll-animate="fade-up">
+        <div class="story-item">
             <div class="story-story-image">
                 <img src="{{ asset('images/images/our-story/IMG_3358.webp') }}" alt="Vision">
                 <div class="image-overlay">
@@ -103,7 +102,7 @@
         </div>
 
         <!-- Ethics -->
-        <div class="story-item reverse" data-scroll-animate="fade-up">
+        <div class="story-item reverse">
             <div class="story-story-image">
                 <img src="{{ asset('images/images/our-story/IMG_0722.webp') }}" alt="Ethics">
                 <div class="image-overlay">
@@ -120,7 +119,7 @@
         </div>
 
         <!-- Founder Section Baru -->
-        <div class="founder-section" data-scroll-animate="fade-up">
+        <div class="founder-section">
             <div class="founder-left">
                 <div class="founder-photo">
                     <img src="{{ asset('images/images/our-story/Bang Farhan.webp') }}" alt="Farhan Saadillah">
@@ -143,7 +142,7 @@
         </div>
 
         <!-- History Section -->
-        <div class="story-item history-section" data-scroll-animate="fade-up">
+        <div class="story-item history-section">
             <div class="history-content">
                 <h2 class="history-title">History</h2>
                 <p>Neovala lahir dari visi untuk menciptakan solusi inovatif dalam dunia akomodasi dan properti. Nama Neovala merupakan gabungan dari dua kata dengan makna mendalam: "Neo" dari bahasa Yunani yang berarti baru, dan "Vala" dari bahasa Jerman yang berarti pemecah solusi.</p>
@@ -166,7 +165,7 @@
         </div>
 
         <!-- Organization Section -->
-        <section class="organization-section" data-scroll-animate="fade-up">
+        <section class="organization-section">
             <h2 class="organization-title">Organization Structure</h2>
             <div class="organization-img-wrapper">
                 <img src="{{ asset('images/images/our-story/organization fix.webp') }}" alt="Organization Structure Neovala" class="organization-img">
@@ -236,5 +235,4 @@
 </body>
 <script src="{{ asset('js/script.js') }}"></script>
 <script src="{{ asset('js/tracking.js') }}"></script>
-<script src="{{ asset('js/scroll-animate.js') }}"></script>
 </html>

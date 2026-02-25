@@ -72,29 +72,7 @@
     font-style: normal;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    /* Shimmer sweep â€” cahaya putih menyapu dari kiri ke kanan */
-    background: linear-gradient(
-        100deg,
-        #ffc619 0%,
-        #E8C040 20%,
-        #FFF0A0 42%,
-        #FFFDE0 50%,
-        #FFF0A0 58%,
-        #E8C040 80%,
-        #ffc823 100%
-    );
-    background-size: 220% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    /* GPU-accelerate animasi agar tidak bentrok dengan transisi opacity slide */
-    will-change: background-position;
-    animation: hero-text-shimmer 4s linear infinite;
-}
-
-@keyframes hero-text-shimmer {
-    0%   { background-position: 220% center; }
-    100% { background-position: -220% center; }
+    color: #ffc619;
 }
 
 /* Subtitle */
