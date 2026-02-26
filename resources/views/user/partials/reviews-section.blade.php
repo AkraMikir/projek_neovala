@@ -192,17 +192,10 @@ $locationForLink = $locationSlug ?? $location ?? '';
                                         </i>
                                         @endfor
                                 </div>
-                                <div class="flex items-center justify-between mt-0.5">
+                                <div class="mt-0.5">
                                     <p class="text-stone-500 text-[11px] truncate">
                                         {{ ($review->hide_identity || empty($review->instagram)) ? 'Anonymous' : 'IG: @' . $review->instagram }} ·
                                         {{ $review->created_at->format('d M Y') }}</p>
-                                    <button type="button"
-                                        class="review-like-btn flex items-center gap-1 text-[10px] text-stone-400 hover:text-[#674c1d] transition-colors focus:outline-none flex-shrink-0 ml-1"
-                                        data-review-id="{{ $review->id }}"
-                                        title="Suka">
-                                        <i class="fas fa-thumbs-up"></i>
-                                        <span class="review-like-count">{{ $review->likes ?? 0 }}</span>
-                                    </button>
                                 </div>
                                 @if($review->replies->count() > 0)
                                 <div class="mt-2 relative">
@@ -242,7 +235,7 @@ $locationForLink = $locationSlug ?? $location ?? '';
                                 </div>
                                 @endif
                             </div>
-                            <span class="reviews-card-more absolute right-2 bottom-2 text-[10px] font-medium bg-gradient-to-r from-amber-600 to-[#674c1d] bg-clip-text text-transparent lg:hidden">Lihat selengkapnya &gt;</span>
+                            <span class="reviews-card-more absolute right-2 bottom-2 text-[10px] font-medium bg-gradient-to-r from-amber-600 to-[#674c1d] bg-clip-text text-transparent lg:hidden pointer-events-none">Lihat selengkapnya &gt;</span>
                         </a>
                     </div>
                     @empty
@@ -647,9 +640,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (p.keyword) params.set('keyword', p.keyword);
             if (p.q) params.set('q', p.q);
             params.set('per_page', '50');
+            var visitorId = window.getReviewVisitorId ? window.getReviewVisitorId() : '';
+            if (visitorId) params.set('visitor_id', visitorId);
             if (window.closeReviewsReplyDropdown) window.closeReviewsReplyDropdown();
             listEl.innerHTML = '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Memuat...</p>';
-            fetch('/api/reviews?' + params.toString())
+            fetch('/api/reviews?' + params.toString(), { headers: { 'X-Visitor-Id': visitorId || '', 'Accept': 'application/json' } })
                 .then(function(res) { return res.json(); })
                 .then(function(data) {
                     aggEl.querySelector('.text-2xl').textContent = Number(data.aggregate.avg).toFixed(1);
@@ -659,7 +654,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (!data.reviews || data.reviews.length === 0) {
                         listEl.innerHTML = '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Belum ada ulasan.</p>';
                     } else {
+                        if (window.addLikedReviewIds && data.reviews.length) {
+                            var likedIds = data.reviews.filter(function(r) { return r.user_has_liked; }).map(function(r) { return r.id; });
+                            if (likedIds.length) window.addLikedReviewIds(likedIds);
+                        }
                         listEl.innerHTML = data.reviews.map(renderCard).join('');
+                        if (window.initLikeButtons) window.initLikeButtons();
                     }
                     if (typeof updateReviewsSliderButtons === 'function') updateReviewsSliderButtons();
                 })
@@ -734,8 +734,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var mediaHtml = mediaPreviewHtml(r.media);
             var baseUrl = (filterContainer && filterContainer.getAttribute('data-detail-url')) || '/reviews';
             var detailUrl = baseUrl + (baseUrl.indexOf('?') >= 0 ? '&' : '?') + 'pin=' + (r.id || '');
-            var likeHtml = '<button type="button" class="review-like-btn flex items-center gap-1 text-[10px] text-stone-400 hover:text-[#674c1d] transition-colors focus:outline-none flex-shrink-0 ml-1" data-review-id="' + (r.id || '') + '" title="Suka"><i class="fas fa-thumbs-up"></i><span class="review-like-count">' + (r.likes || 0) + '</span></button>';
-            var metaHtml = '<div class="flex items-center justify-between mt-0.5"><p class="text-stone-500 text-[11px] truncate">' + identity + ' · ' + (r.created_at || '') + '</p>' + likeHtml + '</div>';
+            var metaHtml = '<div class="mt-0.5"><p class="text-stone-500 text-[11px] truncate">' + identity + ' · ' + (r.created_at || '') + '</p></div>';
             return '<div class="reviews-card reviews-card-clickable relative flex-shrink-0 w-64 max-w-[85vw] snap-start bg-white rounded-lg shadow-sm pt-1 px-3 pb-3 border border-stone-100 flex flex-col justify-center min-h-[140px]" data-review-id="' + (r.id || '') + '">' +
                 '<a href="' + detailUrl + '" class="reviews-card-link block h-full min-h-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#674c1d]/40 focus:ring-offset-1">' +
                 '<div class="reviews-card-inner h-[100%]">' +
@@ -745,7 +744,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 '</p>' +
                 '<div class="flex items-center gap-1 mb-0.5">' + stars + '</div>' +
                 metaHtml + repliesHtml + mediaHtml + '</div>' +
-                '<span class="reviews-card-more absolute right-2 bottom-2 text-[10px] font-medium bg-gradient-to-r from-amber-600 to-[#674c1d] bg-clip-text text-transparent lg:hidden">Lihat selengkapnya &gt;</span>' +
+                '<span class="reviews-card-more absolute right-2 bottom-2 text-[10px] font-medium bg-gradient-to-r from-amber-600 to-[#674c1d] bg-clip-text text-transparent lg:hidden pointer-events-none">Lihat selengkapnya &gt;</span>' +
                 '</a></div>';
         }
 
@@ -1048,10 +1047,12 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 .reviews-card-more {
     display: none;
+    pointer-events: none;
 }
 @media (max-width: 1023px) {
     .reviews-card-more {
         display: block;
+        pointer-events: none;
     }
 }
 </style>

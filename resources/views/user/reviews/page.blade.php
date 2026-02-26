@@ -229,15 +229,6 @@
                             <p class="text-xs text-stone-500 mt-1">{{ $reply->created_at->format('d M Y H:i') }}</p>
                         </div>
                     @endforeach
-                    <div class="flex items-center justify-end mt-3 pt-3 border-t border-stone-100">
-                        <button type="button"
-                            class="review-like-btn flex items-center gap-1.5 text-xs text-stone-400 hover:text-[#674c1d] transition-colors focus:outline-none"
-                            data-review-id="{{ $review->id }}"
-                            title="Suka ulasan ini">
-                            <i class="fas fa-thumbs-up text-sm"></i>
-                            <span class="review-like-count">{{ $review->likes ?? 0 }}</span>
-                        </button>
-                    </div>
                 </article>
             @empty
                 <p class="text-center text-stone-500 py-12">Belum ada ulasan.</p>
@@ -498,14 +489,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 return '<div class="mt-4 pl-4 py-2 border-l-2 border-[#674c1d]/40 bg-stone-100 rounded-r-lg"><p class="text-xs font-semibold text-[#674c1d]">' + (rep.admin_name || 'Admin') + '</p><p class="text-sm text-stone-700 mt-0.5">' + (rep.content || '') + '</p><p class="text-xs text-stone-500 mt-1">' + (rep.created_at || '') + '</p></div>';
             }).join('');
         }
-        var likeHtml = '<div class="flex items-center justify-end mt-3 pt-3 border-t border-stone-100"><button type="button" class="review-like-btn flex items-center gap-1.5 text-xs text-stone-400 hover:text-[#674c1d] transition-colors focus:outline-none" data-review-id="' + r.id + '" title="Suka ulasan ini"><i class="fas fa-thumbs-up text-sm"></i><span class="review-like-count">' + (r.likes || 0) + '</span></button></div>';
         return '<article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">' +
             '<div class="flex flex-wrap items-center gap-2 mb-2"><span class="text-xs font-semibold text-[#674c1d] uppercase tracking-wide">' + (r.location || '') + '</span>' +
             '<div class="flex items-center gap-1">' + stars + '</div>' +
             '<span class="text-stone-500 text-sm">' + identity + '</span>' +
             '<span class="text-stone-400 text-xs">' + (r.created_at || '') + '</span></div>' +
             '<p class="text-stone-800 text-sm leading-relaxed whitespace-pre-wrap">' + (r.content || '') + '</p>' +
-            mediaHtml + repliesHtml + likeHtml + '</article>';
+            mediaHtml + repliesHtml + '</article>';
     }
 
     function renderPaginationHtml(p) {
@@ -532,11 +522,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (q) params.set('q', q);
         params.set('page', currentPage);
         params.set('per_page', '12');
+        var visitorId = window.getReviewVisitorId ? window.getReviewVisitorId() : '';
+        if (visitorId) params.set('visitor_id', visitorId);
 
         listEl.innerHTML = '<p class="text-center text-stone-500 py-12">Memuat...</p>';
         if (paginationEl) paginationEl.innerHTML = '';
 
-        fetch('/api/reviews?' + params.toString())
+        fetch('/api/reviews?' + params.toString(), { headers: { 'X-Visitor-Id': visitorId || '', 'Accept': 'application/json' } })
             .then(function (res) { return res.json(); })
             .then(function (data) {
                 if (aggEl) {
@@ -551,7 +543,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!data.reviews || data.reviews.length === 0) {
                     listEl.innerHTML = '<p class="text-center text-stone-500 py-12">Belum ada ulasan.</p>';
                 } else {
+                    if (window.addLikedReviewIds && data.reviews.length) {
+                        var likedIdsArr = data.reviews.filter(function (r) { return r.user_has_liked; }).map(function (r) { return r.id; });
+                        if (likedIdsArr.length) window.addLikedReviewIds(likedIdsArr);
+                    }
                     listEl.innerHTML = data.reviews.map(function (r) { return renderCard(r); }).join('');
+                    if (window.initLikeButtons) window.initLikeButtons();
                 }
                 if (data.pagination && paginationEl) paginationEl.innerHTML = renderPaginationHtml(data.pagination);
             })

@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Carousel;
-use App\Models\Room;
 use App\Models\Review;
+use App\Models\Room;
 
 class TampilanApartmentController extends Controller
 {
@@ -22,7 +22,7 @@ class TampilanApartmentController extends Controller
         'spl' => 'Spring Lake Summarecon',
     ];
 
-    private function getReviewDataForLocation(string $locationSlug): array
+    private function getReviewDataForLocation(Request $request, string $locationSlug): array
     {
         $locationName = self::$SLUG_TO_NAME[$locationSlug] ?? null;
         $locationValues = $locationName ? [$locationSlug, $locationName] : [$locationSlug];
@@ -44,7 +44,7 @@ class TampilanApartmentController extends Controller
         return compact('reviews', 'reviewAggregate');
     }
 
-    public function tpj()
+    public function tpj(Request $request)
 {
     $section = 'TPJ';
 
@@ -90,11 +90,11 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-    $reviewData = $this->getReviewDataForLocation('tpj');
+    $reviewData = $this->getReviewDataForLocation($request, 'tpj');
     return view('user.discover-TPJ', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
 }
 
-    public function tpc()
+    public function tpc(Request $request)
 {
     $section = 'TPC';
 
@@ -140,11 +140,11 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-    $reviewData = $this->getReviewDataForLocation('tpc');
+    $reviewData = $this->getReviewDataForLocation($request, 'tpc');
     return view('user.discover-TPC', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
 }
 
-    public function gkl()
+    public function gkl(Request $request)
     {
         $section = 'GKL';
 
@@ -190,10 +190,10 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-        $reviewData = $this->getReviewDataForLocation('gkl');
+        $reviewData = $this->getReviewDataForLocation($request, 'gkl');
         return view('user.discover-GKL', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
-    public function plu()
+    public function plu(Request $request)
     {
         $section = 'PLU';
 
@@ -239,10 +239,10 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-        $reviewData = $this->getReviewDataForLocation('plu');
+        $reviewData = $this->getReviewDataForLocation($request, 'plu');
         return view('user.discover-PLU', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
-    public function gwc()
+    public function gwc(Request $request)
     {
         $section = 'GWC';
 
@@ -288,11 +288,11 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-        $reviewData = $this->getReviewDataForLocation('gwc');
+        $reviewData = $this->getReviewDataForLocation($request, 'gwc');
         return view('user.discover-GWC', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
 
-    public function PGV()
+    public function PGV(Request $request)
     {
         $section = 'PGV';
 
@@ -337,11 +337,11 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-        $reviewData = $this->getReviewDataForLocation('pgv');
+        $reviewData = $this->getReviewDataForLocation($request, 'pgv');
         return view('user.discover-PGV', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
 
-    public function BSR()
+    public function BSR(Request $request)
     {
         $section = 'BSR';
 
@@ -386,11 +386,11 @@ class TampilanApartmentController extends Controller
         ];
     });
 
-        $reviewData = $this->getReviewDataForLocation('bsr');
+        $reviewData = $this->getReviewDataForLocation($request, 'bsr');
         return view('user.discover-BSC', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
 
-    public function gpc()
+    public function gpc(Request $request)
     {
         $section = 'GPC';
 
@@ -436,11 +436,11 @@ class TampilanApartmentController extends Controller
             ];
         });
 
-        $reviewData = $this->getReviewDataForLocation('gpc');
+        $reviewData = $this->getReviewDataForLocation($request, 'gpc');
         return view('user.discover-GPC', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
 
-    public function spl()
+    public function spl(Request $request)
     {
         $section = 'SPL';
 
@@ -482,7 +482,7 @@ class TampilanApartmentController extends Controller
             ];
         });
 
-        $reviewData = $this->getReviewDataForLocation('spl');
+        $reviewData = $this->getReviewDataForLocation($request, 'spl');
         return view('user.discover-SPL', array_merge(compact('carouselImagesBySection', 'roomsFormatted'), $reviewData));
     }
 }

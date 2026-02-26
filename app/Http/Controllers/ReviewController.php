@@ -77,7 +77,7 @@ class ReviewController extends Controller
 
         $sort = $request->get('sort', 'latest');
         if ($sort === 'popular') {
-            $query->orderByDesc('likes')->orderByDesc('created_at');
+            $query->orderByDesc('created_at');
         } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
@@ -127,7 +127,7 @@ class ReviewController extends Controller
 
         $sort = $request->get('sort', 'latest');
         if ($sort === 'popular') {
-            $query->orderByDesc('likes')->orderByDesc('created_at');
+            $query->orderByDesc('created_at');
         } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
@@ -203,7 +203,7 @@ class ReviewController extends Controller
 
         $sort = $request->get('sort', 'latest');
         if ($sort === 'popular') {
-            $query->orderByDesc('likes')->orderByDesc('created_at');
+            $query->orderByDesc('created_at');
         } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
@@ -251,6 +251,7 @@ class ReviewController extends Controller
 
         $fullMedia = $usePagination;
         $collection = $usePagination ? collect($reviews->items()) : $reviews;
+
         $items = $collection->map(function ($review) use ($fullMedia) {
             if ($fullMedia) {
                 $media = $review->media->map(fn ($m) => [
@@ -269,7 +270,6 @@ class ReviewController extends Controller
                 'hide_identity' => $review->hide_identity,
                 'instagram' => $review->instagram,
                 'created_at' => $review->created_at->format('d M Y'),
-                'likes' => (int) ($review->likes ?? 0),
                 'media' => $media,
                 'replies' => $review->replies->map(fn ($r) => [
                     'admin_name' => $r->admin->name ?? 'Admin',
@@ -424,20 +424,6 @@ class ReviewController extends Controller
     }
 
     /**
-     * POST /api/reviews/{id}/like — increment likes counter.
-     */
-    public function like(int $id)
-    {
-        $review = Review::find($id);
-        if (!$review) {
-            return response()->json(['success' => false, 'message' => 'Not found'], 404);
-        }
-        $review->timestamps = false;
-        $review->increment('likes');
-        return response()->json(['success' => true, 'likes' => (int) $review->fresh()->likes]);
-    }
-
-    /**
      * Standalone /ulasan page — form + reviews widget (featured only).
      */
     public function reviewsPage(Request $request)
@@ -455,7 +441,7 @@ class ReviewController extends Controller
 
         $sort = $request->get('sort', 'latest');
         if ($sort === 'popular') {
-            $query->orderByDesc('likes')->orderByDesc('created_at');
+            $query->orderByDesc('created_at');
         } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
