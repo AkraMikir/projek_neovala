@@ -556,6 +556,9 @@
                     style="scrollbar-width: thin;">
                     @forelse($reviews as $review)
                     <div class="reviews-card reviews-card-clickable relative flex-shrink-0 w-64 max-w-[85vw] snap-start bg-white rounded-lg shadow-sm pt-1 px-3 pb-3 border border-stone-100 flex flex-col justify-center min-h-[140px]" data-review-id="{{ $review->id }}">
+                        <div class="absolute top-1.5 right-2.5 z-10">
+                            <x-like-button :review="$review" />
+                        </div>
                         <a href="{{ route('reviews.detail') }}?pin={{ $review->id }}" class="reviews-card-link block h-full min-h-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#674c1d]/40 focus:ring-offset-1">
                             <div class="reviews-card-inner h-[100%]">
                                 <p
@@ -977,9 +980,13 @@
                     repliesHtml = '<div class="mt-2 relative"><button type="button" class="review-reply-toggle w-full text-left text-[11px] text-[#674c1d] font-medium flex items-center gap-1 hover:underline focus:outline-none" aria-expanded="false"><i class="fas fa-chevron-down review-reply-chevron text-[10px] transition-transform duration-200"></i> Balasan admin (' + r.replies.length + ')</button><div class="review-reply-dropdown hidden absolute left-0 right-0 top-full mt-1 z-[50] pl-3 border-l-2 border-stone-400 bg-stone-100 rounded-r py-2 pr-2 shadow-lg min-w-[200px]">' + replyBlocks + '</div></div>';
                 }
                 var mediaHtml = mediaPreviewHtml(r.media);
+                var likesCount = r.likes_count ?? 0;
+                var dataLiked = (r.user_has_liked ? 'true' : 'false');
+                var likeBtnHtml = '<button type="button" class="like-btn inline-flex flex-col items-center gap-0.5 border-0 bg-transparent p-0" data-review-id="' + (r.id || '') + '" data-liked="' + dataLiked + '" style="cursor:pointer;outline:none" title="Like komentar ini"><svg class="like-icon not-liked" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#9e9e9e;transition:color 0.2s ease"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg><span class="like-count" style="font-size:11px;color:#666">' + likesCount + '</span></button>';
                 var metaHtml = '<div class="mt-0.5"><p class="text-stone-500 text-[11px] truncate">' + identity + ' · ' + (r.created_at || '') + '</p></div>';
                 var detailUrl = '/reviews?pin=' + (r.id || '');
                 return '<div class="reviews-card reviews-card-clickable relative flex-shrink-0 w-64 max-w-[85vw] snap-start bg-white rounded-lg shadow-sm pt-1 px-3 pb-3 border border-stone-100 flex flex-col justify-center min-h-[140px]" data-review-id="' + (r.id || '') + '">' +
+                    '<div class="absolute top-1.5 right-2.5 z-10">' + likeBtnHtml + '</div>' +
                     '<a href="' + detailUrl + '" class="reviews-card-link block h-full min-h-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#674c1d]/40 focus:ring-offset-1">' +
                     '<div class="reviews-card-inner h-[100%]">' +
                     '<p class="text-amber-900 font-semibold uppercase text-xs mb-0.5 text-center min-h-[2rem] flex items-center justify-center leading-tight">' + (r.location ? r.location.toUpperCase() : '') + '</p>' +
@@ -1000,11 +1007,9 @@
                 if (p.keyword) params.set('keyword', p.keyword);
                 if (p.q) params.set('q', p.q);
                 params.set('per_page', '50');
-                var visitorId = window.getReviewVisitorId ? window.getReviewVisitorId() : '';
-                if (visitorId) params.set('visitor_id', visitorId);
                 if (window.closeReviewsReplyDropdownHome) window.closeReviewsReplyDropdownHome();
                 listEl.innerHTML = '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Memuat...</p>';
-                fetch('/api/reviews?' + params.toString(), { headers: { 'X-Visitor-Id': visitorId || '', 'Accept': 'application/json' } })
+                fetch('/api/reviews?' + params.toString(), { credentials: 'same-origin', headers: { 'Accept': 'application/json' } })
                     .then(function(res) { return res.json(); })
                     .then(function(data) {
                         aggEl.querySelector('.text-3xl').textContent = Number(data.aggregate.avg).toFixed(1);
@@ -1014,12 +1019,8 @@
                         if (!data.reviews || data.reviews.length === 0) {
                             listEl.innerHTML = '<p class="flex-shrink-0 text-center text-stone-500 py-4 w-full">Belum ada ulasan.</p>';
                         } else {
-                            if (window.addLikedReviewIds && data.reviews.length) {
-                                var likedIds = data.reviews.filter(function(r) { return r.user_has_liked; }).map(function(r) { return r.id; });
-                                if (likedIds.length) window.addLikedReviewIds(likedIds);
-                            }
                             listEl.innerHTML = data.reviews.map(renderCard).join('');
-                            if (window.initLikeButtons) window.initLikeButtons();
+                            if (window.initLikeStates) window.initLikeStates();
                         }
                         if (typeof updateSliderButtonsHome === 'function') updateSliderButtonsHome();
                     })

@@ -31,8 +31,11 @@ function handleNavbarScroll() {
 }
 
 function handleSmoothScroll() {
+    const navbar = document.querySelector(".navbar");
     const navLinks = document.querySelectorAll(".nav-links a, .logo-left a");
-    const navHeight = document.querySelector(".navbar").offsetHeight;
+    if (!navbar || navLinks.length === 0) return;
+
+    const navHeight = navbar.offsetHeight;
 
     // Function to scroll smoothly to the target section
     function smoothScrollTo(targetId) {

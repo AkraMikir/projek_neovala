@@ -21,6 +21,10 @@ use App\Http\Controllers\KomentarGpcController;
 use App\Http\Controllers\KomentarBsrController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ReviewLikeController;
+
+Route::post('/reviews/check-likes', [ReviewLikeController::class, 'checkLikes'])->name('reviews.like.check');
+Route::post('/reviews/{review}/like', [ReviewLikeController::class, 'toggle'])->name('reviews.like.toggle');
 
 Route::post('/review', [ReviewController::class, 'store'])->name('review.store');
 Route::get('/api/reviews', [ReviewController::class, 'listApi'])->name('api.reviews');

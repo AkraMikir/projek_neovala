@@ -86,8 +86,11 @@
 
         <div id="reviews-detail-list" class="space-y-6">
             @forelse($reviews as $review)
-                <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">
-                    <div class="flex flex-wrap items-center gap-2 mb-2">
+                <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5 relative">
+                    <div class="absolute top-4 right-4 z-10">
+                        <x-like-button :review="$review" />
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mb-2 pr-16">
                         <span class="text-xs font-semibold text-[#674c1d] uppercase tracking-wide">{{ \App\Models\Review::locationDisplay($review->location) }}</span>
                         <div class="flex items-center gap-1">
                             @for ($i = 1; $i <= 5; $i++)
@@ -399,8 +402,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 return '<div class="mt-4 pl-4 py-2 border-l-2 border-[#674c1d]/40 bg-stone-100 rounded-r-lg"><p class="text-xs font-semibold text-[#674c1d]">' + (rep.admin_name || 'Admin') + '</p><p class="text-sm text-stone-700 mt-0.5">' + (rep.content || '') + '</p><p class="text-xs text-stone-500 mt-1">' + (rep.created_at || '') + '</p></div>';
             }).join('');
         }
-        return '<article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">' +
-            '<div class="flex flex-wrap items-center gap-2 mb-2">' +
+        var likesCount = r.likes_count ?? 0;
+        var dataLiked = (r.user_has_liked ? 'true' : 'false');
+        var likeBtnHtml = '<button type="button" class="like-btn inline-flex flex-col items-center gap-0.5 border-0 bg-transparent p-0" data-review-id="' + (r.id || '') + '" data-liked="' + dataLiked + '" style="cursor:pointer;outline:none" title="Like komentar ini"><svg class="like-icon not-liked" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#9e9e9e;transition:color 0.2s ease"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg><span class="like-count" style="font-size:11px;color:#666">' + likesCount + '</span></button>';
+        return '<article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5 relative">' +
+            '<div class="absolute top-4 right-4 z-10">' + likeBtnHtml + '</div>' +
+            '<div class="flex flex-wrap items-center gap-2 mb-2 pr-16">' +
             '<span class="text-xs font-semibold text-[#674c1d] uppercase tracking-wide">' + (r.location || '').toUpperCase() + '</span>' +
             '<div class="flex items-center gap-1">' + stars + '</div>' +
             '<span class="text-stone-500 text-sm">' + identity + '</span>' +
@@ -420,13 +427,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (p.q) params.set('q', p.q);
         params.set('page', p.page);
         params.set('per_page', '12');
-        var visitorId = window.getReviewVisitorId ? window.getReviewVisitorId() : '';
-        if (visitorId) params.set('visitor_id', visitorId);
 
         listEl.innerHTML = '<p class="text-center text-stone-500 py-12">Memuat...</p>';
         if (paginationEl) paginationEl.innerHTML = '';
 
-        fetch('/api/reviews?' + params.toString(), { headers: { 'X-Visitor-Id': visitorId || '', 'Accept': 'application/json' } })
+        fetch('/api/reviews?' + params.toString(), { credentials: 'same-origin', headers: { 'Accept': 'application/json' } })
             .then(function(res) { return res.json(); })
             .then(function(data) {
                 aggEl.querySelector('.text-3xl').textContent = Number(data.aggregate.avg).toFixed(1);
@@ -439,10 +444,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!data.reviews || data.reviews.length === 0) {
                     listEl.innerHTML = '<p class="text-center text-stone-500 py-12">Belum ada ulasan.</p>';
                 } else {
-                    if (window.addLikedReviewIds && data.reviews.length) {
-                        var likedIdsArr = data.reviews.filter(function(r) { return r.user_has_liked; }).map(function(r) { return r.id; });
-                        if (likedIdsArr.length) window.addLikedReviewIds(likedIdsArr);
-                    }
                     var reviewsToRender = data.reviews;
                     var isFilterSemua = !p.rating && !p.has_media && !p.keyword;
                     var pinId = null;
@@ -454,7 +455,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
                     listEl.innerHTML = reviewsToRender.map(function(r) { return renderCard(r, p.keyword); }).join('');
-                    if (window.initLikeButtons) window.initLikeButtons();
+                    if (window.initLikeStates) window.initLikeStates();
                 }
                 if (data.pagination && paginationEl) {
                     paginationEl.innerHTML = renderPaginationHtml(data.pagination);

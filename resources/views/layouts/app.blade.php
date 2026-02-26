@@ -79,6 +79,7 @@
     </div>
 
     <!-- JavaScript -->
+    <script src="{{ asset('js/review-likes.js') }}" defer></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/tracking.js') }}"></script>
     <script src="{{ asset('js/popup.js') }}"></script>

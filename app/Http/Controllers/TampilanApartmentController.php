@@ -30,6 +30,7 @@ class TampilanApartmentController extends Controller
         $reviews = Review::accepted()
             ->whereIn('location', $locationValues)
             ->with(['media', 'replies.admin'])
+            ->orderByDesc('likes_count')
             ->latest()
             ->limit(50)
             ->get();

@@ -36,6 +36,21 @@ class Review extends Model
         return $this->hasMany(ReviewReply::class)->latest();
     }
 
+    public function likes()
+    {
+        return $this->hasMany(ReviewLike::class);
+    }
+
+    public function isLikedBy(string $visitorId): bool
+    {
+        return $this->likes()->where('visitor_id', $visitorId)->exists();
+    }
+
+    public function scopeOrderByLikes($query)
+    {
+        return $query->orderByDesc('likes_count');
+    }
+
     public function scopeAccepted($query)
     {
         return $query->where('status', 'accepted');

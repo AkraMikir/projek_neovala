@@ -22,7 +22,9 @@ class tampilanUserController extends Controller
         }
 
         $sort = $request->get('sort', 'latest');
-        if ($sort === 'longest') {
+        if ($sort === 'popular') {
+            $query->orderByDesc('likes_count')->orderByDesc('created_at');
+        } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
             $query->latest();

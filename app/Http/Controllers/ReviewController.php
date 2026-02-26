@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\ReviewLike;
 use App\Models\ReviewMedia;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
@@ -77,7 +78,7 @@ class ReviewController extends Controller
 
         $sort = $request->get('sort', 'latest');
         if ($sort === 'popular') {
-            $query->orderByDesc('created_at');
+            $query->orderByDesc('likes_count')->orderByDesc('created_at');
         } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
@@ -127,7 +128,7 @@ class ReviewController extends Controller
 
         $sort = $request->get('sort', 'latest');
         if ($sort === 'popular') {
-            $query->orderByDesc('created_at');
+            $query->orderByDesc('likes_count')->orderByDesc('created_at');
         } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
@@ -203,7 +204,7 @@ class ReviewController extends Controller
 
         $sort = $request->get('sort', 'latest');
         if ($sort === 'popular') {
-            $query->orderByDesc('created_at');
+            $query->orderByDesc('likes_count')->orderByDesc('created_at');
         } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
@@ -251,8 +252,18 @@ class ReviewController extends Controller
 
         $fullMedia = $usePagination;
         $collection = $usePagination ? collect($reviews->items()) : $reviews;
+        $visitorId = $request->attributes->get('visitor_id');
 
-        $items = $collection->map(function ($review) use ($fullMedia) {
+        $likedReviewIds = [];
+        if ($visitorId && $collection->isNotEmpty()) {
+            $likedReviewIds = ReviewLike::where('visitor_id', $visitorId)
+                ->whereIn('review_id', $collection->pluck('id'))
+                ->pluck('review_id')
+                ->keyBy(fn ($id) => $id)
+                ->all();
+        }
+
+        $items = $collection->map(function ($review) use ($fullMedia, $likedReviewIds) {
             if ($fullMedia) {
                 $media = $review->media->map(fn ($m) => [
                     'type' => $m->type,
@@ -270,6 +281,8 @@ class ReviewController extends Controller
                 'hide_identity' => $review->hide_identity,
                 'instagram' => $review->instagram,
                 'created_at' => $review->created_at->format('d M Y'),
+                'likes_count' => $review->likes_count ?? 0,
+                'user_has_liked' => isset($likedReviewIds[$review->id]),
                 'media' => $media,
                 'replies' => $review->replies->map(fn ($r) => [
                     'admin_name' => $r->admin->name ?? 'Admin',
@@ -441,7 +454,7 @@ class ReviewController extends Controller
 
         $sort = $request->get('sort', 'latest');
         if ($sort === 'popular') {
-            $query->orderByDesc('created_at');
+            $query->orderByDesc('likes_count')->orderByDesc('created_at');
         } elseif ($sort === 'longest') {
             $query->orderByRaw('LENGTH(content) DESC')->orderByDesc('created_at');
         } else {
