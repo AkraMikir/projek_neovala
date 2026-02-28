@@ -45,27 +45,27 @@
     <main class="main-content">
         <div class="service-container">
             <div class="service-item">
-                <img src="{{ asset('images/logo/icon1 1.webp') }}" alt="Layanan 1">
+                <img src="{{ asset('images/logo/icon1 1.webp') }}" alt="Layanan 1" width="60" height="60">
                 <p>BISA BAYAR DI TEMPAT</p>
             </div>
             <div class="service-item">
-                <img src="{{ asset('images/logo/icon2 1.webp') }}" alt="Layanan 2">
+                <img src="{{ asset('images/logo/icon2 1.webp') }}" alt="Layanan 2" width="60" height="60">
                 <p>BANYAK PROMO MENARIK</p>
             </div>
             <div class="service-item">
-                <img src="{{ asset('images/logo/calendar 1.webp') }}" alt="Layanan 3">
+                <img src="{{ asset('images/logo/calendar 1.webp') }}" alt="Layanan 3" width="60" height="60">
                 <p>PERUBAHAN JADWAL CHECK-IN MUDAH</p>
             </div>
             <div class="service-item">
-                <img src="{{ asset('images/logo/bed 1.webp') }}" alt="Layanan 4">
+                <img src="{{ asset('images/logo/bed 1.webp') }}" alt="Layanan 4" width="60" height="60" loading="lazy">
                 <p>KAMAR BERSIH DAN NYAMAN</p>
             </div>
             <div class="service-item">
-                <img src="{{ asset('images/logo/24-hour-service 1.webp') }}" alt="Layanan 5">
+                <img src="{{ asset('images/logo/24-hour-service 1.webp') }}" alt="Layanan 5" width="60" height="60" loading="lazy">
                 <p>BUKA 24 JAM</p>
             </div>
             <div class="service-item">
-                <img src="{{ asset('images/logo/hugeicons_shampoo.webp') }}" alt="Layanan 6">
+                <img src="{{ asset('images/logo/hugeicons_shampoo.webp') }}" alt="Layanan 6" width="60" height="60" loading="lazy">
                 <p>AMENITIS LENGKAP</p>
             </div>
         </div>

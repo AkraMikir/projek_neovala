@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
 
     <!-- Fonts: load async agar tidak blocking render -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -30,7 +29,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <!-- Additional CSS -->
     @stack('styles')
