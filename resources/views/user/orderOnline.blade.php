@@ -185,7 +185,7 @@
                             <h3 class="oo-card-name">Bassura City</h3>
                             <p class="oo-card-location"><i class="bi bi-geo-alt-fill"></i> Cipinang, Jakarta Timur</p>
                             <a
-                                href="https://be.dip.id/booking/cekrooms?keyid=f438f8f13b7899819d135e13e2adb645"
+                                href="https://be.dip.id/booking/cekrooms?keyid=f438f8f31b7899819d135e13e2adb645"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="oo-card-btn"

@@ -260,7 +260,7 @@
                             <span class="tiket-text">tiket</span>
                             <div class="tiket-element"></div><span class="tiket-text">com</span>
                         </a>
-                        <a href="https://be.dip.id/booking/cekrooms?keyid=f438f8f13b7899819d135e13e2adb645" target="_blank" class="booking-btn orderonline-btn">
+                        <a href="https://be.dip.id/booking/cekrooms?keyid=f438f8f31b7899819d135e13e2adb645" target="_blank" class="booking-btn orderonline-btn">
                             <i class="fas fa-fire"></i>
                             <span>Order Online</span>
                         </a>

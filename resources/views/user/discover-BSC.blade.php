@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Discover Bassura City')
 
@@ -144,7 +144,7 @@
                     </div>
                     <h3 class="order-online-card-title">Order Online Kamar Di Bassura City</h3>
                     <p class="order-online-card-cta">Booking sekarang! Daftar NEOVRIENDS dapat potongan & cashback. Sewa murah, nyaman, privasi—hanya di NEOVALA.</p>
-                    <a href="https://be.dip.id/booking/cekrooms?keyid=f438f8f13b7899819d135e13e2adb645" target="_blank" rel="noopener noreferrer" class="booking-btn order-online-btn">
+                    <a href="https://be.dip.id/booking/cekrooms?keyid=f438f8f31b7899819d135e13e2adb645" target="_blank" rel="noopener noreferrer" class="booking-btn order-online-btn">
                         <i class="bi bi-fire"></i>
                         <span>Order Online Bassura City</span>
                     </a>
@@ -209,7 +209,7 @@
                         <i class="fab fa-whatsapp"></i>
                         <span class="whatsapp-text">WhatsApp</span>
                     </a>
-                    <a href="https://be.dip.id/booking/cekrooms?keyid=f438f8f13b7899819d135e13e2adb645" target="_blank" rel="noopener noreferrer" class="booking-btn order-online-btn">
+                    <a href="https://be.dip.id/booking/cekrooms?keyid=f438f8f31b7899819d135e13e2adb645" target="_blank" rel="noopener noreferrer" class="booking-btn order-online-btn">
                         <i class="bi bi-fire"></i>
                         <span>Order Online</span>
                     </a>
