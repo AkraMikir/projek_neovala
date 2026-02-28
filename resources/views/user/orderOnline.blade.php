@@ -47,11 +47,11 @@
         <div class="oo-hero-content">
             <div class="oo-badge">
                 <i class="bi bi-stars"></i>
-                Booking Mudah &amp; Cepat
+                <span class="oo-badge-line1">Booking Online Neovala</span>
+                <span class="oo-badge-line2">Lebih Mudah, Murah, dan Cepat.</span>
             </div>
             <h1 class="oo-title">
-                Pilih Apartemen,<br>
-                <span>Book Sekarang</span>
+                Pilih apartemen favorite terdekat darimu sekarang !
             </h1>
             <p class="oo-subtitle">
                 Tersedia 8 apartemen premium di lokasi strategis. Booking online langsung dan dapatkan penawaran terbaik dari Neovala.
@@ -75,7 +75,7 @@
                     <div class="oo-card" data-index="0">
                         <img
                             class="oo-card-img"
-                            src="{{ asset('images/images/drone_photo/TPJ/DJI_20250404164446_0282_D.webp') }}"
+                            src="{{ asset('images/images/drone_photo/card/TPJ/DJI_20250404164446_0282_D.webp') }}"
                             alt="Transpark Juanda"
                             loading="lazy"
                         >
@@ -100,7 +100,7 @@
                     <div class="oo-card" data-index="1">
                         <img
                             class="oo-card-img"
-                            src="{{ asset('images/images/drone_photo/TPC/DJI_20250405123929_0314_D.webp') }}"
+                            src="{{ asset('images/images/drone_photo/card/TPC/DJI_20250405123929_0314_D.webp') }}"
                             alt="Transpark Cibubur"
                             loading="lazy"
                         >
@@ -125,7 +125,7 @@
                     <div class="oo-card" data-index="2">
                         <img
                             class="oo-card-img"
-                            src="{{ asset('images/images/drone_photo/PLU/DJI_20250321180704_0146_D.webp') }}"
+                            src="{{ asset('images/images/drone_photo/card/PLU/DJI_20250321180704_0146_D.webp') }}"
                             alt="Patraland Urbano"
                             loading="lazy"
                         >
@@ -150,7 +150,7 @@
                     <div class="oo-card" data-index="3">
                         <img
                             class="oo-card-img"
-                            src="{{ asset('images/images/drone_photo/PGV/DJI_20250307171441_0098_D.webp') }}"
+                            src="{{ asset('images/images/drone_photo/card/PGV/DJI_20250307171441_0098_D.webp') }}"
                             alt="Podomoro Golf View"
                             loading="lazy"
                         >
@@ -175,7 +175,7 @@
                     <div class="oo-card" data-index="4">
                         <img
                             class="oo-card-img"
-                            src="{{ asset('images/images/drone_photo/BSC/DJI_20250827131627_0494_D.webp') }}"
+                            src="{{ asset('images/images/drone_photo/card/BSC/DJI_20250827131520_0491_D.webp') }}"
                             alt="Bassura City"
                             loading="lazy"
                         >
@@ -200,7 +200,7 @@
                     <div class="oo-card" data-index="5">
                         <img
                             class="oo-card-img"
-                            src="{{ asset('images/images/drone_photo/GKL/DJI_20250327155321_0214_D.webp') }}"
+                            src="{{ asset('images/images/drone_photo/card/GKL/DJI_20250327153843_0201_D.webp') }}"
                             alt="Grand Kamala Lagoon"
                             loading="lazy"
                         >
@@ -225,7 +225,7 @@
                     <div class="oo-card" data-index="6">
                         <img
                             class="oo-card-img"
-                            src="{{ asset('images/images/drone_photo/GPC/DJI_20250905143045_0548_D.webp') }}"
+                            src="{{ asset('images/images/drone_photo/card/GPC/DJI_20250905143045_0548_D.webp') }}"
                             alt="Green Pramuka City"
                             loading="lazy"
                         >
@@ -250,7 +250,7 @@
                     <div class="oo-card" data-index="7">
                         <img
                             class="oo-card-img"
-                            src="{{ asset('images/images/drone_photo/SPL/DJI_20260102114312_0582_D.webp') }}"
+                            src="{{ asset('images/images/drone_photo/card/SPL/DJI_20260102114312_0582_D.webp') }}"
                             alt="Springlake Summarecon"
                             loading="lazy"
                         >

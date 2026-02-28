@@ -2,31 +2,36 @@
 
 @section('title', 'Neovala - Premium Apartment Rental')
 
+@push('styles')
+<link rel="preload" href="{{ asset('images/images/drone_photo/card/SPL/DJI_20260102114257_0580_D.webp') }}" as="image" media="(min-width: 768px)">
+<link rel="preload" href="{{ asset('images/images/drone_photo/card/SPL/DJI_20260102114312_0582_D.webp') }}" as="image" media="(max-width: 767px)">
+@endpush
+
 @section('content')
     <!-- Header dengan Carousel -->
     <header class="header" id="home">
         <x-carousel 
             :images="[
-                asset('images/images/home pages/Copy of DJI_20260102114259_0581_D.webp'),
-                asset('images/images/home pages/DJI_20250307171433_0096_D.webp'),
-                asset('images/images/home pages/DJI_20250321175315_0129_D.webp'),
-                asset('images/images/home pages/DJI_20250327155326_0216_D.webp'),
-                asset('images/images/home pages/DJI_20250403160456_0254_D.webp'),
-                asset('images/images/home pages/DJI_20250404164436_0280_D.webp'),
-                asset('images/images/home pages/DJI_20250405123913_0309_D.webp'),
-                asset('images/images/home pages/DJI_20250827130441_0466_D.webp'),
-                asset('images/images/home pages/DJI_20250905143026_0543_D.webp')
+                asset('images/images/drone_photo/card/SPL/DJI_20260102114257_0580_D.webp'),
+                asset('images/images/drone_photo/card/PGV/DJI_20250307171436_0097_D.webp'),
+                asset('images/images/drone_photo/card/PLU/DJI_20250321180632_0140_D.webp'),
+                asset('images/images/drone_photo/card/GKL/DJI_20250327155321_0214_D.webp'),
+                asset('images/images/drone_photo/card/GWC/gwc desktop.webp'),
+                asset('images/images/drone_photo/card/TPJ/DJI_20250404164408_0277_D.webp'),
+                asset('images/images/drone_photo/card/TPC/DJI_20250405123918_0311_D.webp'),
+                asset('images/images/drone_photo/card/BSC/DJI_20250827131627_0494_D.webp'),
+                asset('images/images/drone_photo/card/GPC/DJI_20250905143026_0543_D.webp')
             ]"
             :mobile-images="[
-                asset('images/images/drone_photo/SPL/DJI_20260102114312_0582_D.webp'),
-                asset('images/images/drone_photo/PGV/DJI_20250307171441_0098_D.webp'),
-                asset('images/images/drone_photo/PLU/DJI_20250321180704_0146_D.webp'),
-                asset('images/images/drone_photo/GKL/DJI_20250327155321_0214_D.webp'),
-                asset('images/images/drone_photo/GWC/gwc mobile.webp'),
-                asset('images/images/drone_photo/TPJ/DJI_20250404164446_0282_D.webp'),
-                asset('images/images/drone_photo/TPC/DJI_20250405123929_0314_D.webp'),
-                asset('images/images/drone_photo/BSC/DJI_20250827131627_0494_D.webp'),
-                asset('images/images/drone_photo/GPC/DJI_20250905143045_0548_D.webp')
+                asset('images/images/drone_photo/card/SPL/DJI_20260102114312_0582_D.webp'),
+                asset('images/images/drone_photo/card/PGV/DJI_20250307171441_0098_D.webp'),
+                asset('images/images/drone_photo/card/PLU/DJI_20250321180704_0146_D.webp'),
+                asset('images/images/drone_photo/card/GKL/DJI_20250327153843_0201_D.webp'),
+                asset('images/images/drone_photo/card/GWC/gwc mobile.webp'),
+                asset('images/images/drone_photo/card/TPJ/DJI_20250404164446_0282_D.webp'),
+                asset('images/images/drone_photo/card/TPC/DJI_20250405123929_0314_D.webp'),
+                asset('images/images/drone_photo/card/BSC/DJI_20250827131520_0491_D.webp'),
+                asset('images/images/drone_photo/card/GPC/DJI_20250905143045_0548_D.webp')
             ]"
             hero-badge="Neovala ΓÇö Premium Apartment Rental"
             hero-title="Hunian Premium,<br><em>Pengalaman Istimewa</em>"
@@ -80,49 +85,51 @@
         <h2 class="apartment-title">WE ARE AVAILABLE AT</h2>
         <div class="apartment-container">
 
-            <!-- Apartment Cards -->
+            <!-- Apartment Cards (compressed images from drone_photo/card/) -->
             <x-apartment-card 
-                image="{{ asset('images/images/drone_photo/TPJ/DJI_20250404164408_0277_D.webp') }}"
+                image="{{ asset('images/images/drone_photo/card/TPJ/DJI_20250404164408_0277_D.webp') }}"
                 name="TRANSPARK JUANDA"
                 :route="route('discoverTPJ')"
+                :priority="true"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/drone_photo/TPC/DJI_20250405123918_0311_D.webp') }}"
+                image="{{ asset('images/images/drone_photo/card/TPC/DJI_20250405123918_0311_D.webp') }}"
                 name="TRANSPARK CIBUBUR"
                 :route="route('discoverTPC')"
+                :priority="true"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/drone_photo/GKL/DJI_20250327153843_0201_D.webp') }}"
+                image="{{ asset('images/images/drone_photo/card/GKL/DJI_20250327155321_0214_D.webp') }}"
                 name="GRAND KAMALA LAGOON"
                 :route="route('discoverGKL')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/drone_photo/PLU/DJI_20250321180632_0140_D.webp') }}"
+                image="{{ asset('images/images/drone_photo/card/PLU/DJI_20250321180632_0140_D.webp') }}"
                 name="PATRALAND URBANO"
                 :route="route('discoverPLU')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/drone_photo/GWC/gwc desktop.webp') }}"
+                image="{{ asset('images/images/drone_photo/card/GWC/gwc desktop.webp') }}"
                 name="GATEWAY CICADAS"
                 :route="route('discoverGWC')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/drone_photo/PGV/DJI_20250307171436_0097_D.webp') }}"
+                image="{{ asset('images/images/drone_photo/card/PGV/DJI_20250307171436_0097_D.webp') }}"
                 name="PODOMORO GOLF VIEW"
                 :route="route('discoverPGV')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/drone_photo/GPC/DJI_20250905143026_0543_D.webp') }}"
+                image="{{ asset('images/images/drone_photo/card/GPC/DJI_20250905143026_0543_D.webp') }}"
                 name="GREEN PRAMUKA CITY"
                 :route="route('discoverGPC')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/drone_photo/BSC/DJI_20250827131520_0491_D.webp') }}"
+                image="{{ asset('images/images/drone_photo/card/BSC/DJI_20250827131627_0494_D.webp') }}"
                 name="BASSURA CITY"
                 :route="route('discoverBSC')"
             />
             <x-apartment-card 
-                image="{{ asset('images/images/drone_photo/SPL/DJI_20260102114257_0580_D.webp') }}"
+                image="{{ asset('images/images/drone_photo/card/SPL/DJI_20260102114257_0580_D.webp') }}"
                 name="SPRINGLAKE SUMMARECON"
                 :route="route('discoverSPL')"
             />

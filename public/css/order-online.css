@@ -103,22 +103,28 @@ body.order-online-page {
     display: inline-block;
     background: linear-gradient(135deg, #674C1D, #B8860B);
     color: #FFFFFF;
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 1.8vw, 0.8rem);
     font-weight: 600;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 6px 20px;
+    padding: 8px 20px;
     border-radius: 50px;
     margin-bottom: 16px;
+    line-height: 1.4;
+}
+.oo-badge .oo-badge-line1,
+.oo-badge .oo-badge-line2 {
+    display: block;
 }
 
 .oo-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-size: clamp(1.5rem, 4.5vw, 3.2rem);
     font-weight: 700;
     color: #FFFFFF;
-    line-height: 1.15;
-    margin-bottom: 16px;
+    line-height: 1.3;
+    margin: 0 auto 16px;
+    max-width: min(90%, 680px);
 }
 
 .oo-title span {
