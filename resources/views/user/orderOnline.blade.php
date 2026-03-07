@@ -22,6 +22,158 @@
 
     <style>
         html { scroll-behavior: smooth; }
+
+        /* ===== HOW TO BOOK SECTION ===== */
+        .oo-howto {
+            background: #0d0d0d;
+            padding: 40px 24px 80px;
+            border-top: 1px solid rgba(184, 134, 11, 0.15);
+        }
+        .oo-howto-inner {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .oo-howto-header {
+            text-align: center;
+            margin-bottom: 52px;
+        }
+        .oo-howto-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(184, 134, 11, 0.12);
+            border: 1px solid rgba(184, 134, 11, 0.35);
+            color: #B8860B;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 18px;
+        }
+        .oo-howto-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+        .oo-howto-desc {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.7;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .oo-steps {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 0 48px 0 !important;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .oo-step-item {
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            padding: 20px 24px;
+            transition: border-color 0.3s ease, background 0.3s ease;
+            counter-increment: none;
+        }
+        .oo-step-item::before {
+            display: none !important;
+            content: none !important;
+        }
+        .oo-step-item:hover {
+            background: rgba(184, 134, 11, 0.07);
+            border-color: rgba(184, 134, 11, 0.3);
+        }
+        .oo-step-number {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            min-height: 44px;
+            background: linear-gradient(135deg, #674C1D, #B8860B);
+            color: #FFFFFF;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(184, 134, 11, 0.3);
+        }
+        .oo-step-text {
+            flex: 1;
+        }
+        .oo-step-text strong {
+            display: block;
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .oo-step-text p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.83rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+        .oo-howto-contact {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(37, 211, 102, 0.07);
+            border: 1px solid rgba(37, 211, 102, 0.25);
+            border-radius: 14px;
+            padding: 20px 24px;
+        }
+        .oo-howto-contact .bi-whatsapp {
+            font-size: 1.8rem;
+            color: #25d366;
+            flex-shrink: 0;
+        }
+        .oo-howto-contact p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.87rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+        .oo-howto-contact strong {
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+        .oo-wa-link {
+            color: #25d366;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .oo-wa-link:hover {
+            color: #5adf8a;
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .oo-howto { padding: 40px 16px 64px; }
+            .oo-step-item { padding: 16px 18px; gap: 14px; }
+            .oo-step-number { width: 38px; height: 38px; min-width: 38px; min-height: 38px; font-size: 0.72rem; }
+            .oo-howto-contact { flex-direction: column; align-items: flex-start; gap: 10px; }
+        }
+        @media (max-width: 480px) {
+            .oo-howto-title { font-size: 1.4rem; }
+            .oo-step-item { padding: 14px 16px; gap: 12px; }
+            .oo-step-number { width: 34px; height: 34px; min-width: 34px; min-height: 34px; font-size: 0.68rem; }
+            .oo-step-text strong { font-size: 0.88rem; }
+            .oo-step-text p { font-size: 0.78rem; }
+        }
     </style>
 </head>
 
