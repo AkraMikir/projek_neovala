@@ -299,6 +299,70 @@
         </div>
     </section>
 
+    <!-- How to Book Section -->
+    <section class="oo-howto">
+        <div class="oo-howto-inner">
+            <div class="oo-howto-header">
+                <span class="oo-howto-label"><i class="bi bi-info-circle-fill"></i> Panduan</span>
+                <h2 class="oo-howto-title">Cara Booking Online di Neovala Web</h2>
+                <p class="oo-howto-desc">Ikuti langkah-langkah berikut untuk melakukan pemesanan dengan mudah dan cepat.</p>
+            </div>
+
+            <ol class="oo-steps">
+                <li class="oo-step-item">
+                    <span class="oo-step-number">01</span>
+                    <div class="oo-step-text">
+                        <strong>Pilih Apartemen</strong>
+                        <p>Pilih apartemen tujuan terdekat atau yang diinginkan dari daftar yang tersedia.</p>
+                    </div>
+                </li>
+                <li class="oo-step-item">
+                    <span class="oo-step-number">02</span>
+                    <div class="oo-step-text">
+                        <strong>Tentukan Kamar &amp; Tanggal</strong>
+                        <p>Tentukan tipe kamar beserta tanggal check-in yang sesuai kebutuhanmu.</p>
+                    </div>
+                </li>
+                <li class="oo-step-item">
+                    <span class="oo-step-number">03</span>
+                    <div class="oo-step-text">
+                        <strong>Buat Akun &amp; Member Neovala</strong>
+                        <p>Buat akun dan member Neovala jika belum memiliki, untuk dapatkan promo dan poin berlangganan.</p>
+                    </div>
+                </li>
+                <li class="oo-step-item">
+                    <span class="oo-step-number">04</span>
+                    <div class="oo-step-text">
+                        <strong>Bayar via Virtual Akun</strong>
+                        <p>Bayar pemesanan melalui virtual akun yang didapat setelah proses booking.</p>
+                    </div>
+                </li>
+                <li class="oo-step-item">
+                    <span class="oo-step-number">05</span>
+                    <div class="oo-step-text">
+                        <strong>Konfirmasi via WhatsApp</strong>
+                        <p>Hubungi WhatsApp admin Neovala untuk konfirmasi pemesanan yang telah dilakukan.</p>
+                    </div>
+                </li>
+                <li class="oo-step-item">
+                    <span class="oo-step-number">06</span>
+                    <div class="oo-step-text">
+                        <strong>Nikmati Menginap!</strong>
+                        <p>Nikmati keseruan menginap dengan fasilitas lengkap di Neovala.</p>
+                    </div>
+                </li>
+            </ol>
+
+            <div class="oo-howto-contact">
+                <i class="bi bi-whatsapp"></i>
+                <p>
+                    Jika ada pertanyaan, silahkan hubungi <strong>Customer Service</strong> kami di WhatsApp:
+                    <a href="https://wa.me/6289669649690" target="_blank" rel="noopener noreferrer" class="oo-wa-link">0896-6964-9690</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
     <script>
         (function () {
             const track = document.getElementById('oo-track');
