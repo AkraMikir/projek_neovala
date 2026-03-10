@@ -25,9 +25,7 @@
 
         /* ===== HOW TO BOOK SECTION ===== */
         .oo-howto {
-            background: #0d0d0d;
-            padding: 40px 24px 80px;
-            border-top: 1px solid rgba(184, 134, 11, 0.15);
+            padding: 0 24px 80px;
         }
         .oo-howto-inner {
             max-width: 860px;
