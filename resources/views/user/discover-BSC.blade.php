@@ -26,8 +26,6 @@
         @endphp
         <x-carousel 
             :images="$carouselImages"
-            overlay-text="BASSURA CITY"
-            overlay-class="header-text-overlay-discover"
         />
     </header>
 

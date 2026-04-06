@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Discover Grand Kamala Lagoon')
 
@@ -26,8 +26,6 @@
         @endphp
         <x-carousel 
             :images="$carouselImages"
-            overlay-text="GRAND KAMALA LAGOON"
-            overlay-class="header-text-overlay-discover"
         />
     </header>
 

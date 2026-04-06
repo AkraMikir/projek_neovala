@@ -26,8 +26,6 @@
         @endphp
         <x-carousel 
             :images="$carouselImages"
-            overlay-text="PODOMORO GOLF VIEW"
-            overlay-class="header-text-overlay-discover"
         />
     </header>
 

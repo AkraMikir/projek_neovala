@@ -26,8 +26,6 @@
         @endphp
         <x-carousel 
             :images="$carouselImages"
-            overlay-text="GATEWAY CICADAS"
-            overlay-class="header-text-overlay-discover"
         />
     </header>
 
