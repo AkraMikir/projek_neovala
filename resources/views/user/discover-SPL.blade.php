@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Discover Springlake Summarecon')
 
@@ -663,7 +663,6 @@
     });
     </script>
 
-    <script src="{{ asset('js/tracking.js') }}"></script>
     <script>
     // Track apartment discovery
     document.addEventListener('DOMContentLoaded', function() {

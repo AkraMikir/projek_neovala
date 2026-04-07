@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Discover Transpark Juanda')
 
@@ -278,7 +278,7 @@
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/apartment.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/apartment.css?v=2.0') }}">
 @endpush
 
 @push('scripts')
@@ -658,7 +658,6 @@
     });
     </script>
 
-    <script src="{{ asset('js/tracking.js') }}"></script>
     <script>
     // Track apartment discovery
     document.addEventListener('DOMContentLoaded', function() {

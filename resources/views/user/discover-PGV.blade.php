@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Discover Podomoro Golf View')
 
@@ -708,7 +708,6 @@
     });
     </script>
 
-    <script src="{{ asset('js/tracking.js') }}"></script>
     <script>
     // Track apartment discovery
     document.addEventListener('DOMContentLoaded', function() {

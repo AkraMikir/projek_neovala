@@ -437,6 +437,34 @@ body {
     padding-top: 0;
 }
 
+/* Carousel tetap landscape di tablet dan mobile */
+@media screen and (max-width: 1024px) {
+    .header {
+        height: 60vw;
+        min-height: 280px;
+        max-height: 600px;
+        margin-top: 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        height: 56.25vw; /* Rasio 16:9 landscape */
+        min-height: 240px;
+        max-height: 480px;
+        margin-top: 60px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header {
+        height: 56.25vw; /* Rasio 16:9 landscape */
+        min-height: 200px;
+        max-height: 360px;
+        margin-top: 60px;
+    }
+}
+
 /* Menambahkan bayangan transisi */
 .header::after {
     content: '';
