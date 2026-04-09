@@ -148,7 +148,7 @@
                     </a>
                 </div>
                 <div class="order-online-card-image">
-                    <img src="{{ asset('images/images/discover-BSC/kolam.webp') }}" alt="Kolam Renang Bassura City" loading="lazy">
+                    <img src="{{ asset('images/images/discover-BSC/orderonline.JPEG') }}" alt="Bassura City Room" loading="lazy">
                     <div class="order-online-card-image-overlay"></div>
                 </div>
             </div>

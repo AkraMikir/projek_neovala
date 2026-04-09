@@ -1928,26 +1928,35 @@ body.menu-open {
    Order Online card section (discover pages)
    ============================================= */
 .order-online-card-section {
-    padding: 60px 24px 70px;
-    background-color: #f8f6f3;
+    padding: 80px 24px 90px;
+    background-color: #ffffff;
 }
 
 .order-online-card {
-    max-width: 1100px;
+    position: relative;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0;
-    border-radius: 28px;
-    background-color: #ffffff;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08), 0 2px 12px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 0 20px 50px rgba(103, 76, 29, 0.15), 0 0 0 1px rgba(212, 175, 55, 0.15);
     overflow: hidden;
     display: flex;
     align-items: stretch;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.order-online-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(103, 76, 29, 0.25), 0 0 0 1px rgba(212, 175, 55, 0.25);
 }
 
 /* Konten kiri */
 .order-online-card-content {
-    flex: 1 1 0;
-    padding: 56px 52px;
+    flex: 1.1;
+    position: relative;
+    z-index: 1;
+    padding: 60px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1956,37 +1965,52 @@ body.menu-open {
 .order-online-card-label {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    background: linear-gradient(135deg, #674C1D22, #B8860B22);
-    border: 1px solid #B8860B55;
-    color: #674C1D;
-    font-size: 0.72rem;
+    gap: 8px;
+    background: linear-gradient(135deg, #fef9ed, #f5e6b3);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #8b6914;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 6px 16px;
+    padding: 8px 18px;
     border-radius: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     width: fit-content;
     font-family: "Poppins", sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .order-online-card-title {
     font-family: "Montserrat", sans-serif;
-    font-size: 1.85rem;
+    font-size: 2.4rem;
     font-weight: 800;
-    color: #3d2c29;
-    margin-bottom: 16px;
-    letter-spacing: 0.3px;
-    line-height: 1.25;
+    color: #674c1d;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.order-online-card-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #d4af37, #fef9ed);
+    border-radius: 2px;
 }
 
 .order-online-card-cta {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #6b5450;
-    margin-bottom: 32px;
-    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #5a4218;
+    margin-bottom: 35px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
 }
 
 .order-online-card .booking-btn {
@@ -1995,8 +2019,6 @@ body.menu-open {
     width: fit-content;
     box-sizing: border-box;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 .order-online-card .order-online-btn {
@@ -2004,54 +2026,56 @@ body.menu-open {
     color: #ffffff;
     border: none;
     border-radius: 50px;
-    padding: 16px 36px;
-    font-size: 1.25rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(103, 76, 29, 0.35);
+    padding: 18px 40px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.35s ease;
+    box-shadow: 0 6px 20px rgba(103, 76, 29, 0.3);
     width: auto;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .order-online-card .order-online-btn:hover {
     background: linear-gradient(135deg, #B8860B, #D4A017);
-    color: #1a1a1a;
-    box-shadow: 0 8px 24px rgba(184, 134, 11, 0.45);
-    transform: translateY(-2px);
+    color: #ffffff;
+    box-shadow: 0 10px 25px rgba(184, 134, 11, 0.4);
+    transform: translateY(-3px);
 }
 
 .order-online-card .order-online-btn .bi-fire {
     color: inherit;
+    font-size: 1.3rem;
+    transition: transform 0.3s ease;
+}
+
+.order-online-card .order-online-btn:hover .bi-fire {
+    transform: scale(1.1) rotate(5deg);
 }
 
 /* Gambar kanan */
 .order-online-card-image {
-    flex: 0 0 42%;
+    flex: 0.9;
     position: relative;
     overflow: hidden;
-    min-height: 360px;
+    min-height: 100%;
 }
 
 .order-online-card-image img {
     width: 100%;
     height: 100%;
+    min-height: 480px;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .order-online-card:hover .order-online-card-image img {
-    transform: scale(1.04);
+    transform: scale(1.05);
 }
 
-.order-online-card-image-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(103, 76, 29, 0.18) 0%, transparent 60%);
-    pointer-events: none;
-}
 
 .order-online-btn--disabled {
     background-color: #95a5a6 !important;

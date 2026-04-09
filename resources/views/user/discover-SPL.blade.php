@@ -155,7 +155,7 @@
                     </a>
                 </div>
                 <div class="order-online-card-image">
-                    <img src="{{ asset('images/images/discover-SPL/Swimming Pool.webp') }}" alt="Swimming Pool Springlake Summarecon" loading="lazy">
+                    <img src="{{ asset('images/images/discover-BSC/orderonline.JPEG') }}" alt="Swimming Pool Springlake Summarecon" loading="lazy">
                     <div class="order-online-card-image-overlay"></div>
                 </div>
             </div>

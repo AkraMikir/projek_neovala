@@ -437,33 +437,10 @@ body {
     padding-top: 0;
 }
 
-/* Carousel tetap landscape di tablet dan mobile */
-@media screen and (max-width: 1024px) {
-    .header {
-        height: 60vw;
-        min-height: 280px;
-        max-height: 600px;
-        margin-top: 60px;
-    }
-}
 
-@media screen and (max-width: 768px) {
-    .header {
-        height: 56.25vw; /* Rasio 16:9 landscape */
         min-height: 240px;
         max-height: 480px;
         margin-top: 60px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .header {
-        height: 56.25vw; /* Rasio 16:9 landscape */
-        min-height: 200px;
-        max-height: 360px;
-        margin-top: 60px;
-    }
-}
 
 /* Menambahkan bayangan transisi */
 .header::after {
@@ -612,6 +589,26 @@ body {
 
     .prev { left: 14px; }
     .next { right: 14px; }
+
+    .dot {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .dot.active {
+        width: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .dot {
+        width: 5px;
+        height: 5px;
+    }
+    
+    .dot.active {
+        width: 14px;
+    }
 }
 
 /* Footer Styles */

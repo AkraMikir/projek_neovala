@@ -154,7 +154,7 @@
                     </a>
                 </div>
                 <div class="order-online-card-image">
-                    <img src="{{ asset('images/images/discover-PGV/IMG_0430.webp') }}" alt="Podomoro Golf View" loading="lazy">
+                    <img src="{{ asset('images/images/discover-BSC/orderonline.JPEG') }}" alt="Podomoro Golf View" loading="lazy">
                     <div class="order-online-card-image-overlay"></div>
                 </div>
             </div>

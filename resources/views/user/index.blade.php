@@ -194,7 +194,7 @@
     <!-- Titip Kunci Section -->
     <section class="titip-kunci-section" id="titip-kunci-section">
         <div class="titip-kunci-container">
-                <img src="{{ asset('images/images/home pages/IMG_5703.webp') }}" alt="Background" class="titip-kunci-bg" loading="lazy">
+                <img src="{{ asset('images/images/home pages/titipkuncineo.png') }}" alt="Background" class="titip-kunci-bg" loading="lazy">
             <div class="titip-kunci-gradient" aria-hidden="true"></div>
             <div class="titip-kunci-content">
                 <h2 class="titip-kunci-title">JASA TITIP KUNCI SEWA APARTEMEN</h2>
@@ -354,7 +354,7 @@
             </div>
             <div class="story-image-container">
                 <div class="story-image">
-                    <img src="{{ asset('images/logo/story.webp') }}" alt="Neovala Building" loading="lazy">
+                    <img src="{{ asset('images/images/home pages/ourstoryneo.png') }}" alt="Neovala Our Story" loading="lazy">
                 </div>
                 <a href="{{ route('ourStory') }}" class="read-more-btn">
                     <span>READ MORE</span>

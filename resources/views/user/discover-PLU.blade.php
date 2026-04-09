@@ -148,7 +148,7 @@
                     </a>
                 </div>
                 <div class="order-online-card-image">
-                    <img src="{{ asset('images/images/discover-PLU/Swimming Pool (1).webp') }}" alt="Swimming Pool Patraland Urbano" loading="lazy">
+                    <img src="{{ asset('images/images/discover-BSC/orderonline.JPEG') }}" alt="Swimming Pool Patraland Urbano" loading="lazy">
                     <div class="order-online-card-image-overlay"></div>
                 </div>
             </div>

@@ -149,7 +149,7 @@
                     </span>
                 </div>
                 <div class="order-online-card-image">
-                    <img src="{{ asset('images/images/discover-GWC/Swimming Pool (1).webp') }}" alt="Swimming Pool Gateway Cicadas" loading="lazy">
+                    <img src="{{ asset('images/images/discover-BSC/orderonline.JPEG') }}" alt="Swimming Pool Gateway Cicadas" loading="lazy">
                     <div class="order-online-card-image-overlay"></div>
                 </div>
             </div>
