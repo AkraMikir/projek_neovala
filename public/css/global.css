@@ -438,9 +438,6 @@ body {
 }
 
 
-        min-height: 240px;
-        max-height: 480px;
-        margin-top: 60px;
 
 /* Menambahkan bayangan transisi */
 .header::after {
